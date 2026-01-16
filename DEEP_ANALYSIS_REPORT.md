@@ -234,3 +234,79 @@ All analyzed contracts either:
 6. Use Merkle proofs for cross-chain verification
 
 **Status: UNPROVEN - Continuing analysis**
+
+---
+
+## Additional Contracts Scanned (Session 2)
+
+### 10. Treasury (Eclipse)
+**Address:** `0xD7E4b67E735733aC98a88F13d087D8aac670E644`
+**Implementation:** `0xf1f7a359c3f33ee8a66bdcbf4c897d25caf90978`
+**Balance:** 3,285 ETH
+
+**Architecture:**
+- AccessControl-based role system
+- reinitialize() function for migration from Ownable
+- EMERGENCY_ROLE can withdrawETH without pause check
+
+**Analysis:**
+- reinitialize() protected by reinitializer(2) modifier
+- Tested: Already initialized to version 2
+- Not exploitable - reinitialize reverts
+
+**Finding:** UNPROVEN - Properly initialized.
+
+---
+
+### 11. SplitMain (0xSplits)
+**Address:** `0x2ed6c4b5da6378c7897ac67ba9e43102feb694ee`
+**Balance:** 395 ETH
+
+**Architecture:**
+- Hash-validated split configurations
+- Controller-based mutable splits
+- Two-step control transfer
+
+**Analysis:**
+- Split config validated via hash comparison
+- Heavily audited by Spearbit, Sherlock
+- No obvious vulnerability in distribution logic
+
+**Finding:** UNPROVEN - Well-designed hash validation.
+
+---
+
+### 12. BlackFortGenesisNFT
+**Address:** `0x6c3197c9f3954b682b0e64b520e6da5fe74fcf8b`
+**Balance:** 551 ETH
+
+**Architecture:**
+- Standard ERC721 NFT
+- Fixed price minting (1.1 ETH)
+- Owner-only withdraw
+
+**Analysis:**
+- _safeMint potential for reentrancy, but state updates after each mint
+- Refund logic correct: only refunds overpayment
+- No vulnerability in mint/withdraw flow
+
+**Finding:** UNPROVEN - Standard NFT patterns.
+
+---
+
+## Summary of All Analyzed Contracts
+
+| Contract | ETH Balance | Status |
+|----------|-------------|--------|
+| BlurPool | 8,738 | UNPROVEN - UUPS protected |
+| L1ScrollMessenger | 16,000 | UNPROVEN - Merkle proofs |
+| OptimismPortal | 10,167 | UNPROVEN - Finalization period |
+| DolaSavings | (tokens) | UNPROVEN - Solvent |
+| DBR | (tokens) | UNPROVEN - Consistent state |
+| Treasury | 3,285 | UNPROVEN - Initialized v2 |
+| SplitMain | 395 | UNPROVEN - Hash validated |
+| BlackFortGenesisNFT | 551 | UNPROVEN - Standard patterns |
+
+**Total ETH analyzed: ~40,000+ ETH**
+
+No immediately exploitable unprivileged vulnerability found meeting all criteria.
