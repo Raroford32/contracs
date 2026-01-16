@@ -1,0 +1,4 @@
+# Foundry build artifacts
+exploit_test/cache/
+exploit_test/out/
+exploit_test/foundryup.sh
