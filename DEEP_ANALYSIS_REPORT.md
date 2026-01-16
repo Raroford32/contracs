@@ -185,9 +185,41 @@ Tested in DolaSavings:
 4. **BlurPool Trusted Address Compromise**
    - Analyze EXCHANGE, EXCHANGE_V2, SWAP, BLEND contracts
 
+### 8. OptimismPortal (10,167 ETH)
+**Address:** `0x9168765ee952de7c6f8fc6fad5ec209b960b7622`
+**Implementation:** `0x4feee20712abf5724c2bc0476bd87cbf1f1ee388`
+
+**Architecture:**
+- Optimism L2 bridge
+- proveWithdrawalTransaction requires Merkle proof against L2OutputOracle
+- finalizeWithdrawalTransaction waits finalization period
+- l2Sender used as reentrancy guard
+
+**Analysis:**
+- Withdrawal replay prevented by finalizedWithdrawals mapping
+- Re-proving only allowed if output root changed
+- Finalization requires elapsed time period
+- l2Sender reentrancy guard properly implemented
+
+**Finding:** UNPROVEN - Heavy security infrastructure with finalization period.
+
+---
+
+### 9. 6k ETH Proxy
+**Address:** `0x19449f0f696703aa3b1485dfa2d855f33659397a`
+**Implementation:** `0x25b47236f7dc9c973ed8d3a7c95b29701402b5d4` (unverified)
+
+**Analysis:**
+- Implementation not verified on Etherscan
+- Cannot perform deep analysis without source
+
+**Finding:** BLOCKED - Source unavailable
+
+---
+
 ## Conclusion
 
-After deep analysis of multiple high-value contracts, no immediately exploitable unprivileged vulnerability was found that meets the criteria:
+After deep analysis of multiple high-value contracts (totaling 47,000+ ETH analyzed), no immediately exploitable unprivileged vulnerability was found that meets the criteria:
 - Executable in single transaction
 - No waiting periods required
 - No admin keys required
@@ -198,5 +230,7 @@ All analyzed contracts either:
 2. Have proper reentrancy protection
 3. Implement correct state machine transitions
 4. Are protected by profit/invariant checks
+5. Require finalization periods for withdrawals
+6. Use Merkle proofs for cross-chain verification
 
 **Status: UNPROVEN - Continuing analysis**
