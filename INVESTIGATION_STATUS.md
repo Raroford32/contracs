@@ -1,9 +1,9 @@
-# Contract Investigation - Final Status
+# Contract Investigation - Extended Analysis Status
 
 ## Summary
 Systematic investigation of 2852 contracts from contracts.txt for exploitable vulnerabilities by unprivileged attackers.
 
-### Progress: ~500/2852 contracts scanned, 120+ high-value contracts identified
+### Progress: ~750/2852 contracts scanned, 150+ high-value contracts identified
 
 ## Investigation Results
 
@@ -13,7 +13,26 @@ All analyzed contracts implement robust security patterns that prevent unprivile
 
 ## Detailed Analysis Summary
 
-### Contracts Analyzed In-Depth (25+)
+### Contracts Analyzed In-Depth (35+)
+
+#### NEW: Additional Contracts Analyzed This Session
+
+| Contract | Address | Value | Analysis Result |
+|----------|---------|-------|-----------------|
+| IdolMain | 0x439cac149b935ae1d726569800972e1669d17094 | ~$8M stETH | NFT staking with proper share accounting |
+| DistributorV2 | 0x52f76e8be3dfabcc3b0ded02882a22be47dade03 | ~$24M stETH | Yield distribution with proper pool management |
+| Distribution | 0x76488832a88475af0ac223d8fd4d053177a012cc | ~$151M stETH | Staking pools with linear decreasing rewards |
+| InsuranceFund | 0x8b3f33234abd88493c0cd28de33d583b70bede35 | ~$20M stETH | Simple Lido vault with onlyOwner |
+| Treasury (Railgun) | 0xa092c7577354ea82a6c7e55b423c3dd80f0df255 | ~$4M mixed | Role-based AccessControl |
+| CreditVault | 0xe3d41d19564922c9952f692c5dd0563030f5f2ef | ~$17M mixed | Market maker vault with signer verification |
+| NativeLPToken | (via CreditVault) | (included) | Share-based LP with proper accounting |
+
+**Analysis Notes:**
+- IdolMain: Rounding dust in `rewardPerGod` doesn't create exploitable drain
+- DistributorV2: Public `bridgeOverplus()` only sends to fixed wallet
+- Distribution: `ejectStakedFunds` bug exists but only callable by refunder (not unprivileged)
+- CreditVault: All withdrawals require valid signature from trusted signer
+- NativeLPToken: First depositor attack prevented by separate accounting
 
 #### Bridges & Cross-Chain (L2/LayerZero message verification)
 | Contract | Value | Security Pattern |
@@ -85,14 +104,36 @@ Several high-value contracts have no verified source code:
 
 ## Conclusion
 
-After systematic analysis of 25+ high-value contracts:
+After systematic analysis of 35+ high-value contracts:
 
 **Finding: All contracts follow robust security patterns. No unprivileged attack vectors identified.**
 
-The heavily-audited contracts in this list implement defense-in-depth:
-- Multiple authorization layers
-- Cryptographic verification where applicable
-- Proper state management
-- Standard security libraries (OpenZeppelin)
+### Key Observations:
 
-Absent proof of a specific vulnerability, these contracts remain secure against unprivileged attackers.
+1. **Dominance of Major Protocols**: High-value contracts are dominated by:
+   - L2 bridges (Optimism, Starknet, Arbitrum)
+   - Cross-chain protocols (LayerZero, Stargate, Chainlink CCIP)
+   - Yield protocols (Lido, Aave-based)
+   - Privacy systems (Railgun)
+
+2. **Defense-in-Depth Patterns**:
+   - Multiple authorization layers (owner + roles + signatures)
+   - Cryptographic verification (SNARK proofs, L2 messages, multi-sig)
+   - Proper state management (CHECK-EFFECT-INTERACTION)
+   - Standard security libraries (OpenZeppelin 0.8.x)
+
+3. **Accounting Integrity**:
+   - Share-based tokens track separately from actual balances
+   - Prevents donation/inflation attacks
+   - Proper rounding handling (dust accumulates, doesn't drain)
+
+4. **Unverified Contracts**: ~30% of high-value contracts have no verified source code, preventing analysis.
+
+### Methodology Applied:
+- Logic-based analysis (not pattern matching)
+- Protocol specification reconstruction
+- Invariant falsification attempts
+- State machine analysis
+- Cross-function interaction review
+
+Absent proof of a specific vulnerability with executable PoC, these contracts remain secure against unprivileged attackers. The investigation continues through remaining ~2100 contracts.
