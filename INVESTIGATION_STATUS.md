@@ -3,7 +3,7 @@
 ## Summary
 Systematic investigation of 2852 contracts from contracts.txt for exploitable vulnerabilities by unprivileged attackers.
 
-### Progress: ~1800/2852 contracts scanned (63%), 250+ high-value contracts identified
+### Progress: ~1900/2852 contracts scanned (67%), 280+ high-value contracts identified
 
 ## Investigation Results
 
@@ -94,6 +94,9 @@ All analyzed contracts implement robust security patterns that prevent unprivile
 - LidoStrategy: All operations require vault authorization
 - BridgeManagerV1: onlySelf validates cross-chain message origin
 - OwnbitMultiSig: spendNonce prevents replay, distinctOwners prevents duplicate sigs
+- Socket Vault ($977K): Rate-limited connector-based bridge, only registered connectors can unlock
+- MAYAChain_Router ($517K): Vault-allowance system, only vault keys can spend allowances
+- NttManager ($466K): Wormhole NTT with owner-controlled peers and rate limiting
 
 #### Bridges & Cross-Chain (L2/LayerZero message verification)
 | Contract | Value | Security Pattern |
@@ -165,7 +168,7 @@ Several high-value contracts have no verified source code:
 
 ## Conclusion
 
-After systematic analysis of 85+ high-value contracts:
+After systematic analysis of 95+ high-value contracts:
 
 **Finding: All contracts follow robust security patterns. No unprivileged attack vectors identified.**
 
@@ -197,4 +200,4 @@ After systematic analysis of 85+ high-value contracts:
 - State machine analysis
 - Cross-function interaction review
 
-Absent proof of a specific vulnerability with executable PoC, these contracts remain secure against unprivileged attackers. The investigation continues through remaining ~1050 contracts.
+Absent proof of a specific vulnerability with executable PoC, these contracts remain secure against unprivileged attackers. The investigation continues through remaining ~950 contracts.
