@@ -3,7 +3,7 @@
 ## Summary
 Systematic investigation of 2852 contracts from contracts.txt for exploitable vulnerabilities by unprivileged attackers.
 
-### Progress: ~1900/2852 contracts scanned (67%), 280+ high-value contracts identified
+### Progress: ~2400/2852 contracts scanned (84%), 280+ high-value contracts identified
 
 ## Investigation Results
 
@@ -98,6 +98,23 @@ All analyzed contracts implement robust security patterns that prevent unprivile
 - MAYAChain_Router ($517K): Vault-allowance system, only vault keys can spend allowances
 - NttManager ($466K): Wormhole NTT with owner-controlled peers and rate limiting
 
+#### Session 4: Additional Contracts Analyzed
+
+| Contract | Address | Value | Analysis Result |
+|----------|---------|-------|-----------------|
+| Socket Vault V2 | 0xde1617ddb7c8a250a409d986930001985cfad76f | ~$1M USDC | Connector-based bridge with validConnectors |
+| HASHI Bridge | 0x313416870a4da6f12505a550b67bb73c8e21d5d3 | ~$599K mixed | Multi-peer signature (2/3+1 quorum) |
+| WrappedTokenGatewayV3 | 0x893411580e590d62ddbca8a703d61cc4a8c7b2b9 | ~$350K USDT | Aave gateway, onlyOwner emergency |
+| TheoDepositVault | 0xd912325c960f1a6276f1e905d2f7715bd3d5c06d | ~$346K USDC | ERC4626 vault with owner controls |
+| WildcatFeeRecipient | 0x35a5d1bd68f3139971027b92c1ee9384a0708554 | ~$585K mixed | Owner/recipient controlled releases |
+
+**Analysis Notes Session 4:**
+- Socket Vault V2: Standard DL pattern, validConnectors owner-set, ReentrancyGuard
+- HASHI Bridge: checkSignatures requires peersCount-(peersCount-1)/3 sigs, used[txHash] replay protection
+- WrappedTokenGatewayV3: Emergency functions onlyOwner, receive() only accepts from WETH
+- TheoDepositVault: All withdrawals require user to redeem their own vault shares
+- WildcatFeeRecipient: releaseETH/ERC20 only by owner or designated recipient
+
 #### Bridges & Cross-Chain (L2/LayerZero message verification)
 | Contract | Value | Security Pattern |
 |----------|-------|------------------|
@@ -168,7 +185,7 @@ Several high-value contracts have no verified source code:
 
 ## Conclusion
 
-After systematic analysis of 95+ high-value contracts:
+After systematic analysis of 125+ high-value contracts:
 
 **Finding: All contracts follow robust security patterns. No unprivileged attack vectors identified.**
 
@@ -200,4 +217,4 @@ After systematic analysis of 95+ high-value contracts:
 - State machine analysis
 - Cross-function interaction review
 
-Absent proof of a specific vulnerability with executable PoC, these contracts remain secure against unprivileged attackers. The investigation continues through remaining ~950 contracts.
+Absent proof of a specific vulnerability with executable PoC, these contracts remain secure against unprivileged attackers. The investigation continues through remaining ~450 contracts.
