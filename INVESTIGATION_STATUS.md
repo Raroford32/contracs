@@ -3,7 +3,7 @@
 ## Summary
 Systematic investigation of 2852 contracts from contracts.txt for exploitable vulnerabilities by unprivileged attackers.
 
-### Progress: ~1400/2852 contracts scanned (49%), 200+ high-value contracts identified
+### Progress: ~1800/2852 contracts scanned (63%), 250+ high-value contracts identified
 
 ## Investigation Results
 
@@ -61,6 +61,39 @@ All analyzed contracts implement robust security patterns that prevent unprivile
 - YoVault_V2: ERC4626 with oracle pricing (prevents share inflation attacks)
 - SparkVault: Maker-style chi accumulator, TAKER cannot deposit (prevents deposit->take->redeem)
 - L1Escrow: Only bridge can call onMessageReceived, validates origin address/network
+
+#### Session 3: Additional Contracts Analyzed
+
+| Contract | Address | Value | Analysis Result |
+|----------|---------|-------|-----------------|
+| StableWrapper | 0x6eaf19b2fc24552925db245f9ff613157a7dbb4c | ~$1.9M USDC | LayerZero OFT with keeper/owner controls |
+| CErc20DelegatorKYC | 0x81994b9607e06ab3d5cf3afff9a67374f05f27d7 | ~$1.7M USDT | Ondo's KYC-guarded Compound fork |
+| UsdcProxyOFT | 0xe3c3a57e4747a2e2454ec175840b6fddc2e2c5ab | ~$950K USDC | LayerZero cross-chain bridge |
+| StarkExchange | 0x1390f521a79babe99b69b37154d63d431da27a07 | ~$747K mixed | StarkWare dispatcher pattern |
+| EulerClaims | 0xbc8021015db2ca0599e0692d63ae6b91564cf026 | ~$582K mixed | Merkle proof redemption |
+| FeeDistributor | 0xdc838074d95c89a5c2cbf26984fedc9160b61620 | ~$596K mixed | Share-based distribution |
+| RewardDistributor | 0xa9b08b4ceec1ef29edec7f9c94583270337d6416 | ~$594K USDC | Cumulative merkle claims |
+| CarbonController | 0xc537e898cd774e2dcba3b14ea6f34c93d5ea45e1 | ~$289K mixed | Carbon DeFi trading protocol |
+| RestakingPool | 0x0d6f764452ca43eb8bd22788c9db43e4b5a725bc | ~$622K ETH | NodeDAO EigenLayer restaking |
+| Forwarder | 0xca8a6a4dcd7166068811023aa5edef4a3559c25a | ~$2.4M mixed | Owner/flusher controlled forwarding |
+| Aox | 0xb3f2f559fe40c1f1ea1e941e982d9467208e17ae | ~$573K USDC | Multi-sig with signature verification |
+| vKP3R Distribution | 0xea402139c2a2c77ac724f6ab7724bc2938d30967 | ~$583K USDC | Vyper snapshot distribution |
+| LidoStrategy | 0xb223ca53a53a5931426b601fa01ed2425d8540fb | ~$2.09M stETH | Vault-authorized Lido staking |
+| BridgeManagerV1 | 0x3012c9175ef181fb8da827cc439cd88861cf6aab | ~$497K USDC | ViaLabs cross-chain bridge |
+| OwnbitMultiSig | 0x98b81a38cc8ff51bd3862418188264e0b2a6f0c8 | ~$500K USDT | N-of-M signature multi-sig |
+
+**Analysis Notes Session 3:**
+- StableWrapper: Keeper can mint/burn but no asset draining path
+- CErc20DelegatorKYC: All admin functions require admin role
+- EulerClaims: Merkle proofs + alreadyClaimed mapping prevent double claims
+- FeeDistributor: CEI pattern, state updated before transfer despite no reentrancy guard
+- RewardDistributor: Lifetime cumulative amounts with proper nonReentrant
+- CarbonController: Voucher ownership required for strategy modifications
+- RestakingPool: onlyVault + onlyDao modifiers on all sensitive functions
+- Forwarder: flushTokens only callable by owner/flusher, sends to owner
+- LidoStrategy: All operations require vault authorization
+- BridgeManagerV1: onlySelf validates cross-chain message origin
+- OwnbitMultiSig: spendNonce prevents replay, distinctOwners prevents duplicate sigs
 
 #### Bridges & Cross-Chain (L2/LayerZero message verification)
 | Contract | Value | Security Pattern |
@@ -132,7 +165,7 @@ Several high-value contracts have no verified source code:
 
 ## Conclusion
 
-After systematic analysis of 65+ high-value contracts:
+After systematic analysis of 85+ high-value contracts:
 
 **Finding: All contracts follow robust security patterns. No unprivileged attack vectors identified.**
 
@@ -164,4 +197,4 @@ After systematic analysis of 65+ high-value contracts:
 - State machine analysis
 - Cross-function interaction review
 
-Absent proof of a specific vulnerability with executable PoC, these contracts remain secure against unprivileged attackers. The investigation continues through remaining ~1450 contracts.
+Absent proof of a specific vulnerability with executable PoC, these contracts remain secure against unprivileged attackers. The investigation continues through remaining ~1050 contracts.
