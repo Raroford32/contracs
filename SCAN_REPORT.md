@@ -153,9 +153,43 @@ https://api.etherscan.io/v2/api?chainid=1&module=contract&action=getsourcecode&a
 
 ---
 
+## UNVERIFIED HIGH-VALUE CONTRACTS
+
+The following contracts have significant ETH but unverified source code:
+
+| Contract | Balance | Storage Pattern | Notes |
+|----------|---------|-----------------|-------|
+| 0x9cbd...9329 | 8,344 ETH | nonce=2728, slot1=3, slot3=5 | Custom multisig, non-standard API |
+| 0xc82a...a1663 | 8,200 ETH | nonce=22, slot1=3, slot3=6 | Same bytecode as above |
+| 0xb563...d88 | 331 ETH | owner=0xacae5fa6f0c74e285e96c29d74ebc3778dd3ca1f | EOA owned |
+
+**Analysis**: The 8,344 and 8,200 ETH contracts share identical bytecode. Function selectors identified:
+- `0x2f54bf6e`: isOwner(address)
+- `0xaffed0e0`: nonce()
+- Multiple unknown selectors (0x28e32f57, 0x3724e343, 0x42cde4e8, etc.)
+
+These appear to be custom multisig contracts NOT using standard Gnosis Safe patterns. Further bytecode analysis required.
+
+---
+
+## CONTROL CHAIN ANALYSIS
+
+Complex ownership chains investigated:
+
+```
+AssetsVault (766 ETH)
+  └─> owned by StoneVault (0xa62f9c5af106feee069f38de51098d9d81b90572)
+        └─> owned by EOA (0xc1364ad857462e1b60609d9e56b5e24c5c21a312)
+```
+
+No exploitable patterns found in ownership chains.
+
+---
+
 ## LIMITATIONS
 
 - Foundry not available for PoC execution
-- Some contracts have unverified source code
+- Some contracts have unverified source code (8,344 ETH + 8,200 ETH contracts)
 - Cross-chain attack vectors not fully explored
 - MEV/flashbot attack vectors not analyzed
+- Custom multisig bytecode analysis incomplete
