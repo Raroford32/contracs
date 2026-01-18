@@ -203,10 +203,46 @@ No exploitable patterns found in ownership chains.
 | Contract | ETH | Type | Analysis Result |
 |----------|-----|------|-----------------|
 | EthFoxVault | 4,695 | ERC4626 Vault | Share calculation safe, uses OpenZeppelin Math.mulDiv |
-| FraxEtherRedemptionQueue | 7,356 | Redemption Queue | Exit queue logic sound, proper state management |
+| FraxEtherRedemptionQueue | 7,356 | Redemption Queue | Exit queue logic sound, proper liability accounting |
 | StargatePoolNative | 3,343 | LP Pool | delegatecall only in OZ library, unchecked blocks safe |
 | CEther | 927 | Compound Fork | Standard Compound patterns, no custom vulnerabilities |
 | TITANX | 1,170 | Staking Token | Timestamp checks present but standard maturity logic |
+| RenzoWithdrawQueue | 11,354 | Exit Queue | Rate protection with min(original, current), queue accounting sound |
+| RswEXIT | 10,670 | Swell Exit | Binary search for processed rates, min() rate protection |
+| BlurPool | 8,768 | ETH Pool | Simple pool with authorized contract access control |
+| ETHYieldManager | 2,770 | Blast Bridge | Checkpoint-based discounting, insurance mechanism |
+
+### Deep Logic Analysis Performed
+
+#### Renzo WithdrawQueue (11,354 ETH)
+- **claimReserve accounting**: Properly tracks ETH reserved for claims
+- **Queue invariants**: `queuedWithdrawToFill >= queuedWithdrawFilled` maintained
+- **Rate protection**: Uses `min(original_rate, current_rate)` - protects both users and protocol
+- **Result**: No exploitable bugs found
+
+#### FraxEtherRedemptionQueue (7,356 ETH)
+- **Liability tracking**: `etherLiabilities` increases on entry, decreases on claim
+- **Fee accounting**: `unclaimedFees` tracked separately, collected as frxETH
+- **Early exit**: Returns frxETH with penalty, decreases liabilities correctly
+- **Result**: Accounting is consistent, no exploitable bugs
+
+#### RswEXIT / Swell Withdrawal (10,670 ETH)
+- **Rate mechanism**: `finalRate = min(processedRate, rateWhenCreated)`
+- **Processing**: Binary search for finding applicable rate
+- **ETH flow**: `exitingETH` decreases on processing, `totalETHExited` increases
+- **Result**: Well-designed with proper rate protection
+
+#### BlurPool (8,768 ETH)
+- **Access control**: Immutable addresses for EXCHANGE, EXCHANGE_V2, SWAP, BLEND
+- **Balance tracking**: Standard `_balances` mapping with proper checks
+- **Privileged functions**: Only authorized contracts can call transferFrom/withdrawFrom
+- **Result**: Simple and secure design
+
+#### ETHYieldManager (2,770 ETH)
+- **Yield providers**: Delegatecall pattern with proper storage isolation
+- **Insurance**: Covers negative yields with premium mechanism
+- **Withdrawals**: Checkpoint-based discounting for negative yield scenarios
+- **Result**: Complex but well-structured, no immediate vulnerabilities
 
 ### Vulnerability Patterns Searched
 
