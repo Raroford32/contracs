@@ -340,7 +340,7 @@ OUTPUT (ONLY WHAT’S ACTIONABLE; OMIT EMPTY SECTIONS)
    - Scenarios requiring admin keys
    - MEV that requires block builder access
    - Anything requiring > 1 block to execute
-   - Reentrancy (all contracts have guards - don't waste time)
+   - Simple, unguarded reentrancy on single-function calls (standard pattern, already mitigated)
    - Proxy initialization issues (all properly initialized)
    - Basic access control bugs (all roles properly configured)
    - Signature replay (nonces implemented everywhere)
