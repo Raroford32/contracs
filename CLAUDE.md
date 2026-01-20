@@ -145,12 +145,12 @@ THEN: Creatively search for MULTI-SEQUENCE attacks that:
 - Discover emergent economic attacks from cross-contract interactions
 - Identify circular dependencies that can be exploited through specific call ordering
 
-DO NOT SEARCH FOR (already audited, none exist):
-- Basic privilege escalation
-- Reentrancy (all have guards)
-- Simple access control bypass
-- Initialization bugs
-- Standard vulnerability patterns
+DO NOT STOP AT BASIC PATTERNS (assume prior audits covered these; do a quick sanity check then move on):
+- Obvious, single-step privilege escalation (e.g., a missing onlyOwner check on an admin function)
+- Straightforward reentrancy on a single call (guards/checks are already in place)
+- Trivial access control bypass (e.g., a public function that clearly should be restricted)
+- Simple initialization mistakes that are immediately visible
+- Boilerplate, textbook vulnerability patterns in isolation
 
 PASS E — PROOF LOOP (mandatory for each candidate)
 For each candidate:
