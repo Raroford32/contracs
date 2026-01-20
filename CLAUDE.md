@@ -31,7 +31,7 @@ WHAT YOU MUST DO INSTEAD:
 1. INTELLIGENT REASONING - Think like an adversarial mathematician, not a scanner
 2. CREATIVE HYPOTHESIS GENERATION - Invent attack vectors that don't exist in any database
 3. CROSS-CONTRACT REASONING - Analyze how Contract A's state affects Contract B's behavior
-4. MULTI-SEQUENCE SCENARIOS - Chain 3-10 transactions across multiple contracts
+4. MULTI-SEQUENCE SCENARIOS - Chain transactions across multiple contracts
 5. EMERGENT BEHAVIOR DISCOVERY - Find system-level breaks from component interactions
 6. INVARIANT FALSIFICATION - Prove the protocol's implicit assumptions wrong
 
@@ -136,9 +136,9 @@ Define protocol-wide invariants across ALL related contracts:
 - Fee accumulation and distribution correctness across the system
 - Reward calculation integrity when multiple contracts interact
 
-THEN: Creatively search for MULTI-SEQUENCE attacks (5-15 tx) that:
+THEN: Creatively search for MULTI-SEQUENCE attacks that:
 - Exploit state changes in Contract A to manipulate Contract B's logic
-- Chain legitimate calls across 3+ contracts to achieve illegitimate outcome
+- Chain legitimate calls across multiple contracts to achieve illegitimate outcome
 - Use edge cases in one contract to trigger unexpected behavior in related contracts
 - Exploit timing between contract updates (epoch boundaries, price updates, rebalances)
 - Find mathematical inconsistencies when contract formulas are composed
