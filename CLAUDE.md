@@ -82,9 +82,10 @@ TOOLING BASELINE
    - forge build
 3) Baseline tests:
    - forge test -vvv
-4) SKIP STATIC ANALYSIS:
-   - DO NOT run slither/semgrep - these contracts passed all static analysis already
-   - Static tools are USELESS for these heavily audited contracts
+4) STATIC ANALYSIS (OPTIONAL, ALREADY RUN UPSTREAM):
+   - Upstream audits have already run slither/semgrep and similar tools; rerunning them is usually low value.
+   - Your primary focus should be on mainnet-fork testing and exploit validation, not on discovering basic pattern-based issues.
+   - You MAY run additional static tools (slither/semgrep/etc.) if they help your workflow or for reproducible commands in the final output.
 5) MAINNET FORK MANDATORY:
    - ALL testing must be on mainnet fork via Foundry
    - Use RPC from etherscanrpc.md
