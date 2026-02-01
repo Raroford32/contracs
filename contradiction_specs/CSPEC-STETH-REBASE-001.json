@@ -1,0 +1,82 @@
+{
+  "id": "CSPEC-STETH-REBASE-001",
+  "template": "accounting_divergence",
+  "mode": "rebase_pending",
+  "target": {
+    "addresses": [
+      "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+    ],
+    "names": ["stETH", "wstETH"],
+    "chain": "ethereum",
+    "notes": "Check any protocol using stETH with static balance accounting"
+  },
+  "property": {
+    "name": "P-REBASE-CONSERVATION-01",
+    "predicate": "internal_tracked_balance == actual_stETH_balance * (1 - tolerance)",
+    "observation": ["internal_balance", "actual_balance", "rebase_factor", "stuck_tokens"],
+    "tolerance": "0.01"
+  },
+  "variables": {
+    "depth": {"min": 4, "max": 10},
+    "actions": {
+      "allowed": ["deposit_stETH", "withdraw_stETH", "trigger_rebase", "claim", "wrap", "unwrap"]
+    },
+    "amounts": [
+      {"name": "deposit_amount", "type": "uint256", "range": ["1e18", "1e24"]}
+    ],
+    "actors": [
+      {"name": "early_depositor", "role": "unprivileged"},
+      {"name": "late_depositor", "role": "unprivileged"},
+      {"name": "extractor", "role": "unprivileged"}
+    ],
+    "time_offsets_blocks": [
+      {"name": "rebase_wait", "range": [0, 7200], "notes": "Wait for daily rebase"}
+    ]
+  },
+  "constraints": [
+    "target_protocol_caches_stETH_balance",
+    "rebase_is_positive"
+  ],
+  "objective": {
+    "type": "maximize_violation",
+    "metric": "extractor_profit_from_accounting_drift"
+  },
+  "instrumentation": {
+    "trace": true,
+    "state_diff": true,
+    "watch": {
+      "balances": ["stETH", "wstETH"],
+      "storage_slots": [
+        "Lido.totalPooledEther",
+        "Lido.totalShares",
+        "target.userDeposits",
+        "target.totalDeposits"
+      ],
+      "events": ["Transfer", "TokenRebased", "SharesBurnt"]
+    }
+  },
+  "vulnerable_patterns": {
+    "code_patterns": [
+      "mapping(address => uint256) public deposits; // Caches stETH balance",
+      "stETH.approve(spender, fixedAmount); // Fixed approval changes meaning",
+      "require(balance >= cached_balance); // May fail after negative rebase"
+    ],
+    "safe_patterns": [
+      "Use wstETH instead of stETH for static accounting",
+      "Track shares via stETH.sharesOf() not balanceOf()",
+      "Use stETH.getSharesByPooledEth() for conversions"
+    ]
+  },
+  "reproduction": {
+    "precondition": "Protocol caches stETH balance without share tracking",
+    "sequence": [
+      {"actor": "depositor1", "action": "deposit", "params": {"amount": "20 stETH"}},
+      {"actor": "depositor2", "action": "deposit", "params": {"amount": "20 stETH"}},
+      {"event": "rebase", "params": {"factor": "+10%"}},
+      {"actor": "depositor1", "action": "withdraw", "params": {"amount": "20 stETH"}},
+      {"actor": "depositor2", "action": "withdraw", "params": {"amount": "20 stETH"}}
+    ],
+    "expected_outcome": "4 stETH stuck in protocol (rebase gains not distributed)"
+  }
+}

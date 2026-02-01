@@ -1,0 +1,63 @@
+{
+  "id": "CSPEC-YEARN-V1-001",
+  "template": "boundary_discontinuity",
+  "mode": "supply==0",
+  "target": {
+    "address": "0x16de59092dae5ccf4a1e6439d611fd0653f0bd01",
+    "name": "yDAI (Yearn V1)",
+    "chain": "ethereum",
+    "notes": "Legacy V1 vault - check current TVL before testing"
+  },
+  "property": {
+    "name": "P-YEARN-SHARE-FAIRNESS-01",
+    "predicate": "shares_minted >= deposit_amount / (getPricePerFullShare() + epsilon)",
+    "observation": ["shares_minted", "deposit_amount", "price_per_share_before", "price_per_share_after"],
+    "tolerance": "1e-6"
+  },
+  "variables": {
+    "depth": {"min": 3, "max": 6},
+    "actions": {
+      "allowed": ["deposit", "withdraw", "withdrawAll", "transfer", "earn"]
+    },
+    "amounts": [
+      {"name": "attacker_seed", "type": "uint256", "range": ["1", "1e6"]},
+      {"name": "donation", "type": "uint256", "range": ["1e18", "1e24"]},
+      {"name": "victim_deposit", "type": "uint256", "range": ["1e18", "1e24"]}
+    ],
+    "actors": [
+      {"name": "attacker", "role": "unprivileged"},
+      {"name": "victim", "role": "unprivileged"}
+    ]
+  },
+  "constraints": [
+    "vault_total_supply == 0",
+    "no_privileged_roles"
+  ],
+  "objective": {
+    "type": "maximize_violation",
+    "metric": "(expected_shares - actual_shares) / expected_shares"
+  },
+  "instrumentation": {
+    "trace": true,
+    "state_diff": true,
+    "watch": {
+      "balances": ["DAI", "yDAI"],
+      "storage_slots": ["totalSupply", "balance", "pool"],
+      "events": ["Transfer", "Deposit", "Withdraw"]
+    }
+  },
+  "reproduction": {
+    "precondition": "Vault totalSupply == 0",
+    "sequence": [
+      {"actor": "attacker", "action": "deposit", "params": {"amount": 1}},
+      {"actor": "attacker", "action": "DAI.transfer", "params": {"to": "vault", "amount": "donation"}},
+      {"actor": "victim", "action": "deposit", "params": {"amount": "victim_deposit"}},
+      {"actor": "attacker", "action": "withdrawAll", "params": {}}
+    ]
+  },
+  "mitigations_to_verify": [
+    "Check if vault has virtual shares",
+    "Check minimum first deposit requirement",
+    "Check if vault is deprecated/paused"
+  ]
+}

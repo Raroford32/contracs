@@ -1,0 +1,142 @@
+{
+  "id": "CSPEC-COMPOSITION-001",
+  "template": "cross_module_semantic_mismatch",
+  "mode": "multi_protocol_interaction",
+  "description": "Novel cross-protocol first depositor + oracle manipulation",
+  "target": {
+    "primary": "0x4f6a43ad7cba042606decaca730d4ce0a57ac62e",
+    "secondary": "Any lending protocol using Saddle LP as collateral",
+    "chain": "ethereum"
+  },
+  "property": {
+    "name": "P-CROSS-PROTOCOL-SOLVENCY-01",
+    "predicate": "borrow_value <= collateral_value * max_ltv",
+    "observation": [
+      "attacker_collateral_shares",
+      "perceived_collateral_value",
+      "actual_collateral_value",
+      "borrowed_amount"
+    ]
+  },
+  "variables": {
+    "depth": {"min": 5, "max": 14},
+    "actions": {
+      "allowed": [
+        "flash_loan",
+        "addLiquidity",
+        "transfer",
+        "deposit_collateral",
+        "borrow",
+        "removeLiquidity",
+        "repay_flash_loan"
+      ]
+    },
+    "amounts": [
+      {"name": "flash_amount", "type": "uint256", "range": ["1e18", "1e24"]},
+      {"name": "seed_deposit", "type": "uint256", "range": ["1", "1e6"]},
+      {"name": "borrow_amount", "type": "uint256", "range": ["1e18", "1e24"]}
+    ],
+    "actors": [
+      {"name": "attacker", "role": "unprivileged"}
+    ],
+    "time_offsets_blocks": [{"name": "execution_window", "range": [0, 1]}]
+  },
+  "constraints": [
+    "saddle_pool_empty_or_low_tvl",
+    "lending_protocol_accepts_saddle_lp",
+    "lending_protocol_uses_virtual_price_or_share_price",
+    "flash_loan_available",
+    "no_privileged_roles"
+  ],
+  "objective": {
+    "type": "maximize_violation",
+    "metric": "borrowed_amount - collateral_actual_value",
+    "success_threshold": "1e18"
+  },
+  "instrumentation": {
+    "trace": true,
+    "state_diff": true,
+    "watch": {
+      "balances": ["WBTC", "saddleBTC_LP", "borrowed_asset"],
+      "storage_slots": [
+        "saddle.totalSupply",
+        "saddle.virtualPrice",
+        "lending.userCollateral",
+        "lending.userDebt"
+      ],
+      "events": ["AddLiquidity", "Deposit", "Borrow", "RemoveLiquidity"]
+    }
+  },
+  "attack_sequence": {
+    "precondition": "Saddle BTC pool has totalSupply < 1e12 AND lending protocol accepts Saddle LP",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Flash loan WBTC from Aave/Compound",
+        "params": {"amount": "flash_amount"},
+        "notes": "Acquire large amount of WBTC at 0 cost"
+      },
+      {
+        "step": 2,
+        "action": "Deposit 1 wei to Saddle",
+        "params": {"amounts": [1, 0, 0]},
+        "notes": "Mint 1 LP share, become sole depositor"
+      },
+      {
+        "step": 3,
+        "action": "Donate flash-loaned WBTC to Saddle",
+        "params": {"to": "saddle_pool", "amount": "flash_amount"},
+        "notes": "LP share price inflates to flash_amount per share"
+      },
+      {
+        "step": 4,
+        "action": "Deposit 1 LP share as collateral in lending",
+        "params": {"amount": 1},
+        "notes": "Lending protocol values 1 share at flash_amount"
+      },
+      {
+        "step": 5,
+        "action": "Borrow maximum against inflated collateral",
+        "params": {"amount": "flash_amount * max_ltv"},
+        "notes": "Borrow real assets against fake collateral value"
+      },
+      {
+        "step": 6,
+        "action": "Remove liquidity from Saddle",
+        "params": {"burn_amount": 1},
+        "notes": "Recover most of donated WBTC"
+      },
+      {
+        "step": 7,
+        "action": "Repay flash loan",
+        "params": {},
+        "notes": "Return borrowed WBTC to flash loan source"
+      }
+    ],
+    "expected_outcome": "Keep borrowed assets, lending protocol left with bad debt"
+  },
+  "capital_analysis": {
+    "gross_capital_required": "flash_amount (returned)",
+    "net_capital_required": "gas fees (~0.5 ETH)",
+    "profit_potential": "flash_amount * max_ltv - slippage",
+    "roi": "Potentially infinite on capital invested"
+  },
+  "prerequisites": {
+    "required": [
+      "Saddle pool must be empty or very low TVL",
+      "Lending protocol must accept Saddle LP as collateral",
+      "Lending protocol must price collateral using virtual_price or similar"
+    ],
+    "verification_steps": [
+      "Check Saddle pool totalSupply()",
+      "Check lending protocol accepted collateral list",
+      "Analyze lending protocol price oracle implementation"
+    ]
+  },
+  "mitigations_that_would_prevent": [
+    "Virtual shares in Saddle pool",
+    "TWAP-based collateral pricing in lending",
+    "Minimum TVL requirements for collateral acceptance",
+    "Price deviation circuit breakers"
+  ]
+}

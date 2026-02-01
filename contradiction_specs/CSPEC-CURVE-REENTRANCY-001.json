@@ -1,0 +1,95 @@
+{
+  "id": "CSPEC-CURVE-REENTRANCY-001",
+  "template": "ordering_sensitivity",
+  "mode": "mid_callback_state",
+  "target": {
+    "addresses": [
+      "0x93054188d876f558f4a66b2ef1d97d16edf0895b",
+      "0xc5cfada84e902ad92dd40194f0883ad49639b023"
+    ],
+    "names": ["Curve renBTC Pool", "Curve GUSD Gauge"],
+    "chain": "ethereum",
+    "historical_exploits": ["dForce $3.7M (Feb 2023)"]
+  },
+  "property": {
+    "name": "P-RATE-CONSISTENCY-01",
+    "predicate": "virtual_price_during_callback >= virtual_price_before * 0.99",
+    "observation": ["vp_before", "vp_during_callback", "vp_after", "deviation"],
+    "tolerance": "0.01"
+  },
+  "variables": {
+    "depth": {"min": 3, "max": 8},
+    "actions": {
+      "allowed": [
+        "add_liquidity",
+        "remove_liquidity",
+        "remove_liquidity_one_coin",
+        "callback_action"
+      ]
+    },
+    "amounts": [
+      {"name": "remove_amount", "type": "uint256", "range": ["1e18", "1e24"]}
+    ],
+    "actors": [
+      {"name": "attacker", "role": "unprivileged", "has_callback_contract": true}
+    ]
+  },
+  "constraints": [
+    "target_protocol_reads_curve_virtual_price",
+    "callback_triggered_during_removal",
+    "flash_loan_available"
+  ],
+  "objective": {
+    "type": "maximize_violation",
+    "metric": "unfair_liquidation_profit"
+  },
+  "instrumentation": {
+    "trace": true,
+    "state_diff": true,
+    "watch": {
+      "rates": ["get_virtual_price()", "get_dy()"],
+      "storage_slots": ["balances", "totalSupply", "D"],
+      "events": ["RemoveLiquidity", "RemoveLiquidityOne", "TokenExchange"]
+    }
+  },
+  "attack_mechanism": {
+    "description": "Read-only reentrancy during Curve pool withdrawal",
+    "steps": [
+      "Flash loan large amount of Curve LP tokens",
+      "Call pool.remove_liquidity() with callback receiver contract",
+      "During callback (before state finalized), virtual_price is deflated",
+      "Callback calls lending protocol that uses virtual_price for collateral",
+      "Either: borrow against deflated collateral OR liquidate positions unfairly",
+      "Removal completes, virtual_price returns to normal",
+      "Repay flash loan, keep profit"
+    ]
+  },
+  "affected_protocol_patterns": {
+    "vulnerable": [
+      "LTV calculations using Curve LP virtual_price",
+      "Collateral valuation reading get_virtual_price() synchronously",
+      "Liquidation triggers based on virtual_price"
+    ],
+    "safe": [
+      "TWAP-based price feeds",
+      "Reentrancy locks on external reads",
+      "Virtual price sanity checks (deviation limits)"
+    ]
+  },
+  "reproduction": {
+    "precondition": "Lending protocol uses Curve virtual_price for collateral",
+    "sequence": [
+      {"actor": "attacker", "action": "flash_loan", "params": {"amount": "large_crv_lp"}},
+      {"actor": "attacker", "action": "remove_liquidity", "params": {"amount": "large_crv_lp", "receiver": "attack_contract"}},
+      {"context": "during_callback", "note": "virtual_price temporarily deflated"},
+      {"actor": "attack_contract", "action": "liquidate_or_borrow", "params": {}},
+      {"context": "callback_complete", "note": "removal finishes, vp restored"},
+      {"actor": "attacker", "action": "repay_flash_loan", "params": {}}
+    ]
+  },
+  "capital_analysis": {
+    "net_capital_required": "0 (flash loan)",
+    "gas_cost": "~0.1-0.5 ETH",
+    "profit_potential": "Proportional to vulnerable positions"
+  }
+}
