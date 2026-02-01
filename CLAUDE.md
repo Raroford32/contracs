@@ -1,4 +1,4 @@
-# agents2.md — Autonomous Counterexample Discovery for Smart Contract Systems
+# CLAUDE.md — Autonomous Counterexample Discovery for Smart Contract Systems
 *(Composition‑first • solver‑driven • evidence‑only • **authorized testing only**)*
 
 This document is a **build spec** for an agent system that discovers **multi‑step counterexamples** in EVM‑compatible smart contract systems.
