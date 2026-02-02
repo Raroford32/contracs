@@ -9,7 +9,6 @@
 - **Economic feasibility** separates theoretical violations from real exploits
 - All asset types: ERC20, LP tokens, pool shares, protocol tokens, rebasing tokens, fee-on-transfer, native ETH, wrapped ETH, receipt tokens, debt tokens, synthetic assets
 
-**Hard Ethics Gate:** This specification is for **authorized security testing and responsible disclosure only**.
 
 ---
 
