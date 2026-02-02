@@ -1,511 +1,1610 @@
-# CLAUDE.md — Autonomous Counterexample Discovery for Smart Contract Systems
-*(Composition‑first • solver‑driven • evidence‑only • **authorized testing only**)*
+# CLAUDE.md v2.0 — Intelligence-Grade Counterexample Discovery System
+## For Novel Exploit Detection in Battle-Tested Smart Contract Protocols
+*(Composition-first • Solver-driven • Evidence-only • Feasibility-constrained • 2026 Ethereum Reality)*
 
-This document is a **build spec** for an agent system that discovers **multi‑step counterexamples** in EVM‑compatible smart contract systems.
+**Target Reality:** Heavily-audited, high-TVL, high-composition EVM protocols on Ethereum mainnet where:
+- Failures are **never** "one bad function"
+- Exploits exist as **kernel contradictions** requiring **precondition machines** to reach
+- Boundaries are **numeric/temporal** and must be **solved**, not guessed
+- **Economic feasibility** separates theoretical violations from real exploits
+- All asset types: ERC20, LP tokens, pool shares, protocol tokens, rebasing tokens, fee-on-transfer, native ETH, wrapped ETH, receipt tokens, debt tokens, synthetic assets
 
-The target reality is **heavily‑audited, high‑TVL, high‑composition protocols**, where failures are rarely “one bad function” and are more often:
-
-- **kernel contradiction**: a subtle property discontinuity (rounding drift, accounting divergence, stale derived state, non‑commutativity),
-- **precondition machine**: a complex sequence that reaches the one cursed state where the kernel flips sign,
-- **solver requirement**: the exploitability boundary is numeric/temporal and must be *solved*, not guessed.
-
-The system does **not** “prove safety.” It produces **minimal, executable reproductions** of violated properties in a sandbox.
-
-> **Hard ethics gate:** This spec is for **authorized security testing and responsible disclosure** only.  
-> Do not use it to target systems you do not have permission to test.
+**Hard Ethics Gate:** This specification is for **authorized security testing and responsible disclosure only**.
 
 ---
 
-## 1) The only loop that scales: reason → solve → evidence → updated reason
+# PART I: THREAT MODEL AS EXECUTABLE SPECIFICATION
 
-In modern protocols, “smart reasoning” without solving is theater; “brute solving” without evidence is an expensive random walk.
+## 1.1 Attacker Capability Envelope (Parameterized Tiers)
 
-This system enforces a scientific loop:
+The attacker is modeled as an **adaptive agent** with **configurable capability tiers**. Every finding must specify the **minimum attacker tier** required for execution.
 
-1. **Reasoning** outputs a *solvable object*  
-   → a **ContradictionSpec** (variables, constraints, objective, instrumentation).
-
-2. **Solving** searches for satisfying assignments  
-   → sequences, parameters, time offsets, actor choices.
-
-3. **Evidence** is compiled deterministically  
-   → traces, state diffs, invariant deltas, sensitivity signals.
-
-4. **Updated reasoning** consumes evidence  
-   → refines specs, discovers macros, focuses search.
-
-Everything else is vibes.
-
----
-
-## 2) Non‑negotiables (hard gates)
-
-
-### Gate B — Sandbox execution only
-- All execution happens on a **local fork** / testnet / controlled environment.
-- No live‑market interaction, no mempool games, no production private keys.
-
-### Gate C — Evidence‑only findings
-A “finding” is accepted only if it has:
-- deterministic reproduction script/test,
-- traces + state diffs,
-- a minimized sequence (shrunk),
-- a named violated property with a checkable predicate.
-
-### Gate D — Composition‑first (complexity is default)
-- The search prioritizes **multi‑function, multi‑contract, multi‑actor** sequences.
-- Depth‑1 checks are treated as **degenerate** and never considered “done.”
-
-### Gate E — Solver‑driven, not label‑driven
-- No “reentrancy/oracle/arbitrage” labels as an objective.
-- Objective is always: **maximize a property violation** under constraints.
-
-### Gate F — Coverage transparency
-Every report must include what was modeled, what wasn’t, and numeric coverage metrics (§12).
-
----
-
-## 3) Threat model (explicit so the agent doesn’t hallucinate powers)
-
-Default adversary model (customizable per ScopeSpec):
-
-- **Unprivileged external actors** (EOA-like identities) with distinct balances.
-- Can call any `public/external` function in scope.
-- Can interact with external dependencies **only if included** in scope (e.g., a DEX used by the system).
-- Can choose call ordering within a sequence and can span multiple blocks (within configured horizon).
-- Cannot assume privileged roles, governance powers, or operator keys unless explicitly included.
-
----
-
-## 4) Definitions (the minimal shared language)
-
-**Action**  
-A single sandbox interaction primitive:
-- actor identity,
-- target contract,
-- function + arguments,
-- msg.value (if any),
-- block/time context.
-
-**Sequence**  
-An ordered list of Actions, possibly across blocks.
-
-**Mode**  
-A qualitative regime that changes behavior (e.g., supply=0 vs supply>0; empty pool; bootstrap; accrued vs not).
-
-**Assumption**  
-A condition a component implicitly relies on (often not checked).
-
-**Invariant**  
-A property that should hold across reachable states (global or mode‑scoped).
-
-**Kernel contradiction**  
-A small discontinuity in a property (often numeric) that can be amplified.
-
-**Precondition machine**  
-The multi‑step setup required to reach the kernel’s enabling state.
-
-**ContradictionSpec**  
-The contract between “reasoning” and “solving.” It must be machine‑readable.
-
----
-
-## 5) Inputs / outputs (the repo’s public API)
-
-### 5.1 ScopeSpec (required)
-A run starts with `ScopeSpec`:
+### Capability Vector Schema
 
 ```json
 {
-  "chain": "evm-compatible",
-  "fork": {
-    "rpc_url": "${RPC_URL}",
-    "block_number": 0
-  },
-  "targets": {
-    "contracts": ["0x..."]
-  },
-  "dependencies": {
-    "in_scope_contracts": ["0x..."],
-    "out_of_scope_assumptions": ["oracle is honest", "dex behaves per interface"]
-  },
-  "assets": {
-    "erc20": ["0x..."]
-  },
-  "adversary": {
-    "actors": 3,
-    "capital_limits": { "native": "0", "erc20": {} },
-    "time_horizon_blocks": 500,
-    "max_sequence_depth": 14
-  },
-  "constraints": {
-    "no_out_of_scope_calls": true,
-    "no_privileged_roles": true
-  }
-}
-```
-
-**Do not hardcode RPC keys** in this repo. Inject via environment.
-
-### 5.2 FindingReport (required for any accepted hit)
-
-```json
-{
-  "id": "FINDING-0001",
-  "property_violated": "P-ACCOUNTING-CONSERVATION-01",
-  "minimal_repro": {
-    "sequence": ["A1", "A2", "A3"],
-    "params": {"a1": "…"},
-    "environment": {"block_number": 0}
-  },
-  "evidence": {
-    "trace_refs": ["trace.json"],
-    "state_diffs": ["diff.json"],
-    "feature_vector": ["features.json"]
-  },
-  "impact": {
-    "type": "property_violation",
-    "notes": "Sandbox only. Real-world impact requires human review."
-  },
-  "mitigations": ["..."],
-  "coverage": {
-    "depth_max": 14,
-    "modes_reached": ["supply=0", "supply>0"],
-    "edges_hit": 431,
-    "edges_total": 900
-  },
-  "limitations": ["..."]
-}
-```
-
----
-
-## 6) World modeling (build a search space that matches reality)
-
-### 6.1 Call‑Effect Graph (CEG)
-For each target function `F`, build a deterministic effect summary:
-
-- **reads/writes** (storage locations, mappings, packed vars),
-- **external calls** (targets, value, callback surface),
-- **asset movements** (ERC‑20 transfers, mint/burn, approvals),
-- **dependency reads** (rates, prices, timestamps, accumulators),
-- **permission gates** (requires/modifiers, state‑gated roles),
-- **derived state** (cached indices, exchange rates, share price),
-- **implicit assumptions** (what must be true for safe behavior).
-
-Conceptual node:
-
-```
-CEG_NODE(F):
-  reads: [...]
-  writes: [...]
-  external_calls: [...]
-  assets: {in: [...], out: [...]}
-  gates: [...]
-  derived_state: [...]
-  assumptions: [...]
-```
-
-### 6.2 Mode discovery (boundary states are first-class)
-Infer mode predicates such as:
-- supply == 0
-- totalAssets == 0
-- reserve == 0
-- accruedIndex stale vs fresh
-- paused flag
-- liquidation threshold boundary
-- “first time” flags
-
-Modes become explicit dimensions in search.
-
-### 6.3 Macro‑primitives (compress setup sequences)
-Long sequences are expensive. We discover macros that reliably reach useful modes.
-
-A **macro** is a verified mini-program with:
-- goal (mode predicate),
-- preconditions,
-- sequence sketch,
-- determinism check in sandbox.
-
-Macros allow the solver to search at depth 14 “semantically,” not syntactically.
-
----
-
-## 7) Property library (what we try to falsify)
-
-Properties are checkable predicates. Examples (adapt as needed):
-
-### 7.1 Conservation / accounting properties
-- internal ledgers should not diverge from realizable balances beyond a small tolerance
-- share conversions should be consistent forward/backward within rounding bounds
-- sum of positions should track total assets within tolerance
-
-### 7.2 Monotonicity properties
-- indices and accumulators should be monotone (unless explicitly designed otherwise)
-- “user credit” should not increase without paying the corresponding cost
-
-### 7.3 Commutativity / interference properties
-- for selected pairs (A,B), large differences between `A∘B` and `B∘A` require justification
-- non-commutativity is a **signal**, not automatically a bug
-
-### 7.4 Unit / precision properties
-- quantities with different units/decimals must not mix without explicit scaling
-- rounding bias must not be systematically extractable under repetition
-
-### 7.5 Temporal properties
-- time gates must not be bypassable via composition across blocks within configured horizon
-
----
-
-## 8) Contradiction templates (where next‑gen failures concentrate)
-
-These templates generate ContradictionSpecs.
-
-1) **Ordering sensitivity**  
-Material difference between `A∘B` and `B∘A` on a watched property.
-
-2) **Accounting divergence**  
-Internal accounting vs realizable balance diverges under some path.
-
-3) **Boundary discontinuity**  
-Property holds in steady-state but fails at boundary modes.
-
-4) **Cyclic amplification**  
-A closed loop monotonically increases a watched metric (drift).
-
-5) **Precision bias**  
-Consistent rounding bias accumulates under repetition into a real violation.
-
-6) **Temporal mismatch**  
-Cooldowns/accrual windows can be stepped around by sequencing.
-
-7) **Cross‑module semantic mismatch**  
-Two modules interpret the same state differently (e.g., “assets” vs “shares”).
-
-**Rule:** Templates are useless unless they compile into ContradictionSpec objects.
-
----
-
-## 9) The critical object: ContradictionSpec
-
-ContradictionSpec is what the LLM must output instead of storytelling.
-
-```json
-{
-  "id": "CSPEC-0007",
-  "template": "cyclic_amplification",
-  "mode": "supply>0",
-  "property": {
-    "name": "P-CONSERVATION-01",
-    "predicate": "metric_after <= metric_before + epsilon",
-    "observation": ["metric_before", "metric_after", "epsilon"]
-  },
-  "variables": {
-    "depth": {"min": 4, "max": 14},
-    "actions": {"allowed": ["F1", "F2", "F3"]},
-    "amounts": [{"name": "a1", "range": ["1", "1e30"]}],
-    "actors": [{"name": "p1"}, {"name": "p2"}],
-    "time_offsets_blocks": [{"name": "dt", "range": [0, 50]}],
-    "discrete_choices": [{"name": "route", "options": ["R1", "R2"]}]
-  },
-  "constraints": [
-    "all_calls_must_succeed",
-    "no_out_of_scope_calls",
-    "no_privileged_roles"
-  ],
-  "objective": {
-    "type": "maximize_violation",
-    "metric": "metric_after - metric_before"
-  },
-  "instrumentation": {
-    "trace": true,
-    "state_diff": true,
-    "watch": {
-      "balances": ["token:0x...", "native"],
-      "storage_slots": ["..."],
-      "events": ["..."]
+  "attacker_model": {
+    "tier_name": "TIER_2_MEV_SEARCHER",
+    
+    "identity": {
+      "max_addresses": 10,
+      "can_deploy_contracts": true,
+      "contract_complexity": "arbitrary"
+    },
+    
+    "ordering_power": {
+      "level": "weak|medium|strong|builder",
+      "weak": "no ordering guarantees, public mempool only",
+      "medium": "can use flashbots protect, private mempool",
+      "strong": "can reliably backrun specific txs",
+      "builder": "can control full block ordering, include/exclude txs"
+    },
+    
+    "flash_liquidity": {
+      "max_eth": "100000",
+      "max_usdc": "500000000",
+      "max_dai": "500000000",
+      "sources": ["aave_v3", "balancer", "uniswap_v3", "maker"],
+      "can_combine_sources": true
+    },
+    
+    "multi_block": {
+      "enabled": true,
+      "max_block_span": 10,
+      "can_guarantee_inclusion": false,
+      "twap_manipulation_window": 30
+    },
+    
+    "market_impact": {
+      "max_spot_move_percent": 5.0,
+      "max_capital_for_manipulation": "10000000",
+      "liquidity_model": "realistic_mainnet"
+    },
+    
+    "timing": {
+      "model": "ethereum_pos_slots",
+      "slot_duration_seconds": 12,
+      "can_miss_slots": false,
+      "can_exploit_missed_slots": true
     }
   }
 }
 ```
 
-**Hard rules**
-- JSON only.
-- Variables must have explicit ranges/options.
-- Instrumentation must be explicit.
-- No “attack” language; this is sandbox counterexample generation.
+### Predefined Attacker Tiers
+
+```
+TIER_0_BASIC:
+  - Single EOA, no flash loans, no ordering power
+  - Public mempool only
+  - Useful baseline for "anyone can exploit"
+
+TIER_1_DEFI_USER:
+  - Multiple addresses, basic flash loans (single source)
+  - Flashbots Protect (private mempool)
+  - Can sequence within single tx
+
+TIER_2_MEV_SEARCHER:
+  - Unlimited addresses, combined flash loans
+  - Reliable backrunning via MEV-share/Flashbots
+  - Multi-block strategies possible
+  - Moderate market manipulation budget
+
+TIER_3_SOPHISTICATED:
+  - Builder-level ordering (or builder relationship)
+  - Large capital for market manipulation
+  - Can coordinate multi-block attacks
+  - Can exploit timing across epochs
+
+TIER_4_STATE_LEVEL:
+  - Near-unlimited capital
+  - Can influence multiple validators
+  - Long-horizon attacks
+  - (Theoretical upper bound, rarely realistic)
+```
+
+### Identity & Access Capabilities
+
+```
+CAPABILITY: IDENTITY_SYBIL
+- Deploy unlimited helper contracts with arbitrary logic
+- Control unlimited EOA addresses
+- Execute from any msg.sender that is not explicitly privileged
+- Interact as contract or EOA depending on what bypasses checks
+- Use CREATE2 for deterministic address pre-computation
+- Exploit tx.origin vs msg.sender discrepancies
+
+CAPABILITY: CONTRACT_DEPLOYMENT
+- Deploy arbitrary bytecode
+- Deploy with predictable addresses (CREATE2)
+- Deploy proxy patterns
+- Deploy minimal proxies (clones)
+```
+
+### Execution Control Capabilities
+
+```
+CAPABILITY: CALL_SEQUENCING
+- Call any public/external function with arbitrary inputs
+- Call functions in any order within transactions
+- Create arbitrary call depth
+- Control gas forwarding patterns
+
+CAPABILITY: REENTRANCY_INJECTION
+- Direct reentrancy at external call points
+- Indirect reentrancy through intermediary contracts
+- Cross-function reentrancy (reenter different function)
+- Cross-contract reentrancy
+- Read-only reentrancy exploitation (see Section 1.2)
+
+CAPABILITY: CALLBACK_EXPLOITATION
+- ERC777 tokensReceived/tokensToSend hooks
+- ERC721 onERC721Received callbacks
+- ERC1155 onERC1155Received/onERC1155BatchReceived
+- Uniswap V3 flash callback
+- Balancer flash loan callback
+- Custom protocol callbacks
+
+CAPABILITY: RETURN_DATA_MANIPULATION
+- Control return data from attacker-controlled contracts
+- Exploit unchecked return values
+- Exploit return data length assumptions
+```
+
+### Timing Capabilities (Ethereum PoS Correct)
+
+```
+CAPABILITY: TIMING_EXPLOITATION
+
+ETHEREUM POS TIMING MODEL:
+- Blocks arrive every 12 seconds (1 slot)
+- Timestamps advance in 12-second increments
+- Missed slots create gaps (timestamp jumps by 24s, 36s, etc.)
+- NO arbitrary timestamp manipulation by proposers
+- Proposer cannot backdate or significantly forward-date
+
+ATTACKER TIMING POWERS:
+1. Transaction Ordering Within Block:
+   - Weak: No control, subject to builder ordering
+   - Medium: Can use private mempools, some priority
+   - Strong: Can reliably position tx relative to others
+   - Builder: Full control of tx ordering in block
+
+2. Multi-Block Orchestration:
+   - Can sequence actions across multiple blocks
+   - Can exploit TWAP windows that span blocks
+   - Can wait for specific oracle update patterns
+   - Can exploit epoch boundaries (32 slots = 6.4 minutes)
+
+3. Missed Slot Exploitation:
+   - Can observe missed slots
+   - Can act on timestamp gaps
+   - Can exploit staleness checks that assume 12s blocks
+
+4. MEV Timing:
+   - Can backrun oracle updates
+   - Can backrun large trades
+   - Can frontrun (with builder cooperation or private flow)
+   - Can sandwich (requires strong ordering power)
+
+WHAT ATTACKERS CANNOT DO:
+- Arbitrarily set block.timestamp
+- Create blocks faster than 12s
+- Reorder finalized blocks
+- Control multiple consecutive blocks (without validator collusion)
+```
+
+### Numeric & Precision Capabilities
+
+```
+CAPABILITY: NUMERIC_EXPLOITATION
+- Use extreme values: 0, 1, 2, type(uint256).max, type(uint256).max - 1
+- Exploit all decimal regimes: 0, 2, 6, 8, 18, 24+ decimals
+- Target rounding boundaries and precision loss accumulation
+- Exploit overflow/underflow in unchecked blocks
+- Create division by zero or division by small number scenarios
+- Exploit WAD/RAY/precision conversion errors
+- Target first depositor and last withdrawer edge cases
+- Exploit empty state transitions (totalSupply=0, totalAssets=0)
+```
 
 ---
 
-## 10) Solvers (portfolio, shared evidence)
+## 1.2 Corrected Static Context Semantics
 
-No single solver wins. The system runs a portfolio and shares artifacts.
+```
+STATICCALL SECURITY MODEL (CORRECTED):
 
-### 10.1 Discrete sequence search (structure)
-Goal: propose action skeletons and macro compositions that satisfy constraints.
+WHAT STATICCALL ENFORCES:
+- State writes revert (SSTORE, LOG*, CREATE*, SELFDESTRUCT)
+- Cannot send ETH via CALL with value
+- Context is genuinely read-only
 
-Signals used to prioritize expansions:
-- high assumption density functions (many implicit assumptions),
-- high interference potential (non-commutativity),
-- boundary mode transitions,
-- presence of derived/cached state,
-- “conversion edges” (assets↔shares, debt↔collateral).
+WHAT STATICCALL DOES NOT PROTECT AGAINST:
 
-### 10.2 Parameter solving (numbers)
-Goal: find amounts/ratios where the kernel flips sign.
+1. Read-Only Reentrancy:
+   - Attacker reenters during callback
+   - Calls view functions that return stale/inconsistent state
+   - Protocol makes decisions based on inconsistent reads
+   - Example: Read share price mid-deposit, before accounting update
 
-Approach:
-- treat it as black‑box optimization over sandbox execution,
-- use learned priors from evidence (feature vectors),
-- keep a “rounding bias detector” running during search.
+2. TOCTOU via View Functions:
+   - Protocol reads state via view call
+   - State changes between read and use
+   - Decision based on stale data
+   - Example: Check balance → (attacker moves funds) → act on stale balance
 
-### 10.3 Precondition synthesis (reach the enabling mode)
-Goal: reliably reach the mode needed by the ContradictionSpec.
+3. Return Data Manipulation:
+   - Attacker-controlled contract returns arbitrary data from view calls
+   - Protocol trusts return data without validation
+   - Attacker can return malicious values
 
-Method:
-- solve sub-goals (“reach mode M”),
-- compile into macros,
-- reuse macros across runs.
+4. Oracle Read Manipulation:
+   - Protocol reads oracle in static context
+   - Attacker manipulates oracle between reads
+   - Different parts of protocol see different prices
 
-### 10.4 Shrinking (make it minimal and real)
-Shrink:
-- depth,
-- actor count,
-- parameter magnitude,
-- external assumptions.
+5. Cross-Contract State Assumptions:
+   - Contract A calls Contract B.view()
+   - Assumes B's state is consistent with A's
+   - Attacker creates inconsistency before A acts
 
-If a hit disappears under shrinking, it wasn’t a hit.
-
----
-
-## 11) Evidence compiler (deterministic, mandatory)
-
-The evidence compiler converts raw traces into structured artifacts:
-
-- `trace.json` (ordered call frames, gas, logs, revert reasons)
-- `diff.json` (state diffs: balances + watched slots)
-- `features.json` (signals for learning/triage)
-
-Minimum feature set:
-- per-step deltas of watched metrics,
-- conservation error curve over time,
-- rounding bias signature (consistent ±1 drift),
-- commutativity distance for tested pairs,
-- constraint tightness (which preconditions were nearly violated),
-- sensitivity probes (small parameter perturbations).
-
-Evidence feeds the next reasoning step.
+MODELING RULE:
+When analyzing static calls, ask:
+- What state is being read?
+- Can that state change during the transaction?
+- What decisions depend on the read value?
+- Can an attacker influence the read value?
+```
 
 ---
 
-## 12) Coverage (measurable, or it didn’t happen)
+## 1.3 Asset Universe (Complete Taxonomy)
 
-### 12.1 Required coverage metrics
-- **CEG edge coverage:** executed edges / total edges
-- **Assumption coverage:** assumptions touched by at least one sequence
-- **Mode coverage:** which boundary modes were reached
-- **Depth coverage:** histogram of tested depths (up to max)
-- **Macro coverage:** macros instantiated/expanded
-- **Interference coverage:** tested A/B commutativity pairs
-
-### 12.2 Stopping criteria (per run)
-Stop only if:
-- budget exhausted, OR
-- coverage thresholds met AND all contradiction templates were instantiated across relevant modes.
+[Previous taxonomy remains valid - ETH, ERC20 variants, LP tokens, protocol-specific assets]
 
 ---
 
-## 13) Roles (LLM + deterministic parts, strict I/O)
+# PART II: FEASIBILITY & COST KERNEL (Critical Addition)
 
-LLMs are used to propose structured specs and candidates. Deterministic components enforce correctness.
+## 2.1 The Net Profit Function
 
-### 13.1 Orchestrator (deterministic)
-- enforces gates,
-- schedules roles,
-- manages budgets,
-- de-duplicates specs,
-- persists artifacts.
+Every counterexample must satisfy economic feasibility. Define:
 
-### 13.2 Cartographer (LLM → CEG candidates)
-Input: ABI/source/bytecode summaries.  
-Output: JSON describing:
-- external dependencies,
-- derived/cached state suspects,
-- conversion edges,
-- mode predicates,
-- hotspots for interference.
+```
+NetProfit(sequence, state, environment) = ValueExtracted - ValueInvested - ExecutionCosts
 
-### 13.3 Assumption Miner (LLM → assumptions)
-Output: JSON array of assumption objects, each tied to concrete reads/writes.
+Where:
+  ValueExtracted = sum of all assets gained by attacker
+  ValueInvested = sum of all assets spent by attacker (excluding recoverable)
+  ExecutionCosts = GasCosts + ProtocolFees + MEVCosts + MarketImpactCosts + OpportunityCosts
+```
 
-### 13.4 Invariant Engineer (LLM → predicates)
-Output: JSON array of checkable invariants (predicates) scoped by mode.
+### 2.1.1 Cost Components (Formal Definitions)
 
-### 13.5 ContradictionSpec Writer (LLM → ContradictionSpec)
-Takes templates + assumptions + invariants + modes and outputs ContradictionSpec JSON.
+```
+COST COMPONENT: GAS
+{
+  "formula": "gasUsed * baseFee + priorityFee",
+  "baseFee_model": "fetch_from_block | estimate_range",
+  "priorityFee_model": "market_rate | builder_minimum",
+  "gas_limit_constraint": "30_000_000 per block",
+  
+  "pricing": {
+    "eth_price_usd": "fetch_current | parameter",
+    "gas_price_gwei": "dynamic | fixed_estimate"
+  }
+}
 
-### 13.6 Macro Synthesizer (LLM → macro candidates)
-Proposes macros as goal predicates + abstract action sketches (verified deterministically).
+COST COMPONENT: PROTOCOL_FEES
+{
+  "types": [
+    "swap_fees": "0.01% - 1% depending on pool",
+    "flash_loan_fees": "0.05% - 0.09% typically",
+    "borrow_fees": "origination + interest",
+    "withdrawal_fees": "protocol specific",
+    "liquidation_penalties": "5-15% typically"
+  ],
+  "accumulation": "sum across all operations in sequence"
+}
 
-### 13.7 Simulator / Evaluator (deterministic)
-Executes sequences in sandbox, collects traces, computes invariant deltas.
+COST COMPONENT: MEV_COSTS
+{
+  "inclusion_cost": {
+    "public_mempool": 0,
+    "flashbots_protect": 0,
+    "priority_ordering": "priority_fee_premium",
+    "builder_bribe": "negotiated | auction_based"
+  },
+  "sandwich_risk": {
+    "if_exposed": "potential_loss_from_being_sandwiched",
+    "mitigation": "private_mempool | small_size | slippage_protection"
+  }
+}
 
-### 13.8 Shrinker (deterministic + optional LLM assist)
-Minimizes sequences while preserving violation.
+COST COMPONENT: MARKET_IMPACT
+{
+  "model": "constant_product | concentrated_liquidity | order_book",
+  
+  "constant_product_impact": {
+    "formula": "amount / (reserve + amount)",
+    "reserves": "fetch_from_pool",
+    "fee_tier": "pool_specific"
+  },
+  
+  "concentrated_liquidity_impact": {
+    "formula": "integrate_across_ticks",
+    "liquidity_distribution": "fetch_from_pool",
+    "tick_spacing": "pool_specific"
+  },
+  
+  "slippage_bounds": {
+    "small_trade": "< 0.1% for < $100k",
+    "medium_trade": "0.1-1% for $100k-$1M",
+    "large_trade": "> 1% for > $1M"
+  }
+}
 
-### 13.9 Report Writer (LLM → FindingReport draft)
-Consumes evidence artifacts and writes a clear report with mitigations + coverage.
+COST COMPONENT: OPPORTUNITY_COST
+{
+  "capital_lockup": {
+    "duration": "blocks or seconds",
+    "risk_free_rate": "staking_yield | lending_rate",
+    "cost": "capital * rate * duration"
+  },
+  "inventory_risk": {
+    "if_multi_block": "price_volatility * exposure * duration",
+    "hedging_cost": "if_hedged"
+  }
+}
+```
+
+### 2.1.2 Feasibility Thresholds
+
+```json
+{
+  "feasibility_thresholds": {
+    "absolute_minimum": {
+      "net_profit_wei": "1000000000000000",
+      "net_profit_usd": "10.00",
+      "rationale": "Must exceed minimum viable profit"
+    },
+    
+    "risk_adjusted": {
+      "profit_to_capital_ratio": 0.001,
+      "profit_to_risk_ratio": 0.01,
+      "rationale": "Profit must justify capital at risk"
+    },
+    
+    "robustness": {
+      "profit_under_10pct_cost_increase": "> 0",
+      "profit_under_adverse_timing": "> 0",
+      "profit_under_partial_fill": "> 0",
+      "rationale": "Exploit must work under realistic variance"
+    },
+    
+    "tier_specific": {
+      "TIER_0": {"min_profit_usd": 100, "max_gas_eth": 0.1},
+      "TIER_1": {"min_profit_usd": 1000, "max_gas_eth": 1},
+      "TIER_2": {"min_profit_usd": 10000, "max_gas_eth": 10},
+      "TIER_3": {"min_profit_usd": 100000, "max_gas_eth": 100}
+    }
+  }
+}
+```
+
+### 2.1.3 Liquidity Constraint Modeling
+
+```
+LIQUIDITY MODEL: REALISTIC_MAINNET
+{
+  "principle": "All value extraction requires market operations that have real costs",
+  
+  "flash_loan_constraints": {
+    "max_single_source": "bounded by pool liquidity",
+    "max_combined": "sum of available sources",
+    "fee_accumulation": "sum of all flash loan fees"
+  },
+  
+  "price_manipulation_constraints": {
+    "cost_to_move_price": "function of liquidity depth",
+    "sustainable_duration": "until arbitrageurs restore",
+    "arbitrage_latency": "~1-3 blocks typically"
+  },
+  
+  "oracle_manipulation_constraints": {
+    "twap_window": "protocol specific",
+    "cost_to_skew_twap": "integral of manipulation cost over window",
+    "detection_risk": "if price deviates significantly"
+  }
+}
+```
+
+## 2.2 Feasibility Verification Protocol
+
+```
+FOR EVERY CANDIDATE COUNTEREXAMPLE:
+
+STEP 1: Calculate Gross Profit
+  gross_profit = attacker_balance_after - attacker_balance_before
+  (across all assets, converted to common denomination)
+
+STEP 2: Calculate All Costs
+  gas_cost = simulate_gas() * current_gas_price
+  protocol_fees = sum(fees_in_sequence)
+  mev_cost = estimate_inclusion_cost(ordering_required)
+  market_impact = simulate_trades_with_real_liquidity()
+  
+STEP 3: Calculate Net Profit
+  net_profit = gross_profit - gas_cost - protocol_fees - mev_cost - market_impact
+
+STEP 4: Robustness Check
+  for perturbation in [gas+20%, liquidity-20%, timing+1block]:
+    perturbed_profit = recalculate(perturbation)
+    if perturbed_profit <= 0:
+      mark_as_fragile()
+
+STEP 5: Tier Classification
+  min_tier = lowest_tier_where_attack_is_feasible()
+  if net_profit < tier_threshold[min_tier]:
+    reject_as_economically_infeasible()
+
+STEP 6: Report
+  include in finding:
+    - gross_profit
+    - itemized_costs
+    - net_profit
+    - minimum_attacker_tier
+    - robustness_assessment
+```
 
 ---
 
-## 14) Prompt contracts (templates)
+# PART III: SEMANTIC MODEL CONSTRUCTION
 
-These are *contracts* for structured outputs. Each role must output JSON only.
+## 3.1 The Three Graphs (Mandatory Construction)
 
-### 14.1 Cartographer prompt
-> Output JSON only with:  
-> - mode_predicates[]  
-> - conversion_edges[] (e.g., assets↔shares)  
-> - derived_state_fields[] (cached indices/rates)  
-> - interference_candidates[] (pairs of functions likely non-commutative)  
-> - external_dependencies[] (readpoints/writepoints)  
-> Constraints: no narrative, no exploit instructions, no out-of-scope calls.
+### Graph A: Call Graph (Dynamic + Static)
 
-### 14.2 Assumption Miner prompt
-> Output JSON array:  
-> [{ "function": "...", "assumption": "...", "evidence": { "reads": [...], "writes": [...], "why": "..." } }]  
-> Assumptions must be falsifiable and tied to concrete state usage.
+```
+NODE SCHEMA:
+{
+  "contract": "0x...",
+  "function": "functionName(args)",
+  "visibility": "public|external",
+  "mutability": "view|pure|payable|nonpayable",
+  "modifiers": ["modifier1", "modifier2"],
+  "estimated_gas": 50000,
+  "state_reads": ["slot1", "slot2"],
+  "state_writes": ["slot3"],
+  "return_data": "type"
+}
 
-### 14.3 Invariant Engineer prompt
-> Output JSON array:  
-> [{ "name": "...", "mode": "...|any", "predicate": "...", "tolerance": "...", "notes": "..." }]  
-> Predicates must be checkable in the sandbox (no vague language).
+EDGE SCHEMA:
+{
+  "source": "Contract.function",
+  "target": "Contract.function | EXTERNAL",
+  "call_type": "CALL|DELEGATECALL|STATICCALL|INTERNAL",
+  
+  "target_derivation": {
+    "type": "hardcoded|storage|input|computed",
+    "source_slot": "0x...",
+    "input_index": 0,
+    "computation": "...",
+    "attacker_controllable": true|false
+  },
+  
+  "calldata_derivation": {
+    "type": "constant|derived|user_controlled|mixed",
+    "controlled_params": [0, 2],
+    "validation_present": true|false
+  },
+  
+  "value_derivation": {
+    "type": "zero|constant|input|computed",
+    "source": "..."
+  },
+  
+  "reentrancy_surface": {
+    "can_reenter": true|false,
+    "reentrant_functions": ["func1", "func2"],
+    "guard_present": true|false,
+    "guard_type": "mutex|CEI|other",
+    "read_only_reentry_risk": true|false
+  },
+  
+  "static_context_risks": {
+    "reads_during_callback": ["slot1", "slot2"],
+    "toctou_potential": true|false,
+    "return_data_trusted": true|false
+  },
+  
+  "gas_forwarding": "all|limited|fixed",
+  "return_handling": "checked|unchecked|ignored"
+}
+```
 
-### 14.4 ContradictionSpec Writer prompt
-> Generate a ContradictionSpec JSON.  
-> Must include: template, mode, property(predicate+observations), variables(ranges/options), constraints, objective, instrumentation(watch lists).  
-> No narrative. No attack language. Authorized sandbox only.
+### Graph B: Asset Flow Graph
 
-### 14.5 Macro Synthesizer prompt
-> Propose macros as JSON array:  
-> [{ "goal_mode": "...", "preconditions": [...], "abstract_sequence": ["F?","F?"], "why_it_helps": "..." }]  
-> The abstract_sequence must be verified deterministically before use.
+```
+NODE SCHEMA (ACCOUNTS):
+{
+  "address": "0x...",
+  "type": "protocol|user|external|attacker",
+  "assets_held": ["token1", "token2", "ETH"],
+  "approvals_given": [...],
+  "approvals_received": [...]
+}
+
+EDGE SCHEMA (FLOWS):
+{
+  "type": "transfer|mint|burn|approve|debt_increase|debt_decrease|wrap|unwrap",
+  "token": "0x...",
+  "from": "0x...",
+  "to": "0x...",
+  
+  "amount_derivation": {
+    "type": "input|computed|storage|oracle_dependent",
+    "formula": "...",
+    "rounding": {
+      "direction": "up|down|nearest|truncate",
+      "precision": "WAD|RAY|custom",
+      "max_error_per_op": "1 wei",
+      "bias_potential": true|false
+    }
+  },
+  
+  "authority_source": {
+    "type": "msg.sender|approval|signature|protocol_logic",
+    "function": "ContractA.functionX"
+  },
+  
+  "accounting_reference": {
+    "internal_variable": "balances[user]",
+    "slot": "0x...",
+    "update_timing": "before_transfer|after_transfer|atomic",
+    "divergence_risk": true|false
+  },
+  
+  "fee_model": {
+    "fee_on_transfer": true|false,
+    "fee_rate": "dynamic|fixed|zero",
+    "fee_recipient": "0x...",
+    "handled_correctly": true|false|unknown
+  },
+  
+  "oracle_dependency": {
+    "present": true|false,
+    "oracle": "0x...",
+    "staleness_check": true|false,
+    "manipulation_surface": "..."
+  }
+}
+```
+
+### Graph C: Capability/Authority Graph
+
+```
+CAPABILITY NODE SCHEMA:
+{
+  "id": "CAP-001",
+  "type": "asset_movement|parameter_change|role_assignment|external_call|state_mutation",
+  "description": "Move token X from A to B",
+  "value_at_risk": "quantified in USD",
+  "frequency": "how often this capability is exercised normally"
+}
+
+CAPABILITY EDGE SCHEMA:
+{
+  "function": "Contract.function",
+  "capability": "CAP-001",
+  "direction": "creates|consumes|modifies",
+  
+  "gating_conditions": [
+    {
+      "type": "msg.sender_check|state_condition|time_condition|signature|amount_limit",
+      "requirement": "formal predicate",
+      "attacker_satisfiable": true|false|conditional,
+      "satisfaction_method": "how attacker can satisfy",
+      "satisfaction_cost": "cost to satisfy"
+    }
+  ],
+  
+  "composability": {
+    "same_tx_composable": true|false,
+    "requires_prior": ["CAP-000"],
+    "enables_subsequent": ["CAP-002"],
+    "flash_loan_enabling": true|false
+  }
+}
+```
 
 ---
 
-## 15) Hygiene (don’t kneecap your own research)
-- Never commit RPC URLs with embedded keys (use env vars).
-- Close every markdown code fence (CI lint).
-- Store traces/state diffs deterministically and version them.
-- Always include limitations + coverage. “Trust me” is not evidence.
+## 3.2 Protocol State Machine
+
+### Phase Schema
+
+```json
+{
+  "phase_id": "PHASE-001",
+  "name": "deposit_lifecycle",
+  
+  "entry_conditions": [
+    {"predicate": "vault.paused == false", "type": "state"},
+    {"predicate": "msg.sender.balance >= amount", "type": "caller"}
+  ],
+  
+  "sub_phases": [
+    {
+      "name": "pre_transfer",
+      "invariants_must_hold": ["total_assets_consistent"],
+      "reentrancy_window": false
+    },
+    {
+      "name": "asset_transfer",
+      "external_calls": ["token.transferFrom"],
+      "reentrancy_window": true,
+      "read_only_reentry_risk": true,
+      "state_inconsistent_during": ["shares_not_yet_minted"]
+    },
+    {
+      "name": "share_mint",
+      "state_changes": ["totalSupply++", "shares[user]++"],
+      "rounding_critical": true,
+      "reentrancy_window": false
+    }
+  ],
+  
+  "exit_conditions": [
+    {"success": "shares_minted > 0"},
+    {"failure": "revert with reason"}
+  ],
+  
+  "invariants_after": [
+    "convertToAssets(shares_minted) >= assets_deposited - max_rounding_loss"
+  ]
+}
+```
 
 ---
 
-## 16) Success criteria (what “done” means)
-A successful run produces:
-- a minimal counterexample sequence in sandbox,
-- a violated property with a checkable predicate,
-- traces + state diffs + features,
-- a clear report with mitigations and coverage.
+## 3.3 Mode Discovery (Boundary States)
 
-Anything else is noise.
+```
+CRITICAL MODES (with feasibility context):
+
+EMPTY_STATE_MODES:
+{
+  "totalSupply == 0": {
+    "attack_surface": "first depositor inflation",
+    "typical_profit": "proportional to subsequent deposits",
+    "feasibility": "high - low capital required",
+    "detection": "check if vault is newly deployed or emptied"
+  },
+  "totalAssets == 0 && totalSupply > 0": {
+    "attack_surface": "share price collapse",
+    "typical_profit": "existing shares become worthless",
+    "feasibility": "requires specific conditions"
+  }
+}
+
+RATIO_BOUNDARY_MODES:
+{
+  "exchangeRate approaching 0": {
+    "attack_surface": "division issues, share worthlessness"
+  },
+  "exchangeRate approaching max": {
+    "attack_surface": "overflow on multiplication"
+  },
+  "utilizationRate == 100%": {
+    "attack_surface": "withdrawal blocked, interest spike"
+  }
+}
+
+ORACLE_BOUNDARY_MODES:
+{
+  "price == 0": {
+    "attack_surface": "division by zero, incorrect valuations"
+  },
+  "price stale by > threshold": {
+    "attack_surface": "outdated liquidations, arbitrage"
+  },
+  "price deviation > X% from other sources": {
+    "attack_surface": "oracle disagreement exploitation"
+  }
+}
+
+TIMING_BOUNDARY_MODES:
+{
+  "block.timestamp == epoch_boundary": {
+    "attack_surface": "reward calculation boundaries"
+  },
+  "time_since_last_accrual > expected": {
+    "attack_surface": "interest calculation jumps"
+  }
+}
+```
+
+---
+
+# PART IV: PROPERTY PORTFOLIO (FALSIFICATION TARGETS)
+
+## 4.1 Accounting/Conservation Properties
+
+```json
+{
+  "P-ACCOUNTING-001": {
+    "name": "Total Asset Conservation",
+    "predicate": "sum(user_redeemable) <= protocol_balance + tolerance",
+    "tolerance": "1e-6 * total_assets",
+    "modes": ["all"],
+    "violation_type": "theft_of_funds",
+    "feasibility_note": "Direct profit to attacker"
+  },
+  
+  "P-ACCOUNTING-002": {
+    "name": "No Free Value Cycles",
+    "predicate": "NetProfit(any_cycle) <= max_favorable_rounding + fees_paid",
+    "test_method": "cycle_search_with_feasibility",
+    "feasibility_note": "Must account for all costs in cycle"
+  },
+  
+  "P-ACCOUNTING-003": {
+    "name": "Rounding Bias Bounds",
+    "predicate": "cumulative_rounding_bias < threshold over N operations",
+    "threshold": "0.01% of volume",
+    "N": 1000,
+    "feasibility_note": "High-frequency required, gas costs may dominate"
+  }
+}
+```
+
+## 4.2 Capability/Authority Properties
+
+```json
+{
+  "P-AUTHORITY-001": {
+    "name": "External Call Target Integrity",
+    "predicate": "all external call targets in allowlist OR hardcoded",
+    "modes": ["all"],
+    "violation_type": "arbitrary_call",
+    "feasibility_note": "Often leads to full drain"
+  },
+  
+  "P-AUTHORITY-002": {
+    "name": "Approval Scope Limitation",
+    "predicate": "protocol approvals only usable for intended operations",
+    "modes": ["protocol_has_token_approvals"],
+    "feasibility_note": "Profit = min(approval_amount, attacker_can_route)"
+  }
+}
+```
+
+## 4.3 Temporal/Trace Properties
+
+```json
+{
+  "P-TEMPORAL-001": {
+    "name": "Read-Only Reentrancy Safety",
+    "predicate": "view functions during callbacks return consistent state",
+    "modes": ["has_external_calls_before_state_update"],
+    "violation_type": "read_only_reentrancy",
+    "feasibility_note": "Depends on what decisions use the stale read"
+  },
+  
+  "P-TEMPORAL-002": {
+    "name": "Slot Timing Consistency",
+    "predicate": "12-second slot assumptions hold under missed slots",
+    "modes": ["has_time_dependent_logic"],
+    "feasibility_note": "Missed slots are observable, not controllable"
+  }
+}
+```
+
+## 4.4 Oracle/Signal Properties
+
+```json
+{
+  "P-ORACLE-001": {
+    "name": "Manipulation Cost Exceeds Profit",
+    "predicate": "cost_to_manipulate_oracle > profit_from_manipulation",
+    "variables": {
+      "liquidity_depth": "from_chain",
+      "twap_window": "from_protocol",
+      "affected_value": "from_protocol"
+    },
+    "feasibility_note": "Must model realistic liquidity constraints"
+  }
+}
+```
+
+---
+
+# PART V: KERNEL CONTRADICTION TEMPLATES
+
+## 5.1 The Seven Archetypes (With Feasibility Analysis)
+
+```
+TEMPLATE 1: NON-COMMUTATIVITY EXPLOITATION
+{
+  "pattern": "A∘B ≠ B∘A on watched property",
+  "feasibility_factors": [
+    "Can attacker control ordering? (requires ordering_power >= medium)",
+    "What is delta between orderings?",
+    "Is delta greater than ordering cost?"
+  ],
+  "typical_profit_range": "small per instance, may need repetition"
+}
+
+TEMPLATE 2: ACCOUNTING DIVERGENCE
+{
+  "pattern": "Internal ledger diverges from actual balance",
+  "feasibility_factors": [
+    "How fast does divergence accumulate?",
+    "Can divergence be harvested in single tx?",
+    "Gas cost of operations vs divergence gained"
+  ],
+  "typical_profit_range": "can be large if protocol holds significant assets"
+}
+
+TEMPLATE 3: BOUNDARY DISCONTINUITY
+{
+  "pattern": "Property fails at mode boundaries",
+  "feasibility_factors": [
+    "Can attacker force system into boundary state?",
+    "Cost to reach boundary state?",
+    "Profit once in boundary state?"
+  ],
+  "typical_profit_range": "first depositor attacks can be very profitable"
+}
+
+TEMPLATE 4: CYCLIC AMPLIFICATION
+{
+  "pattern": "Closed loop increases attacker metric",
+  "feasibility_factors": [
+    "Per-cycle profit vs per-cycle cost (gas + fees)",
+    "Maximum cycles before constraint hit",
+    "Total profit = cycles * (per_cycle_profit - per_cycle_cost)"
+  ],
+  "typical_profit_range": "depends heavily on cycle efficiency"
+}
+
+TEMPLATE 5: PRECISION BIAS
+{
+  "pattern": "Consistent rounding direction accumulates",
+  "feasibility_factors": [
+    "Bias per operation (typically 1 wei)",
+    "Gas cost per operation",
+    "Operations needed: profit_target / bias_per_op",
+    "Often NOT feasible due to gas"
+  ],
+  "typical_profit_range": "usually economically infeasible alone"
+}
+
+TEMPLATE 6: TEMPORAL MISMATCH
+{
+  "pattern": "Timing windows create inconsistency",
+  "feasibility_factors": [
+    "Window duration and predictability",
+    "Attacker timing capabilities required",
+    "Value accessible during window"
+  ],
+  "typical_profit_range": "varies widely"
+}
+
+TEMPLATE 7: CROSS-MODULE SEMANTIC MISMATCH
+{
+  "pattern": "Two modules interpret state differently",
+  "feasibility_factors": [
+    "Can attacker interact with both modules in same tx?",
+    "What value can be arbitraged between interpretations?"
+  ],
+  "typical_profit_range": "can be large if significant value in mismatched state"
+}
+```
+
+---
+
+# PART VI: DEPENDENCY SEMANTICS LIBRARY (Modular)
+
+## 6.1 Token Models (Pluggable)
+
+```python
+# Token Behavior Model Interface
+class TokenModel:
+    def transfer(self, from_addr, to_addr, amount) -> (actual_received, events):
+        """Returns actual amount received and events emitted"""
+        raise NotImplementedError
+    
+    def balanceOf(self, addr, block_context) -> uint256:
+        """Returns balance, may change between calls for rebasing"""
+        raise NotImplementedError
+    
+    def reentrancy_hooks(self) -> List[HookSpec]:
+        """Returns list of hooks that enable reentrancy"""
+        raise NotImplementedError
+
+# Standard ERC20
+class StandardERC20(TokenModel):
+    fee_on_transfer = False
+    rebasing = False
+    hooks = []
+    
+    def transfer(self, from_addr, to_addr, amount):
+        return (amount, [Transfer(from_addr, to_addr, amount)])
+
+# Fee-on-Transfer
+class FeeOnTransferToken(TokenModel):
+    fee_on_transfer = True
+    fee_rate = 0.01  # 1%
+    
+    def transfer(self, from_addr, to_addr, amount):
+        fee = amount * self.fee_rate
+        received = amount - fee
+        return (received, [Transfer(from_addr, to_addr, received)])
+
+# Rebasing Token
+class RebasingToken(TokenModel):
+    rebasing = True
+    shares_to_balance_ratio = Variable()
+    
+    def balanceOf(self, addr, block_context):
+        shares = self.shares[addr]
+        return shares * self.get_ratio(block_context)
+
+# ERC777 with Hooks
+class ERC777Token(TokenModel):
+    hooks = ["tokensReceived", "tokensToSend"]
+    
+    def reentrancy_hooks(self):
+        return [
+            HookSpec("tokensToSend", timing="before_transfer", controllable=True),
+            HookSpec("tokensReceived", timing="after_transfer", controllable=True)
+        ]
+```
+
+## 6.2 Oracle Models (Pluggable)
+
+```python
+class OracleModel:
+    def get_price(self, block_context) -> (price, timestamp, round_id):
+        raise NotImplementedError
+    
+    def manipulation_cost(self, target_price, duration) -> uint256:
+        """Cost to move price to target for duration"""
+        raise NotImplementedError
+    
+    def staleness_behavior(self, stale_seconds) -> Behavior:
+        """What happens when oracle is stale"""
+        raise NotImplementedError
+
+# Chainlink Oracle
+class ChainlinkOracle(OracleModel):
+    heartbeat = 3600  # 1 hour
+    deviation_threshold = 0.005  # 0.5%
+    
+    def staleness_behavior(self, stale_seconds):
+        if stale_seconds > self.heartbeat * 2:
+            return "likely_reverts"  # if protocol checks
+        return "returns_stale_price"
+    
+    def manipulation_cost(self, target_price, duration):
+        # Cannot directly manipulate Chainlink
+        return INFINITY
+
+# TWAP Oracle
+class TWAPOracle(OracleModel):
+    window = 1800  # 30 minutes
+    source_pool = "0x..."
+    
+    def manipulation_cost(self, target_price_delta, duration):
+        # Cost = integral of price impact over window
+        liquidity = get_pool_liquidity(self.source_pool)
+        return estimate_twap_manipulation_cost(
+            liquidity, target_price_delta, self.window
+        )
+
+# Spot Price Oracle
+class SpotOracle(OracleModel):
+    source_pool = "0x..."
+    
+    def manipulation_cost(self, target_price, duration):
+        liquidity = get_pool_liquidity(self.source_pool)
+        # Single block manipulation
+        return calculate_price_impact(liquidity, target_price)
+```
+
+## 6.3 AMM Models (Pluggable)
+
+```python
+class AMMModel:
+    def quote(self, token_in, token_out, amount_in) -> (amount_out, price_impact):
+        raise NotImplementedError
+    
+    def liquidity_depth(self, price_range) -> uint256:
+        raise NotImplementedError
+
+# Uniswap V2 (Constant Product)
+class UniswapV2Pool(AMMModel):
+    fee = 0.003  # 0.3%
+    
+    def quote(self, amount_in):
+        amount_in_with_fee = amount_in * (1 - self.fee)
+        amount_out = (self.reserve_out * amount_in_with_fee) / (self.reserve_in + amount_in_with_fee)
+        price_impact = amount_in / (self.reserve_in + amount_in)
+        return (amount_out, price_impact)
+
+# Uniswap V3 (Concentrated Liquidity)
+class UniswapV3Pool(AMMModel):
+    def quote(self, amount_in):
+        # Integrate across ticks
+        return simulate_v3_swap(self.liquidity_distribution, amount_in)
+    
+    def liquidity_depth(self, price_range):
+        return sum(tick.liquidity for tick in self.ticks if tick.price in price_range)
+
+# Curve (StableSwap)
+class CurvePool(AMMModel):
+    A = 100  # Amplification parameter
+    
+    def quote(self, amount_in):
+        # Curve invariant calculation
+        return curve_swap_simulation(self.balances, self.A, amount_in)
+```
+
+---
+
+# PART VII: COVERAGE SCOREBOARD (Measurable Completeness)
+
+## 7.1 Coverage Dimensions
+
+```json
+{
+  "coverage_scoreboard": {
+    "sink_coverage": {
+      "description": "Every sink has at least one property + one adversarial path",
+      "categories": {
+        "asset_sinks": {
+          "total": 0,
+          "covered_by_property": 0,
+          "covered_by_search": 0,
+          "coverage_percent": 0
+        },
+        "authority_sinks": {
+          "total": 0,
+          "covered_by_property": 0,
+          "covered_by_search": 0,
+          "coverage_percent": 0
+        },
+        "external_call_sinks": {
+          "total": 0,
+          "covered_by_property": 0,
+          "covered_by_search": 0,
+          "coverage_percent": 0
+        }
+      },
+      "target": "100% of sinks covered"
+    },
+    
+    "mode_coverage": {
+      "description": "Which modes were reached under adversarial sequences",
+      "modes_defined": 0,
+      "modes_reached_normal": 0,
+      "modes_reached_adversarial": 0,
+      "transitions_defined": 0,
+      "transitions_traversed": 0,
+      "boundary_modes_hit": 0,
+      "target": ">80% modes reached, 100% boundary modes"
+    },
+    
+    "domain_coverage": {
+      "description": "Numeric domain exploration",
+      "categories": {
+        "rounding_boundaries": {
+          "tested": ["n", "n-1", "n+1", "powers_of_2"],
+          "coverage": 0
+        },
+        "decimal_regimes": {
+          "tested": [0, 2, 6, 8, 18, 24],
+          "coverage": 0
+        },
+        "extreme_values": {
+          "tested": ["0", "1", "2", "max-1", "max"],
+          "coverage": 0
+        },
+        "discontinuities": {
+          "empty_supply": false,
+          "near_zero_denominator": false,
+          "utilization_boundaries": false
+        }
+      }
+    },
+    
+    "sequence_coverage": {
+      "description": "Operation sequence exploration",
+      "max_depth_tested": 0,
+      "unique_sequences_tested": 0,
+      "permutation_coverage": {
+        "pairs_tested": 0,
+        "pairs_total": 0
+      },
+      "cycle_coverage": {
+        "cycles_found": 0,
+        "cycles_tested": 0
+      },
+      "multi_actor_coverage": {
+        "max_actors_tested": 0,
+        "actor_interaction_pairs": 0
+      }
+    },
+    
+    "property_coverage": {
+      "description": "Which properties were actually tested",
+      "properties_defined": 0,
+      "properties_instantiated": 0,
+      "properties_with_counterexample_search": 0,
+      "properties_with_formal_verification": 0,
+      "violations_found": 0
+    },
+    
+    "assumption_coverage": {
+      "description": "Which assumptions were stress-tested",
+      "assumptions_identified": 0,
+      "assumptions_with_adversarial_test": 0,
+      "assumptions_violated": 0
+    }
+  }
+}
+```
+
+## 7.2 Coverage Thresholds for "Complete"
+
+```
+MINIMUM THRESHOLDS FOR COMPLETION:
+
+TIER_BASIC (Initial Pass):
+- Sink coverage: 100% of asset sinks, 100% of external call sinks
+- Mode coverage: All boundary modes reached
+- Sequence depth: At least 5
+- Properties: All accounting properties instantiated
+
+TIER_STANDARD (Production):
+- Sink coverage: 100% all categories
+- Mode coverage: >90% modes, 100% boundaries
+- Domain coverage: All decimal regimes, all extreme values
+- Sequence depth: At least 10
+- Permutation coverage: >50% of high-priority pairs
+- Properties: Full portfolio instantiated
+
+TIER_EXHAUSTIVE (High-Value Targets):
+- Everything in STANDARD plus:
+- Sequence depth: Up to 20
+- Permutation coverage: >90%
+- Cycle coverage: All identified cycles tested
+- Multi-actor: Up to 5 actors
+- Formal verification on critical properties
+```
+
+## 7.3 Coverage Report Format
+
+```
+═══════════════════════════════════════════════════════════════════════════════
+COVERAGE REPORT: [Protocol Name]
+Fork Block: [Number] | Chain: [ID] | Date: [ISO8601]
+═══════════════════════════════════════════════════════════════════════════════
+
+SINK COVERAGE                                                    [██████████] 100%
+├── Asset Sinks:        45/45 covered                           [██████████] 100%
+├── Authority Sinks:    12/12 covered                           [██████████] 100%
+└── External Calls:     23/23 covered                           [██████████] 100%
+
+MODE COVERAGE                                                    [████████░░] 85%
+├── Modes Reached:      17/20                                   [████████░░] 85%
+├── Boundary Modes:     8/8                                     [██████████] 100%
+└── Transitions:        34/45                                   [███████░░░] 75%
+
+DOMAIN COVERAGE                                                  [█████████░] 92%
+├── Decimal Regimes:    6/6                                     [██████████] 100%
+├── Extreme Values:     5/5                                     [██████████] 100%
+├── Rounding Bounds:    4/5                                     [████████░░] 80%
+└── Discontinuities:    3/4                                     [███████░░░] 75%
+
+SEQUENCE COVERAGE                                                [███████░░░] 73%
+├── Max Depth:          15
+├── Sequences Tested:   12,847
+├── Permutations:       156/234 pairs                           [██████░░░░] 67%
+└── Cycles Tested:      8/8                                     [██████████] 100%
+
+PROPERTY COVERAGE                                                [██████████] 100%
+├── Defined:            42
+├── Instantiated:       42                                      [██████████] 100%
+├── With Search:        42                                      [██████████] 100%
+└── Violations Found:   1
+
+FINDINGS SUMMARY
+├── Critical:           0
+├── High:               1 (economically feasible)
+├── Medium:             2 (economically marginal)
+└── Low:                5 (theoretical only)
+
+GAPS IDENTIFIED
+├── Mode "migration_in_progress" not reached (requires governance)
+├── Oracle failover path not tested (requires oracle failure)
+└── 3-actor MEV scenario not fully explored (compute budget)
+
+═══════════════════════════════════════════════════════════════════════════════
+```
+
+---
+
+# PART VIII: CONTRADICTIONSPEC GENERATION
+
+## 8.1 Complete Schema (With Feasibility)
+
+```json
+{
+  "id": "CSPEC-XXXX",
+  "created": "ISO8601_timestamp",
+  "template": "cyclic_amplification",
+  "priority": "critical",
+  
+  "attacker_model": {
+    "minimum_tier": "TIER_1_DEFI_USER",
+    "ordering_power": "weak",
+    "flash_liquidity_required": {"eth": "1000", "usdc": "0"},
+    "multi_block_required": false
+  },
+  
+  "target_mode": {
+    "predicate": "totalSupply == 0",
+    "reach_strategy": "MACRO-EMPTY-VAULT",
+    "reach_cost_estimate": {"gas": "500000", "capital": "0"}
+  },
+  
+  "property": {
+    "id": "P-ACCOUNTING-001",
+    "predicate_formal": "post.attacker_value - pre.attacker_value <= allowed_profit",
+    "allowed_profit": "protocol_fees_paid + max_rounding_loss"
+  },
+  
+  "variables": {
+    "sequence": {
+      "min_depth": 3,
+      "max_depth": 20,
+      "allowed_actions": ["deposit", "withdraw", "donate"]
+    },
+    "amounts": [
+      {"name": "donation", "range": ["1e18", "1e24"], "distribution": "log_uniform"}
+    ]
+  },
+  
+  "feasibility_constraints": {
+    "max_gas_cost_eth": "1.0",
+    "max_flash_loan_fees": "0.1%",
+    "max_market_impact": "1%",
+    "net_profit_threshold_usd": "1000"
+  },
+  
+  "objective": {
+    "primary": "maximize(net_profit)",
+    "where": "net_profit = gross_profit - gas_cost - fees - market_impact"
+  },
+  
+  "instrumentation": {
+    "track_costs": true,
+    "track_all_value_flows": true,
+    "simulate_with_real_liquidity": true
+  }
+}
+```
+
+---
+
+# PART IX: SOLVER PORTFOLIO
+
+## 9.1 Discrete Sequence Search
+
+```
+ALGORITHM: GUIDED_SEQUENCE_SEARCH
+
+INPUT: ContradictionSpec, SystemModel, FeasibilityConfig
+OUTPUT: Candidate sequences with feasibility scores
+
+1. INITIALIZE action_space from capability graph
+2. PRIORITIZE actions by:
+   - Sink involvement (asset/authority/external)
+   - Mode transition potential
+   - Historical violation correlation
+   - Cost efficiency (value_impact / gas_cost)
+
+3. SEARCH with feasibility pruning:
+   FOR each expansion:
+     estimate_cost = gas_so_far + estimated_remaining_gas
+     estimate_max_profit = upper_bound_on_profit
+     IF estimate_max_profit <= estimate_cost * safety_margin:
+       PRUNE (economically infeasible)
+     
+     IF reaches_target_mode AND violates_property:
+       candidate = current_sequence
+       feasibility = evaluate_full_feasibility(candidate)
+       IF feasibility.net_profit > threshold:
+         YIELD (candidate, feasibility)
+
+4. RANK candidates by:
+   - Net profit (after all costs)
+   - Minimum attacker tier required
+   - Robustness score
+   - Sequence simplicity
+```
+
+## 9.2 Parameter Solving (With Economic Constraints)
+
+```
+ALGORITHM: ECONOMICALLY_CONSTRAINED_OPTIMIZATION
+
+INPUT: Sequence skeleton, feasibility constraints
+OUTPUT: Optimal parameters maximizing net profit
+
+1. DEFINE objective:
+   maximize: net_profit(params)
+   subject_to:
+     - all_calls_succeed(params)
+     - gas_cost(params) <= max_gas
+     - market_impact(params) <= max_impact
+     - flash_loan_available(params)
+
+2. OPTIMIZE using:
+   - Bayesian optimization (handles noisy objectives)
+   - CMA-ES (handles non-convex landscapes)
+   - Grid search for discrete parameters
+
+3. VALIDATE:
+   - Execute with found parameters
+   - Verify costs match estimates
+   - Verify profit is real (not accounting artifact)
+```
+
+---
+
+# PART X: EVIDENCE COMPILATION
+
+## 10.1 Enhanced Finding Report
+
+```json
+{
+  "finding_id": "FINDING-XXXX",
+  "severity": "HIGH",
+  "title": "First Depositor Share Inflation",
+  
+  "economic_summary": {
+    "gross_profit": "1.5 ETH",
+    "costs": {
+      "gas": "0.02 ETH",
+      "flash_loan_fees": "0.001 ETH",
+      "protocol_fees": "0 ETH",
+      "market_impact": "0 ETH"
+    },
+    "net_profit": "1.479 ETH",
+    "net_profit_usd": "3,550.00",
+    "minimum_attacker_tier": "TIER_0_BASIC",
+    "capital_required": "1 wei (plus victim deposits)"
+  },
+  
+  "feasibility_analysis": {
+    "robustness_checks": [
+      {"perturbation": "gas_price_+50%", "still_profitable": true, "profit": "1.47 ETH"},
+      {"perturbation": "victim_deposit_-50%", "still_profitable": true, "profit": "0.74 ETH"}
+    ],
+    "real_world_executable": true,
+    "time_sensitivity": "Must be first depositor, race condition with legitimate users",
+    "detection_risk": "Low - single transaction, normal-looking operations"
+  },
+  
+  "reproduction": {
+    "fork_block": 18500000,
+    "sequence": [...],
+    "expected_profit": "1.479 ETH",
+    "verified_runs": 10,
+    "deterministic": true
+  },
+  
+  "coverage_context": {
+    "template_used": "boundary_discontinuity",
+    "mode_exploited": "totalSupply == 0",
+    "sinks_involved": ["asset_sink:mint", "asset_sink:transfer"],
+    "property_violated": "P-ACCOUNTING-001"
+  }
+}
+```
+
+---
+
+# PART XI: EXECUTION PROTOCOL
+
+## 11.1 Phase Summary
+
+```
+PHASE 1: SYSTEM INGESTION (2-4 hours)
+- Fetch contracts, ABIs, source
+- Build three graphs
+- Identify all sinks
+- OUTPUT: system_model.json
+
+PHASE 2: MODEL CONSTRUCTION (2-4 hours)
+- Enumerate modes and transitions
+- Map all assumptions
+- Identify rounding operations
+- Build ghost accounting
+- OUTPUT: semantic_model.json
+
+PHASE 3: DEPENDENCY CONFIGURATION (1-2 hours)
+- Select appropriate token models
+- Select appropriate oracle models
+- Configure liquidity constraints
+- OUTPUT: dependency_config.json
+
+PHASE 4: PROPERTY INSTANTIATION (2-4 hours)
+- Instantiate full property portfolio
+- Link to assumptions
+- Configure feasibility thresholds
+- OUTPUT: properties.json
+
+PHASE 5: CONTRADICTIONSPEC GENERATION (2-4 hours)
+- Generate specs from templates
+- Prioritize by feasibility potential
+- OUTPUT: specs/*.json
+
+PHASE 6: SOLVING (iterative, until budget or coverage)
+- Run solver portfolio
+- Track coverage scoreboard
+- Generate findings with feasibility
+- OUTPUT: findings/*.json, coverage_report.json
+
+PHASE 7: VALIDATION (per finding)
+- Re-execute on fresh fork
+- Verify economic calculations
+- Verify determinism
+- OUTPUT: validated_findings/*.json
+```
+
+---
+
+# PART XII: CONTINUOUS EXECUTION RULES
+
+## 12.1 Prime Directive (Updated)
+
+```
+NEVER STOP UNTIL:
+1. A FEASIBLE counterexample is found (net_profit > threshold), OR
+2. Coverage thresholds are met across all dimensions, OR
+3. Computational budget is exhausted
+
+FEASIBILITY IS NON-NEGOTIABLE:
+- "Theoretical vulnerability" without feasibility analysis = NOT A FINDING
+- Profit must exceed costs under realistic conditions
+- Must specify minimum attacker tier
+```
+
+## 12.2 Quality Gates (Updated)
+
+```
+BEFORE REPORTING ANY FINDING:
+□ Executed on mainnet fork at specified block
+□ All calls succeed
+□ Gross profit calculated correctly
+□ All costs itemized (gas, fees, impact)
+□ Net profit > feasibility threshold
+□ Minimum attacker tier identified
+□ Robustness checks passed
+□ Sequence shrunk to minimum
+□ Reproduction is deterministic
+□ No privileged roles assumed
+□ Coverage context documented
+```
+
+---
+
+# APPENDIX A: Attacker Tier Quick Reference
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ TIER │ ORDERING  │ FLASH       │ MULTI-BLOCK │ MIN PROFIT  │ TYPICAL      │
+│      │ POWER     │ LIQUIDITY   │             │ THRESHOLD   │ ATTACKER     │
+├──────┼───────────┼─────────────┼─────────────┼─────────────┼──────────────┤
+│  0   │ None      │ None        │ No          │ $100        │ Script kiddy │
+│  1   │ Weak      │ Single src  │ No          │ $1,000      │ DeFi user    │
+│  2   │ Medium    │ Combined    │ Limited     │ $10,000     │ MEV searcher │
+│  3   │ Strong    │ Large       │ Yes         │ $100,000    │ Sophisticated│
+│  4   │ Builder   │ Unlimited   │ Extended    │ $1,000,000  │ State-level  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# APPENDIX B: Cost Estimation Quick Reference
+
+```
+GAS COSTS (at 50 gwei, ETH=$2400):
+- Simple transfer: ~21,000 gas = $2.52
+- ERC20 transfer: ~65,000 gas = $7.80
+- Uniswap V3 swap: ~150,000 gas = $18.00
+- Complex DeFi interaction: ~500,000 gas = $60.00
+- Flash loan + multi-step: ~1,000,000 gas = $120.00
+
+PROTOCOL FEES:
+- Aave flash loan: 0.05%
+- Balancer flash loan: 0% (but swap fees apply)
+- Uniswap V3 swap: 0.01% - 1% depending on pool
+- Curve swap: 0.04% typical
+
+MARKET IMPACT (rough estimates):
+- $100k trade in major pair: <0.1%
+- $1M trade in major pair: 0.1-0.5%
+- $10M trade in major pair: 0.5-2%
+- Illiquid pairs: significantly higher
+```
+
+---
+
+# APPENDIX C: Coverage Checklist
+
+```
+SINK COVERAGE:
+□ All transfer() calls
+□ All transferFrom() calls
+□ All mint() calls
+□ All burn() calls
+□ All external calls to user-controlled addresses
+□ All delegatecall usage
+□ All parameter setters
+□ All role assignments
+
+MODE COVERAGE:
+□ Empty state (totalSupply=0)
+□ Single unit state
+□ Normal operation
+□ High utilization
+□ Boundary conditions
+□ Oracle stale
+□ Oracle extreme values
+
+SEQUENCE COVERAGE:
+□ All 2-operation permutations of critical functions
+□ Deposit→Withdraw cycles
+□ Borrow→Repay cycles
+□ Cross-function reentrancy paths
+□ Flash loan entry points
+
+FEASIBILITY VALIDATION:
+□ Gas costs calculated
+□ Protocol fees included
+□ Market impact modeled
+□ Net profit positive
+□ Robustness verified
+```
+
+---
+
+END OF SPECIFICATION v2.0
+
+This document defines the complete, intelligence-grade protocol for discovering
+novel, economically feasible exploits in battle-tested smart contract systems.
+
+Key upgrades from v1.0:
+1. PoS-correct timing model (slot-based, no timestamp manipulation)
+2. Corrected staticcall semantics (read-only reentrancy focus)
+3. First-class Feasibility & Cost Kernel
+4. Parameterized attacker tiers
+5. Measurable coverage scoreboard
+6. Modular dependency semantics library
+
+Every finding must be:
+- Backed by fork execution evidence
+- Economically feasible (net profit > costs)
+- Labeled with minimum attacker tier
+- Validated for robustness
+
+
+any of contracts.txt and each one of them compelete protcols could be freely choose by you ! you have to concider each may has multiple types of diffrent assets such tokens , lp and protcols assets , and naive token ( eth ) 
+use etherscanrpc.md for rpc and etherscan v2 api for fetch codes and abi and other things . everything has to compeletly approve on current blocks fork to you able to claim any exploits exists ! 
