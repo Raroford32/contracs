@@ -151,9 +151,53 @@ These wallets delegate calls to the Parity WalletLibrary (0x863DF6BFa4469f3ead0b
 All tests executed on Ethereum mainnet fork using Alchemy RPC.
 Fork timestamp: 2026-02-02
 
+## Extended Analysis (February 2026)
+
+### Contract Distribution
+- **Total contracts analyzed**: 467
+- **Contracts with 100+ ETH**: 117
+- **Total ETH in analyzed contracts**: ~18,000+ ETH
+
+### Contract Types Identified
+
+| Type | Count | Total ETH | Exploitable |
+|------|-------|-----------|-------------|
+| Frozen Parity Wallets | ~40 | ~12,000 ETH | NO - Library destroyed |
+| BitGo Multisigs | ~10 | ~1,500 ETH | NO - Signatures required |
+| Gnosis Multisigs | ~15 | ~1,800 ETH | NO - Multiple signatures |
+| Lending Protocols | ~5 | ~400 ETH | NO - Funds belong to users |
+| Gambling Contracts | ~3 | ~200 ETH | NO - Access controlled |
+| Staking Pools | ~20 | ~1,500 ETH | NO - Depositor funds |
+| Registry Contracts | ~5 | ~500 ETH | NO - Registration fees |
+
+### Detailed Analysis
+
+#### 1. BitGo Wallets (415+ ETH example: 0x2CcfA2AcF6FF744575cCf306B44A59B11C32e44B)
+- 3 signers required
+- Sequence ID tracking prevents replay
+- createForwarder() callable but not exploitable
+- **Status**: SECURE
+
+#### 2. pETH Lending Pool (313 ETH: 0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd)
+- Compound-style cToken
+- Dormant since block 11189290 (October 2020)
+- Interest accrual stale but not exploitable
+- **Status**: DORMANT - funds belong to depositors/borrowers
+
+#### 3. ZethrGame (116 ETH: 0xb9ab8eed48852de901c13543042204c6c569b811)
+- Gambling contract
+- withdraw() reverts without proper conditions
+- **Status**: ACCESS CONTROLLED
+
+#### 4. EarlyAdopterPool (627 ETH: 0x7623e9DC0DA6FF821ddb9EbABA794054E078f8c4)
+- claimReceiver = address(0)
+- claimingOpen = true but claim deadline passed
+- Funds stuck due to missing receiver configuration
+- **Status**: STUCK FUNDS - not exploitable
+
 ## Summary
 
-After comprehensive analysis of 468 contracts:
+After comprehensive analysis of 467 contracts:
 - **No immediately exploitable vulnerabilities found**
 - High-value contracts are either:
   - Well-audited with proper access controls
