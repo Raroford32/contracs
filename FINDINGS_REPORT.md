@@ -94,14 +94,44 @@ After comprehensive analysis:
 4. Curve reentrancy exists but requires specific victim protocol conditions
 5. No unprivileged drain vulnerabilities found
 
+## Additional High-Value Contracts Analyzed
+
+| Address | ETH Balance | Notes |
+|---------|-------------|-------|
+| 0x575cb87ab3c2329a0248c7d70e0ead8e57f3e3f7 | 191 ETH | Ahoolee Token Sale - Soft cap not reached, funds belong to contributors |
+| 0x8a909adc6c299cc4a206e730b15d2b97b0fbf0bd | 164 ETH | Unknown contract |
+| 0x00000000a8f806c754549943b6550a2594c9a126 | 138 ETH | Vanity address contract |
+| 0x766040000d000d735f67a8bfc7c84e9c24b1943b | 111 ETH | Unknown contract |
+| 0xc83355ef25a104938275b46cffd94bf9917d0691 | 85 ETH | Unknown contract |
+
+### Ahoolee Token Sale Deep Dive
+- **Soft Cap**: 3,030 ETH (NOT REACHED)
+- **Current Balance**: 191 ETH
+- **Status**: ICO failed - funds may be refundable to original contributors
+- **Exploit Potential**: NONE - refunds go to contributors, not attackers
+
 ## Recommended Further Investigation
 
 1. **Curve Reentrancy Victims**: Scan all Fraxlend, Abracadabra, and similar lending protocols for positions near liquidation that read Curve virtual_price
 2. **Stale Oracle Attacks**: Check protocols with Chainlink feeds that have long heartbeats
 3. **Governance Timelock Races**: Monitor for queued parameter changes that can be front-run
 4. **Cross-chain Bridge Analysis**: Check bridge contracts for stuck funds or validation issues
+5. **Empty Vault Monitoring**: Monitor the 2 empty vaults (anySPELL, unknown) for future deposits
 
 ## Test Execution
 
 All tests executed on Ethereum mainnet fork using Alchemy RPC.
 Fork timestamp: 2026-02-02
+
+## Summary
+
+After comprehensive analysis of 468 contracts:
+- **No immediately exploitable vulnerabilities found**
+- High-value contracts are either:
+  - Well-audited with proper access controls
+  - Have funds belonging to legitimate users (ICO contributors, depositors)
+  - Require specific conditions not currently present (liquidity, victim positions)
+- Most promising leads require:
+  - Finding lending protocols with liquidatable positions reading Curve virtual_price
+  - Monitoring for new deposits to empty vaults
+  - Waiting for oracle staleness windows
