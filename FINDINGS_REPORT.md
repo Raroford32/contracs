@@ -94,6 +94,31 @@ After comprehensive analysis:
 4. Curve reentrancy exists but requires specific victim protocol conditions
 5. No unprivileged drain vulnerabilities found
 
+## CRITICAL: Frozen Parity Wallets (1,312 ETH Total)
+
+### Parity Multisig Wallets - PERMANENTLY FROZEN
+These wallets delegate calls to the Parity WalletLibrary (0x863DF6BFa4469f3ead0bE8f9F2AAE51c91A907b4) which was self-destructed in November 2017.
+
+| Address | ETH Balance | Status |
+|---------|-------------|--------|
+| 0xc32050abAc7DbFef4FC8DC7b96D9617394cB4E1b | 340 ETH | FROZEN |
+| 0x7100c7cE94607EF68983F133cfD59Cc1833a115d | 327 ETH | FROZEN |
+| 0xa08C1134cDD73aD41889F7f914eCC4D3b30C1333 | 325 ETH | FROZEN |
+| 0x2F9f02F2ba99FF5c750f95Cf27D25352f71cd6A9 | 320 ETH | FROZEN |
+
+**Why isOwner() Returns True for Any Address:**
+- The wallets delegatecall to a destroyed contract
+- Delegatecall to empty code returns success with empty data
+- Empty data decoded as bool results in default value behavior
+- Result: Cannot execute transactions, funds permanently frozen
+
+**Attack Vectors Tested:**
+1. initWallet() - Returns success but no state change
+2. execute() - Returns success but no ETH transfer
+3. changeOwner() - Returns success but no effect
+4. kill() - Returns success but no selfdestruct
+5. All calls return success with no actual effect
+
 ## Additional High-Value Contracts Analyzed
 
 | Address | ETH Balance | Notes |
@@ -103,6 +128,9 @@ After comprehensive analysis:
 | 0x00000000a8f806c754549943b6550a2594c9a126 | 138 ETH | Vanity address contract |
 | 0x766040000d000d735f67a8bfc7c84e9c24b1943b | 111 ETH | Unknown contract |
 | 0xc83355ef25a104938275b46cffd94bf9917d0691 | 85 ETH | Unknown contract |
+| 0xa6450bcb9f58854f3fd5a997f5d93db40f3fa4e3 | 100 ETH | Empty code (0x) - selfdestructed |
+| 0xa0589b980cb3c2e153b7ac7dc7c01c2223d7c5d7 | 100 ETH | Token collector contract - owner protected |
+| 0xd64b1bf6fcab5add75041c89f61816c2b3d5e711 | 144 ETH | Guardian Registry - registration required |
 
 ### Ahoolee Token Sale Deep Dive
 - **Soft Cap**: 3,030 ETH (NOT REACHED)
