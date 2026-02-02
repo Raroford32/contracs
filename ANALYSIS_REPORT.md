@@ -105,13 +105,50 @@ Additional analysis performed on all contracts for ERC20 token holdings (USDT, U
 
 **Finding:** All high-value token-holding contracts are properly secured with access controls (governance, owners, multisig, or ZK proofs)
 
+### 8. Additional Frozen Parity Wallets (Session 2)
+
+Additional Parity wallets found using the killed library (0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4):
+
+| Address | Balance | Status |
+|---------|---------|--------|
+| 0x2f9f02f2ba99ff5c750f95cf27d25352f71cd6a9 | 320.00 ETH | **PERMANENTLY FROZEN** |
+| 0x7b6bce3cf38ee602030662fa24ac2ed5a32d0a02 | 146.45 ETH | **PERMANENTLY FROZEN** |
+
+**Updated Total Frozen (Parity killed library): ~1,459 ETH (~$3.6M)**
+
+### 9. Uninitialized Implementation Analysis
+
+| Proxy | Implementation | Balance | Status |
+|-------|---------------|---------|--------|
+| 0xf74bf048138a2b8f825eccabed9e02e481a0f6c0 | 0x0634ee9e5163389a04b3ff6c9b05de71c24c1916 | 291.71 ETH | See below |
+
+**Analysis:**
+- The implementation contract has `initialize(address)` function at selector `0xc4d66de8`
+- Implementation storage slot 0 = 0x0 (uninitialized)
+- Proxy storage slot 0 = 0x1 (initialized through delegatecall)
+- `eth_estimateGas` for initialize on implementation returns gas estimate (call would succeed)
+
+**Vulnerability Assessment:**
+- This is the classic "uninitialized implementation" vulnerability pattern
+- However, initializing the implementation does NOT give access to proxy funds
+- The proxy's ETH is controlled by proxy storage, not implementation storage
+- No accessible selfdestruct found that would let attacker steal funds
+- **Result: NOT EXPLOITABLE for fund theft**
+
+### 10. Defunct Exchange Contracts
+
+| Contract | Type | Balance | Status |
+|----------|------|---------|--------|
+| 0x728781E75735dc0962Df3a51d7Ef47E798A7107E | WolkExchange | 107.28 ETH | Exchange disabled, Bancor formula not set |
+
 ## Vulnerability Patterns Searched
 
-1. **Uninitialized Proxies** - All found proxies are initialized
-2. **Unprotected initialize()** - Tornado Cash initialized properly
-3. **Selfdestruct without access control** - None found
+1. **Uninitialized Proxies** - All found proxies have proxy initialized; one implementation uninitialized but not exploitable
+2. **Unprotected initialize()** - Tornado Cash initialized properly; one implementation can be initialized but doesn't help
+3. **Selfdestruct without access control** - None found; all require owner/multisig approval
 4. **Reentrancy in withdrawal** - CEI pattern used correctly
 5. **m_required = 0 Parity wallets** - Protected by tx.origin owner check
+6. **First depositor attacks** - No vulnerable vaults found (all have liquidity or protections)
 
 ## Key Technical Notes
 
@@ -140,8 +177,20 @@ The contracts in this list represent mature, battle-tested smart contract infras
 ---
 
 *Analysis completed: 2026-02-02*
-*Last updated: 2026-02-02*
+*Last updated: 2026-02-02 (Session 2)*
 *Total contracts analyzed: 468*
 *Total ETH in analyzed contracts: ~10,000+ ETH*
+*Total ETH frozen (Parity killed library): ~1,459 ETH*
 *Total ERC20 tokens in analyzed contracts: ~$3M+ (USDT, USDC)*
 *Exploitable vulnerabilities: 0*
+
+## Summary of Session 2 Analysis
+
+Continued comprehensive analysis looking for:
+1. Uninitialized proxy implementations - Found one, NOT exploitable
+2. Public selfdestruct functions - All protected by access controls
+3. Additional frozen Parity wallets - Found 2 more (~466 ETH)
+4. First depositor vulnerabilities in vaults - None found
+5. Defunct exchange contracts with stuck funds - Found but NOT exploitable
+
+**Conclusion remains: No economically feasible TIER_0-3 exploits available.**
