@@ -14,20 +14,35 @@ After comprehensive analysis of 468 contracts from contracts.txt, **no exploitab
 
 ## Contract Categories Analyzed
 
-### 1. Parity Multisig Proxies
+### 1a. Parity Multisig Proxies (ACTIVE - Library 0x273930d2)
 **Pattern:** `0x3660008037602060003660003473273930d21e01ee25e4c219b63259d214872220a261235a5a03f21560015760206000f3`
-**Library:** `0x273930d21e01ee25e4c219b63259d214872220a2`
+**Library:** `0x273930d21e01ee25e4c219b63259d214872220a2` (still has code)
 
 | Address | Balance | m_required | m_numOwners | Status |
 |---------|---------|------------|-------------|--------|
-| 0xa08c1134cdd73ad41889f7f914ecc4d3b30c1333 | 325.20 ETH | 3 | 6 | SECURE (3-of-6) |
-| 0xc32050abac7dbfef4fc8dc7b96d9617394cb4e1b | 340.22 ETH | 3 | 6 | SECURE (3-of-6) |
-| 0x7100c7ce94607ef68983f133cfd59cc1833a115d | 327.53 ETH | 3 | 6 | SECURE (3-of-6) |
 | 0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e | 300.99 ETH | 0 | 2 | Misconfigured but owner-protected |
 | 0x4615cc10092b514258577dafca98c142577f1578 | 232.60 ETH | 0 | 2 | Misconfigured but owner-protected |
 | 0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8 | 159.85 ETH | 0 | 2 | Misconfigured but owner-protected |
 
 **Finding:** Some wallets have `m_required = 0` which means any single owner can execute without additional confirmations. However, **tx.origin owner check still applies** - non-owners cannot exploit.
+
+### 1b. Parity Multisig Proxies (FROZEN - Library 0x863df6bf killed)
+**Pattern:** Uses killed library `0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4`
+**Library Status:** SELF-DESTRUCTED (devops199 incident, November 2017)
+
+| Address | Balance | Status |
+|---------|---------|--------|
+| 0xc32050abac7dbfef4fc8dc7b96d9617394cb4e1b | 340.23 ETH | **PERMANENTLY FROZEN** |
+| 0x7100c7ce94607ef68983f133cfd59cc1833a115d | 327.54 ETH | **PERMANENTLY FROZEN** |
+| 0xa08c1134cdd73ad41889f7f914ecc4d3b30c1333 | 325.20 ETH | **PERMANENTLY FROZEN** |
+
+**Total Frozen: ~993 ETH (~$2.5M)**
+
+**Technical Analysis:**
+- DELEGATECALL to dead library (0 bytes code) returns success but performs no state changes
+- Functions appear to work but cannot actually move funds
+- Funds are not exploitable - they are permanently lost
+- This is the famous "Parity Wallet Bug" that froze hundreds of millions in 2017
 
 ### 2. BitGo WalletSimple Proxies
 **Pattern:** `0x366000803760206000366000735b9e8728e316bbeb692d22daaab74f6cbf2c46916102c65a03f41515602d57fe5b60206000f3`
@@ -80,6 +95,7 @@ Additional analysis performed on all contracts for ERC20 token holdings (USDT, U
 | 0x953c32158602e9690c6e86b94b230b5951b51a73 | ~$250k USDC | Vesting contract | Recipient-controlled |
 | 0x4a14347083b80e5216ca31350a2d21702ac3650d | ~$239k USDT/USDC | AMMWrapperWithPath | Owner-controlled |
 | 0x6fcbbb527fb2954bed2b224a5bb7c23c5aeeb6e1 | ~$229k USDC | oneETH protocol | Owner-controlled |
+| 0x8fb1a35bb6fb9c47fb5065be5062cb8dc1687669 | ~$315k USDC/USDT | SKALE DepositBoxERC20 | RBAC + MessageProxy |
 | 0x4b04b829d4e6803ff7ad7c87ea3a0e453d379da7 | ~$214k USDC | POA Bridge proxy | Owner-controlled |
 | 0xaedcfcdd80573c2a312d15d6bb9d921a01e4fb0f | ~$207k USDC | Token contract | Owner-controlled |
 | 0x00f003831861ddb87fa2f60cce497836067c2f03 | ~$127k USDC | MultiSig Wallet | Multi-owner required |
