@@ -1,0 +1,38 @@
+[
+  {
+    "address": "0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e",
+    "balance_eth": 300.99
+  },
+  {
+    "address": "0x3885b0c18e3c4ab0ca2b8dc99771944404687628",
+    "balance_eth": 250.0
+  },
+  {
+    "address": "0x4615cc10092b514258577dafca98c142577f1578",
+    "balance_eth": 232.6
+  },
+  {
+    "address": "0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8",
+    "balance_eth": 159.85102609
+  },
+  {
+    "address": "0x379add715d9fb53a79e6879653b60f12cc75bcaf",
+    "balance_eth": 131.76093746
+  },
+  {
+    "address": "0xb39036a09865236d67875f6fd391e597b4c8425d",
+    "balance_eth": 121.64977800104758
+  },
+  {
+    "address": "0x58174e9b3178074f83888b6147c1a7d2ced85c6f",
+    "balance_eth": 119.93
+  },
+  {
+    "address": "0xfcbcd2da9efa379c7d3352ffd3d5877cc088cbba",
+    "balance_eth": 123.03415765999999
+  },
+  {
+    "address": "0x98669654f4ab5ccede76766ad19bdfe230f96c65",
+    "balance_eth": 101.13797437
+  }
+]
