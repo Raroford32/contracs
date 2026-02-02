@@ -67,6 +67,28 @@ Multiple addresses in the list are externally owned accounts (no bytecode), not 
 - 0x52a5dbcc9755de4dcc52afb25b3923287a18ea26 (100 ETH)
 - And many others
 
+### 7. ERC20 Token Holdings Analysis
+
+Additional analysis performed on all contracts for ERC20 token holdings (USDT, USDC, DAI, WETH):
+
+| Contract | Token Holdings | Type | Status |
+|----------|---------------|------|--------|
+| 0x3666f603cc164936c1b87e207f36beba4ac5f18a | ~$538k USDC | Hop L1_ERC20_Bridge | Governance-controlled |
+| 0xa38b6742cef9573f7f97c387278fa31482539c3d | ~$400k USDT | CycloneV2dot3 (mixer) | ZK proof required |
+| 0x1180c114f7fadcb6957670432a3cf8ef08ab5354 | ~$304k USDT | iTokenV2BLP proxy | Owner-controlled |
+| 0x7ea2be2df7ba6e54b1a9c70676f668455e329d29 | ~$252k USDC | AnySwap anyUSDC | Vault-controlled |
+| 0x953c32158602e9690c6e86b94b230b5951b51a73 | ~$250k USDC | Vesting contract | Recipient-controlled |
+| 0x4a14347083b80e5216ca31350a2d21702ac3650d | ~$239k USDT/USDC | AMMWrapperWithPath | Owner-controlled |
+| 0x6fcbbb527fb2954bed2b224a5bb7c23c5aeeb6e1 | ~$229k USDC | oneETH protocol | Owner-controlled |
+| 0x4b04b829d4e6803ff7ad7c87ea3a0e453d379da7 | ~$214k USDC | POA Bridge proxy | Owner-controlled |
+| 0xaedcfcdd80573c2a312d15d6bb9d921a01e4fb0f | ~$207k USDC | Token contract | Owner-controlled |
+| 0x00f003831861ddb87fa2f60cce497836067c2f03 | ~$127k USDC | MultiSig Wallet | Multi-owner required |
+| 0xa264607aa3169061f671ec4f2bdbdca8a6b71bb1 | ~$117k USDC | MultiSig Wallet | Multi-owner required |
+| 0x040007b1804ad78a97f541bebed377dcb60e4138 | ~$103k USDT | Gnosis Safe | 3-of-3 multisig |
+| 0xb46b23c6723cf16c3c30dec5f7762c5aa74771d0 | ~$102k USDC | Gnosis MultiSigWallet | Multi-owner required |
+
+**Finding:** All high-value token-holding contracts are properly secured with access controls (governance, owners, multisig, or ZK proofs)
+
 ## Vulnerability Patterns Searched
 
 1. **Uninitialized Proxies** - All found proxies are initialized
@@ -102,6 +124,8 @@ The contracts in this list represent mature, battle-tested smart contract infras
 ---
 
 *Analysis completed: 2026-02-02*
+*Last updated: 2026-02-02*
 *Total contracts analyzed: 468*
 *Total ETH in analyzed contracts: ~10,000+ ETH*
+*Total ERC20 tokens in analyzed contracts: ~$3M+ (USDT, USDC)*
 *Exploitable vulnerabilities: 0*
