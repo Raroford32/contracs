@@ -241,3 +241,70 @@ After exhaustive analysis of 467 contracts from contracts.txt:
 **VERDICT: NO EXPLOITABLE VULNERABILITIES FOUND**
 
 All analyzed contracts either have proper access controls, or their funds belong to legitimate users and cannot be extracted by unprivileged attackers.
+
+## Comprehensive Token Balance Analysis (February 2026)
+
+### Highest Value Token Holdings
+
+| Contract | WETH | USDC | USDT | Other Tokens | Status |
+|----------|------|------|------|--------------|--------|
+| 0xd3d13a578... (TokemakWethPool) | 280 WETH | - | 9.9K | - | SECURE - Tokemak protocol |
+| 0x4a14347083... (Tokenlon DEX) | 127 WETH | 3.7K | 234K | CRV, CVX, LDO, etc | SECURE - DEX aggregator |
+| 0xf92cd566ea... (Wormhole Bridge) | 53.5 WETH | 6.4K | 469 | UNI, AAVE, YFI | SECURE - Wormhole protocol |
+| 0x4547a86ca6... (Staking Rewards) | 144 WETH | - | - | - | FROZEN - owner renounced |
+| 0xb9812e2fa9... (DSProxy) | 113 WETH | - | - | 3.8 MKR | SECURE - EOA owned |
+| 0xc8c1b41713... (DeFi Wallet) | 91.6 WETH | 4K | 26K | CVX, AAVE, YFI | SECURE - EOA owned |
+| 0x3ef1c8133d... (Meta-Tx Relayer) | 125 WETH | - | - | - | SECURE - EOA controller |
+| 0xd8ee69652e... (DeFi Portfolio) | 111 WETH | 2.1K | 3.8K | wstETH, AAVE, UNI | SECURE - Timelock owner |
+
+### Merkle Distributor Contracts (Unclaimed Airdrops)
+
+| Contract | Token | Balance | Status |
+|----------|-------|---------|--------|
+| 0x4ee7c0f548... | 1INCH | 3.69M tokens | SECURE - Merkle proofs required |
+| 0xa0446d8804... | 1INCH | 5.34M tokens | SECURE - st1INCH staking |
+| 0xe295ad7124... | 1INCH | 6.25M tokens | SECURE - Merkle proofs required |
+| 0x67e0eb8557... | WETH | 119.9 WETH | SECURE - EOA owned, merkle proofs |
+
+### CRV/CVX Holdings (Curve/Convex Ecosystem)
+
+| Contract | CRV Balance | CVX Balance | Status |
+|----------|-------------|-------------|--------|
+| 0xa1e72267084... | 26,449 CRV | - | SECURE - DSProxy owned |
+| 0x3ba207c25a... | 14,102 CRV | 663 CVX | SECURE - EOA owned |
+| 0xa6d4462a24... | 1,895 CRV | - | SECURE - Wallet with diversified holdings |
+
+### Staking Contracts with Stuck Rewards
+
+| Contract | Stuck WETH | Reason | Status |
+|----------|------------|--------|--------|
+| 0x4547a86ca6... | 144 WETH | Owner renounced to 0x0, rewardDistribution = 0x0 | PERMANENTLY FROZEN |
+
+### Summary
+
+After scanning 467 contracts for token balances across 20+ major tokens:
+
+**Total Token Value Identified**:
+- ~2,000+ WETH (~$7M at $3,500/ETH)
+- ~15M+ 1INCH tokens (~$6M at $0.40)
+- ~40,000+ CRV tokens (~$40K)
+- ~1,000+ CVX tokens (~$5K)
+- Various stablecoins and governance tokens
+
+**Protection Mechanisms Found**:
+1. **Merkle Distributors**: All airdrop contracts require valid merkle proofs
+2. **Timelocks**: DeFi protocol funds protected by governance timelocks
+3. **Multisigs**: Multiple signature requirements (2/3, 3/5, etc.)
+4. **DSProxies**: All owned by EOAs or Gnosis Safes
+5. **Protocol Contracts**: Proper access control on all sweep/withdraw functions
+
+**Final Conclusion**:
+After comprehensive analysis of all 467 contracts including ETH balances, token balances, LP positions, and protocol-specific assets:
+
+**NO EXPLOITABLE VULNERABILITIES FOUND**
+
+All identified funds are either:
+- Properly protected by access controls
+- Require valid cryptographic proofs (merkle, signatures)
+- Belong to legitimate users (depositors, stakers)
+- Permanently frozen due to destroyed contracts/renounced ownership
