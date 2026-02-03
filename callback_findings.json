@@ -1,0 +1,64 @@
+[
+  {
+    "address": "0x63658cc84a5b2b969b8df9bea129a1c933e1439f",
+    "name": "kleee002",
+    "balance": 159.4217151867783,
+    "score": 5,
+    "vulnerabilities": [
+      "ERC721_CALLBACK_NO_GUARD",
+      "CEI_VIOLATION"
+    ],
+    "has_reentrancy_guard": false
+  },
+  {
+    "address": "0x5e8353930b557a524ff92eace9b87d82f9793124",
+    "name": "ProjectINK",
+    "balance": 95.55,
+    "score": 5,
+    "vulnerabilities": [
+      "ERC721_CALLBACK_NO_GUARD",
+      "CEI_VIOLATION"
+    ],
+    "has_reentrancy_guard": false
+  },
+  {
+    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
+    "name": "KeepBonding",
+    "balance": 234.41869567489303,
+    "score": 3,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ],
+    "has_reentrancy_guard": false
+  },
+  {
+    "address": "0xe40e1531a4b56fb65571ad2ca43dc0048a316a2d",
+    "name": "EthPrime",
+    "balance": 106.88587473225041,
+    "score": 3,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ],
+    "has_reentrancy_guard": false
+  },
+  {
+    "address": "0xe14ab3ee81abe340b45bb26b1b166a7d2df22585",
+    "name": "TweetMarket",
+    "balance": 105.50549964000001,
+    "score": 3,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ],
+    "has_reentrancy_guard": false
+  },
+  {
+    "address": "0x2af47a65da8cd66729b4209c22017d6a5c2d2400",
+    "name": "StandardBounties",
+    "balance": 90.37330410000001,
+    "score": 3,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ],
+    "has_reentrancy_guard": false
+  }
+]

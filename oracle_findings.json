@@ -1,0 +1,74 @@
+[
+  {
+    "address": "0x0337184a497565a9bd8e300dad50270cd367f206",
+    "name": "DynamicLiquidTokenConverter",
+    "balance": 83.58542487151293,
+    "score": 7,
+    "vulnerabilities": [
+      "LENDING_LOGIC",
+      "CHAINLINK_NO_STALENESS",
+      "PRICE_IN_CRITICAL_OP"
+    ]
+  },
+  {
+    "address": "0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd",
+    "name": "CEther",
+    "balance": 313.7111288170323,
+    "score": 5,
+    "vulnerabilities": [
+      "LENDING_LOGIC",
+      "PRICE_IN_CRITICAL_OP"
+    ]
+  },
+  {
+    "address": "0xa7d9e842efb252389d613da88eda3731512e40bd",
+    "name": "BondedECDSAKeepFactory",
+    "balance": 258.55693381135933,
+    "score": 5,
+    "vulnerabilities": [
+      "LENDING_LOGIC",
+      "PRICE_IN_CRITICAL_OP"
+    ]
+  },
+  {
+    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
+    "name": "KeepBonding",
+    "balance": 234.41869567489303,
+    "score": 5,
+    "vulnerabilities": [
+      "LENDING_LOGIC",
+      "PRICE_IN_CRITICAL_OP"
+    ]
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "name": "SavingAccount",
+    "balance": 129.1901,
+    "score": 5,
+    "vulnerabilities": [
+      "LENDING_LOGIC",
+      "PRICE_IN_CRITICAL_OP"
+    ]
+  },
+  {
+    "address": "0x728781e75735dc0962df3a51d7ef47e798a7107e",
+    "name": "WolkExchange",
+    "balance": 107.27511923040001,
+    "score": 5,
+    "vulnerabilities": [
+      "LENDING_LOGIC",
+      "PRICE_IN_CRITICAL_OP"
+    ]
+  },
+  {
+    "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+    "name": "KyberFeeHandler",
+    "balance": 88.9310933897544,
+    "score": 5,
+    "vulnerabilities": [
+      "CHAINLINK_NO_STALENESS",
+      "PRICE_IN_CRITICAL_OP",
+      "NO_DEADLINE_CHECK"
+    ]
+  }
+]
