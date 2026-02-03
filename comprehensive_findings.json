@@ -1,0 +1,147 @@
+{
+  "proxy_vulnerabilities": [
+    {
+      "type": "UNINITIALIZED_IMPL",
+      "proxy": "0xf74bf048138a2b8f825eccabed9e02e481a0f6c0",
+      "implementation": "0x0634ee9e5163389a04b3ff6c9b05de71c24c1916",
+      "balance": 291.70891188717667,
+      "callable_function": "initialize(address)",
+      "gas": 181484
+    }
+  ],
+  "access_control_issues": [
+    {
+      "type": "CALLABLE_ADMIN_FUNCTION",
+      "address": "0x7cd5e2d0056a7a7f09cbb86e540ef4f6dccc97dd",
+      "balance": 175.50723329251352,
+      "function": "setOwner(address)",
+      "gas": 26876
+    },
+    {
+      "type": "CALLABLE_ADMIN_FUNCTION",
+      "address": "0xc249c0fc4f7283d4a58c57d8fb0cf5f126ae4ead",
+      "balance": 150.0,
+      "function": "setOwner(address)",
+      "gas": 23466
+    },
+    {
+      "type": "CALLABLE_ADMIN_FUNCTION",
+      "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+      "balance": 129.1901,
+      "function": "setOwner(address)",
+      "gas": 21676
+    },
+    {
+      "type": "CALLABLE_ADMIN_FUNCTION",
+      "address": "0xd76b5c2a23ef78368d8e34288b5b65d616b746ae",
+      "balance": 94.8982975827056,
+      "function": "setOwner(address)",
+      "gas": 29950
+    },
+    {
+      "type": "CALLABLE_ADMIN_FUNCTION",
+      "address": "0xc83355ef25a104938275b46cffd94bf9917d0691",
+      "balance": 84.95790169864813,
+      "function": "setOwner(address)",
+      "gas": 48245
+    }
+  ],
+  "dangerous_patterns": [
+    {
+      "type": "DELEGATECALL_PARAM",
+      "address": "0xf74bf048138a2b8f825eccabed9e02e481a0f6c0",
+      "balance": 291.70891188717667,
+      "contract_name": "AdminUpgradeabilityProxy"
+    },
+    {
+      "type": "UNPROTECTED_ETH_SEND",
+      "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+      "balance": 284.258,
+      "contract_name": "SuperBunnies"
+    },
+    {
+      "type": "TX_ORIGIN",
+      "address": "0xd48b633045af65ff636f3c6edd744748351e020d",
+      "balance": 280.84989362438404,
+      "contract_name": "Zethr"
+    },
+    {
+      "type": "UNPROTECTED_ETH_SEND",
+      "address": "0x8754f54074400ce745a7ceddc928fb1b7e985ed6",
+      "balance": 215.17824,
+      "contract_name": "EulerBeats"
+    },
+    {
+      "type": "UNPROTECTED_ETH_SEND",
+      "address": "0xbd3af18e0b7ebb30d49b253ab00788b92604552c",
+      "balance": 205.84510170503032,
+      "contract_name": "HashesDAO"
+    },
+    {
+      "type": "SELFDESTRUCT",
+      "address": "0xb9fbe1315824a466d05df4882ffac592ce9c009a",
+      "balance": 200.0,
+      "contract_name": "InstantListingV2"
+    },
+    {
+      "type": "DELEGATECALL_PARAM",
+      "address": "0x894f3a40ab8051b350f85b3edeb7c7b83fcb6dac",
+      "balance": 50.59252919169366,
+      "contract_name": "AdminUpgradeabilityProxy"
+    },
+    {
+      "type": "TX_ORIGIN",
+      "address": "0xb9ab8eed48852de901c13543042204c6c569b811",
+      "balance": 116.07838376102912,
+      "contract_name": "Zethr"
+    },
+    {
+      "type": "TX_ORIGIN",
+      "address": "0xe01e2a3ceafa8233021fc759e5a69863558326b6",
+      "balance": 105.49299604301721,
+      "contract_name": "EKS"
+    },
+    {
+      "type": "UNPROTECTED_ETH_SEND",
+      "address": "0xe14ab3ee81abe340b45bb26b1b166a7d2df22585",
+      "balance": 105.50549964000001,
+      "contract_name": "TweetMarket"
+    },
+    {
+      "type": "DELEGATECALL_PARAM",
+      "address": "0xb8ff313d33b0e841b6b83243f6e2935166de87c1",
+      "balance": 101.0295,
+      "contract_name": "AdminUpgradeabilityProxy"
+    },
+    {
+      "type": "TX_ORIGIN",
+      "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+      "balance": 88.9310933897544,
+      "contract_name": "KyberFeeHandler"
+    },
+    {
+      "type": "UNPROTECTED_ETH_SEND",
+      "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+      "balance": 88.9310933897544,
+      "contract_name": "KyberFeeHandler"
+    },
+    {
+      "type": "UNPROTECTED_ETH_SEND",
+      "address": "0xab37e1358b639fd877f015027bb62d3ddaa7557e",
+      "balance": 88.85487669516216,
+      "contract_name": "LienToken"
+    },
+    {
+      "type": "DELEGATECALL_PARAM",
+      "address": "0x27a94869341838d5783368a8503fda5fbcd7987c",
+      "balance": 84.25132700942187,
+      "contract_name": "AdminUpgradeabilityProxy"
+    },
+    {
+      "type": "SELFDESTRUCT",
+      "address": "0x93519cc1a51ac56cf2daa8aaafcd4073f49a19d8",
+      "balance": 81.14424602591906,
+      "contract_name": "VLBRefundVault"
+    }
+  ]
+}

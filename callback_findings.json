@@ -1,64 +1,58 @@
 [
   {
-    "address": "0x63658cc84a5b2b969b8df9bea129a1c933e1439f",
-    "name": "kleee002",
-    "balance": 159.4217151867783,
-    "score": 5,
-    "vulnerabilities": [
-      "ERC721_CALLBACK_NO_GUARD",
-      "CEI_VIOLATION"
-    ],
-    "has_reentrancy_guard": false
-  },
-  {
-    "address": "0x5e8353930b557a524ff92eace9b87d82f9793124",
-    "name": "ProjectINK",
-    "balance": 95.55,
-    "score": 5,
-    "vulnerabilities": [
-      "ERC721_CALLBACK_NO_GUARD",
-      "CEI_VIOLATION"
-    ],
-    "has_reentrancy_guard": false
-  },
-  {
-    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
-    "name": "KeepBonding",
-    "balance": 234.41869567489303,
-    "score": 3,
-    "vulnerabilities": [
-      "CEI_VIOLATION"
-    ],
-    "has_reentrancy_guard": false
-  },
-  {
-    "address": "0xe40e1531a4b56fb65571ad2ca43dc0048a316a2d",
-    "name": "EthPrime",
-    "balance": 106.88587473225041,
-    "score": 3,
-    "vulnerabilities": [
-      "CEI_VIOLATION"
-    ],
-    "has_reentrancy_guard": false
-  },
-  {
-    "address": "0xe14ab3ee81abe340b45bb26b1b166a7d2df22585",
-    "name": "TweetMarket",
-    "balance": 105.50549964000001,
-    "score": 3,
-    "vulnerabilities": [
-      "CEI_VIOLATION"
-    ],
-    "has_reentrancy_guard": false
-  },
-  {
-    "address": "0x2af47a65da8cd66729b4209c22017d6a5c2d2400",
-    "name": "StandardBounties",
-    "balance": 90.37330410000001,
-    "score": 3,
-    "vulnerabilities": [
-      "CEI_VIOLATION"
-    ],
-    "has_reentrancy_guard": false
+    "address": "0x00000000a8f806c754549943b6550a2594c9a126",
+    "balance": 138.24,
+    "callbacks": [
+      {
+        "name": "onFlashLoan",
+        "selector": "0x23e30c8b",
+        "gas": 22775
+      },
+      {
+        "name": "executeOperation",
+        "selector": "0x920f5c84",
+        "gas": 22775
+      },
+      {
+        "name": "uniswapV2Call",
+        "selector": "0x10d1e85c",
+        "gas": 22775
+      },
+      {
+        "name": "uniswapV3SwapCallback",
+        "selector": "0xfa461e33",
+        "gas": 22775
+      },
+      {
+        "name": "uniswapV3FlashCallback",
+        "selector": "0xe9cbafb0",
+        "gas": 22775
+      },
+      {
+        "name": "onERC721Received",
+        "selector": "0x150b7a02",
+        "gas": 22775
+      },
+      {
+        "name": "onERC1155Received",
+        "selector": "0xf23a6e61",
+        "gas": 22775
+      },
+      {
+        "name": "onERC1155BatchReceived",
+        "selector": "0xbc197c81",
+        "gas": 22775
+      },
+      {
+        "name": "tokensReceived",
+        "selector": "0x0023de29",
+        "gas": 24556
+      },
+      {
+        "name": "tokensToSend",
+        "selector": "0x75ab9782",
+        "gas": 22775
+      }
+    ]
   }
 ]
