@@ -1,0 +1,316 @@
+[
+  {
+    "address": "0xab37e1358b639fd877f015027bb62d3ddaa7557e",
+    "name": "LienToken",
+    "balance": 88.85487669516216,
+    "compiler": "v0.6.5+commit.f956cc89",
+    "risk_score": 8,
+    "vectors": {
+      "empty_state_risk": true,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY",
+        "NO_REENTRANCY_GUARD"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [
+        "ERC721_CALLBACK"
+      ],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": true
+  },
+  {
+    "address": "0x373c55c277b866a69dc047cad488154ab9759466",
+    "name": "EtherDelta",
+    "balance": 123.35974613091852,
+    "compiler": "v0.4.2+commit.af6afb04",
+    "risk_score": 7,
+    "vectors": {
+      "empty_state_risk": true,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY",
+        "NO_REENTRANCY_GUARD"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": true
+  },
+  {
+    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
+    "name": "KeepBonding",
+    "balance": 234.41869567489303,
+    "compiler": "v0.5.17+commit.d19bba13",
+    "risk_score": 5,
+    "vectors": {
+      "empty_state_risk": true,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": true
+  },
+  {
+    "address": "0x4aea7cf559f67cedcad07e12ae6bc00f07e8cf65",
+    "name": "EtherDelta",
+    "balance": 221.10981188060785,
+    "compiler": "v0.3.6-2016-08-29-b8060c5",
+    "risk_score": 5,
+    "vectors": {
+      "empty_state_risk": true,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "NO_REENTRANCY_GUARD"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": true
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "name": "SavingAccount",
+    "balance": 129.1901,
+    "compiler": "v0.5.17+commit.d19bba13",
+    "risk_score": 5,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY",
+        "NO_REENTRANCY_GUARD"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": [
+        "INFINITE_APPROVAL"
+      ]
+    },
+    "requires_deep_dive": true
+  },
+  {
+    "address": "0xd2bfceeab8ffa24cdf94faa2683df63df4bcbdc8",
+    "name": "DailyDivs",
+    "balance": 109.78051965458351,
+    "compiler": "v0.4.21+commit.dfe3193c",
+    "risk_score": 4,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY",
+        "NO_REENTRANCY_GUARD"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": true
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "name": "SuperBunnies",
+    "balance": 284.258,
+    "compiler": "v0.8.4+commit.c7e474f2",
+    "risk_score": 3,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [
+        "ERC721_CALLBACK"
+      ],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0xa7d9e842efb252389d613da88eda3731512e40bd",
+    "name": "BondedECDSAKeepFactory",
+    "balance": 258.55693381135933,
+    "compiler": "v0.5.17+commit.d19bba13",
+    "risk_score": 3,
+    "vectors": {
+      "empty_state_risk": true,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0x24f0bb6c9b2c3db66603fa0ec07ab0cf55cdd387",
+    "name": "Holder",
+    "balance": 174.67540025157058,
+    "compiler": "v0.5.10+commit.5a6ea5b1",
+    "risk_score": 3,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": [
+        "INFINITE_APPROVAL"
+      ]
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0x8754f54074400ce745a7ceddc928fb1b7e985ed6",
+    "name": "EulerBeats",
+    "balance": 215.17824,
+    "compiler": "v0.7.6+commit.7338295f",
+    "risk_score": 2,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0x7488451db91df618759b8af15e36f70c0fdd529e",
+    "name": "XifraICO2",
+    "balance": 193.59078321018708,
+    "compiler": "v0.8.7+commit.e28d00a7",
+    "risk_score": 2,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [
+        "STALE_PRICE_RISK"
+      ],
+      "reentrancy_vectors": [],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0x0ad3227eb47597b566ec138b3afd78cfea752de5",
+    "name": "FoMo3Dshort",
+    "balance": 136.76585920704989,
+    "compiler": "v0.4.24+commit.e67f0147",
+    "risk_score": 2,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "NO_REENTRANCY_GUARD"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0xe40e1531a4b56fb65571ad2ca43dc0048a316a2d",
+    "name": "EthPrime",
+    "balance": 106.88587473225041,
+    "compiler": "v0.5.13+commit.5b0b510c",
+    "risk_score": 2,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "NO_REENTRANCY_GUARD"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0x0337184a497565a9bd8e300dad50270cd367f206",
+    "name": "DynamicLiquidTokenConverter",
+    "balance": 83.58542487151293,
+    "compiler": "v0.6.12+commit.27d51765",
+    "risk_score": 2,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [
+        "READ_ONLY_REENTRANCY"
+      ],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": []
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0xe9778e69a961e64d3cdbb34cf6778281d34667c2",
+    "name": "WorkLock",
+    "balance": 291.18849756756055,
+    "compiler": "v0.7.0+commit.9e61f92b",
+    "risk_score": 1,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": [
+        "UNCHECKED_MATH_OLD"
+      ]
+    },
+    "requires_deep_dive": false
+  },
+  {
+    "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+    "name": "KyberFeeHandler",
+    "balance": 88.9310933897544,
+    "compiler": "v0.6.6+commit.6c089d02",
+    "risk_score": 1,
+    "vectors": {
+      "empty_state_risk": false,
+      "oracle_vectors": [],
+      "reentrancy_vectors": [],
+      "flash_loan_vectors": [],
+      "share_calc_issues": [],
+      "composition_risks": [],
+      "arithmetic_risks": [
+        "INFINITE_APPROVAL"
+      ]
+    },
+    "requires_deep_dive": false
+  }
+]
