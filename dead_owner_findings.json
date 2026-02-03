@@ -1,0 +1,626 @@
+[
+  {
+    "address": "0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e",
+    "balance": 300.99,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e",
+    "balance": 300.99,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e",
+    "balance": 300.99,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e",
+    "balance": 300.99,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e",
+    "balance": 300.99,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xb54ca24ac19098db42454c8ee8df67d260a22b1e",
+    "balance": 300.01,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xc9c974455b685f4b6355a8a29549b79e30d5f6a6"
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "balance": 284.258,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xd40135df587ab99282a52b17f5d73269e650942f"
+  },
+  {
+    "address": "0xe9778e69a961e64d3cdbb34cf6778281d34667c2",
+    "balance": 291.18849756756055,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xeba17f35955e057a8d2e74bd4638528851d8e063"
+  },
+  {
+    "address": "0x9149c59f087e891b659481ed665768a57247c79e",
+    "balance": 196.95138025213527,
+    "issue": "DEAD_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0xef94021f4a93fdddc1c93425f89a25383f8ec8a7"
+  },
+  {
+    "address": "0x3885b0c18e3c4ab0ca2b8dc99771944404687628",
+    "balance": 250.0,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3885b0c18e3c4ab0ca2b8dc99771944404687628",
+    "balance": 250.0,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3885b0c18e3c4ab0ca2b8dc99771944404687628",
+    "balance": 250.0,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3885b0c18e3c4ab0ca2b8dc99771944404687628",
+    "balance": 250.0,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3885b0c18e3c4ab0ca2b8dc99771944404687628",
+    "balance": 250.0,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x2af47a65da8cd66729b4209c22017d6a5c2d2400",
+    "balance": 90.37330410000001,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xbfdb50dc66c8df9fd9688d8fe5a0c34126427645"
+  },
+  {
+    "address": "0x4615cc10092b514258577dafca98c142577f1578",
+    "balance": 232.6,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x4615cc10092b514258577dafca98c142577f1578",
+    "balance": 232.6,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x4615cc10092b514258577dafca98c142577f1578",
+    "balance": 232.6,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x4615cc10092b514258577dafca98c142577f1578",
+    "balance": 232.6,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x4615cc10092b514258577dafca98c142577f1578",
+    "balance": 232.6,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x5eee354e36ac51e9d3f7283005cab0c55f423b23",
+    "balance": 216.28939827805053,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x075af08596c26a81384e1f06757f96c96bb1e896",
+    "balance": 212.38311939111483,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xecba1d33b889f66ad426535f970d1e033ba5c79c"
+  },
+  {
+    "address": "0x3907acb4c1818adf72d965c08e0a79af16e7ffb8",
+    "balance": 94.98658864000002,
+    "issue": "DEAD_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x3d2599bb55de29a1039ec6cd8e7e2c9fd506892d"
+  },
+  {
+    "address": "0xbd3af18e0b7ebb30d49b253ab00788b92604552c",
+    "balance": 205.84510170503032,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xee1ddffcb15c00911d0f78c1a1c75c79b77c5d66"
+  },
+  {
+    "address": "0xb9fbe1315824a466d05df4882ffac592ce9c009a",
+    "balance": 200.0,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x39e951f197b9f4c704f7290ce7accad0b5e607e4"
+  },
+  {
+    "address": "0x575cb87ab3c2329a0248c7d70e0ead8e57f3e3f7",
+    "balance": 191.50951842732306,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xddbc86c2e739ce2f8e3865ede799a239336a2db1"
+  },
+  {
+    "address": "0x575cb87ab3c2329a0248c7d70e0ead8e57f3e3f7",
+    "balance": 191.50951842732306,
+    "issue": "EXPIRED_LOCK",
+    "lock_func": "endTime()",
+    "lock_time": 1505113200,
+    "expired_ago": 265010622
+  },
+  {
+    "address": "0x7cd5e2d0056a7a7f09cbb86e540ef4f6dccc97dd",
+    "balance": 175.50723329251352,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x38138586aedb29b436eab16105b09c317f5a79dd"
+  },
+  {
+    "address": "0xe29bbc8fcd866dfff36dcac6b006a3a97adba9c9",
+    "balance": 170.11294464936435,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x8a970573f88dbc7b69dfed2ba193c98c2d5d8314"
+  },
+  {
+    "address": "0x63658cc84a5b2b969b8df9bea129a1c933e1439f",
+    "balance": 159.4217151867783,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xaf72b21bf629275e90804d765a44b825bc758da9"
+  },
+  {
+    "address": "0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8",
+    "balance": 159.85102609,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8",
+    "balance": 159.85102609,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8",
+    "balance": 159.85102609,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8",
+    "balance": 159.85102609,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8",
+    "balance": 159.85102609,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3acad81bf4d1b80982cc656ca86231d49f8ba9dd",
+    "balance": 60.85438508143108,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3acad81bf4d1b80982cc656ca86231d49f8ba9dd",
+    "balance": 60.85438508143108,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3acad81bf4d1b80982cc656ca86231d49f8ba9dd",
+    "balance": 60.85438508143108,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3acad81bf4d1b80982cc656ca86231d49f8ba9dd",
+    "balance": 60.85438508143108,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x3acad81bf4d1b80982cc656ca86231d49f8ba9dd",
+    "balance": 60.85438508143108,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xc249c0fc4f7283d4a58c57d8fb0cf5f126ae4ead",
+    "balance": 150.0,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x5d497982326f641e0b374585ff7c1c1be9878560"
+  },
+  {
+    "address": "0xc249c0fc4f7283d4a58c57d8fb0cf5f126ae4ead",
+    "balance": 150.0,
+    "issue": "DEAD_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x6c7462ab30dd59e1b3f56c8902984bf0cebdc8fc"
+  },
+  {
+    "address": "0xc7c9b856d33651cc2bcd9e0099efa85f59f78302",
+    "balance": 150.36269586522045,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xfe2d982f5b8f7281dd665f153a1b9f5bd64645e7"
+  },
+  {
+    "address": "0x2829435522c1f3711ae14ed20b2345dc2fe891f4",
+    "balance": 150.48106109,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x2829435522c1f3711ae14ed20b2345dc2fe891f4",
+    "balance": 150.48106109,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x2829435522c1f3711ae14ed20b2345dc2fe891f4",
+    "balance": 150.48106109,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x2829435522c1f3711ae14ed20b2345dc2fe891f4",
+    "balance": 150.48106109,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x2829435522c1f3711ae14ed20b2345dc2fe891f4",
+    "balance": 150.48106109,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "balance": 129.1901,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x89941e92e414c88179a830af5c10bde0e9245158"
+  },
+  {
+    "address": "0x88ae96845e157558ef59e9ff90e766e22e480390",
+    "balance": 128.501,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x8f2467a553d3272bbed0af12c109693b6d965b83"
+  },
+  {
+    "address": "0x379add715d9fb53a79e6879653b60f12cc75bcaf",
+    "balance": 131.76093746,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x379add715d9fb53a79e6879653b60f12cc75bcaf",
+    "balance": 131.76093746,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x379add715d9fb53a79e6879653b60f12cc75bcaf",
+    "balance": 131.76093746,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x379add715d9fb53a79e6879653b60f12cc75bcaf",
+    "balance": 131.76093746,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x379add715d9fb53a79e6879653b60f12cc75bcaf",
+    "balance": 131.76093746,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x373c55c277b866a69dc047cad488154ab9759466",
+    "balance": 123.35974613091852,
+    "issue": "DEAD_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x1ed014aec47fae44c9e55bac7662c0b78ae61798"
+  },
+  {
+    "address": "0xb39036a09865236d67875f6fd391e597b4c8425d",
+    "balance": 121.64977800104758,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xb39036a09865236d67875f6fd391e597b4c8425d",
+    "balance": 121.64977800104758,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xb39036a09865236d67875f6fd391e597b4c8425d",
+    "balance": 121.64977800104758,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xb39036a09865236d67875f6fd391e597b4c8425d",
+    "balance": 121.64977800104758,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xb39036a09865236d67875f6fd391e597b4c8425d",
+    "balance": 121.64977800104758,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x58174e9b3178074f83888b6147c1a7d2ced85c6f",
+    "balance": 119.93,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x58174e9b3178074f83888b6147c1a7d2ced85c6f",
+    "balance": 119.93,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x58174e9b3178074f83888b6147c1a7d2ced85c6f",
+    "balance": 119.93,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x58174e9b3178074f83888b6147c1a7d2ced85c6f",
+    "balance": 119.93,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x58174e9b3178074f83888b6147c1a7d2ced85c6f",
+    "balance": 119.93,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xfcbcd2da9efa379c7d3352ffd3d5877cc088cbba",
+    "balance": 123.03415765999999,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xfcbcd2da9efa379c7d3352ffd3d5877cc088cbba",
+    "balance": 123.03415765999999,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xfcbcd2da9efa379c7d3352ffd3d5877cc088cbba",
+    "balance": 123.03415765999999,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xfcbcd2da9efa379c7d3352ffd3d5877cc088cbba",
+    "balance": 123.03415765999999,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xfcbcd2da9efa379c7d3352ffd3d5877cc088cbba",
+    "balance": 123.03415765999999,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x894f3a40ab8051b350f85b3edeb7c7b83fcb6dac",
+    "balance": 50.59252919169366,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x4baaf565b911b9f1b7f25aec6c6ee5b3f15f98d1"
+  },
+  {
+    "address": "0x1a26ef6575b7bbb864d984d9255c069f6c361a14",
+    "balance": 113.91666956596127,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x1f2414d0af8741bc822dbc2f88069c2b2907a840"
+  },
+  {
+    "address": "0x6822aaf4ab22e6cca8352a927b9ae0a8fdb58d9d",
+    "balance": 111.02666423598197,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xdc8624670c344651a6140c57e38a8e36ef664638"
+  },
+  {
+    "address": "0xc3c12a9e63e466a3ba99e07f3ef1f38b8b81ae1b",
+    "balance": 105.69258183633086,
+    "issue": "DEAD_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x194afbf7a5000eef3e166e1771efbaf5bf9f8611"
+  },
+  {
+    "address": "0x728781e75735dc0962df3a51d7ef47e798a7107e",
+    "balance": 107.27511923040001,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xd80a4004350027f618107fe3240937d54e46c21b"
+  },
+  {
+    "address": "0xe01e2a3ceafa8233021fc759e5a69863558326b6",
+    "balance": 105.49299604301721,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xe21ac1cae34c532a38b604669e18557b2d8840fc"
+  },
+  {
+    "address": "0xf90bbf5d9bcf95ce5aa5c28ce175541a288b599c",
+    "balance": 104.321,
+    "issue": "DEAD_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0xe9fbd763c996ebc5eca1defcfec0a9f5dbb85679"
+  },
+  {
+    "address": "0xab5cffaaec03efc94ab5c0c4c0bc85ae2b2b65ac",
+    "balance": 101.0,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x1e6a18cf6434eca56f83b3a3495d9c4d043ff7b2"
+  },
+  {
+    "address": "0x98669654f4ab5ccede76766ad19bdfe230f96c65",
+    "balance": 101.13797437,
+    "issue": "ZERO_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x98669654f4ab5ccede76766ad19bdfe230f96c65",
+    "balance": 101.13797437,
+    "issue": "ZERO_OWNER",
+    "owner_func": "admin()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x98669654f4ab5ccede76766ad19bdfe230f96c65",
+    "balance": 101.13797437,
+    "issue": "ZERO_OWNER",
+    "owner_func": "governance()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x98669654f4ab5ccede76766ad19bdfe230f96c65",
+    "balance": 101.13797437,
+    "issue": "ZERO_OWNER",
+    "owner_func": "controller()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0x98669654f4ab5ccede76766ad19bdfe230f96c65",
+    "balance": 101.13797437,
+    "issue": "ZERO_OWNER",
+    "owner_func": "operator()",
+    "owner_addr": "0x0000000000000000000000000000000000000000"
+  },
+  {
+    "address": "0xe65f525ec48c7e95654b9824ecc358454ea9185e",
+    "balance": 95.81533106464828,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xa4d05a1c22c8abe6ccb2333c092ec80bd0955031"
+  },
+  {
+    "address": "0x5e8353930b557a524ff92eace9b87d82f9793124",
+    "balance": 95.55,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xdec0deb8f4bc414968fd7c2eb809f65194e5cec9"
+  },
+  {
+    "address": "0x68c4b7d05fae45bcb6192bb93e246c77e98360e1",
+    "balance": 91.95827933592861,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0x98579428140acad902f30ea2731a49396cb0284f"
+  },
+  {
+    "address": "0xd76b5c2a23ef78368d8e34288b5b65d616b746ae",
+    "balance": 94.8982975827056,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xdfee8dc240c6cadc2c7f7f9c257c259914dea84e"
+  },
+  {
+    "address": "0x93519cc1a51ac56cf2daa8aaafcd4073f49a19d8",
+    "balance": 81.14424602591906,
+    "issue": "DEAD_OWNER",
+    "owner_func": "owner()",
+    "owner_addr": "0xafc89b80b77f9714611d4716dcfd159931a08bbc"
+  }
+]
