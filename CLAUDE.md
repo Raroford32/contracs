@@ -1,14 +1,91 @@
-# CLAUDE.md v2.0 — Intelligence-Grade Counterexample Discovery System
-## For Novel Exploit Detection in Battle-Tested Smart Contract Protocols
-*(Composition-first • Solver-driven • Evidence-only • Feasibility-constrained • 2026 Ethereum Reality)*
+# AGENTS.md v3.0 — Intelligence-Grade Counterexample Discovery System
+## Maximum-Coverage Operating Manual for Novel Exploit Detection in Battle-Tested Smart Contract Protocols
+*(Solver-driven • Feasibility-constrained • Evidence-only • Composition-first • 2026 Ethereum PoS Reality)*
 
-**Target Reality:** Heavily-audited, high-TVL, high-composition EVM protocols on Ethereum mainnet where:
+---
+
+# GLOBAL PRECEDENCE RULES (Override Everything)
+
+## Override 1: E3-Only Stop Policy
+
+**NEVER STOP until one of these conditions is met:**
+1. **SUCCESS**: An E3-promoted scenario exists with measurable economic delta (net profit > feasibility threshold).
+2. **EXTERNAL INTERRUPT**: Emit `resume_pack.md` and continue next session.
+
+Coverage thresholds (PART VII) are **checkpoint-only**—they do not terminate the investigation.
+
+## Override 2: Feasibility is Required for Findings, Not for Exploration
+
+- A "finding" requires economic feasibility (net profit > costs under realistic conditions).
+- An **infeasible counterexample** is still valuable as a solver signal—it guides constraint expansion.
+- Never discard a witness just because it's infeasible; log it with feasibility analysis and use it to mutate hypotheses.
+
+## Override 3: No Narrative Progress
+
+- Progress requires **experiments** (fork reads, fuzz runs, falsifiers) with **measured deltas**.
+- Artifact completion without experiments is not progress.
+- Every iteration must append to `experiments.jsonl` or the iteration does not count.
+
+## Override 3b: Continuous Convergence (No Stagnant Iterations)
+
+- **Every iteration must measurably move closer to a valid exploit scenario.** At least one convergence metric must improve:
+  - **mode_reachability**: new boundary mode reached or newly reachable path discovered
+  - **feasibility**: higher net profit or lower cost for the same target
+  - **constraint_tightening**: feasible region reduced (variables narrowed or new constraints added)
+  - **search_space_reduction**: action space pruned or permutation coverage increased
+- **Progress claims require `convergence_delta > 0`** in `experiments.jsonl`.
+- Every experiment entry must include: `decision_id`, `ordering_power`, `liquidity_assumptions`, `gas_price_gwei`, `gross_profit`, `net_profit`, `robustness`, and `convergence_delta`.
+- Decision-making must be logged to `memory/decision_trace.jsonl` with the scoring inputs used.
+
+## Override 4: Purpose Lock + Memory Lock (Never Get Lost)
+
+This system fails when it **forgets the goal** or loses the **working context** mid‑analysis. Prevent that with two non‑negotiable locks:
+
+### Purpose Lock (goal cannot drift)
+
+- The only mission is: **produce an E3‑promoted, economically feasible exploit counterexample on a fork**.
+- Every action MUST be explainable as one of:
+  1. **Improve semantic model** (boundary/graphs/state machine)
+  2. **Improve solvability** (constraint programs, vars/constraints expansion)
+  3. **Run experiments** (append to `experiments.jsonl`; try to produce witnesses)
+  4. **Promote evidence** (candidate → minimized falsifier → E2/E3)
+- **No orphan work rule**: If you cannot name the **next skill** and the **expected artifact delta**, you are drifting. Stop and rehydrate.
+
+### Memory Lock (context cannot evaporate)
+
+- `focus.md` is the single “working set pointer.” It MUST always state:
+  - the invariant goal (E3)
+  - the current target (protocol_name/chain_id/fork_block)
+  - the active hypothesis (scenarioId/status/targetStateX)
+  - the next skill + why
+- When you feel lost (or after any long action), rehydrate in this order:
+  1. `focus.md`
+  2. `resume_pack.md`
+  3. `boundary/manifest.json` + `deployment_snapshot.md`
+  4. `hypothesis_ledger.md`
+  5. tail `experiments.jsonl` + `questions.jsonl`
+  6. `coverage/scoreboard.json`
+
+## Override 5: Read These Sections First (Bootstrap Order)
+
+For efficient operationalization, read sections in this order:
+0. `focus.md` + `resume_pack.md` — restore goal + working context
+1. **PART I** (Threat Model) — understand attacker envelope
+2. **PART II** (Feasibility) — understand cost kernel
+3. **PART XII** (Execution Rules) — understand quality gates
+4. **SKILL ROUTING** (end of doc) — understand how to invoke skills
+5. **CONTINUOUS QUESTION LOOP** (Section XIII) — understand how to drive discovery
+
+---
+
+# TARGET REALITY
+
+**Heavily-audited, high-TVL, high-composition EVM protocols on Ethereum mainnet where:**
 - Failures are **never** "one bad function"
 - Exploits exist as **kernel contradictions** requiring **precondition machines** to reach
 - Boundaries are **numeric/temporal** and must be **solved**, not guessed
 - **Economic feasibility** separates theoretical violations from real exploits
 - All asset types: ERC20, LP tokens, pool shares, protocol tokens, rebasing tokens, fee-on-transfer, native ETH, wrapped ETH, receipt tokens, debt tokens, synthetic assets
-
 
 ---
 
@@ -260,7 +337,51 @@ When analyzing static calls, ask:
 
 ## 1.3 Asset Universe (Complete Taxonomy)
 
-[Previous taxonomy remains valid - ETH, ERC20 variants, LP tokens, protocol-specific assets]
+```
+ASSET CLASS: NATIVE_ETH
+- Direct balance via address.balance
+- Transfer via CALL with value
+- Wrap/unwrap with WETH
+- Vulnerabilities: reentrancy on receive, gas limits
+
+ASSET CLASS: ERC20_STANDARD
+- balance, transfer, approve, transferFrom
+- Vulnerabilities: approval race, return value handling
+
+ASSET CLASS: ERC20_FEE_ON_TRANSFER
+- Actual received < sent amount
+- Protocol must track actual vs expected
+- Vulnerabilities: accounting mismatch
+
+ASSET CLASS: ERC20_REBASING
+- Balance changes without transfer
+- Share-based vs balance-based accounting
+- Vulnerabilities: yield capture, share dilution
+
+ASSET CLASS: ERC20_WITH_HOOKS (ERC777)
+- tokensReceived/tokensToSend callbacks
+- Vulnerabilities: reentrancy, callback ordering
+
+ASSET CLASS: ERC721/ERC1155
+- onReceived callbacks
+- Batch operations
+- Vulnerabilities: reentrancy, batch handling
+
+ASSET CLASS: LP_TOKENS
+- Represent pool shares
+- Value tied to underlying reserves
+- Vulnerabilities: share inflation, donation attacks
+
+ASSET CLASS: DEBT_TOKENS
+- Represent borrowed amounts
+- Interest accrual
+- Vulnerabilities: interest rate manipulation, liquidation
+
+ASSET CLASS: SYNTHETIC_ASSETS
+- Collateral-backed
+- Price oracle dependent
+- Vulnerabilities: oracle manipulation, undercollateralization
+```
 
 ---
 
@@ -818,6 +939,90 @@ TIMING_BOUNDARY_MODES:
 }
 ```
 
+## 4.5 Token Behavior Properties
+
+```json
+{
+  "P-TOKEN-001": {
+    "name": "Fee-on-Transfer Handling",
+    "predicate": "actual_received == expected OR protocol handles delta",
+    "modes": ["interacts_with_fot_tokens"],
+    "feasibility_note": "Accounting mismatch accumulates"
+  },
+  
+  "P-TOKEN-002": {
+    "name": "Rebase Safety",
+    "predicate": "share accounting insensitive to balance changes",
+    "modes": ["interacts_with_rebasing_tokens"],
+    "feasibility_note": "Yield capture possible"
+  },
+  
+  "P-TOKEN-003": {
+    "name": "Callback Reentrancy Safety",
+    "predicate": "no state inconsistency during token callbacks",
+    "modes": ["interacts_with_hook_tokens"],
+    "feasibility_note": "ERC777/ERC1155 hooks are attacker-controlled"
+  }
+}
+```
+
+## 4.6 Ordering/MEV Properties
+
+```json
+{
+  "P-ORDERING-001": {
+    "name": "Sandwich Resistance",
+    "predicate": "user_outcome_variance < threshold under adversarial ordering",
+    "threshold": "1% slippage",
+    "feasibility_note": "Requires ordering_power >= medium"
+  },
+  
+  "P-ORDERING-002": {
+    "name": "Sequence Independence",
+    "predicate": "protocol_state_after(A,B) == protocol_state_after(B,A) for independent users",
+    "feasibility_note": "Non-commutativity often reveals value"
+  }
+}
+```
+
+## 4.7 Liveness/Gas Properties
+
+```json
+{
+  "P-LIVENESS-001": {
+    "name": "Withdrawal Always Possible",
+    "predicate": "solvent user can exit under bounded gas",
+    "gas_bound": "1_000_000",
+    "feasibility_note": "DoS is not value extraction but may enable it"
+  },
+  
+  "P-LIVENESS-002": {
+    "name": "No Unbounded Loops",
+    "predicate": "all loops bounded by constants or caller-controlled inputs",
+    "feasibility_note": "Gas griefing may trap funds"
+  }
+}
+```
+
+## 4.8 Environment/Chain Properties
+
+```json
+{
+  "P-ENV-001": {
+    "name": "Timestamp Assumption Safety",
+    "predicate": "12-second slot assumptions handle missed slots",
+    "feasibility_note": "Missed slots create timestamp jumps"
+  },
+  
+  "P-ENV-002": {
+    "name": "L2 Sequencer Awareness",
+    "predicate": "protocol handles sequencer downtime",
+    "modes": ["deployed_on_l2"],
+    "feasibility_note": "Stale prices during downtime"
+  }
+}
+```
+
 ---
 
 # PART V: KERNEL CONTRADICTION TEMPLATES
@@ -1157,10 +1362,10 @@ class CurvePool(AMMModel):
 }
 ```
 
-## 7.2 Coverage Thresholds for "Complete"
+## 7.2 Coverage Thresholds for "Complete" (Checkpoint Only, Not Stop Condition)
 
 ```
-MINIMUM THRESHOLDS FOR COMPLETION:
+MINIMUM THRESHOLDS FOR CHECKPOINT (not termination):
 
 TIER_BASIC (Initial Pass):
 - Sink coverage: 100% of asset sinks, 100% of external call sinks
@@ -1183,6 +1388,8 @@ TIER_EXHAUSTIVE (High-Value Targets):
 - Cycle coverage: All identified cycles tested
 - Multi-actor: Up to 5 actors
 - Formal verification on critical properties
+
+NOTE: These thresholds are CHECKPOINT markers. Investigation continues until E3.
 ```
 
 ## 7.3 Coverage Report Format
@@ -1364,6 +1571,70 @@ OUTPUT: Optimal parameters maximizing net profit
    - Verify profit is real (not accounting artifact)
 ```
 
+## 9.3 Ordering Power Modeling (PoS-Correct)
+
+```
+ORDERING_MODEL: ETHEREUM_POS_2026
+
+WEAK_ORDERING:
+  - Submit to public mempool
+  - No guarantees on position
+  - Can be frontrun/sandwiched
+  - Use for baseline feasibility
+
+MEDIUM_ORDERING:
+  - Flashbots Protect / private mempool
+  - Protection from sandwich
+  - Some priority control
+  - Most realistic for TIER_1/2 attackers
+
+STRONG_ORDERING:
+  - MEV-share backrun capability
+  - Can reliably position after target tx
+  - Useful for oracle backruns, liquidations
+  - TIER_2+ attackers
+
+BUILDER_ORDERING:
+  - Full block control
+  - Can include/exclude any tx
+  - Can reorder arbitrarily within block
+  - TIER_3+ attackers only
+
+FOR EACH EXPERIMENT:
+  - Tag required ordering power
+  - Verify attack is feasible at that power level
+  - Calculate ordering cost (priority fee, builder bribe)
+```
+
+## 9.4 Token/Oracle/AMM Model Injection
+
+```
+DEPENDENCY_INJECTION:
+
+FOR EACH TARGET PROTOCOL:
+  1. Identify all token interactions
+     - Map each token to a TokenModel (Standard, FOT, Rebasing, Hook)
+  2. Identify all oracle dependencies
+     - Map each oracle to an OracleModel (Chainlink, TWAP, Spot)
+  3. Identify all AMM interactions
+     - Map each pool to an AMMModel (V2, V3, Curve)
+
+CONFIGURE in dependencies/config.yaml:
+  tokens:
+    "0xA0b8...": {model: "FeeOnTransferToken", fee_rate: 0.01}
+    "0xC02a...": {model: "StandardERC20"}
+  oracles:
+    "0x5f4e...": {model: "ChainlinkOracle", heartbeat: 3600}
+    "0x8888...": {model: "TWAPOracle", window: 1800, source_pool: "0x..."}
+  amms:
+    "0x1234...": {model: "UniswapV3Pool", fee_tier: 500}
+
+INJECT into solvers:
+  - Replace transfer() with model.transfer()
+  - Replace oracle.latestAnswer() with model.get_price()
+  - Replace swap calculations with model.quote()
+```
+
 ---
 
 # PART X: EVIDENCE COMPILATION
@@ -1424,47 +1695,54 @@ OUTPUT: Optimal parameters maximizing net profit
 ## 11.1 Phase Summary
 
 ```
-PHASE 1: SYSTEM INGESTION (2-4 hours)
-- Fetch contracts, ABIs, source
+PHASE 1: SYSTEM INGESTION
+- Fetch contracts, ABIs, source (Sourcify v2 first)
 - Build three graphs
 - Identify all sinks
 - OUTPUT: system_model.json
+- SKILL: world-modeler
 
-PHASE 2: MODEL CONSTRUCTION (2-4 hours)
+PHASE 2: MODEL CONSTRUCTION
 - Enumerate modes and transitions
 - Map all assumptions
 - Identify rounding operations
 - Build ghost accounting
 - OUTPUT: semantic_model.json
+- SKILL: world-modeler
 
-PHASE 3: DEPENDENCY CONFIGURATION (1-2 hours)
+PHASE 3: DEPENDENCY CONFIGURATION
 - Select appropriate token models
 - Select appropriate oracle models
 - Configure liquidity constraints
-- OUTPUT: dependency_config.json
+- OUTPUT: dependencies/config.yaml
+- SKILL: property-portfolio-compiler
 
-PHASE 4: PROPERTY INSTANTIATION (2-4 hours)
+PHASE 4: PROPERTY INSTANTIATION
 - Instantiate full property portfolio
 - Link to assumptions
 - Configure feasibility thresholds
-- OUTPUT: properties.json
+- OUTPUT: properties/*
+- SKILL: property-portfolio-compiler
 
-PHASE 5: CONTRADICTIONSPEC GENERATION (2-4 hours)
+PHASE 5: CONTRADICTIONSPEC GENERATION
 - Generate specs from templates
 - Prioritize by feasibility potential
-- OUTPUT: specs/*.json
+- OUTPUT: hypotheses/*.yaml
+- SKILL: property-portfolio-compiler
 
-PHASE 6: SOLVING (iterative, until budget or coverage)
+PHASE 6: SOLVING (iterative, until E3)
 - Run solver portfolio
 - Track coverage scoreboard
 - Generate findings with feasibility
-- OUTPUT: findings/*.json, coverage_report.json
+- OUTPUT: experiments.jsonl, findings/*.json, coverage/
+- SKILL: counterexample-solver
 
 PHASE 7: VALIDATION (per finding)
 - Re-execute on fresh fork
 - Verify economic calculations
 - Verify determinism
-- OUTPUT: validated_findings/*.json
+- OUTPUT: validated_findings/*.json, final_report.md
+- SKILL: proofpack-builder
 ```
 
 ---
@@ -1476,8 +1754,7 @@ PHASE 7: VALIDATION (per finding)
 ```
 NEVER STOP UNTIL:
 1. A FEASIBLE counterexample is found (net_profit > threshold), OR
-2. Coverage thresholds are met across all dimensions, OR
-3. Computational budget is exhausted
+2. External interrupt (emit resume_pack.md and continue next session)
 
 FEASIBILITY IS NON-NEGOTIABLE:
 - "Theoretical vulnerability" without feasibility analysis = NOT A FINDING
@@ -1500,6 +1777,352 @@ BEFORE REPORTING ANY FINDING:
 □ Reproduction is deterministic
 □ No privileged roles assumed
 □ Coverage context documented
+```
+
+## 12.3 Stall Detection and Recovery
+
+```
+STALL CONDITION:
+- No evidence upgrade after N iterations (N configurable, default 5)
+- Same targetStateX attempted multiple times without progress
+- Coverage scoreboard unchanged
+
+STALL RECOVERY:
+1. Expand Vars (add more amounts, actors, state knobs)
+2. Add boundary crossings:
+   - module boundaries (cross-contract calls)
+   - external boundaries (oracle, token interactions)
+   - ordering boundaries (multi-tx, MEV scenarios)
+   - control-plane boundaries (governance, admin functions)
+3. Try different kernel contradiction template
+4. Lower feasibility threshold temporarily for exploration
+5. Force mode transitions to unreached boundary states
+
+NEVER:
+- Conclude "no bugs exist"
+- Stop without E3 evidence
+- Skip stall recovery
+```
+
+---
+
+# PART XIII: CONTINUOUS QUESTION-GENERATION LOOP
+
+## 13.1 Information-Seeking Protocol
+
+The investigation is driven by **questions**, not tasks. Questions are recorded and resolved to mutate constraint programs.
+
+### Question Recording
+
+Record questions in `questions.jsonl` (append-only):
+
+```json
+{
+  "qid": "Q-001",
+  "timestamp": "ISO8601",
+  "question": "Can the attacker reach totalSupply == 0 from current state?",
+  "category": "mode_reachability",
+  "related_hypothesis": "H-001",
+  "related_property": "P-ACCOUNTING-001",
+  "status": "open|resolved|blocked",
+  "resolution_method": null,
+  "answer": null
+}
+```
+
+### Question Categories
+
+```
+CATEGORY: MODE_REACHABILITY
+- Can attacker reach mode X from state Y?
+- What is the minimum cost to reach mode X?
+- Are there multiple paths to mode X?
+
+CATEGORY: CONSTRAINT_SATISFACTION
+- Can attacker satisfy constraint C?
+- What parameter values satisfy constraints A, B, C simultaneously?
+- Is the constraint system satisfiable?
+
+CATEGORY: PROFIT_BOUNDARY
+- What is the maximum profit given constraints?
+- At what parameter value does profit become positive?
+- How sensitive is profit to parameter P?
+
+CATEGORY: ORDERING_DEPENDENCY
+- Does outcome depend on tx ordering?
+- What ordering power is required?
+- Can attacker guarantee the required ordering?
+
+CATEGORY: ASSUMPTION_VALIDITY
+- Does assumption A hold on mainnet?
+- Under what conditions does assumption A break?
+- What happens if assumption A is false?
+
+CATEGORY: COVERAGE_GAP
+- Why hasn't mode X been reached?
+- What blocks path to sink S?
+- Which property classes have no experiments?
+```
+
+### Question Resolution
+
+```
+FOR EACH OPEN QUESTION:
+
+1. Determine resolution method:
+   - fork_read: Query chain state directly
+   - fuzz_search: Search for satisfying inputs
+   - symbolic_query: Use symbolic engine
+   - manual_analysis: Requires human reasoning
+   - experiment: Run targeted experiment
+
+2. Execute resolution:
+   - Run the chosen method
+   - Record result in experiments.jsonl
+   - Update question status
+
+3. Mutate constraint programs:
+   IF answer reveals new information:
+     - Update Vars (new ranges, new actors)
+     - Update Constraints (tighter bounds, new preconditions)
+     - Update EvidencePlan (new experiment types)
+     - Create new hypotheses if warranted
+
+4. Generate follow-up questions:
+   - Each answer typically spawns 0-3 new questions
+   - Questions form a tree/DAG of investigation
+```
+
+### Question Priority
+
+```
+PRIORITY SCORING:
+- Information gain: How much will the answer reduce uncertainty?
+- E3 proximity: How close to a finding is this question?
+- Cost: How expensive is resolution?
+- Blocking: Is this question blocking other work?
+
+PRIORITY = (information_gain * e3_proximity) / (cost * (1 + blocked_count))
+
+ALWAYS RESOLVE highest priority question first.
+```
+
+## 13.2 Information Gain Metrics
+
+```
+METRIC: UNCERTAINTY_REDUCTION
+- Before: Probability distribution over outcomes
+- After: Updated distribution given answer
+- Gain: KL divergence between distributions
+
+METRIC: CONSTRAINT_TIGHTENING
+- Before: Feasible region size
+- After: Feasible region size given new constraint
+- Gain: Volume reduction
+
+METRIC: SEARCH_SPACE_REDUCTION
+- Before: Number of candidate sequences
+- After: Number remaining after pruning
+- Gain: Candidates eliminated
+
+PREFER questions that maximize these metrics.
+```
+
+---
+
+# PART XIV: REQUIRED ARTIFACTS (Artifact-First Memory)
+
+All critical state lives in explicit files. Nothing important is ephemeral.
+
+## 14.1 Artifact Manifest
+
+```
+WORKSPACE ROOT:
+├── boundary/
+│   └── manifest.json           # System boundary (addresses, code hashes)
+├── graphs/
+│   ├── call_graph.json         # Call graph with annotations
+│   ├── asset_flow.json         # Asset flow graph
+│   ├── capability_graph.json   # Capability/authority graph
+│   ├── sink_index.json         # Sink inventory (asset/authority/external)
+│   └── dependency_index.json   # Token/oracle/AMM dependencies (model binding)
+├── properties/
+│   ├── portfolio.md            # Human-readable property portfolio
+│   ├── portfolio.yaml          # Machine-readable properties
+│   ├── assumptions.md          # Human-readable assumptions
+│   └── assumptions.yaml        # Machine-readable assumptions
+├── hypotheses/
+│   └── <scenarioId>.yaml       # Constraint programs
+├── specs/
+│   └── <cSpecId>.yaml          # Contradiction specs
+├── coverage/
+│   ├── scoreboard.json         # Coverage metrics
+│   └── report.md               # Coverage report
+├── dependencies/
+│   └── config.yaml             # Token/oracle/AMM model config
+├── replay_bundles/
+│   ├── candidates/             # Unvalidated witnesses
+│   └── <scenarioId>_canonical.json  # Validated, minimized
+├── test/
+│   ├── utils/InvestigationUtils.sol # Minimal cheatcode helpers (no forge-std)
+│   └── <scenarioId>_falsifier.t.sol # Foundry tests
+├── foundry.toml                # Foundry config (fs_permissions enabled)
+├── evidence/
+│   ├── packets/                # Sourcify-first evidence packets (ABI/sources)
+│   └── sources/                # Lossless sources (best-effort)
+├── memory/
+│   ├── events.jsonl            # Append-only event log (optional)
+│   └── decision_trace.jsonl    # Append-only decision trace (scoring + choice)
+├── hypothesis_ledger.md        # Index of all hypotheses
+├── focus.md                    # Purpose + Memory Lock (working set pointer)
+├── experiments.jsonl           # Append-only experiment log
+├── questions.jsonl             # Append-only question log
+├── attacker_model.yaml         # Active attacker tier config
+├── state_machine.md            # Protocol state machine
+├── deployment_snapshot.md      # Fork reality evidence
+├── unknowns.md                 # Blocked items with resolution plans
+├── resume_pack.md              # Checkpoint for continuation
+├── rpc-etherscan.md            # RPC/explorer config (local-only; never propagate secrets)
+├── system_evaluation.md        # System evaluator output
+└── final_report.md             # E3 findings (only on success)
+```
+
+## 14.2 Artifact Schemas
+
+### focus.md
+
+`focus.md` is the short, always-current **working set pointer** that prevents goal/context loss.
+It MUST be kept small and must always state the goal + target + active hypothesis + next skill.
+
+```markdown
+# Focus Card (Purpose + Memory Lock)
+
+last_updated: 2026-02-02T00:00:00Z
+
+## Goal (never changes)
+- Discover an **E3-promoted**, economically feasible exploit counterexample on a mainnet fork.
+- Stop only on **E3** or **external interrupt** (write `resume_pack.md`).
+
+## Target (what we are analyzing)
+- protocol_name: ProtocolX
+- chain_id: 1
+- fork_block (pinned): 19000000
+- boundary: `boundary/manifest.json`
+- fork reality: `deployment_snapshot.md`
+
+## Active Focus (what we are trying right now)
+- active_hypothesis: H-001 (E1)
+  - targetStateX: totalSupply == 0
+  - constraintProgram: `hypotheses/H-001.yaml`
+- active_question: Q-003 (mode_reachability)
+- questions_open: 3/10
+
+## Next Action (MUST advance toward E3)
+- next_skill: **counterexample-solver**
+- why: need experiments → witnesses
+- expected_artifact_delta: experiments.jsonl + convergence_delta>0
+- last_decision_id: D-2026-02-02-0001
+- convergence_metric: feasibility (net_profit ↑)
+
+## Recent Evidence
+- last_experiment: 2026-02-02T00:00:00Z | H-001 | fuzz | unknown
+
+## Rehydration order (when you feel lost)
+1. `focus.md`
+2. `resume_pack.md`
+3. `boundary/manifest.json` + `deployment_snapshot.md`
+4. `hypothesis_ledger.md`
+5. tail `experiments.jsonl` + `questions.jsonl`
+6. `coverage/scoreboard.json`
+
+## No-orphan-work rule
+- If you cannot name the **next_skill** and the **expected artifact delta**, you are drifting.
+```
+
+### hypothesis_ledger.md
+
+```markdown
+| scenarioId | dedupKey | targetStateX | constraintProgram | status | measurableDelta | replayBundle | falsifier | lastExperiment | nextMutation | min_attacker_tier | ordering_required | expected_profit | last_costs | last_decision_id | convergence_state |
+|------------|----------|--------------|-------------------|--------|-----------------|--------------|-----------|----------------|--------------|-------------------|-------------------|-----------------|-----------|------------------|-------------------|
+| H-001 | vault_inflation | totalSupply==0→mint | hypotheses/H-001.yaml | E1 | pending | - | - | 2024-01-15 | expand_amounts | TIER_1_DEFI_USER | medium | 15000 | gas=0.02 ETH | D-2026-02-02-0001 | feasibility |
+```
+
+### experiments.jsonl
+
+```json
+{"scenarioId":"H-001","targetStateX":"totalSupply==0","experimentType":"fuzz","inputs":{"amounts":[1,1e18]},"outcome":"blocked","measurements":{"revert":"division by zero"},"attacker_tier":"TIER_0","ordering_power":"weak","liquidity_assumptions":{"model":"realistic_mainnet","max_move_pct":1.0},"gas_price_gwei":50,"gross_profit":"0","net_profit":"0","robustness":{"gas_price_+20%":"unprofitable"},"decision_id":"D-2026-02-02-0001","convergence_delta":{"constraint_tightening":0.2},"costs":{"gas":"50000"},"timestamp":"2024-01-15T10:00:00Z"}
+```
+
+### questions.jsonl
+
+```json
+{"qid":"Q-001","timestamp":"2024-01-15T10:00:00Z","question":"Can attacker empty vault via withdrawal?","category":"mode_reachability","related_hypothesis":"H-001","status":"open"}
+```
+
+### attacker_model.yaml
+
+```yaml
+active_tier: TIER_2_MEV_SEARCHER
+identity:
+  max_addresses: 10
+  can_deploy_contracts: true
+ordering_power: medium
+flash_liquidity:
+  max_eth: "100000"
+  sources: [aave_v3, balancer]
+multi_block:
+  enabled: true
+  max_block_span: 5
+```
+
+---
+
+# PART XV: SKILL ROUTING (Canonical, Only 5 Skills)
+
+## 15.1 Active Skills
+
+Only these 5 skills are active. All other skills on disk are deprecated.
+
+| Skill | Path | Purpose |
+|-------|------|---------|
+| system-governor | `/root/.codex/skills/system-governor/SKILL.md` | Workspace hydration, rigor gates, no-narrative enforcement |
+| world-modeler | `/root/.codex/skills/world-modeler/SKILL.md` | Boundary manifest, graphs, state machine, fork reality |
+| property-portfolio-compiler | `/root/.codex/skills/property-portfolio-compiler/SKILL.md` | Property portfolio, assumptions, constraint programs |
+| counterexample-solver | `/root/.codex/skills/counterexample-solver/SKILL.md` | Solver portfolio, experiments, witnesses |
+| proofpack-builder | `/root/.codex/skills/proofpack-builder/SKILL.md` | Replay bundles, Foundry falsifiers, E2→E3 promotion |
+
+## 15.2 Skill Routing Table
+
+| Gap/Need | Skill | Output |
+|----------|-------|--------|
+| New investigation / system files changed | system-governor | system_evaluation.md, lint results |
+| Boundary / graphs / state machine missing | world-modeler | boundary/, graphs/, state_machine.md |
+| Property portfolio / assumptions missing | property-portfolio-compiler | properties/* |
+| Constraint programs missing | property-portfolio-compiler | hypotheses/*.yaml |
+| Dependencies config missing | property-portfolio-compiler | dependencies/config.yaml |
+| Coverage scoreboard missing | property-portfolio-compiler | coverage/* |
+| No experiments for active hypothesis | counterexample-solver | experiments.jsonl |
+| Replay bundle candidate exists | proofpack-builder | Foundry falsifier, E2/E3 |
+| E3 achieved | proofpack-builder | final_report.md |
+
+## 15.3 Skill Invocation Protocol
+
+```
+FOR EACH SKILL INVOCATION:
+
+0. Read `focus.md` + `resume_pack.md` and restate the invariant goal (E3).
+1. Update `focus.md` with **next_skill** and **why** (Purpose Lock).
+2. Read the skill's SKILL.md file
+3. Verify inputs exist (or trigger prerequisite skill first)
+4. Execute the skill's procedure
+5. Verify outputs were created
+6. Run relevant lints
+7. Update `focus.md` + `resume_pack.md` (Memory Lock)
+8. Update hypothesis_ledger.md if applicable
+9. Append to experiments.jsonl if applicable
+10. Check if E3 achieved → if yes, invoke proofpack-builder
+
+NEVER skip a skill's Completeness, Autonomy, or Complexity contracts.
 ```
 
 ---
@@ -1585,18 +2208,58 @@ FEASIBILITY VALIDATION:
 
 ---
 
-END OF SPECIFICATION v2.0
+# APPENDIX D: Non-Negotiable Posture Summary
+
+```
+1. NEVER CONCLUDE SAFETY
+   - Only E3 evidence closes a hypothesis
+   - Coverage is a checkpoint, not a stop condition
+
+2. NO NARRATIVE PROGRESS
+   - Progress = experiments with measured deltas
+   - Artifact completion ≠ progress
+
+3. COMPLEXITY-FIRST
+   - Favor long, compositional chains
+   - Favor multi-lever routes
+   - Complexity = harder constraint program + more independent levers fused
+
+4. EVIDENCE-FIRST
+   - Anything important is written to artifacts
+   - Nothing ephemeral matters
+
+5. NO TAXONOMY TRAPS
+   - Use open vocabulary
+   - Describe real behavior, not categories
+
+6. FEASIBILITY REQUIRED FOR FINDINGS
+   - Net profit > costs under realistic conditions
+   - Minimum attacker tier identified
+   - Robustness verified
+
+7. CONTINUOUS QUESTION GENERATION
+   - Investigation is driven by questions
+   - Questions mutate constraint programs
+   - Answers spawn new questions
+```
+
+---
+
+END OF SPECIFICATION v3.0
 
 This document defines the complete, intelligence-grade protocol for discovering
 novel, economically feasible exploits in battle-tested smart contract systems.
 
-Key upgrades from v1.0:
+Key features:
 1. PoS-correct timing model (slot-based, no timestamp manipulation)
 2. Corrected staticcall semantics (read-only reentrancy focus)
 3. First-class Feasibility & Cost Kernel
 4. Parameterized attacker tiers
 5. Measurable coverage scoreboard
 6. Modular dependency semantics library
+7. Continuous question-generation loop
+8. 5-skill minimal architecture
+9. E3-only stop condition
 
 Every finding must be:
 - Backed by fork execution evidence
@@ -1605,5 +2268,4 @@ Every finding must be:
 - Validated for robustness
 
 
-any of contracts.txt and each one of them compelete protcols could be freely choose by you ! you have to concider each may has multiple types of diffrent assets such tokens , lp and protcols assets , and naive token ( eth ) 
-use etherscanrpc.md for rpc and etherscan v2 api for fetch codes and abi and other things . everything has to compeletly approve on current blocks fork to you able to claim any exploits exists ! 
+allways for rpc and etherscan v2 api for source and abi and .. you can use rpc-etherscan.md
