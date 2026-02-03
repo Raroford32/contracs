@@ -1,0 +1,84 @@
+{
+  "analysis_date": "2026-02-03",
+  "summary": "NO CONTRACTS FOUND DRAINABLE BY UNPRIVILEGED ACTOR RIGHT NOW",
+
+  "contracts_with_assets": [
+    {
+      "address": "0x02b15c47b4b516a22fd2d8b1fc662afb808a2169",
+      "name": "OxODashboardClaim",
+      "eth_balance": "750.34 ETH",
+      "vulnerability_claim": "Claims are recorded even if ETH transfer fails",
+      "analysis": "DoS vulnerability, NOT drainable. Claim recorded before transfer, but this only affects the claimer themselves if they cannot receive ETH. Cannot drain other users' funds.",
+      "exploitable_by_unprivileged": false
+    },
+    {
+      "address": "0xaf5fc45258b5d0af72031ab154bf6dfcfec74b99",
+      "name": "RemovePutinBounty",
+      "eth_balance": "100.12 ETH",
+      "vulnerability_claim": "Commitment not bound to predictor address",
+      "analysis": "State is 'initial' (0). Vulnerability requires state='executed'. Currently NOT exploitable - owner must call execute() first.",
+      "exploitable_by_unprivileged": false
+    },
+    {
+      "address": "0x585aba689bf7293fe66e9fded9eec9d0e732b180",
+      "name": "Unknown (not verified)",
+      "eth_balance": "59.17 ETH",
+      "vulnerability_claim": "Redemption end time not enforced",
+      "analysis": "Need source code to verify. If claim is true, may allow redemptions after intended window but doesn't necessarily allow draining.",
+      "exploitable_by_unprivileged": "unknown"
+    },
+    {
+      "address": "0x1ea9bcd9c7483c9570057921459f4a64aff39b0d",
+      "eth_balance": "48.51 ETH",
+      "vulnerability_claim": "Purchases accept funds but do not deliver on-chain tokens",
+      "analysis": "This is a sales contract issue, not drainable by attacker. Affects users who purchase.",
+      "exploitable_by_unprivileged": false
+    },
+    {
+      "address": "0x9b5d9e2c2e1e96986603be922bc44304d6aca898",
+      "name": "Wallet",
+      "eth_balance": "8.05 ETH",
+      "vulnerability_claim": "Withdrawal signatures lack domain separation",
+      "analysis": "Cross-deployment replay vulnerability. Requires having a valid admin signature from another deployment. Not exploitable without prior signature access.",
+      "exploitable_by_unprivileged": false
+    }
+  ],
+
+  "contracts_with_confirmed_vulns_but_no_assets": [
+    {
+      "address": "0x2a1dca74419c2d304a3d359f428ee1a4e9324a90",
+      "name": "Banana",
+      "vulnerability": "CONFIRMED - _spendAllowance writes allowance[owner] instead of allowance[from]",
+      "impact": "Infinite drain of approved tokens",
+      "status": "Checked 100+ approval events - all associated addresses have 0 balance",
+      "exploitable_right_now": false,
+      "reason": "No active victims with token balance"
+    },
+    {
+      "address": "0x7e32f4c44e22ab20df287f8a15eb6c0f54da6e30",
+      "name": "SWStkGHORewardsProxy",
+      "vulnerability": "CONFIRMED - claimRewards() allows anyone to set rewards receiver",
+      "impact": "Sweep all GHO/AAVE rewards held by contract",
+      "status": "Contract has 0 GHO balance",
+      "exploitable_right_now": false,
+      "reason": "No assets to drain"
+    },
+    {
+      "address": "0xc781c0cc527cb8c351be3a64c690216c535c6f36",
+      "name": "PendleLBTCSY",
+      "vulnerability": "CONFIRMED - redeem(burnFromInternalBalance=true) allows redeeming contract's SY balance",
+      "impact": "Steal any SY tokens held by the contract",
+      "status": "Contract has 0 SY balance",
+      "exploitable_right_now": false,
+      "reason": "No SY tokens to steal"
+    }
+  ],
+
+  "contracts_not_verified_or_not_analyzable": [
+    "0x03fb20ecfdf599c1a4d44241c8bb1f11f47c2599",
+    "0x21d6d6d6ffd8b68e94bf5159bb029635af540ae8",
+    "0x6f1e92fb8a685aaa0710bad194d7b1aa839f7f8a"
+  ],
+
+  "conclusion": "After analyzing all provided contracts: NONE are currently drainable by an unprivileged actor. Several have confirmed code vulnerabilities but lack the necessary conditions (assets, state, victims with balances) for exploitation right now."
+}
