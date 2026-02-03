@@ -1,0 +1,96 @@
+{
+  "finding_id": "FIND-2026-02-03-001",
+  "contract_address": "0xc82abe4dfa94b9b5453d31274fb7500459a0d12d",
+  "contract_type": "Multisig Wallet",
+  "chain": "ethereum_mainnet",
+  "severity": "HIGH",
+  "status": "CONFIRMED",
+
+  "title": "Constructor permits threshold=0 when owners.length=1 (bypasses signature requirement)",
+
+  "summary": "The multisig wallet constructor validation allows threshold=0 when deployed with a single owner due to integer division truncation in the minimum threshold check. This completely bypasses the signature verification requirement in the execute() function.",
+
+  "vulnerability_details": {
+    "root_cause": "Integer division truncation in constructor validation",
+    "affected_check": "threshold >= owners.length / 2",
+    "math_breakdown": {
+      "owners_length_1": "1 / 2 = 0 (integer division)",
+      "resulting_check": "threshold >= 0 (always true for uint256)",
+      "valid_threshold_range": "[0, 1] instead of [1, 1]"
+    },
+    "missing_check": "require(threshold > 0)"
+  },
+
+  "constructor_validation": {
+    "check_1": "owners.length > 0 (passes)",
+    "check_2": "owners.length <= 10 (passes)",
+    "check_3": "threshold <= owners.length (passes for threshold=0, owners=1)",
+    "check_4": "threshold >= owners.length / 2 (passes: 0 >= 0)",
+    "missing": "threshold > 0"
+  },
+
+  "execute_function_impact": {
+    "signature_loop": "for (i = 0; i < threshold; i++) { validate signature[i] }",
+    "when_threshold_0": "Loop executes 0 times, no signatures validated",
+    "result": "Any call to execute() succeeds without any signature verification"
+  },
+
+  "exploit_scenario": {
+    "step_1": "Deploy new instance: setup(threshold=0, owners=[any_address])",
+    "step_2": "Fund the multisig with valuable assets",
+    "step_3": "Attacker calls execute([], [], [], attacker, balance, '', attacker, 1000000)",
+    "step_4": "Signature loop runs 0 times (threshold=0)",
+    "step_5": "ETH/tokens transferred to attacker without any valid signature"
+  },
+
+  "current_deployment_status": {
+    "deployed_threshold": 3,
+    "deployed_owners_count": 6,
+    "owners": [
+      "0x141894514a9c17a3345ee457a09da0088ba27216",
+      "0x23adb7c9810f99c44cd5b35b9e6929f6cec543ba",
+      "0x397f3ab15deff0a5b60b533d14c61fb7043cb6ce",
+      "0xbd3139268b1f531e6e7cff1d9f980497b3943b24",
+      "0xc549dc75f8fc175616dc8a11534130a74159f284",
+      "0xcbde3ab8ec6595e8e083b2b167d2a8d01c724422"
+    ],
+    "is_currently_exploitable": false,
+    "reason": "Threshold=3 > 0, requires 3 valid signatures"
+  },
+
+  "bytecode_evidence": {
+    "validation_offset": "0x594",
+    "division_opcode_offset": "0x280",
+    "error_signatures": {
+      "0xf02e8ac1": "InvalidParams (threshold too low or owners invalid)",
+      "0xaabd5a09": "InvalidThreshold (threshold > owners.length)",
+      "0x0138f321": "InvalidOwner (duplicate or zero address)"
+    }
+  },
+
+  "risk_assessment": {
+    "existing_deployment": "LOW - threshold=3, owners=6, properly configured",
+    "new_deployments": "CRITICAL - if deployed with owners=1, threshold=0 is possible",
+    "factory_contracts": "HIGH - any factory using this bytecode could create vulnerable instances"
+  },
+
+  "recommendations": [
+    "Add explicit check: require(threshold > 0, 'threshold must be positive')",
+    "Alternative: require(threshold >= 1 || owners.length > 1)",
+    "Audit any factory contracts that deploy this multisig code",
+    "Review all deployments to ensure none have threshold=0"
+  ],
+
+  "input_scores": {
+    "likelihood": 100,
+    "impact": 70,
+    "confidence": 85,
+    "complexity": 25,
+    "severity_raw": 70,
+    "owners_threshold_ratio": 2
+  },
+
+  "analysis_timestamp": "2026-02-03T00:00:00Z",
+  "source_verified": false,
+  "bytecode_analyzed": true
+}
