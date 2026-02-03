@@ -46,6 +46,9 @@
   "current_deployment_status": {
     "deployed_threshold": 3,
     "deployed_owners_count": 6,
+    "current_nonce": 23,
+    "contract_balance_wei": "8577110000000000000000",
+    "contract_balance_eth": "8577.11 ETH (~$26M USD)",
     "owners": [
       "0x141894514a9c17a3345ee457a09da0088ba27216",
       "0x23adb7c9810f99c44cd5b35b9e6929f6cec543ba",
@@ -54,8 +57,47 @@
       "0xc549dc75f8fc175616dc8a11534130a74159f284",
       "0xcbde3ab8ec6595e8e083b2b167d2a8d01c724422"
     ],
+    "owner_types": "ALL EOAs (no smart contract owners)",
     "is_currently_exploitable": false,
-    "reason": "Threshold=3 > 0, requires 3 valid signatures"
+    "reason": "Threshold=3 > 0, requires 3 valid signatures from owners"
+  },
+
+  "unprivileged_actor_analysis": {
+    "status": "NO EXPLOIT PATH FOUND",
+    "multi_step_sequences_tested": [
+      {
+        "name": "Mempool signature extraction",
+        "result": "FAILS - signatures bound to specific (dest, value, data, nonce)"
+      },
+      {
+        "name": "ecrecover collision attack",
+        "result": "FAILS - computationally infeasible (~2^128 operations)"
+      },
+      {
+        "name": "Nonce race condition / reentrancy",
+        "result": "FAILS - nonce incremented BEFORE external call"
+      },
+      {
+        "name": "Signature malleability",
+        "result": "FAILS - s-value check: s <= secp256k1n/2"
+      },
+      {
+        "name": "Zero-value signature arrays",
+        "result": "FAILS - ecrecover(0) returns 0, fails > lastOwner check"
+      },
+      {
+        "name": "Cross-chain replay",
+        "result": "FAILS - domain separator includes chainId"
+      }
+    ],
+    "security_features_verified": {
+      "signature_ordering": "recovered > lastOwner enforced (prevents duplicates)",
+      "owner_validation": "isOwner[recovered] checked for each signature",
+      "nonce_protection": "Incremented before call, reverted on failure",
+      "malleability_protection": "s <= 0x7FFFFFFF...20A0 checked",
+      "eip712_domain": "Includes chainId and contract address"
+    },
+    "conclusion": "Contract is secure against unprivileged actors for this deployment"
   },
 
   "bytecode_evidence": {
