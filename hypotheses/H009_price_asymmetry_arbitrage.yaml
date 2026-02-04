@@ -1,0 +1,117 @@
+hypothesis_id: H-009
+protocol: f(x) Protocol / Convex FXN
+category: CROSS_CONTRACT_SEMANTIC_MISMATCH
+status: E1
+
+title: "Treasury Price Asymmetry Creates Arbitrage Window"
+
+description: |
+  The TreasuryV2 uses DIFFERENT prices for different actions:
+  - MintFToken: uses minPrice
+  - MintXToken: uses maxPrice
+  - RedeemFToken: uses maxPrice
+  - RedeemXToken: uses minPrice
+
+  This design is intentional for slippage protection, but creates
+  an arbitrage opportunity when oracle prices diverge significantly.
+
+  ATTACK VECTOR (when minPrice << maxPrice):
+  1. MintXToken with maxPrice (get more xToken per ETH)
+  2. RedeemXToken with minPrice (get more ETH per xToken)
+  3. Net gain = (maxPrice - minPrice) * position size
+
+  OR the reverse (when minPrice >> maxPrice not possible by definition)
+
+evidence:
+  treasury_price_logic: |
+    // From TreasuryV2._fetchBaseTokenPrice():
+    function _fetchBaseTokenPrice(Action _action) internal view returns (uint256 _twap, uint256 _price) {
+        (, _twap, _minPrice, _maxPrice) = IFxPriceOracleV2(priceOracle).getPrice();
+
+        if (_action == Action.MintFToken || _action == Action.RedeemXToken)
+            _price = _minPrice;
+        else if (_action == Action.MintXToken || _action == Action.RedeemFToken)
+            _price = _maxPrice;
+        else _price = _maxPrice;
+    }
+
+  oracle_interface: |
+    // IFxPriceOracleV2 returns multiple prices
+    function getPrice() external view returns (
+        bool isValid,
+        uint256 twap,      // TWAP anchor (hard to manipulate)
+        uint256 minPrice,  // Minimum from all sources
+        uint256 maxPrice   // Maximum from all sources
+    );
+
+attack_sequence:
+  step_1: "Monitor IFxPriceOracleV2.getPrice() for price divergence"
+  step_2: "When (maxPrice - minPrice) / twap > threshold (e.g., 0.5%):"
+  step_3: "Calculate optimal position size accounting for fees"
+  step_4: "Execute atomic: MintXToken(baseIn) → immediate RedeemXToken(xTokenOut)"
+  step_5: "Profit = (maxPrice/minPrice - 1) * baseIn - fees"
+
+economic_analysis:
+  normal_conditions: |
+    - Price sources usually aligned within 0.1%
+    - Spread too small for profitable arbitrage after fees
+
+  profitable_conditions: |
+    - Requires significant price divergence (>0.5%)
+    - Could occur during:
+      a) High volatility events
+      b) Oracle lag after rapid price movements
+      c) Chainlink heartbeat delays
+      d) Spot vs TWAP divergence
+
+  fee_structure: |
+    - Market mint fee: ~0.1-0.5%
+    - Market redeem fee: ~0.1-0.5%
+    - Total round-trip: ~0.2-1%
+    - Need spread > total fees for profit
+
+  example_scenario: |
+    - Price divergence: 1%
+    - Position: 100 ETH worth
+    - Gross profit: 1 ETH
+    - Fees (0.4%): 0.4 ETH
+    - Net profit: 0.6 ETH (~$2,000 at $3,000/ETH)
+
+constraints:
+  - "Requires oracle price divergence > fee threshold"
+  - "Must pass stability mode checks"
+  - "Flash loan available for capital"
+  - "Gas costs must be < profit"
+
+attacker_model:
+  minimum_tier: TIER_1_DEFI_USER
+  requires: |
+    - Monitoring of oracle prices
+    - Flash loan access for capital
+    - Smart contract for atomic execution
+
+risk_assessment: MEDIUM
+  - Relies on oracle divergence which is rare
+  - Protocol likely monitors for this
+  - Fees may eliminate profit margin
+  - Worth monitoring for edge cases
+
+cross_contract_flow: |
+  Market.mintXToken(baseIn)
+    → Treasury.mintXToken(underlyingValue, recipient)
+      → _loadSwapState(MintXToken) uses maxPrice
+      → _state.mintXToken() calculates output
+      → IFxLeveragedTokenV2.mint(recipient, xTokenOut)
+
+  Market.redeemXToken(xTokenIn)
+    → Treasury.redeem(0, xTokenIn, owner)
+      → _loadSwapState(RedeemXToken) uses minPrice
+      → _state.redeem() calculates output
+      → IFxLeveragedTokenV2.burn(owner, xTokenIn)
+      → _transferBaseToken(baseOut, recipient)
+
+next_steps:
+  - "Query actual oracle for current price spread"
+  - "Calculate break-even threshold including all fees"
+  - "Build monitoring bot to detect opportunities"
+  - "Test on fork with simulated price divergence"

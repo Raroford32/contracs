@@ -1,0 +1,120 @@
+hypothesis_id: H-010
+protocol: f(x) Protocol / Convex FXN
+category: CROSS_PROTOCOL_COMPOSITION
+status: E1
+
+title: "Cross-Contract State Race Between Gauge and Treasury"
+
+description: |
+  The FxUSDShareableRebalancePool (gauge) and Treasury have tightly coupled state:
+
+  1. Gauge calls Treasury.collateralRatio() for liquidation checks
+  2. Treasury.collateralRatio() depends on:
+     - totalBaseToken (storage)
+     - oracle price (external)
+     - fToken/xToken supply (external ERC20)
+
+  HYPOTHESIS: During certain state transitions, there may be a window where:
+  - Treasury state is partially updated
+  - Gauge reads stale/inconsistent collateralRatio
+  - Leading to incorrect liquidation decisions
+
+evidence:
+  gauge_liquidation_check: |
+    // From gauge.liquidate():
+    if (_treasury.collateralRatio() >= liquidatableCollateralRatio) {
+        revert CannotLiquidate();
+    }
+    // Then proceeds to redeem
+
+  treasury_collateral_ratio: |
+    // From Treasury.collateralRatio():
+    function collateralRatio() public view override returns (uint256) {
+        FxStableMath.SwapState memory _state = _loadSwapState(Action.None);
+        if (_state.baseSupply == 0) return PRECISION;
+        if (_state.fSupply == 0) return PRECISION * PRECISION;
+        return (_state.baseSupply * _state.baseNav) / _state.fSupply;
+    }
+
+  load_swap_state: |
+    // State is loaded from multiple sources:
+    _state.baseSupply = totalBaseToken;           // Storage
+    (_state.baseTwapNav, _state.baseNav) = _fetchBaseTokenPrice(_action);  // Oracle
+    _state.fSupply = IERC20Upgradeable(fToken).totalSupply();  // External call
+    _state.xSupply = IERC20Upgradeable(xToken).totalSupply();  // External call
+
+potential_race_conditions:
+  scenario_1: |
+    ORACLE UPDATE RACE:
+    1. Oracle price drops significantly (e.g., 10%)
+    2. Attacker detects oracle update in mempool
+    3. Attacker front-runs to deposit large position
+    4. Liquidation now triggered due to lower collateral ratio
+    5. Attacker receives disproportionate liquidation rewards
+
+    CONSTRAINT: LIQUIDATOR_ROLE required to call liquidate()
+
+  scenario_2: |
+    CHECKPOINT TIMING RACE:
+    1. User has veFXN boost locked in checkpoint
+    2. User unlocks veFXN (boost decreases)
+    3. Before next checkpoint, user still receives high boost
+    4. Exploit: Strategic checkpoint calls to maximize rewards
+
+    IMPACT: Reward gaming, not direct extraction
+
+  scenario_3: |
+    SETTLEMENT LAG RACE:
+    1. Treasury.settle() is called by SETTLE_WHITELIST_ROLE
+    2. Updates referenceBaseTokenPrice from oracle
+    3. Between oracle update and settlement:
+       - NAV calculations use stale referenceBaseTokenPrice
+       - But current oracle prices may have moved
+    4. Creates temporary mispricing window
+
+cross_contract_state_dependencies: |
+  ┌──────────────────┐     queries      ┌──────────────────┐
+  │      Gauge       │ ───────────────► │    Treasury      │
+  │                  │                  │                  │
+  │ liquidate()      │   collateralRatio()  totalBaseToken │
+  │ checkpoint()     │ ◄───────────────   oracle price    │
+  │ claim()          │                  │  token supplies  │
+  └──────────────────┘                  └──────────────────┘
+           │                                    │
+           │                                    │
+           ▼                                    ▼
+  ┌──────────────────┐                  ┌──────────────────┐
+  │   FXN Minter     │                  │   Price Oracle   │
+  │                  │                  │                  │
+  │ FXN rewards      │                  │ minPrice         │
+  │ rate calculation │                  │ maxPrice         │
+  └──────────────────┘                  │ twap             │
+                                        └──────────────────┘
+
+constraints:
+  liquidation_requires: "LIQUIDATOR_ROLE (not permissionless)"
+  settle_requires: "SETTLE_WHITELIST_ROLE"
+  oracle_trusted: "Multiple sources with deviation checks"
+
+economic_analysis:
+  scenario_1_profit: |
+    - Requires LIQUIDATOR_ROLE collusion (unlikely)
+    - Or compromised role (governance attack)
+    - Profit = liquidation bonus * front-run position
+
+  scenario_3_profit: |
+    - Window exists but narrow (oracle heartbeat)
+    - Profit = price_delta * position * fee_avoided
+    - Usually < 0.1% due to TWAP anchoring
+
+risk_assessment: LOW-MEDIUM
+  - Most scenarios require privileged roles
+  - Oracle has multiple sources and TWAP
+  - Settlement happens at protocol-controlled intervals
+  - No permissionless attack path identified
+
+next_steps:
+  - "Analyze oracle implementation for update frequency"
+  - "Check settlement frequency and triggers"
+  - "Model profit under extreme volatility"
+  - "Verify LIQUIDATOR_ROLE distribution"
