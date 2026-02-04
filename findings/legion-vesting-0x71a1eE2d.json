@@ -1,0 +1,91 @@
+{
+  "finding_id": "ANALYSIS-2026-02-04-002",
+  "contract_address": "0x71a1eE2deb0B49135D56080CBC397B5698C8A187",
+  "contract_name": "LegionLinearVesting",
+  "chain": "ethereum_mainnet",
+  "status": "SECURE - No vulnerabilities for unprivileged actors",
+
+  "contract_overview": {
+    "type": "Vesting Wallet (OpenZeppelin VestingWalletUpgradeable)",
+    "protocol": "Legion Protocol",
+    "beneficiary": "0xfa6b2a92b531d12ba2f6517e67a39738b8cf4bab",
+    "compiler": "0.8.30"
+  },
+
+  "vesting_schedule": {
+    "start_timestamp": 1785747600,
+    "start_date": "2026-08-03 09:00:00 UTC",
+    "duration_seconds": 15768000,
+    "duration_human": "~6 months",
+    "end_date": "2027-02-01 21:00:00 UTC",
+    "vesting_started": false,
+    "days_until_start": 180
+  },
+
+  "assets_held": {
+    "TRIA": {
+      "address": "0x228bec415ade4b61d7caf0adf8c91eac587ba369",
+      "balance": "2,100,000 TRIA",
+      "releasable_now": "0 TRIA"
+    },
+    "ETH": "0"
+  },
+
+  "security_analysis": {
+    "release_function": {
+      "access": "public",
+      "modifier": "onlyCliffEnded",
+      "tokens_sent_to": "owner() (beneficiary)",
+      "vulnerable": false,
+      "reason": "Tokens always go to beneficiary, not caller"
+    },
+    "emergencyTransferOwnership": {
+      "access": "onlyVestingController",
+      "vulnerable": false,
+      "reason": "Requires vestingController role"
+    },
+    "transferOwnership": {
+      "access": "onlyOwner",
+      "vulnerable": false,
+      "reason": "Only beneficiary can transfer ownership"
+    }
+  },
+
+  "attack_vectors_analyzed": {
+    "call_release_early": {
+      "result": "BLOCKED",
+      "reason": "onlyCliffEnded modifier reverts before cliff/start"
+    },
+    "call_release_to_steal_tokens": {
+      "result": "NOT POSSIBLE",
+      "reason": "Tokens always sent to owner(), not msg.sender"
+    },
+    "change_beneficiary": {
+      "result": "BLOCKED",
+      "reason": "transferOwnership requires onlyOwner, emergencyTransferOwnership requires vestingController"
+    },
+    "front_run_release": {
+      "result": "NOT PROFITABLE",
+      "reason": "Anyone can call release but tokens go to beneficiary"
+    }
+  },
+
+  "unprivileged_actor_analysis": {
+    "can_steal_tokens": false,
+    "can_change_beneficiary": false,
+    "can_accelerate_vesting": false,
+    "can_block_vesting": false,
+    "conclusion": "Contract is secure - standard OpenZeppelin vesting pattern"
+  },
+
+  "notes": [
+    "This is an individual vesting wallet created by LegionTokenDistributor",
+    "Part of Legion Protocol's TRIA token distribution",
+    "Uses battle-tested OpenZeppelin VestingWalletUpgradeable",
+    "Vesting hasn't started yet (starts Aug 2026)",
+    "Only beneficiary can receive vested tokens"
+  ],
+
+  "analysis_timestamp": "2026-02-04T02:36:00Z",
+  "source_verified": true
+}
