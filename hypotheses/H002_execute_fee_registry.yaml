@@ -1,0 +1,59 @@
+hypothesis_id: H-002
+protocol: Convex FXN (cvxFXN)
+category: CROSS_CONTRACT_SEMANTIC_MISMATCH
+status: E1
+
+title: "execute() allows calls to feeRegistry which is NOT blocked"
+
+description: |
+  The execute() function blocks only 3 targets:
+  - fxn token
+  - stakingToken
+  - rewards contract
+
+  However, feeRegistry (0x4f258fecc91b2ff162ca702c2bd9abf2af089611) is NOT blocked.
+  A vault owner can call arbitrary functions on feeRegistry.
+
+  This could potentially:
+  - Manipulate fee routing
+  - Change fee depositor address
+  - Affect fee distribution for ALL vaults in the protocol
+
+evidence:
+  code_analysis:
+    _checkExecutable: |
+      function _checkExecutable(address _address) internal virtual{
+          require(_address != fxn && _address != stakingToken && _address != rewards, "!invalid target");
+      }
+    observation: |
+      feeRegistry, poolRegistry, fxnMinter are all ALLOWED targets for execute().
+      The execute() function allows arbitrary calldata to any of these.
+
+attack_sequence:
+  step_1: "Vault owner identifies valuable function on feeRegistry"
+  step_2: "Craft calldata to call that function"
+  step_3: "Call execute(feeRegistry, 0, calldata)"
+  step_4: "If function changes global state, all vaults affected"
+
+required_investigation:
+  - "Fetch feeRegistry source code"
+  - "Identify all external/public functions on feeRegistry"
+  - "Check if any can be called by arbitrary addresses"
+  - "Check if any manipulate global fee routing"
+
+constraints:
+  - "Only vault owner can call execute()"
+  - "execute() reverts if call fails"
+  - "feeRegistry may have its own access controls"
+
+attacker_model:
+  minimum_tier: TIER_2_MEV_SEARCHER
+  requires: "vault ownership or creating a vault"
+  flash_liquidity: not_required
+  multi_block: false
+
+next_steps:
+  - "Fetch feeRegistry contract source"
+  - "Map all callable functions"
+  - "Identify functions without access control"
+  - "Build proof of concept if vulnerability found"

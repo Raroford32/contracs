@@ -1,0 +1,85 @@
+hypothesis_id: H-004
+protocol: Convex FXN (cvxFXN)
+category: ACCOUNTING_DIVERGENCE_OVER_TIME
+status: E1
+
+title: "earned() claims to vault while getReward() claims to owner - potential reward stuck/redirect"
+
+description: |
+  CRITICAL FINDING: There's an asymmetry in how gauge rewards are claimed:
+
+  1. In initialize():
+     IFxnGauge(gaugeAddress).setRewardReceiver(_owner);
+
+  2. In getReward():
+     IFxnGauge(gaugeAddress).claim();  // Uses rewardReceiver -> owner
+
+  3. In earned():
+     IFxnGauge(gaugeAddress).claim(address(this), address(this));  // Vault!
+
+  When earned() is called:
+  - FXN is minted to vault
+  - Gauge rewards are claimed to VAULT (not owner)
+  - Rewards are now "stuck" in vault unless processed
+
+  The vault owner can then call transferTokens() to retrieve non-FXN tokens,
+  OR call getReward(false) which skips claiming but processes existing tokens.
+
+evidence:
+  code_analysis:
+    earned_claim: |
+      // StakingProxyERC20.sol:96
+      IFxnGauge(gaugeAddress).claim(address(this),address(this));
+    getReward_claim: |
+      // StakingProxyERC20.sol:140
+      IFxnGauge(gaugeAddress).claim();  // Uses rewardReceiver set in initialize
+    initialize_receiver: |
+      // StakingProxyERC20.sol:35
+      IFxnGauge(gaugeAddress).setRewardReceiver(_owner);
+
+attack_scenarios:
+  - scenario: "Reward Token Lock by Attacker"
+    description: |
+      1. Attacker repeatedly calls earned() on a victim's vault
+      2. Gauge rewards accumulate in vault instead of going to owner
+      3. If transferTokens doesn't include these tokens, they're stuck
+      4. Owner must call specific token transfer to recover
+    viability: LOW
+    reason: "Owner can still recover via transferTokens or getReward"
+
+  - scenario: "Front-running getReward with earned"
+    description: |
+      1. Owner wants to call getReward()
+      2. Attacker front-runs with earned()
+      3. Rewards claimed to vault instead of owner
+      4. Owner's getReward() now claims nothing new
+      5. Owner must separately handle vault balance
+    viability: MEDIUM
+    reason: "Creates friction and unexpected behavior"
+
+  - scenario: "Gauge Reward Token Not in transferTokens"
+    description: |
+      1. Gauge distributes exotic reward token X
+      2. Attacker calls earned() - token X goes to vault
+      3. Owner calls getReward() - token X stays in vault
+      4. If owner doesn't know about token X, it stays stuck
+    viability: MEDIUM
+    reason: "Information asymmetry can trap value"
+
+constraints:
+  - "earned() is permissionless"
+  - "getReward() is permissionless"
+  - "transferTokens() requires owner"
+  - "Gauge reward tokens vary by pool"
+
+attacker_model:
+  minimum_tier: TIER_0_BASIC_USER
+  ordering_power: weak
+  flash_liquidity: not_required
+  multi_block: false
+
+next_steps:
+  - "Check which reward tokens gauges distribute"
+  - "Verify if all reward tokens are handled by getReward flow"
+  - "Build fork test to demonstrate reward stuck scenario"
+  - "Calculate if any value can be permanently extracted"

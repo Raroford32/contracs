@@ -1,0 +1,65 @@
+hypothesis_id: H-003
+protocol: Convex FXN (cvxFXN)
+category: CROSS_CONTRACT_SEMANTIC_MISMATCH
+status: E1
+
+title: "execute() to gauge allows manipulation when pool is active"
+
+description: |
+  When pool is NOT shutdown, execute() allows calls to gaugeAddress.
+  The gauge has many functions callable by the vault (as staker):
+
+  - setRewardReceiver(address) - redirect rewards to different address
+  - acceptSharedVote(address) - change boost sharing
+  - toggleVoteSharing(address) - toggle vote sharing
+  - claim functions - claim rewards
+
+  While setRewardReceiver is called in initialize(), a vault owner
+  could use execute() to change it again.
+
+evidence:
+  code_analysis:
+    execute_gauge_check: |
+      if(_to == gaugeAddress){
+          (, , , , uint8 shutdown) = IPoolRegistry(poolRegistry).poolInfo(pid);
+          require(shutdown == 0,"!shutdown");
+      }
+    observation: |
+      Gauge calls are ONLY allowed when pool is NOT shutdown (shutdown == 0).
+      This means active pools allow arbitrary gauge calls via execute().
+
+attack_scenarios:
+  - scenario: "Reward Receiver Manipulation"
+    description: |
+      1. Owner creates vault, deposits tokens
+      2. Owner calls execute() with setRewardReceiver(attacker_address)
+      3. Gauge rewards now go to attacker address instead of vault
+      4. FXN minted to vault still has fees taken by protocol
+      5. Net result: owner can bypass Convex fee system for gauge rewards
+    viability: MEDIUM
+    reason: "Intentional by owner, but may bypass protocol economics"
+
+  - scenario: "Boost Manipulation"
+    description: |
+      1. Owner uses acceptSharedVote() to share another user's veFXN boost
+      2. This could manipulate reward distribution
+      3. May affect other stakers' rewards
+    viability: NEEDS_INVESTIGATION
+    reason: "Depends on boost mechanics and whether this is intended"
+
+constraints:
+  - "Only works when pool is active (shutdown == 0)"
+  - "Only vault owner can call execute()"
+  - "Gauge may have its own restrictions on these functions"
+
+attacker_model:
+  minimum_tier: TIER_1_DEFI_USER
+  requires: "vault ownership"
+  flash_liquidity: not_required
+  multi_block: false
+
+next_steps:
+  - "Check if setRewardReceiver via execute() is intended behavior"
+  - "Analyze if this bypasses any protocol fees"
+  - "Check boost mechanics for manipulation potential"
+  - "Build fork test to validate"

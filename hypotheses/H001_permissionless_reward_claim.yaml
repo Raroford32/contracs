@@ -1,0 +1,76 @@
+hypothesis_id: H-001
+protocol: Convex FXN (cvxFXN)
+category: CROSS_CONTRACT_SEMANTIC_MISMATCH
+status: E1
+
+title: "Permissionless getReward() and earned() can manipulate reward timing"
+
+description: |
+  The StakingProxyERC20 contract has two permissionless functions that
+  interact with rewards:
+
+  1. getReward() - No access control, claims rewards for vault owner
+  2. earned() - No access control, MUTATES STATE by minting FXN and claiming
+
+  These could potentially be exploited for:
+  - Griefing attacks on reward timing
+  - MEV extraction via reward sandwich attacks
+  - Tax timing manipulation for vault owners
+  - Fee optimization/manipulation
+
+evidence:
+  code_analysis:
+    getReward_line: "StakingProxyERC20.sol:132 - function getReward() external override"
+    earned_line: "StakingProxyERC20.sol:78 - function earned() external override"
+    observation: |
+      Both functions have NO access modifiers (no onlyOwner).
+      earned() calls:
+        - IFxnTokenMinter(fxnMinter).mint(gaugeAddress) - mints FXN
+        - IFxnGauge(gaugeAddress).claim(address(this),address(this)) - claims gauge rewards
+      getReward() calls:
+        - IFxnTokenMinter(fxnMinter).mint(gaugeAddress) - mints FXN
+        - IFxnGauge(gaugeAddress).claim() - claims to owner via rewardReceiver
+        - _processFxn() - sends fees and remainder to owner
+        - _processExtraRewards() - sends convex rewards to owner
+
+attacker_model:
+  minimum_tier: TIER_1_DEFI_USER
+  ordering_power: weak
+  flash_liquidity: not_required
+  multi_block: false
+
+attack_scenarios:
+  - scenario: "Reward Sandwich Attack"
+    description: |
+      1. Monitor mempool for vault owner's getReward() transaction
+      2. Front-run with own call to getReward() (claims to same owner anyway)
+      3. This doesn't extract value but could grief timing
+    viability: LOW
+    reason: "getReward sends rewards to owner, not caller"
+
+  - scenario: "Tax Timing Manipulation"
+    description: |
+      1. Attacker calls getReward() for many vaults at specific times
+      2. Could affect tax reporting timing for vault owners
+      3. Regulatory/compliance implications
+    viability: MEDIUM
+    reason: "Real impact but not direct value extraction"
+
+  - scenario: "Fee Registry Manipulation via execute()"
+    description: |
+      1. Vault owner uses execute() to call feeRegistry
+      2. feeRegistry is NOT in blocked targets list
+      3. Could potentially manipulate fee routing
+    viability: NEEDS_INVESTIGATION
+    reason: "Requires understanding feeRegistry functions"
+
+constraints:
+  - "getReward() sends rewards to owner, not msg.sender"
+  - "earned() returns data but rewards stay in vault"
+  - "FXN fees are always deducted and sent to feeDepositor"
+
+next_steps:
+  - "Query feeRegistry contract for callable functions"
+  - "Check if any feeRegistry functions can be exploited via execute()"
+  - "Analyze reward distribution timing for MEV opportunities"
+  - "Build fork test to validate attack scenarios"
