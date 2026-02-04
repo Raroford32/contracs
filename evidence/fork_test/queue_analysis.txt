@@ -1,0 +1,29 @@
+=== DEBT REPORTING QUEUE ===
+These vaults are ready for updateDebtReporting():
+
+Vault: 0x8acA8accFb69adeff607431E0F25466B7b76a8Ad
+  Name: "Tokemak-USD Coin-Savings crvUSD"
+  Prices (spot, safe, isSafe):
+  1082537 [1.082e6]
+1083965 [1.083e6]
+true
+  Underlying LP: 0x0655977FEb2f289A4aB78af67BAB0d17aAb84367
+  Vault Balance: 0
+
+Vault: 0x7876F91BB22148345b3De16af9448081E9853830
+  Name: "Tokemak-USD Coin-Fluid USD Coin"
+  Prices (spot, safe, isSafe):
+  1184794 [1.184e6]
+1184679 [1.184e6]
+true
+  Underlying LP: 0x9Fb7b4477576Fe5B32be4C1843aFB1e55F251B33
+  Vault Balance: 0
+
+Vault: 0x366C094C5563CD12AF27b9AfFF2200B0E0D056E0
+  Name: "Tokemak-USD Coin-Balancer Aave GHO/USDT/USDC"
+  Prices (spot, safe, isSafe):
+  1037317 [1.037e6]
+1037328 [1.037e6]
+true
+  Underlying LP: 0x85B2b559bC2D21104C4DEFdd6EFcA8A20343361D
+  Vault Balance: 0

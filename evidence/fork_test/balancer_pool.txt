@@ -1,0 +1,9 @@
+=== BALANCER POOL ANALYSIS ===
+Pool: 0x85B2b559bC2D21104C4DEFdd6EFcA8A20343361D
+
+Pool ID:
+Not found
+
+Pool Tokens via Vault.getPoolTokens():
+
+Total Supply:
