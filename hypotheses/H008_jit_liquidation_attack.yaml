@@ -1,0 +1,83 @@
+hypothesis_id: H-008
+protocol: f(x) Protocol / Convex FXN
+category: CROSS_PROTOCOL_COMPOSITION
+status: E1
+
+title: "JIT (Just-In-Time) Liquidity Attack on Liquidations"
+
+description: |
+  When liquidation occurs in the ShareableRebalancePool:
+  1. fToken is redeemed for base token (eETH)
+  2. Base token is distributed as rewards to ALL current stakers
+  3. Distribution is proportional to stake
+
+  ATTACK VECTOR (requires LIQUIDATOR_ROLE collusion or compromise):
+  1. Monitor collateral ratio approaching liquidation threshold
+  2. Flash loan large amount of staking token
+  3. Deposit into rebalance pool (become major stakeholder)
+  4. Trigger liquidation (via LIQUIDATOR_ROLE)
+  5. Receive proportional share of liquidated assets
+  6. Withdraw and repay flash loan
+
+evidence:
+  liquidation_reward_distribution: |
+    // In liquidate():
+    _accumulateReward(_token, _baseOut);
+    // This distributes to ALL stakers proportionally
+
+  deposit_no_delay: |
+    // deposit() has no time lock - immediate stake
+    function deposit(uint256 _amount, address _receiver) external override {
+        IERC20Upgradeable(_asset).safeTransferFrom(_sender, address(this), _amount);
+        _checkpoint(_receiver);
+        _supply.amount += uint104(_amount);
+        // ...
+    }
+
+attack_sequence:
+  step_1: "Monitor treasury.collateralRatio() approaching liquidatableCollateralRatio"
+  step_2: "Calculate maximum liquidatable amount from treasury.maxRedeemableFToken()"
+  step_3: "Flash borrow staking token (fToken)"
+  step_4: "Deposit into rebalance pool via Convex or directly"
+  step_5: "Trigger liquidation (requires LIQUIDATOR_ROLE)"
+  step_6: "Claim liquidation rewards (eETH)"
+  step_7: "Withdraw stake and repay flash loan"
+
+economic_analysis:
+  example_scenario: |
+    - Liquidation amount: 1M fToken
+    - Attacker flash stakes: 10M fToken
+    - Pool total after attack: 15M fToken
+    - Attacker's share: 10M/15M = 66.7%
+    - Liquidated value: 1M fToken → ~1M USD worth of eETH
+    - Attacker receives: 666k USD of eETH
+    - Cost: Flash loan fee (~0.05%) + gas
+    - Net profit: ~665k USD
+
+constraints:
+  - "CRITICAL: Requires LIQUIDATOR_ROLE to trigger liquidation"
+  - "Flash loan must be available for staking token"
+  - "Liquidation must occur in same block as deposit"
+  - "Withdraw may have restrictions"
+
+attacker_model:
+  minimum_tier: TIER_3_SOPHISTICATED_ACTOR
+  requires: |
+    - LIQUIDATOR_ROLE access (internal compromise or collusion)
+    - Large flash loan capability
+    - Multi-contract atomic execution
+
+risk_assessment: LOW (due to LIQUIDATOR_ROLE requirement)
+  - Without LIQUIDATOR_ROLE, attack is impossible
+  - Protocol likely has trusted liquidators
+  - Could be combined with governance attack
+
+mitigation_ideas:
+  - "Add time-weighted staking for liquidation rewards"
+  - "Snapshot stakers before liquidation"
+  - "Rate limit large deposits"
+
+next_steps:
+  - "Check who has LIQUIDATOR_ROLE"
+  - "Analyze if liquidation can be triggered permissionlessly under any condition"
+  - "Check for flash loan availability of staking token"

@@ -1,0 +1,59 @@
+hypothesis_id: H-007
+protocol: f(x) Protocol / Convex FXN
+category: CROSS_PROTOCOL_COMPOSITION
+status: E1
+
+title: "Liquidation sandwich attack when collateral ratio crosses threshold"
+
+description: |
+  The gauge has a liquidate() function that:
+  1. Checks if collateralRatio < liquidatableCollateralRatio
+  2. Redeems fToken via market for base token (eETH)
+  3. Distributes base token as rewards to stakers
+
+  ATTACK VECTOR:
+  When collateral ratio is near the liquidation threshold:
+  1. Attacker can manipulate collateral ratio (via large trades)
+  2. Trigger liquidation
+  3. Collect liquidated rewards
+
+evidence:
+  liquidation_threshold_check: |
+    if (_treasury.collateralRatio() >= liquidatableCollateralRatio) {
+        revert CannotLiquidate();
+    }
+
+  liquidation_rewards: |
+    // Liquidated base token is distributed as rewards
+    _accumulateReward(_token, _baseOut);
+
+attack_chain:
+  step_1: "Monitor collateral ratio approaching liquidatableCollateralRatio"
+  step_2: "Large stake in the rebalance pool (become major recipient)"
+  step_3: "Push collateral ratio below threshold (if possible)"
+  step_4: "Call liquidate() via LIQUIDATOR_ROLE"
+  step_5: "Receive proportional share of liquidated tokens"
+
+constraints:
+  - "liquidate() requires LIQUIDATOR_ROLE (not permissionless)"
+  - "Collateral ratio manipulation may require large capital"
+  - "May need flash loan to manipulate and stake simultaneously"
+
+economic_analysis:
+  requirement: "LIQUIDATOR_ROLE access or compromised liquidator"
+  collateral_manipulation_cost: "Unknown - depends on market depth"
+  potential_profit: |
+    - Liquidation distributes base token (eETH)
+    - If liquidating $1M of fToken with 10% stake:
+      - Receive ~$100k worth of eETH
+      - Minus manipulation costs
+
+risk_assessment: LOW
+  - Requires LIQUIDATOR_ROLE
+  - Collateral ratio manipulation is expensive
+  - Likely monitored by protocol team
+
+next_steps:
+  - "Check who has LIQUIDATOR_ROLE"
+  - "Analyze collateral ratio oracle and manipulation cost"
+  - "Determine if flash loan can be used for manipulation"

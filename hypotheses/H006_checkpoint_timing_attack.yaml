@@ -1,0 +1,67 @@
+hypothesis_id: H-006
+protocol: f(x) Protocol / Convex FXN
+category: TIMING_WINDOW_EXPLOITATION
+status: E1
+
+title: "Checkpoint timing can be manipulated for boost advantage"
+
+description: |
+  The gauge _checkpoint() function mints FXN rewards every 24 hours.
+  The boost ratio is calculated based on time-weighted average.
+
+  KEY INSIGHT:
+  - checkpoint() is permissionless
+  - It updates boost snapshots
+  - If called strategically, could lock in favorable boost ratios
+
+  GAUGE CHECKPOINT LOGIC:
+  ```solidity
+  function _checkpoint(address _account) internal virtual override {
+      // fetch FXN from gauge every 24h
+      if (gauge.gauge != address(0) && block.timestamp > uint256(gauge.claimAt) + DAY) {
+          ICurveTokenMinter(minter).mint(gauge.gauge);
+          gauge.claimAt = uint64(block.timestamp);
+          _notifyReward(fxn, _minted);
+      }
+      // ... update boost checkpoint
+  }
+  ```
+
+evidence:
+  permissionless_checkpoint: |
+    // Anyone can call checkpoint(address) to trigger updates
+    function checkpoint(address _account) external nonReentrant {
+        _checkpoint(_account);
+    }
+
+  boost_calculation: |
+    // Boost is time-weighted average
+    // If checkpoint is called right after veFXN increases...
+    // The new higher boost is locked in for the period
+
+attack_scenario:
+  step_1: "Attacker monitors veFXN balances"
+  step_2: "Detects large veFXN lock by target user"
+  step_3: "Immediately calls checkpoint(target) to lock in high boost"
+  step_4: "Target's boost is now calculated with high veFXN"
+  step_5: "If target later unlocks veFXN, boost stays high until next checkpoint"
+
+potential_profit_mechanism: |
+  - This attack is more about DEFENDING a position than attacking
+  - Attacker can checkpoint themselves after increasing veFXN
+  - Or grief others by checkpointing them at unfavorable times
+
+constraints:
+  - "checkpoint() is permissionless but has gas cost"
+  - "Boost calculation uses time-weighted average over epochs"
+  - "Not a direct value extraction but can influence rewards"
+
+risk_assessment: LOW-MEDIUM
+  - More useful for legitimate users to optimize
+  - Griefing potential exists but with limited impact
+  - MEV bots could automate checkpoint calls
+
+next_steps:
+  - "Analyze exact boost calculation mechanics"
+  - "Calculate potential reward differential from timing"
+  - "Test if checkpoint timing significantly affects rewards"

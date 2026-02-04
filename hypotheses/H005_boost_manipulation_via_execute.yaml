@@ -1,0 +1,77 @@
+hypothesis_id: H-005
+protocol: f(x) Protocol / Convex FXN
+category: CROSS_CONTRACT_SEMANTIC_MISMATCH
+status: E1
+
+title: "Vault owner can manipulate boost via execute() -> acceptSharedVote()"
+
+description: |
+  The StakingProxyERC20 execute() function allows calling the gauge contract.
+  The FxUSDShareableRebalancePool gauge has acceptSharedVote() which allows
+  redirecting boost from one veFXN holder to another.
+
+  ATTACK CHAIN:
+  1. Legitimate user A has veFXN and deposits into gauge via Convex vault
+  2. User A's vault gets boosted rewards based on their veFXN
+  3. Attacker creates vault and calls execute(gauge, acceptSharedVote(victimOwner))
+  4. IF the victim has enabled vote sharing for attacker, attacker gets the boost!
+
+evidence:
+  staking_proxy_execute: |
+    function execute(address _to, uint256 _value, bytes calldata _data)
+        external onlyOwner returns (bool, bytes memory) {
+        _checkExecutable(_to);  // Does NOT block gauge!
+        if(_to == gaugeAddress){
+            require(shutdown == 0,"!shutdown");
+        }
+        (bool success, bytes memory result) = _to.call{value:_value}(_data);
+        return (success, result);
+    }
+
+  gauge_acceptSharedVote: |
+    function acceptSharedVote(address _newOwner) external override {
+        address _staker = _msgSender();  // This is the vault!
+        if (!isStakerAllowed[_newOwner][_staker]) {
+            revert ErrorVoteShareNotAllowed();
+        }
+        // ...updates boost to use _newOwner's veFXN
+    }
+
+attack_sequence:
+  step_1: "Attacker identifies high-veFXN holder who has enabled vote sharing"
+  step_2: "Attacker creates Convex vault for the same gauge"
+  step_3: "Attacker calls execute(gauge, acceptSharedVote(highVeFXNHolder))"
+  step_4: "Attacker's vault now gets boost from victim's veFXN"
+  step_5: "Attacker earns higher FXN rewards at victim's expense"
+
+constraints:
+  - "Requires victim to have enabled vote sharing: isStakerAllowed[owner][vault]"
+  - "Requires vault owner to call execute() with correct calldata"
+  - "Pool must not be shutdown"
+  - "Victim must have deposited in gauge"
+
+economic_analysis:
+  potential_profit: |
+    - Boost multiplier can be up to 2.5x
+    - FXN rewards are distributed proportionally to boost
+    - If stealing 60% boost from 100k FXN/week rewards:
+      - 60k FXN worth of extra rewards
+      - At $0.10/FXN = $6k/week
+  gas_cost: "~100k gas for execute() + acceptSharedVote()"
+
+attacker_model:
+  minimum_tier: TIER_1_DEFI_USER
+  requires: |
+    - Vault ownership in target pool
+    - Knowledge of vote sharing state
+    - Target must have enabled sharing
+
+risk_assessment: MEDIUM
+  - Not self-executable (requires victim to enable sharing)
+  - But if sharing is enabled, attack is straightforward
+  - Could be combined with social engineering
+
+next_steps:
+  - "Query isStakerAllowed for known vaults"
+  - "Check if any Convex vaults have vote sharing enabled"
+  - "Build fork test to demonstrate boost theft"
