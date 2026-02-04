@@ -631,4 +631,3 @@ contract SuperVault is Initializable, ERC20Upgradeable, ISuperVault, ReentrancyG
         return (cfg.managementFeeBps, cfg.recipient);
     }
 }
-
