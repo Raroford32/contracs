@@ -227,14 +227,17 @@ Pool Fee: 0.01%
 
 ---
 
-# COMPARISON MATRIX
+# COMPARISON MATRIX (ZERO CAPITAL ATTACK)
 
-| Scenario | Flash Loan | Total Costs | Net Profit | ROI |
-|----------|------------|-------------|------------|-----|
-| Minimum Viable | $800K | $1,155 | **$1,245** | 108% |
-| Optimal Single | $6.5M | $48,405 | **$82,845** | 171% |
-| Max Multi-Pool | $10M | $33,758 | **$266,242** | 789% |
-| Ultra-Aggressive | $15M | $88,010 | **$591,990** | 673% |
+**ATTACKER BRINGS: ONLY GAS (~$5)**
+**ALL OTHER COSTS PAID FROM FLASH LOAN**
+
+| Scenario | Flash Loan | Costs (from loan) | ATTACKER PAYS | NET PROFIT | ROI |
+|----------|------------|-------------------|---------------|------------|-----|
+| Minimum | $800K | $1,400 | **$5.13** | **$1,000** | 19,503% |
+| Optimal | $6.5M | $45,250 | **$5.13** | **$86,750** | 1,691,845% |
+| Maximum | $10M | $65,000 | **$5.13** | **$235,000** | 4,583,096% |
+| Ultra | $15M | $91,500 | **$5.13** | **$588,500** | 11,477,243% |
 
 ---
 
