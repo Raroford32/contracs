@@ -1,0 +1,160 @@
+{
+  "finding_id": "ANALYSIS-2026-02-04-001",
+  "contract_address": "0xF9B03154D08B8E184eBa5B5573b79d77346cd95E",
+  "contract_type": "LegionTokenDistributor (Minimal Proxy)",
+  "implementation_address": "0x5a3f0f420b42bfdba1e7dd65eb9b44e9b54af127",
+  "chain": "ethereum_mainnet",
+  "status": "SECURE - No vulnerabilities for unprivileged actors",
+
+  "protocol_overview": {
+    "name": "Legion Protocol",
+    "description": "Token distribution platform with vesting support for token sales/IDOs",
+    "token_distributed": {
+      "name": "TRIA",
+      "symbol": "TRIA",
+      "address": "0x228bec415ade4b61d7caf0adf8c91eac587ba369",
+      "total_supply": "10,000,000,000 TRIA",
+      "standard": "ERC20 + ERC20Permit"
+    }
+  },
+
+  "contract_analysis": {
+    "distributor_type": "EIP-1167 Minimal Proxy",
+    "compiler_version": "0.8.30",
+    "current_tria_balance": "~19,773,450 TRIA",
+    "key_functions": {
+      "claimTokenAllocation": {
+        "access": "External, signature-protected",
+        "description": "Allows investors to claim tokens with valid signatures",
+        "parameters": ["claimAmount", "investorVestingConfig", "claimSignature", "vestingSignature"]
+      },
+      "releaseVestedTokens": {
+        "access": "External, whenNotPaused",
+        "description": "Releases vested tokens to msg.sender's vesting contract"
+      },
+      "emergencyWithdraw": {
+        "access": "onlyLegion (legionBouncer only)",
+        "description": "Emergency token rescue by admin"
+      },
+      "supplyTokens": {
+        "access": "onlyProject, whenNotPaused",
+        "description": "Project admin supplies tokens for distribution"
+      }
+    }
+  },
+
+  "security_model": {
+    "signature_validation": {
+      "claim_signature": {
+        "signed_data": "keccak256(abi.encodePacked(msg.sender, address(this), block.chainid, claimAmount))",
+        "signer": "legionSigner (from LegionAddressRegistry)",
+        "protections": ["Domain-separated", "Chain-specific", "Amount-bound", "User-bound"]
+      },
+      "vesting_signature": {
+        "signed_data": "keccak256(abi.encode(msg.sender, address(this), block.chainid, investorVestingConfig))",
+        "signer": "legionSigner",
+        "protections": ["Domain-separated", "Chain-specific", "Config-bound", "User-bound"]
+      }
+    },
+    "access_control": {
+      "onlyLegion": "Restricts to legionBouncer address",
+      "onlyProject": "Restricts to projectAdmin address",
+      "whenNotPaused": "Pausable by legionBouncer"
+    },
+    "reentrancy_protection": "Uses SafeTransferLib for token transfers",
+    "double_claim_protection": "hasSettled flag per investor"
+  },
+
+  "attack_vectors_analyzed": {
+    "signature_replay_cross_contract": {
+      "result": "PROTECTED",
+      "reason": "Signature includes address(this)"
+    },
+    "signature_replay_cross_chain": {
+      "result": "PROTECTED",
+      "reason": "Signature includes block.chainid"
+    },
+    "signature_replay_cross_user": {
+      "result": "PROTECTED",
+      "reason": "Signature includes msg.sender"
+    },
+    "amount_manipulation": {
+      "result": "PROTECTED",
+      "reason": "claimAmount is part of signed data"
+    },
+    "vesting_config_manipulation": {
+      "result": "PROTECTED",
+      "reason": "Full investorVestingConfig is part of signed data"
+    },
+    "double_claim": {
+      "result": "PROTECTED",
+      "reason": "hasSettled flag checked before processing"
+    },
+    "front_running": {
+      "result": "NOT APPLICABLE",
+      "reason": "Signature is bound to msg.sender, cannot be used by others"
+    },
+    "emergency_withdraw_exploitation": {
+      "result": "PROTECTED",
+      "reason": "Requires legionBouncer role"
+    },
+    "pause_bypass": {
+      "result": "PROTECTED",
+      "reason": "All state-changing functions respect whenNotPaused"
+    }
+  },
+
+  "unprivileged_actor_analysis": {
+    "can_claim_others_tokens": false,
+    "can_drain_contract": false,
+    "can_manipulate_vesting": false,
+    "can_bypass_signatures": false,
+    "can_replay_signatures": false,
+    "conclusion": "Contract is secure against unprivileged actors"
+  },
+
+  "tria_token_analysis": {
+    "contract_address": "0x228bec415ade4b61d7caf0adf8c91eac587ba369",
+    "type": "Standard ERC20 + Permit",
+    "owner_controlled": true,
+    "minting": "Fixed supply (10B minted to treasury at deployment)",
+    "burning": "Not supported",
+    "special_features": [
+      "ERC20Permit for gasless approvals",
+      "Withdrawable base (owner can rescue stuck tokens)"
+    ],
+    "vulnerabilities_found": "None"
+  },
+
+  "vesting_system": {
+    "factory_based": true,
+    "vesting_types": ["LEGION_LINEAR", "LEGION_LINEAR_EPOCH"],
+    "controller": "External vesting controller for release management",
+    "max_duration": "10 years",
+    "cliff_support": true,
+    "tge_allocation": "Configurable percentage on Token Generation Event"
+  },
+
+  "recommendations": [
+    "Contract appears well-designed with proper security controls",
+    "No code changes recommended for security purposes",
+    "Monitor legionSigner key management as it's critical to security",
+    "Ensure legionBouncer is properly secured (multisig recommended)"
+  ],
+
+  "risk_assessment": {
+    "unprivileged_exploitation": "NONE",
+    "privileged_key_compromise": "HIGH (would allow arbitrary signature generation)",
+    "smart_contract_risk": "LOW (well-audited patterns used)"
+  },
+
+  "active_usage": {
+    "recent_claims": "Multiple claims observed in last 24 hours",
+    "method_id": "0x57e72d9f (claimTokenAllocation)",
+    "tokens_remaining": "~19.77M TRIA for distribution"
+  },
+
+  "analysis_timestamp": "2026-02-04T00:00:00Z",
+  "source_verified": true,
+  "implementation_analyzed": true
+}
