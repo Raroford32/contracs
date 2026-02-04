@@ -1,0 +1,13 @@
+=== PRE-ATTACK STATE SNAPSHOT ===
+Block: 21785000
+Timestamp: Wed Feb  4 14:35:01 UTC 2026
+
+=== AUTOPOOL CORE STATE ===
+Total Assets:
+Total Supply:
+
+=== ASSET BREAKDOWN ===
+=== DESTINATION VAULTS ===
+Number of destinations: 0
+
+=== DESTINATION VAULT PRICES (Sample) ===
