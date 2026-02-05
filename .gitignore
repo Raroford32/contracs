@@ -1,0 +1,20 @@
+# Foundry build artifacts
+exploit_test/cache/
+exploit_test/out/
+
+# Node modules
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
