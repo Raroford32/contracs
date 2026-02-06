@@ -1,0 +1,4 @@
+interface:
+  display_name: "ItyFuzz Protocol Hunter"
+  short_description: "Deep protocol fuzzing and exploit generation with ItyFuzz"
+  default_prompt: "Use the 2026 sequence-driven vulnerability taxonomy to build a hypothesis matrix, then run ItyFuzz (onchain fork / offchain artifacts / Foundry harness) to discover cross-contract exploit sequences. Deliver the exact command, work_dir outputs, the minimal replay trace, and a Foundry PoC that asserts the broken invariant/value discontinuity."

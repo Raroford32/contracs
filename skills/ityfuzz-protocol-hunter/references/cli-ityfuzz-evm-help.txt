@@ -1,0 +1,92 @@
+CLI for ItyFuzz for EVM smart contracts
+
+Usage: ityfuzz evm [OPTIONS] [BUILD_COMMAND]...
+
+Arguments:
+  [BUILD_COMMAND]...  Command to build the contract. If specified, will use this command to build contracts instead of using bins and abis
+
+Options:
+  -t, --target <TARGET>
+          Glob pattern / address to find contracts [default: none]
+      --fetch-tx-data
+          
+      --proxy-address <PROXY_ADDRESS>
+          [default: http://localhost:5001/data]
+      --constructor-args <CONSTRUCTOR_ARGS>
+          Constructor arguments for the contract, separated by semicolon. Example: https://docs.ityfuzz.rs/docs-evm-contract/constructor-for-offchain-fuzzing [default: ]
+      --target-type <TARGET_TYPE>
+          Target type (glob, address, anvil_fork, config, setup) (Default: Automatically infer from target)
+  -c, --chain-type <CHAIN_TYPE>
+          Onchain - Chain type (eth,goerli,sepolia,bsc,chapel,polygon,mumbai,fantom,avalanche,optimism, arbitrum,gnosis,base,celo,zkevm,zkevm_testnet,blast,local)
+  -b, --onchain-block-number <ONCHAIN_BLOCK_NUMBER>
+          Onchain - Block number (Default: 0 / latest)
+  -u, --onchain-url <ONCHAIN_URL>
+          Onchain Customize - RPC endpoint URL (Default: inferred from chain-type), Example: https://rpc.ankr.com/eth
+  -i, --onchain-chain-id <ONCHAIN_CHAIN_ID>
+          Onchain Customize - Chain ID (Default: inferred from chain-type)
+  -e, --onchain-explorer-url <ONCHAIN_EXPLORER_URL>
+          Onchain Customize - Block explorer URL (Default: inferred from chain-type), Example: https://api.etherscan.io/api
+  -n, --onchain-chain-name <ONCHAIN_CHAIN_NAME>
+          Onchain Customize - Chain name (used as Moralis handle of chain) (Default: inferred from chain-type)
+  -k, --onchain-etherscan-api-key <ONCHAIN_ETHERSCAN_API_KEY>
+          Onchain Etherscan API Key (Default: None)
+      --onchain-storage-fetching <ONCHAIN_STORAGE_FETCHING>
+          Onchain which fetching method to use (dump, onebyone) (Default: onebyone) [default: onebyone]
+      --concolic
+          Enable Concolic (Experimental)
+      --concolic-caller
+          Support Treating Caller as Symbolically  (Experimental)
+      --concolic-timeout <CONCOLIC_TIMEOUT>
+          Time limit for concolic execution (ms) (Default: 1000, 0 for no limit) [default: 1000]
+      --concolic-num-threads <CONCOLIC_NUM_THREADS>
+          Number of threads for concolic execution (Default: number of cpus) [default: 0]
+  -f, --flashloan
+          Enable flashloan
+      --panic-on-bug
+          Panic when a typed_bug() is called (Default: false)
+  -d, --detectors <DETECTORS>
+          Detectors enabled (all, high_confidence, ...). Refer to https://docs.ityfuzz.rs/docs-evm-contract/detecting-common-vulns (Default: high_confidence) [default: high_confidence]
+  -r, --replay-file <REPLAY_FILE>
+          Replay?
+  -w, --work-dir <WORK_DIR>
+          Path of work dir, saves corpus, logs, and other stuffs [default: work_dir]
+      --write-relationship
+          Write contract relationship to files
+      --run-forever
+          Do not quit when a bug is found, continue find new bugs
+      --seed <SEED>
+          random seed [default: 1667840158231589000]
+      --sha3-bypass
+          Whether bypass all SHA3 comparisons, this may break original logic of contracts  (Experimental)
+      --only-fuzz <ONLY_FUZZ>
+          Only fuzz contracts with the addresses provided, separated by comma [default: ]
+      --base-path <BASE_PATH>
+          Only needed when using combined.json (source map info). This is the base path when running solc compile (--base-path passed to solc). Also, please convert it to absolute path if you are not sure [default: ]
+      --spec-id <SPEC_ID>
+          Spec ID. Frontier,Homestead,Tangerine,Spurious,Byzantium,Constantinople, Petersburg,Istanbul,MuirGlacier,Berlin,London,Merge,Shanghai,Cancun, Latest [default: Latest]
+      --onchain-builder <ONCHAIN_BUILDER>
+          Builder URL. If specified, will use this builder to build contracts instead of using bins and abis [default: ]
+      --onchain-replacements-file <ONCHAIN_REPLACEMENTS_FILE>
+          Replacement config (replacing bytecode) for onchain campaign [default: ]
+      --builder-artifacts-url <BUILDER_ARTIFACTS_URL>
+          Builder Artifacts url. If specified, will use this artifact to derive code coverage [default: ]
+      --builder-artifacts-file <BUILDER_ARTIFACTS_FILE>
+          Builder Artifacts file. If specified, will use this artifact to derive code coverage [default: ]
+      --offchain-config-url <OFFCHAIN_CONFIG_URL>
+          Offchain Config Url. If specified, will deploy based on offchain config file [default: ]
+      --offchain-config-file <OFFCHAIN_CONFIG_FILE>
+          Offchain Config File. If specified, will deploy based on offchain config file [default: ]
+      --load-corpus <LOAD_CORPUS>
+          Load corpus from directory. If not specified, will use empty corpus [default: ]
+      --setup-file <SETUP_FILE>
+          [DEPRECATED] Specify the setup file that deploys all the contract. Fuzzer invokes setUp() to deploy [default: ]
+  -m, --deployment-script <DEPLOYMENT_SCRIPT>
+          Specify the deployment script contract that deploys all the contract. Fuzzer invokes constructor or setUp() of this script to deploy. For example, if you have contract X in file Y that deploys all the contracts, you can specify --deployment-script Y:X [default: ]
+      --force-abi <FORCE_ABI>
+          Forcing a contract to use the given abi. This is useful when the contract is a complex proxy or decompiler has trouble to detect the abi. Format: address:abi_file,... [default: ]
+      --base-directory <BASE_DIRECTORY>
+          [default: ]
+  -h, --help
+          Print help
+  -V, --version
+          Print version

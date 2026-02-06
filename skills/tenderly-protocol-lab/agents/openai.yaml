@@ -1,0 +1,5 @@
+interface:
+  display_name: "Tenderly Protocol Lab"
+  short_description: "Tenderly tracing, simulation, Virtual TestNet labs, and evidence workflows for EVM security research"
+  default_prompt: "Use Tenderly as the forensics + controlled-experiment layer: (1) export decoded traces/state/asset changes for real transactions, (2) run what-if simulations with state + block overrides, (3) simulate multi-transaction bundles for atomic sequences, and (4) use Virtual TestNets + Admin RPC snapshots/time controls for multi-block sequences. Persist all evidence as JSON artifacts under the engagement workspace and summarize only belief-changing deltas into memory."
+
