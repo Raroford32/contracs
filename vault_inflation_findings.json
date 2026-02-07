@@ -1,0 +1,147 @@
+[
+  {
+    "address": "0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd",
+    "balance": 313.7111288170323,
+    "total_supply": 1607001897305,
+    "total_assets": null,
+    "deposit_callable": false,
+    "deposit_gas": 0,
+    "mint_callable": false,
+    "mint_gas": 0,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 313.71 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "balance": 284.258,
+    "total_supply": 4412,
+    "total_assets": null,
+    "deposit_callable": false,
+    "deposit_gas": 0,
+    "mint_callable": false,
+    "mint_gas": 0,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 284.26 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0x60cd862c9c687a9de49aecdc3a99b74a4fc54ab6",
+    "balance": 246.69066958528103,
+    "total_supply": 25600,
+    "total_assets": null,
+    "deposit_callable": false,
+    "deposit_gas": 0,
+    "mint_callable": false,
+    "mint_gas": 0,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 246.69 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0x63658cc84a5b2b969b8df9bea129a1c933e1439f",
+    "balance": 159.4217151867783,
+    "total_supply": 360,
+    "total_assets": null,
+    "deposit_callable": true,
+    "deposit_gas": 23735,
+    "mint_callable": true,
+    "mint_gas": 23758,
+    "reasons": [
+      "TINY_SUPPLY: totalSupply=360",
+      "LARGE_BALANCE_EMPTY: 159.42 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0x88ae96845e157558ef59e9ff90e766e22e480390",
+    "balance": 128.501,
+    "total_supply": 100,
+    "total_assets": null,
+    "deposit_callable": false,
+    "deposit_gas": 0,
+    "mint_callable": false,
+    "mint_gas": 0,
+    "reasons": [
+      "TINY_SUPPLY: totalSupply=100",
+      "LARGE_BALANCE_EMPTY: 128.50 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
+    "balance": 104.39131953162247,
+    "total_supply": 1000000000,
+    "total_assets": null,
+    "deposit_callable": true,
+    "deposit_gas": 21564,
+    "mint_callable": true,
+    "mint_gas": 21564,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 104.39 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0x9aca6abfe63a5ae0dc6258cefb65207ec990aa4d",
+    "balance": 100.58346934562455,
+    "total_supply": 55317965502971,
+    "total_assets": null,
+    "deposit_callable": false,
+    "deposit_gas": 0,
+    "mint_callable": false,
+    "mint_gas": 0,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 100.58 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0x5e8353930b557a524ff92eace9b87d82f9793124",
+    "balance": 95.55,
+    "total_supply": 1921,
+    "total_assets": null,
+    "deposit_callable": false,
+    "deposit_gas": 0,
+    "mint_callable": false,
+    "mint_gas": 0,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 95.55 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0xab37e1358b639fd877f015027bb62d3ddaa7557e",
+    "balance": 88.85487669516216,
+    "total_supply": 100000000000000,
+    "total_assets": null,
+    "deposit_callable": false,
+    "deposit_gas": 0,
+    "mint_callable": false,
+    "mint_gas": 0,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 88.85 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0x27a94869341838d5783368a8503fda5fbcd7987c",
+    "balance": 84.25132700942187,
+    "total_supply": 577127873576,
+    "total_assets": null,
+    "deposit_callable": false,
+    "deposit_gas": 0,
+    "mint_callable": true,
+    "mint_gas": 207770,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 84.25 ETH but low supply"
+    ]
+  },
+  {
+    "address": "0xec0d3f28d37a3393cf09ee3ad446c485b6afdaa3",
+    "balance": 80.38035738870778,
+    "total_supply": 405181042185,
+    "total_assets": null,
+    "deposit_callable": true,
+    "deposit_gas": 266155,
+    "mint_callable": true,
+    "mint_gas": 266182,
+    "reasons": [
+      "LARGE_BALANCE_EMPTY: 80.38 ETH but low supply"
+    ]
+  }
+]

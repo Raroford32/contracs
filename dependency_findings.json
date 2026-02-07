@@ -1,0 +1,1138 @@
+[
+  {
+    "address": "0xbd3af18e0b7ebb30d49b253ab00788b92604552c",
+    "name": "HashesDAO",
+    "balance": 205.84510170503032,
+    "score": 61,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "DEAD_DEPENDENCY:0x8b73c3c69bb8fe",
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "DEAD_DEPENDENCY:0xffffffff000000",
+      "DEAD_DEPENDENCY:0x634b7f2828b36c",
+      "DEAD_DEPENDENCY:0xe2e736baec1b33",
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "DEAD_DEPENDENCY:0x19010000000000",
+      "DEAD_DEPENDENCY:0xe6c775d77ef8ec",
+      "DEAD_DEPENDENCY:0xffff0000000000",
+      "UNPROTECTED_SETTER:function setApprovalForAll(add",
+      "UNPROTECTED_SETTER:function setApprovalForAll(add",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xffffffffffffffffffffffffffffffffffffffff",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b17",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xffffffffffffffffffffffff0000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xffffffff00000000000000000000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x634b7f2828b36c241805efe02eca7354b65d9dd7",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xa7d9e842efb252389d613da88eda3731512e40bd",
+    "name": "BondedECDSAKeepFactory",
+    "balance": 258.55693381135933,
+    "score": 60,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "DEAD_DEPENDENCY:0xea22d72bc7de4c",
+      "DEAD_DEPENDENCY:0x363d3d373d3d3d",
+      "DEAD_DEPENDENCY:0x7fffffffffffff",
+      "DEAD_DEPENDENCY:0x3d602d80600a3d",
+      "DEAD_DEPENDENCY:0x5af43d82803e90",
+      "UNPROTECTED_SETTER:function setDeposit(address",
+      "UNPROTECTED_SETTER:function setGovernance(address",
+      "UNPROTECTED_SETTER:function setRegistryKeeper(add",
+      "UNPROTECTED_SETTER:function updateOperatorStatus(",
+      "UNPROTECTED_SETTER:function updateOperatorStatus(",
+      "UNPROTECTED_SETTER:function updateOperator(addres",
+      "UNPROTECTED_SETTER:function changeReassignmentReq",
+      "TIMESTAMP_DEPENDENT_VALUE"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xffffffffffffffffffffffffffffffffffffffff",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xea22d72bc7de4c82798df7194734024a1f2fd57b",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x363d3d373d3d3d363d7300000000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x7fffffffffffffffffffffffffffffff5d576e73",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x3d602d80600a3d3981f3363d3d373d3d3d363d73",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xd48b633045af65ff636f3c6edd744748351e020d",
+    "name": "Zethr",
+    "balance": 280.84989362438404,
+    "score": 50,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x4f4ebf556cfdc2",
+      "DEAD_DEPENDENCY:0x71009e9e4e5e68",
+      "DEAD_DEPENDENCY:0x9d221b2100cbe5",
+      "DEAD_DEPENDENCY:0x5ddcde33b94b19",
+      "DEAD_DEPENDENCY:0xda83156106c4db",
+      "DEAD_DEPENDENCY:0x8537aa2911b193",
+      "DEAD_DEPENDENCY:0x11e52c75998fe2",
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0xef764bac8a438e",
+      "DEAD_DEPENDENCY:0x20c945800de433"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x4f4ebf556cfdc21c3424f85ff6572c77c514fcae",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x71009e9e4e5e68e77ecc7ef2f2e95cbd98c6e696",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x9d221b2100cbe5f05a0d2048e2556a6df6f9a6c3",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x5ddcde33b94b19bdef79dd9ea75be591942b9ec7",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xda83156106c4dba7a26e9bf2ca91e273350aa551",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
+    "name": "SingularDTVToken",
+    "balance": 104.39131953162247,
+    "score": 50,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xd2b388467d9d0c",
+      "DEAD_DEPENDENCY:0xbae02fe006f115",
+      "DEAD_DEPENDENCY:0xcc835821f643e0",
+      "DEAD_DEPENDENCY:0xdca0724ddde95b",
+      "DEAD_DEPENDENCY:0x3114844fc0e3de",
+      "DEAD_DEPENDENCY:0x2e79b81121193d",
+      "DEAD_DEPENDENCY:0x6c24991c6a40cd",
+      "DEAD_DEPENDENCY:0x13870d30fcdb7d",
+      "DEAD_DEPENDENCY:0x26640e826547bc",
+      "DEAD_DEPENDENCY:0x2d37383a45b512"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xd2b388467d9d0c30bab0a68070c6f49c473583a0",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xbae02fe006f115e45b372f2ddc053eedca2d6fff",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcc835821f643e090d8157de05451b416cd1202c4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xdca0724ddde95bbace1b557cab4375d9a813da49",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x3114844fc0e3de03963bbd1d983ba17ca89ad010",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x04f062809b244e37e7fdc21d9409469c989c2342",
+    "name": "Joyso",
+    "balance": 90.34871218218693,
+    "score": 50,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x000000000000ff",
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0x00000000ffff00"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x000000000000ffff000000000000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x00000000000000000000000f0000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x0000000000000000fffffff00000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x0000000000000000000000000fffffffffffffff",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xffffffffffffffffffffffff0000000000000000",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "name": "SavingAccount",
+    "balance": 129.1901,
+    "score": 40,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x80000000000000",
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "DEAD_DEPENDENCY:0x7fffffffffffff",
+      "DEAD_DEPENDENCY:0x40000000000000",
+      "DEAD_DEPENDENCY:0x10000000000000",
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "UNPROTECTED_SETTER:function set_user_isRe(address",
+      "UNPROTECTED_SETTER:function settleReward( address",
+      "TIMESTAMP_DEPENDENT_VALUE"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x8000000000000000000000000000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xffffffffffffffffffffffffffffffffffffffff",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x7fffffffffffffffffffffffffffffffffffffff",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x4000000000000000000000000000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x1000000000000000000000000000000000000000",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
+    "name": "KeepBonding",
+    "balance": 234.41869567489303,
+    "score": 28,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "DEAD_DEPENDENCY:0xea22d72bc7de4c",
+      "UNPROTECTED_SETTER:function setGovernance(address",
+      "UNPROTECTED_SETTER:function setRegistryKeeper(add",
+      "UNPROTECTED_SETTER:function setDefaultPanicButton",
+      "UNPROTECTED_SETTER:function changeReassignmentReq",
+      "TIMESTAMP_DEPENDENT_VALUE"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xffffffffffffffffffffffffffffffffffffffff",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xea22d72bc7de4c82798df7194734024a1f2fd57b",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xec0d3f28d37a3393cf09ee3ad446c485b6afdaa3",
+    "name": "TransparentUpgradeableProxy",
+    "balance": 80.38035738870778,
+    "score": 24,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xa3f0ad74e5423a",
+      "DEAD_DEPENDENCY:0x360894a13ba1a3",
+      "DEAD_DEPENDENCY:0xb53127684a568b",
+      "DEAD_DEPENDENCY:0x4910fdfa16fed3",
+      "UNPROTECTED_SETTER:function changeAdmin(address"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72a",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x360894a13ba1a3210667c828492db98dca3e2076",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xb53127684a568b3173ae13b9f8a6016e243e63b6",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x4910fdfa16fed3260ed0e7147f7cc6da11a60208",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x63658cc84a5b2b969b8df9bea129a1c933e1439f",
+    "name": "kleee002",
+    "balance": 159.4217151867783,
+    "score": 23,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x1003d51fef31e5",
+      "DEAD_DEPENDENCY:0x2ea533314069dc",
+      "DEAD_DEPENDENCY:0x4257d02e2854c9",
+      "UNPROTECTED_SETTER:function setApprovalForAll(add",
+      "UNPROTECTED_SETTER:function setApprovalForAll(add"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x1003d51fef31e52262b1e699f03c789ca6dbefdc",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x2ea533314069dc9b4df29e72bd1dfb64cc68456d",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x4257d02e2854c9c86d6975fcd14a1af4fa65a652",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xc32050abac7dbfef4fc8dc7b96d9617394cb4e1b",
+    "name": "Wallet",
+    "balance": 340.22863364999995,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x7100c7ce94607ef68983f133cfd59cc1833a115d",
+    "name": "Wallet",
+    "balance": 327.53595008,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xa08c1134cdd73ad41889f7f914ecc4d3b30c1333",
+    "name": "Wallet",
+    "balance": 325.2,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x2f9f02f2ba99ff5c750f95cf27d25352f71cd6a9",
+    "name": "Wallet",
+    "balance": 320.001,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x0f30c808069315b3b7dfbfe149c87448b50c6d8b",
+    "name": "Wallet",
+    "balance": 285.74295615266135,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x7e5b6dd9ba1abf42bfb41e5ae8f46fe5e01aae14",
+    "name": "Wallet",
+    "balance": 285.0162718555295,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x7b6bce3cf38ee602030662fa24ac2ed5a32d0a02",
+    "name": "Wallet",
+    "balance": 146.44869481758957,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xc1bd4f07421571364617adce98a8d657f52498b7",
+    "name": "Wallet",
+    "balance": 108.46683933800001,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x394d8b3c5de759b8258376fde9b394c8f237d8c4",
+    "name": "Wallet",
+    "balance": 80.58423587474363,
+    "score": 21,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x863df6bfa4469f",
+      "DEAD_DEPENDENCY:0xcafecafecafeca",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xcafecafecafecafecafecafecafecafecafecafe",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x24f0bb6c9b2c3db66603fa0ec07ab0cf55cdd387",
+    "name": "Holder",
+    "balance": 174.67540025157058,
+    "score": 20,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function setSubnodeOwner(bytes",
+      "UNPROTECTED_SETTER:function setResolver(bytes32 n",
+      "UNPROTECTED_SETTER:function setOwner(bytes32 node",
+      "UNPROTECTED_SETTER:function updateTokenRate(addre",
+      "UNPROTECTED_SETTER:function updateTokenRate(addre"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x25a06d4e1f804ce62cf11b091180a5c84980d93a",
+    "name": "Treasure",
+    "balance": 98.2801648203633,
+    "score": 20,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xb0e9ff0c19b714",
+      "DEAD_DEPENDENCY:0x9e4f01bf4d6aa5",
+      "DEAD_DEPENDENCY:0x2d059f17f1d7fa",
+      "DEAD_DEPENDENCY:0x00000000000000"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xb0e9ff0c19b7147bfdeb81f0e1d3089efec4fbcd",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x9e4f01bf4d6aa5c583bcb84462e32e8a5ce6195f",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x2d059f17f1d7fa6ef66aa46ab6061d07858fa96e",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x0000000000000000000000000000000000000000",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x7cd5e2d0056a7a7f09cbb86e540ef4f6dccc97dd",
+    "name": "xSNXAdminProxy",
+    "balance": 175.50723329251352,
+    "score": 19,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "UNPROTECTED_SETTER:function setProposedAdmin(addr",
+      "UNPROTECTED_SETTER:function setProxyAdmin(address",
+      "UNPROTECTED_SETTER:function setNewAddressAtPositi",
+      "TIMESTAMP_DEPENDENT_VALUE"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xffffffffffffffffffffffffffffffffffffffff",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x9b4ea303ca6302dfa46b73bc660598c65de96b3d",
+    "name": "auto_pool",
+    "balance": 128.73176539385918,
+    "score": 15,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x88f2e544359525",
+      "DEAD_DEPENDENCY:0x7cf196415cdd1e",
+      "DEAD_DEPENDENCY:0x00000000000000"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x88f2e544359525833f606fb6c63826e143132e7b",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x7cf196415cdd1ef08ca2358a8282d33ba089b9f3",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x0000000000000000000000000000000000000000",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xc618d56b6d606e59c6b87af724ab5a91eb40d1cb",
+    "name": "LIQUID",
+    "balance": 90.94433388671649,
+    "score": 15,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xc5d2460186f723",
+      "DEAD_DEPENDENCY:0x11111111111111",
+      "DEAD_DEPENDENCY:0xd8d71629950ce5"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xc5d2460186f7233c927e7db2dcc703c0e500b653",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x1111111111111111111111111111111111111111",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xd8d71629950ce53d7e9f94619b09058d9d9f5866",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xf74bf048138a2b8f825eccabed9e02e481a0f6c0",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 291.70891188717667,
+    "score": 14,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x360894a13ba1a3",
+      "DEAD_DEPENDENCY:0xb53127684a568b",
+      "UNPROTECTED_SETTER:function changeAdmin(address"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x360894a13ba1a3210667c828492db98dca3e2076",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xb53127684a568b3173ae13b9f8a6016e243e63b6",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x0fa10d440522d4235c55811dc1adf4a875c16d00",
+    "name": "TransparentUpgradeableProxy",
+    "balance": 85.89111321832642,
+    "score": 14,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x360894a13ba1a3",
+      "DEAD_DEPENDENCY:0xb53127684a568b",
+      "UNPROTECTED_SETTER:function changeAdmin(address"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x360894a13ba1a3210667c828492db98dca3e2076",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xb53127684a568b3173ae13b9f8a6016e243e63b6",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x27a94869341838d5783368a8503fda5fbcd7987c",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 84.25132700942187,
+    "score": 14,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x360894a13ba1a3",
+      "DEAD_DEPENDENCY:0xb53127684a568b",
+      "UNPROTECTED_SETTER:function changeAdmin(address"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x360894a13ba1a3210667c828492db98dca3e2076",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xb53127684a568b3173ae13b9f8a6016e243e63b6",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x894f3a40ab8051b350f85b3edeb7c7b83fcb6dac",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 50.59252919169366,
+    "score": 14,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x360894a13ba1a3",
+      "DEAD_DEPENDENCY:0xb53127684a568b",
+      "UNPROTECTED_SETTER:function changeAdmin(address"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x360894a13ba1a3210667c828492db98dca3e2076",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xb53127684a568b3173ae13b9f8a6016e243e63b6",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "name": "SuperBunnies",
+    "balance": 284.258,
+    "score": 13,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xffffffffffffff",
+      "UNPROTECTED_SETTER:function setApprovalForAll(add",
+      "UNPROTECTED_SETTER:function setApprovalForAll(add"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xffffffffffffffffffffffffffffffffffffffff",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x05276c19f670ffe7ba6b3bdc94e70c36b4b9dad5",
+    "name": "Wallet",
+    "balance": 202.122540786,
+    "score": 11,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0xd619c8da0a58b63be7fa69b4cc648916fe95fa1b",
+    "name": "CycloneV2dot2",
+    "balance": 200.0,
+    "score": 11,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function updateVerifier(addres",
+      "UNPROTECTED_SETTER:function changeGovDAO(address",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0xb9ab8eed48852de901c13543042204c6c569b811",
+    "name": "Zethr",
+    "balance": 116.07838376102912,
+    "score": 10,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0x0bc01e2c48062b"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x0000000000000000000000000000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x0bc01e2c48062bbd576f26d72d8ceffdacd37958",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x9aca6abfe63a5ae0dc6258cefb65207ec990aa4d",
+    "name": "DigiPulse",
+    "balance": 100.58346934562455,
+    "score": 10,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x8776a6fa922e65",
+      "DEAD_DEPENDENCY:0x663f98e9c37b9b"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x8776a6fa922e65efcea2371692fefe4ab7c933ab",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x663f98e9c37b9bba460d4d80ca48ef039eae4052",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xe65f525ec48c7e95654b9824ecc358454ea9185e",
+    "name": "AceDapp",
+    "balance": 95.81533106464828,
+    "score": 10,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x00000000000000",
+      "DEAD_DEPENDENCY:0xa4d05a1c22c8ab"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x0000000000000000000000000000000000000000",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0xa4d05a1c22c8abe6ccb2333c092ec80bd0955031",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xf9fb1c508ff49f78b60d3a96dea99fa5d7f3a8a6",
+    "name": "EthManager",
+    "balance": 94.79249034550523,
+    "score": 10,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xc5d2460186f723",
+      "DEAD_DEPENDENCY:0x00eeeeeeeeeeee"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xc5d2460186f7233c927e7db2dcc703c0e500b653",
+        "status": "NO_CODE"
+      },
+      {
+        "addr": "0x00eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+    "name": "KyberFeeHandler",
+    "balance": 88.9310933897544,
+    "score": 9,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xeeeeeeeeeeeeee",
+      "UNPROTECTED_SETTER:function setNetworkContract(ad"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xab37e1358b639fd877f015027bb62d3ddaa7557e",
+    "name": "LienToken",
+    "balance": 88.85487669516216,
+    "score": 9,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xc5d2460186f723",
+      "UNPROTECTED_SETTER:function settleProfit(address"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xc5d2460186f7233c927e7db2dcc703c0e500b653",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x8754f54074400ce745a7ceddc928fb1b7e985ed6",
+    "name": "EulerBeats",
+    "balance": 215.17824,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function setApprovalForAll(add",
+      "UNPROTECTED_SETTER:function setApprovalForAll(add"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x2468160c241a9fed936ee1e3ceb8b2f7e2e01987",
+    "name": "Wallet",
+    "balance": 176.0,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x20018893c7d8e38b14a10a00c70023c45d528fba",
+    "name": "Wallet",
+    "balance": 136.98991560763383,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x62ca869bafea0c77234e48018d9c67f7c0cd197a",
+    "name": "Wallet",
+    "balance": 135.32390607307815,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x6e5e0ef477db8e26cd64f87522a1997f6dda64fb",
+    "name": "Wallet",
+    "balance": 132.00936447974001,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0xa150de0e6998e05d6e19fca736ab758e698da21a",
+    "name": "Wallet",
+    "balance": 130.32,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x7ea1950d7fa5167d5dc92c26e537d7875553b88e",
+    "name": "Wallet",
+    "balance": 109.96209363999999,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0xa365c183dd416f3eedf91fbda6bef30bd8d596c5",
+    "name": "Wallet",
+    "balance": 109.84749,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x0514afd47f635e9304028bd0dcdaed2168773ec1",
+    "name": "Wallet",
+    "balance": 109.54498520000001,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x04ab1ae22add9b0d991aca80a0eb74de14fd2a8d",
+    "name": "Wallet",
+    "balance": 103.20111446853896,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x228b015ab09c32906e4b98cfc2761b96842d8724",
+    "name": "Wallet",
+    "balance": 100.8596129706854,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0xfd24f3c1bea92b95550746419f5bda642d6ffe5b",
+    "name": "Wallet",
+    "balance": 87.9566990705545,
+    "score": 8,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeOwner(address _",
+      "UNPROTECTED_SETTER:function changeOwner(address _"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x0337184a497565a9bd8e300dad50270cd367f206",
+    "name": "DynamicLiquidTokenConverter",
+    "balance": 83.58542487151293,
+    "score": 8,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xeeeeeeeeeeeeee",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x2af47a65da8cd66729b4209c22017d6a5c2d2400",
+    "name": "StandardBounties",
+    "balance": 90.37330410000001,
+    "score": 7,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeBountyArbiter(u",
+      "USER_CONTROLLED_CALL"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0xf9440930043eb3997fc70e1339dbb11f341de7a8",
+    "name": "Vyper_contract",
+    "balance": 63.466337431516614,
+    "score": 7,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xeeeeeeeeeeeeee",
+      "TIMESTAMP_DEPENDENT_VALUE"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x60cd862c9c687a9de49aecdc3a99b74a4fc54ab6",
+    "name": "MoonCatRescue",
+    "balance": 246.69066958528103,
+    "score": 5,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x5713bdf5d1c339"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x5713bdf5d1c3398a8f12f881f0f03b5025b6f9c1",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x9149c59f087e891b659481ed665768a57247c79e",
+    "name": "KyberReserve",
+    "balance": 196.95138025213527,
+    "score": 5,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0x00eeeeeeeeeeee"
+    ],
+    "external_deps": [
+      {
+        "addr": "0x00eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0xa6b658ce4b1cdb4e7d8f97dffb549b8688cafb84",
+    "name": "CapitalConverter",
+    "balance": 91.182,
+    "score": 5,
+    "vulnerabilities": [
+      "DEAD_DEPENDENCY:0xeeeeeeeeeeeeee"
+    ],
+    "external_deps": [
+      {
+        "addr": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "status": "NO_CODE"
+      }
+    ]
+  },
+  {
+    "address": "0x6822aaf4ab22e6cca8352a927b9ae0a8fdb58d9d",
+    "name": "ProfitSharing",
+    "balance": 111.02666423598197,
+    "score": 4,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function changeController(addr"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0xa33c4a314faa9684eeffa6ba334688001ea99bbc",
+    "name": "Phoenix",
+    "balance": 108.78027035646521,
+    "score": 4,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function updateProfit(address"
+    ],
+    "external_deps": []
+  },
+  {
+    "address": "0x5e8353930b557a524ff92eace9b87d82f9793124",
+    "name": "ProjectINK",
+    "balance": 95.55,
+    "score": 4,
+    "vulnerabilities": [
+      "UNPROTECTED_SETTER:function setApprovalForAll(add"
+    ],
+    "external_deps": []
+  }
+]

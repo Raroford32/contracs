@@ -1,0 +1,932 @@
+[
+  {
+    "address": "0xc32050abac7dbfef4fc8dc7b96d9617394cb4e1b",
+    "name": "Wallet",
+    "balance": 340.22863364999995,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0x7100c7ce94607ef68983f133cfd59cc1833a115d",
+    "name": "Wallet",
+    "balance": 327.53595008,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0xa08c1134cdd73ad41889f7f914ecc4d3b30c1333",
+    "name": "Wallet",
+    "balance": 325.2,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0x2f9f02f2ba99ff5c750f95cf27d25352f71cd6a9",
+    "name": "Wallet",
+    "balance": 320.001,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0x0f30c808069315b3b7dfbfe149c87448b50c6d8b",
+    "name": "Wallet",
+    "balance": 285.74295615266135,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0x7e5b6dd9ba1abf42bfb41e5ae8f46fe5e01aae14",
+    "name": "Wallet",
+    "balance": 285.0162718555295,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0xd95a6aa3e20397211e487b231211e16790a21ac9",
+    "name": "Wallet",
+    "balance": 150.479444745,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0x7b6bce3cf38ee602030662fa24ac2ed5a32d0a02",
+    "name": "Wallet",
+    "balance": 146.44869481758957,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0xc1bd4f07421571364617adce98a8d657f52498b7",
+    "name": "Wallet",
+    "balance": 108.46683933800001,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0x394d8b3c5de759b8258376fde9b394c8f237d8c4",
+    "name": "Wallet",
+    "balance": 80.58423587474363,
+    "score": 13,
+    "compiler": "v0.4.10+commit.f0d539ae",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.10+commit.f0d539ae"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 226,
+        "code": "suicide(_to);"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 420,
+        "code": "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4)"
+      }
+    ]
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "name": "SuperBunnies",
+    "balance": 284.258,
+    "score": 8,
+    "compiler": "v0.8.4+commit.c7e474f2",
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 1573,
+        "code": "function functionDelegateCall(address target, bytes memory d"
+      },
+      {
+        "type": "PUBLIC_MINT_BURN_NO_AUTH",
+        "line": 124,
+        "code": "function mint(uint numberOfTokens) public payable {"
+      }
+    ]
+  },
+  {
+    "address": "0x05276c19f670ffe7ba6b3bdc94e70c36b4b9dad5",
+    "name": "Wallet",
+    "balance": 202.122540786,
+    "score": 8,
+    "compiler": "v0.4.13+commit.fb4cb1a",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.13+commit.fb4cb1a"
+      },
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 336,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x1a26ef6575b7bbb864d984d9255c069f6c361a14",
+    "name": "Proxy__L1LiquidityPoolArguments",
+    "balance": 113.91666956596127,
+    "score": 8,
+    "compiler": "v0.7.6+commit.7338295f",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.7.6+commit.7338295f"
+      },
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 94,
+        "code": "(bool success, bytes memory returndata) = addressManager[\"pr"
+      }
+    ]
+  },
+  {
+    "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+    "name": "KyberFeeHandler",
+    "balance": 88.9310933897544,
+    "score": 7,
+    "compiler": "v0.6.6+commit.6c089d02",
+    "vulnerabilities": [
+      {
+        "type": "TX_ORIGIN_AUTH",
+        "line": 797,
+        "code": "require(tx.origin == msg.sender, \"only non-contract\");"
+      },
+      {
+        "type": "PUBLIC_MINT_BURN_NO_AUTH",
+        "line": 447,
+        "code": "function burn(uint256 _value) external returns (bool);"
+      }
+    ]
+  },
+  {
+    "address": "0xa7d9e842efb252389d613da88eda3731512e40bd",
+    "name": "BondedECDSAKeepFactory",
+    "balance": 258.55693381135933,
+    "score": 5,
+    "compiler": "v0.5.17+commit.d19bba13",
+    "vulnerabilities": [
+      {
+        "type": "DIV_BEFORE_MUL",
+        "line": 7974,
+        "code": "* be displayed to a user as `5,05` (`505 / 10 ** 2`)."
+      },
+      {
+        "type": "PUBLIC_MINT_BURN_NO_AUTH",
+        "line": 7692,
+        "code": "function burn(uint256 amount) public {"
+      }
+    ]
+  },
+  {
+    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
+    "name": "KeepBonding",
+    "balance": 234.41869567489303,
+    "score": 5,
+    "compiler": "v0.5.17+commit.d19bba13",
+    "vulnerabilities": [
+      {
+        "type": "DIV_BEFORE_MUL",
+        "line": 4742,
+        "code": "* be displayed to a user as `5,05` (`505 / 10 ** 2`)."
+      },
+      {
+        "type": "PUBLIC_MINT_BURN_NO_AUTH",
+        "line": 4460,
+        "code": "function burn(uint256 amount) public {"
+      }
+    ]
+  },
+  {
+    "address": "0x8754f54074400ce745a7ceddc928fb1b7e985ed6",
+    "name": "EulerBeats",
+    "balance": 215.17824,
+    "score": 5,
+    "compiler": "v0.7.6+commit.7338295f",
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 1602,
+        "code": "function functionDelegateCall(address target, bytes memory d"
+      }
+    ]
+  },
+  {
+    "address": "0xbd3af18e0b7ebb30d49b253ab00788b92604552c",
+    "name": "HashesDAO",
+    "balance": 205.84510170503032,
+    "score": 5,
+    "compiler": "v0.8.6+commit.11564f7e",
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 2216,
+        "code": "function functionDelegateCall(address target, bytes memory d"
+      }
+    ]
+  },
+  {
+    "address": "0x2468160c241a9fed936ee1e3ceb8b2f7e2e01987",
+    "name": "Wallet",
+    "balance": 176.0,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x20018893c7d8e38b14a10a00c70023c45d528fba",
+    "name": "Wallet",
+    "balance": 136.98991560763383,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x62ca869bafea0c77234e48018d9c67f7c0cd197a",
+    "name": "Wallet",
+    "balance": 135.32390607307815,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x6e5e0ef477db8e26cd64f87522a1997f6dda64fb",
+    "name": "Wallet",
+    "balance": 132.00936447974001,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0xa150de0e6998e05d6e19fca736ab758e698da21a",
+    "name": "Wallet",
+    "balance": 130.32,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x7ea1950d7fa5167d5dc92c26e537d7875553b88e",
+    "name": "Wallet",
+    "balance": 109.96209363999999,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0xa365c183dd416f3eedf91fbda6bef30bd8d596c5",
+    "name": "Wallet",
+    "balance": 109.84749,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x0514afd47f635e9304028bd0dcdaed2168773ec1",
+    "name": "Wallet",
+    "balance": 109.54498520000001,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x04ab1ae22add9b0d991aca80a0eb74de14fd2a8d",
+    "name": "Wallet",
+    "balance": 103.20111446853896,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x0d6630648e6740d2d96c562543d4e0c7bbb46577",
+    "name": "Wallet",
+    "balance": 100.96873999777777,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x228b015ab09c32906e4b98cfc2761b96842d8724",
+    "name": "Wallet",
+    "balance": 100.8596129706854,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0x9aca6abfe63a5ae0dc6258cefb65207ec990aa4d",
+    "name": "DigiPulse",
+    "balance": 100.58346934562455,
+    "score": 5,
+    "compiler": "v0.4.13+commit.fb4cb1a",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.13+commit.fb4cb1a"
+      },
+      {
+        "type": "DIV_BEFORE_MUL",
+        "line": 58,
+        "code": "uint256 dgtAmount = msg.value / 1e10 * dgtRatioToEth;"
+      }
+    ]
+  },
+  {
+    "address": "0xfd24f3c1bea92b95550746419f5bda642d6ffe5b",
+    "name": "Wallet",
+    "balance": 87.9566990705545,
+    "score": 5,
+    "compiler": "v0.3.2-2016-04-18-81ae2a7",
+    "vulnerabilities": [
+      {
+        "type": "UNPROTECTED_SELFDESTRUCT",
+        "line": 330,
+        "code": "suicide(_to);"
+      }
+    ]
+  },
+  {
+    "address": "0xec0d3f28d37a3393cf09ee3ad446c485b6afdaa3",
+    "name": "TransparentUpgradeableProxy",
+    "balance": 80.38035738870778,
+    "score": 5,
+    "compiler": "v0.8.2+commit.661d1103",
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL_USER_INPUT",
+        "line": 687,
+        "code": "function functionDelegateCall(address target, bytes memory d"
+      }
+    ]
+  },
+  {
+    "address": "0xd48b633045af65ff636f3c6edd744748351e020d",
+    "name": "Zethr",
+    "balance": 280.84989362438404,
+    "score": 4,
+    "compiler": "v0.4.24+commit.e67f0147",
+    "vulnerabilities": [
+      {
+        "type": "TX_ORIGIN_AUTH",
+        "line": 925,
+        "code": "require(tx.origin == msg.sender || msg.sender == bankrollAdd"
+      }
+    ]
+  },
+  {
+    "address": "0xb9ab8eed48852de901c13543042204c6c569b811",
+    "name": "Zethr",
+    "balance": 116.07838376102912,
+    "score": 4,
+    "compiler": "v0.4.25+commit.59dbf8f1",
+    "vulnerabilities": [
+      {
+        "type": "TX_ORIGIN_AUTH",
+        "line": 963,
+        "code": "require(tx.origin == msg.sender || msg.sender == bankrollAdd"
+      }
+    ]
+  },
+  {
+    "address": "0xd2bfceeab8ffa24cdf94faa2683df63df4bcbdc8",
+    "name": "DailyDivs",
+    "balance": 109.78051965458351,
+    "score": 4,
+    "compiler": "v0.4.21+commit.dfe3193c",
+    "vulnerabilities": [
+      {
+        "type": "TX_ORIGIN_AUTH",
+        "line": 76,
+        "code": "require (msg.sender == tx.origin);"
+      }
+    ]
+  },
+  {
+    "address": "0xe01e2a3ceafa8233021fc759e5a69863558326b6",
+    "name": "EKS",
+    "balance": 105.49299604301721,
+    "score": 4,
+    "compiler": "v0.4.26+commit.4563c3fc",
+    "vulnerabilities": [
+      {
+        "type": "TX_ORIGIN_AUTH",
+        "line": 288,
+        "code": "require(tx.origin == approvedAddress1);"
+      }
+    ]
+  },
+  {
+    "address": "0xc618d56b6d606e59c6b87af724ab5a91eb40d1cb",
+    "name": "LIQUID",
+    "balance": 90.94433388671649,
+    "score": 4,
+    "compiler": "v0.5.17+commit.d19bba13",
+    "vulnerabilities": [
+      {
+        "type": "TX_ORIGIN_AUTH",
+        "line": 299,
+        "code": "if (gContractCheckBuyLevel >= 2) require(user == tx.origin, "
+      }
+    ]
+  },
+  {
+    "address": "0xf74bf048138a2b8f825eccabed9e02e481a0f6c0",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 291.70891188717667,
+    "score": 3,
+    "compiler": "v0.5.3+commit.10d17f24",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.5.3+commit.10d17f24"
+      }
+    ]
+  },
+  {
+    "address": "0x60cd862c9c687a9de49aecdc3a99b74a4fc54ab6",
+    "name": "MoonCatRescue",
+    "balance": 246.69066958528103,
+    "score": 3,
+    "compiler": "v0.4.14+commit.c2215d46",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.14+commit.c2215d46"
+      }
+    ]
+  },
+  {
+    "address": "0x97ec9bfb0f6672c358620615a1e4de0348aea05c",
+    "name": "InsightsNetworkContributions",
+    "balance": 208.645,
+    "score": 3,
+    "compiler": "v0.4.18+commit.9cf6e910",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.18+commit.9cf6e910"
+      }
+    ]
+  },
+  {
+    "address": "0x899f9a0440face1397a1ee1e3f6bf3580a6633d1",
+    "name": "RedemptionContract",
+    "balance": 206.25375277660427,
+    "score": 3,
+    "compiler": "v0.4.11+commit.68ef5810",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.11+commit.68ef5810"
+      }
+    ]
+  },
+  {
+    "address": "0xd619c8da0a58b63be7fa69b4cc648916fe95fa1b",
+    "name": "CycloneV2dot2",
+    "balance": 200.0,
+    "score": 3,
+    "compiler": "v0.5.17+commit.d19bba13",
+    "vulnerabilities": [
+      {
+        "type": "PUBLIC_MINT_BURN_NO_AUTH",
+        "line": 128,
+        "code": "function mint(address, uint) external returns (bool);"
+      }
+    ]
+  },
+  {
+    "address": "0x9149c59f087e891b659481ed665768a57247c79e",
+    "name": "KyberReserve",
+    "balance": 196.95138025213527,
+    "score": 3,
+    "compiler": "v0.4.18+commit.9cf6e910",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.18+commit.9cf6e910"
+      }
+    ]
+  },
+  {
+    "address": "0x112918a54e3ada863cf694970da0756f1eecc68d",
+    "name": "JavvyMultiSig",
+    "balance": 190.898431291875,
+    "score": 3,
+    "compiler": "v0.4.24+commit.e67f0147",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.24+commit.e67f0147"
+      }
+    ]
+  },
+  {
+    "address": "0x7cd5e2d0056a7a7f09cbb86e540ef4f6dccc97dd",
+    "name": "xSNXAdminProxy",
+    "balance": 175.50723329251352,
+    "score": 3,
+    "compiler": "v0.5.15+commit.6a57276f",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.5.15+commit.6a57276f"
+      }
+    ]
+  },
+  {
+    "address": "0x24f0bb6c9b2c3db66603fa0ec07ab0cf55cdd387",
+    "name": "Holder",
+    "balance": 174.67540025157058,
+    "score": 3,
+    "compiler": "v0.5.10+commit.5a6ea5b1",
+    "vulnerabilities": [
+      {
+        "type": "PUBLIC_MINT_BURN_NO_AUTH",
+        "line": 2589,
+        "code": "function burn(address payable _to, uint _amount) external on"
+      }
+    ]
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "name": "SavingAccount",
+    "balance": 129.1901,
+    "score": 3,
+    "compiler": "v0.5.17+commit.d19bba13",
+    "vulnerabilities": [
+      {
+        "type": "PUBLIC_MINT_BURN_NO_AUTH",
+        "line": 1224,
+        "code": "function mint(address account, uint amount) external;"
+      }
+    ]
+  },
+  {
+    "address": "0xa33c4a314faa9684eeffa6ba334688001ea99bbc",
+    "name": "Phoenix",
+    "balance": 108.78027035646521,
+    "score": 3,
+    "compiler": "v0.4.18+commit.9cf6e910",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.18+commit.9cf6e910"
+      }
+    ]
+  },
+  {
+    "address": "0xe14ab3ee81abe340b45bb26b1b166a7d2df22585",
+    "name": "TweetMarket",
+    "balance": 105.50549964000001,
+    "score": 3,
+    "compiler": "v0.6.12+commit.27d51765",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.6.12+commit.27d51765"
+      }
+    ]
+  },
+  {
+    "address": "0xb8ff313d33b0e841b6b83243f6e2935166de87c1",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 101.0295,
+    "score": 3,
+    "compiler": "v0.5.3+commit.10d17f24",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.5.3+commit.10d17f24"
+      }
+    ]
+  },
+  {
+    "address": "0xab5cffaaec03efc94ab5c0c4c0bc85ae2b2b65ac",
+    "name": "EtherkingJackpot",
+    "balance": 101.0,
+    "score": 3,
+    "compiler": "v0.5.11+commit.c082d0b4",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.5.11+commit.c082d0b4"
+      }
+    ]
+  },
+  {
+    "address": "0x73f09b50960f87af26ff4817a93c0f5efd0aa9e2",
+    "name": "DualSig",
+    "balance": 100.25,
+    "score": 3,
+    "compiler": "v0.4.24+commit.e67f0147",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.24+commit.e67f0147"
+      }
+    ]
+  },
+  {
+    "address": "0x5e8353930b557a524ff92eace9b87d82f9793124",
+    "name": "ProjectINK",
+    "balance": 95.55,
+    "score": 3,
+    "compiler": "v0.8.6+commit.11564f7e",
+    "vulnerabilities": [
+      {
+        "type": "PUBLIC_MINT_BURN_NO_AUTH",
+        "line": 142,
+        "code": "function mint() external payable {"
+      }
+    ]
+  },
+  {
+    "address": "0x2af47a65da8cd66729b4209c22017d6a5c2d2400",
+    "name": "StandardBounties",
+    "balance": 90.37330410000001,
+    "score": 3,
+    "compiler": "v0.4.18+commit.9cf6e910",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.18+commit.9cf6e910"
+      }
+    ]
+  },
+  {
+    "address": "0x0fa10d440522d4235c55811dc1adf4a875c16d00",
+    "name": "TransparentUpgradeableProxy",
+    "balance": 85.89111321832642,
+    "score": 3,
+    "compiler": "v0.6.12+commit.27d51765",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.6.12+commit.27d51765"
+      }
+    ]
+  },
+  {
+    "address": "0xc83355ef25a104938275b46cffd94bf9917d0691",
+    "name": "FUTR",
+    "balance": 84.95790169864813,
+    "score": 3,
+    "compiler": "v0.4.19+commit.c4cbbb05",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.19+commit.c4cbbb05"
+      }
+    ]
+  },
+  {
+    "address": "0x27a94869341838d5783368a8503fda5fbcd7987c",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 84.25132700942187,
+    "score": 3,
+    "compiler": "v0.5.3+commit.10d17f24",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.5.3+commit.10d17f24"
+      }
+    ]
+  },
+  {
+    "address": "0x894f3a40ab8051b350f85b3edeb7c7b83fcb6dac",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 50.59252919169366,
+    "score": 3,
+    "compiler": "v0.5.3+commit.10d17f24",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.5.3+commit.10d17f24"
+      }
+    ]
+  },
+  {
+    "address": "0x4c75da685109945d235c42151f9ec21162ee07be",
+    "name": "KyberReserve",
+    "balance": 38.64918097409054,
+    "score": 3,
+    "compiler": "v0.4.18+commit.9cf6e910",
+    "vulnerabilities": [
+      {
+        "type": "OLD_SOLIDITY_NO_SAFEMATH",
+        "compiler": "v0.4.18+commit.9cf6e910"
+      }
+    ]
+  }
+]
