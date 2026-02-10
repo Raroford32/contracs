@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+build/
+dist/
+out/
+artifacts/
+cache/
+typechain/
+typechain-types/
+
+# Testing
+coverage/
+coverage.json
+.coverage_cache/
+.coverage_contracts/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Hardhat
+artifacts/
+cache/
+coverage/
+.hardhat/
+
+# Foundry
+cache/
+out/
+broadcast/
+
+# Misc
+*.log
+npm-debug.log*
+.tmp/
+tmp/
+temp/
