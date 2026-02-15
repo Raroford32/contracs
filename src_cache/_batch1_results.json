@@ -1,0 +1,46 @@
+{
+  "0x35ffd6e268610e764ff6944d07760d0efe5e40e5": {
+    "name": "LiquidityPoolV2",
+    "label": "LiquidityPoolV2",
+    "compiler": "v0.5.12+commit.7709ece9",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol",
+    "format": "single-file"
+  },
+  "0xf786c34106762ab4eeb45a51b42a62470e9d5332": {
+    "name": "fETH",
+    "label": "fETH",
+    "compiler": "v0.8.3+commit.8d00100c",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xf786c34106762ab4eeb45a51b42a62470e9d5332.sol",
+    "format": "single-file"
+  },
+  "0xfceaaaeb8d564a9d0e71ef36f027b9d162bc334e": {
+    "name": "CrossProxy",
+    "label": "CrossProxy",
+    "compiler": "v0.4.26+commit.4563c3fc",
+    "proxy": "1",
+    "implementation": "0x8f8165fc9d56902e4b25898b0f2fb169bd27c490",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xfceaaaeb8d564a9d0e71ef36f027b9d162bc334e.sol",
+    "format": "single-file"
+  },
+  "0x367e59b559283c8506207d75b0c5d8c66c4cd4b7": {
+    "name": "Router",
+    "label": "Router_PROXY",
+    "compiler": "v0.8.3+commit.8d00100c",
+    "proxy": "1",
+    "implementation": "0xf9fe427563b12ec644e79a42b68e148273942b34",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x367e59b559283c8506207d75b0c5d8c66c4cd4b7.json",
+    "format": "multi-file"
+  }
+}

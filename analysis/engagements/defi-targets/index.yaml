@@ -1,0 +1,39 @@
+protocol: defi-targets
+chain_id: 1
+fork_block: 21846000
+seed_addresses:
+  # Tier 1 targets (custom DeFi logic + significant holdings)
+  - "0x35ffd6e268610e764ff6944d07760d0efe5e40e5"  # LiquidityPoolV2 - $1.29M
+  - "0xf786c34106762ab4eeb45a51b42a62470e9d5332"  # fETH - $1.09M
+  - "0xfceaaaeb8d564a9d0e71ef36f027b9d162bc334e"  # CrossProxy - $1.75M
+  - "0x367e59b559283c8506207d75b0c5d8c66c4cd4b7"  # Router [PROXY] - $1.2M
+  - "0x5934807cc0654d46755ebd2848840b616256c6ef"  # MarginPool - $1.15M
+  - "0x6f400810b62df8e13fded51be75ff5393eaa841f"  # BatchExchange [PROXY] - $794K
+  - "0x6fb8aa6fc6f27e591423009194529ae126660027"  # DerivaDEX [PROXY] - $706K
+  - "0xd8ee69652e4e4838f2531732a46d1f7f584f0b7f"  # bZxProtocol - $310K
+  - "0xcd18eaa163733da39c232722cbc4e8940b1d8888"  # Sablier - $477K
+  - "0x6fcbbb527fb2954bed2b224a5bb7c23c5aeeb6e1"  # oneETH - $261K
+  - "0xc88f47067db2e25851317a2fdae73a22c0777c37"  # oneBTC - $402K
+  - "0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd"  # CEther - $847K
+  - "0xd216153c06e857cd7f72665e0af1d7d82172f494"  # RelayHub - $1.4M
+  - "0xe1237aa7f535b0cc33fd973d66cbf830354d16c7"  # yVault - $1.34M
+
+rpc_url_env: MAINNET_ALCHEMY
+explorer: etherscan
+etherscan_key_env: ETHERSCAN_API_KEY
+
+bundler_manifest_path: analysis/engagements/defi-targets/contract-bundles/manifest.json
+traverse_out_dir: analysis/engagements/defi-targets/traverse
+ityfuzz_workdirs: []
+tenderly_evidence_paths:
+  - analysis/engagements/defi-targets/tenderly/rpc
+notes_paths:
+  - analysis/engagements/defi-targets/notes/entrypoints.md
+  - analysis/engagements/defi-targets/notes/control-plane.md
+  - analysis/engagements/defi-targets/notes/taint-map.md
+  - analysis/engagements/defi-targets/notes/tokens.md
+  - analysis/engagements/defi-targets/notes/numeric-boundaries.md
+  - analysis/engagements/defi-targets/notes/feasibility.md
+  - analysis/engagements/defi-targets/notes/value-flows.md
+  - analysis/engagements/defi-targets/notes/assumptions.md
+  - analysis/engagements/defi-targets/notes/hypotheses.md

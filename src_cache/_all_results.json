@@ -1,0 +1,211 @@
+{
+  "0x35ffd6e268610e764ff6944d07760d0efe5e40e5": {
+    "name": "LiquidityPoolV2",
+    "label": "LiquidityPoolV2",
+    "compiler": "v0.5.12+commit.7709ece9",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol",
+    "format": "single-file"
+  },
+  "0xf786c34106762ab4eeb45a51b42a62470e9d5332": {
+    "name": "fETH",
+    "label": "fETH",
+    "compiler": "v0.8.3+commit.8d00100c",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xf786c34106762ab4eeb45a51b42a62470e9d5332.sol",
+    "format": "single-file"
+  },
+  "0xfceaaaeb8d564a9d0e71ef36f027b9d162bc334e": {
+    "name": "CrossProxy",
+    "label": "CrossProxy",
+    "compiler": "v0.4.26+commit.4563c3fc",
+    "proxy": "1",
+    "implementation": "0x8f8165fc9d56902e4b25898b0f2fb169bd27c490",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xfceaaaeb8d564a9d0e71ef36f027b9d162bc334e.sol",
+    "format": "single-file"
+  },
+  "0x367e59b559283c8506207d75b0c5d8c66c4cd4b7": {
+    "name": "Router",
+    "label": "Router_PROXY",
+    "compiler": "v0.8.3+commit.8d00100c",
+    "proxy": "1",
+    "implementation": "0xf9fe427563b12ec644e79a42b68e148273942b34",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x367e59b559283c8506207d75b0c5d8c66c4cd4b7.json",
+    "format": "multi-file"
+  },
+  "0x5934807cc0654d46755ebd2848840b616256c6ef": {
+    "name": "MarginPool",
+    "label": "MarginPool_Opyn",
+    "compiler": "v0.6.10+commit.00c0fcaf",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x5934807cc0654d46755ebd2848840b616256c6ef.json",
+    "format": "multi-file"
+  },
+  "0x6f400810b62df8e13fded51be75ff5393eaa841f": {
+    "name": "BatchExchange",
+    "label": "BatchExchange_PROXY",
+    "compiler": "v0.5.6+commit.b259423e",
+    "proxy": "1",
+    "implementation": "0xed4d05496c71e71cc2a8726af1242c22108d1761",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x6f400810b62df8e13fded51be75ff5393eaa841f.sol",
+    "format": "single-file"
+  },
+  "0x6fb8aa6fc6f27e591423009194529ae126660027": {
+    "name": "DerivaDEX",
+    "label": "DerivaDEX_PROXY",
+    "compiler": "v0.6.12+commit.27d51765",
+    "proxy": "1",
+    "implementation": "0xccf3d6ed3e7db4c0274db2e1b921b87838ce656e",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x6fb8aa6fc6f27e591423009194529ae126660027.json",
+    "format": "multi-file"
+  },
+  "0xd8ee69652e4e4838f2531732a46d1f7f584f0b7f": {
+    "name": "bZxProtocol",
+    "label": "bZxProtocol",
+    "compiler": "v0.5.17+commit.d19bba13",
+    "proxy": "1",
+    "implementation": "0x0545c57f1862b6509e15a5b8a6f9aa713914f80a",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xd8ee69652e4e4838f2531732a46d1f7f584f0b7f.sol",
+    "format": "single-file"
+  },
+  "0xcd18eaa163733da39c232722cbc4e8940b1d8888": {
+    "name": "Sablier",
+    "label": "Sablier",
+    "compiler": "v0.5.17+commit.d19bba13",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xcd18eaa163733da39c232722cbc4e8940b1d8888.json",
+    "format": "multi-file"
+  },
+  "0x6fcbbb527fb2954bed2b224a5bb7c23c5aeeb6e1": {
+    "name": "oneETH",
+    "label": "oneETH",
+    "compiler": "v0.6.12+commit.27d51765",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x6fcbbb527fb2954bed2b224a5bb7c23c5aeeb6e1.sol",
+    "format": "single-file"
+  },
+  "0xc88f47067db2e25851317a2fdae73a22c0777c37": {
+    "name": "oneBTC",
+    "label": "oneBTC",
+    "compiler": "v0.6.12+commit.27d51765",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xc88f47067db2e25851317a2fdae73a22c0777c37.sol",
+    "format": "single-file"
+  },
+  "0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd": {
+    "name": "CEther",
+    "label": "CEther",
+    "compiler": "v0.5.8+commit.23d335f2",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd.sol",
+    "format": "single-file"
+  },
+  "0xd216153c06e857cd7f72665e0af1d7d82172f494": {
+    "name": "RelayHub",
+    "label": "RelayHub",
+    "compiler": "v0.5.10+commit.5a6ea5b1",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xd216153c06e857cd7f72665e0af1d7d82172f494.sol",
+    "format": "single-file"
+  },
+  "0xe1237aa7f535b0cc33fd973d66cbf830354d16c7": {
+    "name": "yVault",
+    "label": "yVault",
+    "compiler": "v0.5.17+commit.d19bba13",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xe1237aa7f535b0cc33fd973d66cbf830354d16c7.sol",
+    "format": "single-file"
+  },
+  "0x8f8165fc9d56902e4b25898b0f2fb169bd27c490": {
+    "name": "CrossDelegateV4",
+    "label": "CrossProxy_impl",
+    "compiler": "v0.8.18+commit.87f61d96",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x8f8165fc9d56902e4b25898b0f2fb169bd27c490.sol",
+    "format": "single-file"
+  },
+  "0xf9fe427563b12ec644e79a42b68e148273942b34": {
+    "name": "RouterFacet",
+    "label": "Router_impl",
+    "compiler": "v0.8.3+commit.8d00100c",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xf9fe427563b12ec644e79a42b68e148273942b34.json",
+    "format": "multi-file"
+  },
+  "0xed4d05496c71e71cc2a8726af1242c22108d1761": {
+    "name": "IdToAddressBiMap",
+    "label": "BatchExchange_impl",
+    "compiler": "v0.5.6+commit.b259423e",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xed4d05496c71e71cc2a8726af1242c22108d1761.sol",
+    "format": "single-file"
+  },
+  "0xccf3d6ed3e7db4c0274db2e1b921b87838ce656e": {
+    "name": "InsuranceFund",
+    "label": "DerivaDEX_impl",
+    "compiler": "v0.6.12+commit.27d51765",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0xccf3d6ed3e7db4c0274db2e1b921b87838ce656e.json",
+    "format": "multi-file"
+  },
+  "0x0545c57f1862b6509e15a5b8a6f9aa713914f80a": {
+    "name": "Receiver",
+    "label": "bZxProtocol_impl",
+    "compiler": "v0.5.17+commit.d19bba13",
+    "proxy": "0",
+    "implementation": "",
+    "has_source": true,
+    "abi_verified": true,
+    "file": "/home/user/contracs/src_cache/0x0545c57f1862b6509e15a5b8a6f9aa713914f80a.json",
+    "format": "multi-file"
+  }
+}
