@@ -1,0 +1,680 @@
+FULL SCAN: 1568 contracts
+Generated: 2026-02-15 04:50:35 UTC
+====================================================================================================
+
+## HIGH VALUE (>100 ETH)
+----------------------------------------------------------------------------------------------------
+L   1 | 0x111cff45948819988857bbf1966a0399e0d1141e | UNVERIFIED                               |      25817.3278 ETH
+L  12 | 0xf4e11b89519eccd988a56749f1c64ad9bfe0298f | MultiSigWalletWithDailyLimit             |      23777.7274 ETH
+L  13 | 0x43ab622752d766d694c005acfb78b1fc60f35b69 | Wallet                                   |      21704.3256 ETH
+L   5 | 0x4c766def136f59f6494f0969b1355882080cf8e0 | UNVERIFIED                               |      19053.6306 ETH
+L  24 | 0x910cbd523d972eb0a6f4cae4618ad62622b39dbf | UNVERIFIED                               |      18850.0000 ETH
+L  14 | 0x2a0c0dbecc7e4d658f48e01e3fa353f44050c208 | Exchange                                 |      16522.1489 ETH
+L  11 | 0x8d12a197cb00d4747a1fe03395095ce2a5cc6819 | EtherDelta                               |      15249.8025 ETH
+L  34 | 0x36eed1a4dd70f0731dd20ef76c32345185a8a042 | UNVERIFIED                               |      14810.2096 ETH
+L  41 | 0x23ea10cc1e6ebdb499d24e45369a35f43627062f | UNVERIFIED                               |      12518.2743 ETH
+L  47 | 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae | UNVERIFIED                               |      10774.4504 ETH
+L  35 | 0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9 | MultiSigWallet                           |      10284.3433 ETH
+L  51 | 0x10abe2494e4525f8cd2bac772671f0e1a44c6975 | UNVERIFIED                               |      10060.0247 ETH
+L  52 | 0x741a816aec3b183d29117bad0906f1f15233c360 | UNVERIFIED                               |       9811.3009 ETH
+L  57 | 0x88aa042c4aae423e0f1bb48542b473d1dd20a807 | UNVERIFIED                               |       9383.0000 ETH
+L  60 | 0x78f1dbb372cdd95d3a0dda99cf369e02e717f4f4 | UNVERIFIED                               |       9222.7303 ETH
+L  66 | 0xe4c00cfd4aa493ad890ef83ad9d643a788b17bd9 | UNVERIFIED                               |       7504.6473 ETH
+L  73 | 0xdb0e7d784d6a7ca2cbda6ce26ac3b1bd348c06f8 | Wallet                                   |       6925.0000 ETH
+L  97 | 0x8e3a4a7208aa489cc0a1c7290070811b07e60c87 | UNVERIFIED                               |       5361.5667 ETH
+L  94 | 0xa646e29877d52b9e2de457eca09c724ff16d0a2b | UNVERIFIED                               |       5350.1100 ETH
+L  70 | 0x5fdcca53617f4d2b9134b29090c87d01058e27e9 | Proxy                                    |       5264.2856 ETH [PROXY -> 0x4edd62189732e9ff476aba880b48c29432a7ac9b]
+L 100 | 0x729488d15a1b397cbd96cc02e2803af64390f44c | UNVERIFIED                               |       5241.2370 ETH
+L  96 | 0xd569d3cce55b71a8a3f3c418c329a66e5f714431 | TerminalV1                               |       5130.0814 ETH
+L 101 | 0xf1af6f01fd9626c851b7dea6810ee388dea5c846 | UNVERIFIED                               |       5050.1616 ETH
+L 106 | 0x3de0c040705d50d62d1c36bde0ccbad20606515a | UNVERIFIED                               |       4949.2943 ETH
+L 109 | 0x375203d21e61b477b4577840ec538c008c12e2ec | UNVERIFIED                               |       4749.6252 ETH
+L 110 | 0x49eafa4c392819c009eccdc8d851b4e3c2dda7d0 | Wallet                                   |       4524.9836 ETH
+L   3 | 0xfe89cc7abb2c4183683ab71653c4cdc9b02d44b7 | TimelockController                       |       4143.9546 ETH
+L 105 | 0xba20996529d2722c4d9d800a7b20e96a0a235336 | UNVERIFIED                               |       4083.7467 ETH
+L 120 | 0xdd9fd6b6f8f7ea932997992bbe67eabb3e316f3c | UNVERIFIED                               |       3970.7101 ETH
+L 121 | 0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb | CryptoPunksMarket                        |       3787.5127 ETH
+L 134 | 0x861f70cf6fe0ac8e15fad59685c14dfdf5d4f51e | UNVERIFIED                               |       3676.2429 ETH
+L 128 | 0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936 | TornadoCash_eth                          |       3475.0000 ETH
+L 125 | 0xb59a226a2b8a2f2b0512baa35cc348b6b213b671 | EtherToken                               |       3420.0141 ETH
+L  85 | 0x674bdf20a0f284d710bc40872100128e2d66bd3f | UNVERIFIED                               |       3350.8010 ETH
+L 132 | 0x41849f3bd33ced4a21c73fddd4a595e22a3c2251 | UNVERIFIED                               |       3263.6619 ETH
+L 142 | 0x5d9f93a4e1a686e52c500d8ed81a4c220c33d03b | UNVERIFIED                               |       2984.5478 ETH
+L 146 | 0x4905288e14f8f8ad21fa1662943475ccd2072651 | MultiSigWallet                           |       2845.4010 ETH
+L 119 | 0x6d903f6003cca6255d85cca4d3b5e5146dc33925 | Timelock                                 |       2833.5015 ETH
+L 152 | 0xf5c9f957705bea56a7e806943f98f7777b995826 | UNVERIFIED                               |       2609.5884 ETH
+L 160 | 0x0da3cb3046f72fcbb49edf01b04ab6efc6c0d8dc | UNVERIFIED                               |       2576.3536 ETH
+L 157 | 0x3ad2fcd6a2ce246e890826c9bcca20f06ce11083 | UNVERIFIED                               |       2572.0105 ETH
+L 154 | 0x4d55f76ce2dbbae7b48661bef9bd144ce0c9091b | UNVERIFIED                               |       2568.5559 ETH
+L  23 | 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b | L1ChugSplashProxy                        |       2537.0922 ETH [PROXY -> 0xa0cfe8af2ab5c9232714647702dbacf862ea4798]
+L 153 | 0xab7bb7959332888e44d795c6f28ee876a8469eaa | UNVERIFIED                               |       2517.9100 ETH
+L 163 | 0x7758e507850da48cd47df1fb5f875c23e3340c50 | UNVERIFIED                               |       2500.2075 ETH
+L 249 | 0x3842872545a9ba25fea0805cb34e83efde15e1f8 | UNVERIFIED                               |       2497.1625 ETH
+L  45 | 0x187c0e0aa33282096b39a33457939f1dc3ea8e0f | UNVERIFIED                               |       2435.9425 ETH
+L  15 | 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c | InitializableAdminUpgradeabilityProxy    |       2435.8723 ETH [PROXY -> 0x83b7ce402a0e756e901c4a9d1cafa27ca9572afc]
+L 161 | 0x56099a588ad9515dd78f0f7dc831aa7d6897e9b7 | UNVERIFIED                               |       2400.0001 ETH
+L 167 | 0x41aeb72624f739281b12ade663791254f32db669 | UNVERIFIED                               |       2335.8000 ETH
+L 131 | 0xcac5389c95b5141cf2b6a00f9ac5ea1657a66994 | UNVERIFIED                               |       2185.1593 ETH
+L 172 | 0xb3775fb83f7d12a36e0475abdd1fca35c091efbe | Hourglass                                |       2159.5097 ETH
+L 173 | 0x00d681a7b6584f978f63c81cfd847064ce19a080 | Wallet                                   |       2109.3035 ETH
+L 177 | 0xb84925130e39cd9ab8e9a6f514bc4c0730378027 | UNVERIFIED                               |       2088.0014 ETH
+L  48 | 0xe61dd9ca7364225afbfb79e15ad33864424e6ae4 | Bridge                                   |       2026.1703 ETH
+L 180 | 0xfe8ad7dd2f564a877cc23feea6c0a9cc2e783715 | UNVERIFIED                               |       2017.5000 ETH
+L 176 | 0x914b432dad9c29c081f93d84790919335bcbd33f | UNVERIFIED                               |       2012.2822 ETH
+L 179 | 0x19986fcfbc5ef9b9e377fa8429c5a8d215cbe814 | Wallet                                   |       2000.0000 ETH
+L 191 | 0x14bc856a8c11ee934fad2adf5e2cc289b019e398 | UNVERIFIED                               |       1929.0361 ETH
+L 197 | 0x1352921fa98e89c7e0ad785fc5aae1e4768428c6 | UNVERIFIED                               |       1797.5652 ETH
+L 202 | 0x05b34bf3562c61715f70240104abc6ae8c80055c | Wallet                                   |       1674.4449 ETH
+L 196 | 0x3d32e8b97ed5881324241cf03b2da5e2ebce5521 | CollSurplusPool                          |       1605.2148 ETH
+L 203 | 0x795cbc7a670d06e56cd2197d4ca175e081a416ad | UNVERIFIED                               |       1593.9913 ETH
+L 206 | 0x3fcb02a27dc60573a0cb9bff9528fcd77e78d734 | UNVERIFIED                               |       1568.3136 ETH
+L 205 | 0x976ecc7c22c4917f93f351d712365f42d06dd1be | UNVERIFIED                               |       1537.7379 ETH
+L 129 | 0x0feccb11c5b61b3922c511d0f002c0b72d770dce | MarketingMiningDelegator                 |       1523.4069 ETH [PROXY -> 0xab2cc3ab140e7596c5de18d1269ac39c53bd0db0]
+L 211 | 0xcddf488f1c826160ee832d4f1492f00cf8557ff6 | UNVERIFIED                               |       1500.0000 ETH
+L 213 | 0xd31a34d621122bebe0dee360e33bbe61193d5b90 | Wallet                                   |       1416.0958 ETH
+L 214 | 0xf6e51ae30705cd7248d4d9ac602cb58cc4b61a52 | UNVERIFIED                               |       1400.0000 ETH
+L 223 | 0x755cdba6ae4f479f7164792b318b2a06c759833b | UNVERIFIED                               |       1258.1693 ETH
+L 235 | 0xc6aebfc53c5d8be6f19b3d270a322b81b47f3305 | Wallet                                   |       1235.9800 ETH
+L 232 | 0xe4657676423c9fcf899818b8e50195a0e3b2d3e3 | UNVERIFIED                               |       1228.6515 ETH
+L 238 | 0x55ca4b396927c323326eaa4a3a2743c59b231d06 | Wallet                                   |       1200.0000 ETH
+L 241 | 0xd7dfc49e5d13f77830029134fb06f5fa6d5e8ec4 | UNVERIFIED                               |       1176.4412 ETH
+L 233 | 0x737901bea3eeb88459df9ef1be8ff3ae1b42a2ba | UNVERIFIED                               |       1158.7598 ETH
+L 243 | 0xa62142888aba8370742be823c1782d17a0389da1 | FoMo3Dlong                               |       1119.3898 ETH
+L 244 | 0xebacd5907d96b80e7d0f94af0292e4e50742d813 | Wallet                                   |       1109.9800 ETH
+L 246 | 0x91bd62e48282ea188998d04570ed8a3e237d3a6a | MultiSigWallet                           |       1106.3041 ETH
+L  62 | 0x326d9f47ba49bbaac279172634827483af70a601 | UNVERIFIED                               |       1093.2938 ETH
+L 255 | 0x1b3de683a4ff93457b0a27986361a5090e3fbb50 | Wallet                                   |       1061.2773 ETH
+L 261 | 0x8d15971781e935b07a84b9c888a1ad72628a30f1 | UNVERIFIED                               |       1013.0364 ETH
+L 263 | 0x9fa8fa61a10ff892e4ebceb7f4e0fc684c2ce0a9 | HONG                                     |       1003.6240 ETH
+L 267 | 0x55423da56319ddd796dcd6deb9eb8e885c9241f6 | UNVERIFIED                               |       1002.2946 ETH
+L 268 | 0xb61695537801cdb6ada7390d44e887c9db7dd87d | UNVERIFIED                               |       1000.0100 ETH
+L 262 | 0x1c0e9b714da970e6466ba8e6980c55e7636835a6 | UNVERIFIED                               |       1000.0000 ETH
+L 271 | 0xae7a1b1ba864696bcdcec94a34fb5836ca9a3910 | UNVERIFIED                               |        999.9881 ETH
+L 264 | 0x6bfad42cfc4efc96f529d786d643ff4a8b89fa52 | EthCustodian                             |        998.5899 ETH
+L 275 | 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011 | WrapperLockEth                           |        950.9351 ETH
+L 286 | 0x9a2d163ab40f88c625fd475e807bbc3556566f80 | UNVERIFIED                               |        858.2069 ETH
+L 282 | 0xa34edd0e0223c2151b8408e3043b2f6edc564fce | UNVERIFIED                               |        848.1810 ETH
+L 144 | 0x5b97a1cd49754878630524298296abcad2b4cc2d | UNVERIFIED                               |        824.0874 ETH
+L 304 | 0xeb4d872069a0f97e631df36dc58d8274038c0bc5 | UNVERIFIED                               |        789.4318 ETH
+L 298 | 0x7693f7100a671d0cbfca63bd766fd698c17d6f04 | Wallet                                   |        779.0892 ETH
+L 309 | 0xd5524179cb7ae012f5b642c1d6d700bbaa76b96b | UNVERIFIED                               |        772.0275 ETH
+L 301 | 0x283af0b28c62c092c9727f1ee09c02ca627eb7f5 | UNVERIFIED                               |        771.9419 ETH
+L 300 | 0x4de05b00797b11ae43e08ad0068fbd0689a0e041 | Wallet                                   |        768.8000 ETH
+L 308 | 0xe5a04d98538231b0fab9aba60cd73ce4ff3039df | EtherFlip                                |        753.1076 ETH
+L 313 | 0x5f3ce3907e7e4c5b5b8d04dd3211ca8b81a64733 | Wallet                                   |        741.4272 ETH
+L 319 | 0xc88edff46b3ffb00d113da95179cf0646561b920 | UNVERIFIED                               |        729.0008 ETH
+L 314 | 0x0c8d88fc589c410a6e5d72535a1806f5169773fc | UNVERIFIED                               |        728.9958 ETH
+L 310 | 0x8ff920020c8ad673661c8117f2855c384758c572 | MultiSigWallet                           |        726.2753 ETH
+L 325 | 0xa63cb8ba185dd986bc0701b27e2554a150dbf990 | UNVERIFIED                               |        700.3023 ETH
+L 330 | 0x94bd4150e41c717b7e7564484693073239715376 | Wallet                                   |        671.6944 ETH
+L 328 | 0x58d3178fc815678aa7e700a4911837542b6b56ab | UNVERIFIED                               |        668.5090 ETH
+L 323 | 0x102a6df6e708aab763dcb0f4e7825291a98c26fa | UNVERIFIED                               |        667.6011 ETH
+L 342 | 0x167cb3f2446f829eb327344b66e271d1a7efec9a | GandhiJi                                 |        664.1753 ETH
+L 331 | 0x227b7656129bc07eef947d3c019a7a8f36a24e74 | Wallet                                   |        655.1000 ETH
+L  72 | 0x66017d22b0f8556afdd19fc67041899eb65a21bb | StabilityPool                            |        649.7733 ETH
+L 303 | 0x1ce7ae555139c5ef5a57cc8d814a867ee6ee33d8 | UNVERIFIED                               |        634.7143 ETH
+L 357 | 0x9dafec62c3ef9cf8add8532ff339b991a30f421d | UNVERIFIED                               |        616.9800 ETH
+L 168 | 0x1d6b8ac8023c4858004313b4032519a5c652ed20 | MultiSigWalletWithDailyLimit             |        614.4909 ETH
+L 343 | 0xb8901acb165ed027e32754e0ffe830802919727f | L1_ETH_Bridge                            |        613.0445 ETH
+L 360 | 0xe28e72fcf78647adce1f1252f240bbfaebd63bcc | UNVERIFIED                               |        610.0020 ETH
+L 354 | 0x0397453bb7db560a039d474c5693578fdb6096c4 | UNVERIFIED                               |        600.0000 ETH
+L 355 | 0xa14703b1da572e3ddf4803113eb32159209199db | UNVERIFIED                               |        600.0000 ETH
+L 359 | 0x47c663ba238fb5c66fa7ac92c33a86a41da261de | Wallet                                   |        594.0000 ETH
+L  89 | 0xd1669ac6044269b59fa12c5822439f609ca54f41 | UNVERIFIED                               |        571.8569 ETH
+L 366 | 0xef110ca3c34a5074d455d687ac98f40c03d16173 | UNVERIFIED                               |        561.0994 ETH
+L 541 | 0x2ccfa2acf6ff744575ccf306b44a59b11c32e44b | UNVERIFIED                               |        558.5731 ETH
+L 373 | 0xb7a1515069f54a5a92dd4ce68e9d43f3dca230e3 | UNVERIFIED                               |        534.8857 ETH
+L 375 | 0xd216153c06e857cd7f72665e0af1d7d82172f494 | RelayHub                                 |        521.6893 ETH
+L 396 | 0x12d66f87a04a9e220743712ce6d9bb1b5616b8fc | TornadoCash_Eth_01                       |        510.4000 ETH [PROXY -> 0x83584f83f26af4edda9cbe8c730bc87c364b28fe]
+L 393 | 0xdc81b4b18881535ae033d924e6c9719348bdd3b8 | UNVERIFIED                               |        506.0040 ETH
+L 378 | 0x6e314220258a6fa41c2d50cd98f123ffff247d9e | UNVERIFIED                               |        501.0001 ETH
+L 392 | 0xdb46b29957b3021a5ea79c49f443083aba994a33 | UNVERIFIED                               |        500.0000 ETH
+L 398 | 0x802ea31c421ec79e8190cb68b699af3e3bc625fe | UNVERIFIED                               |        500.0000 ETH
+L 385 | 0x1426c1f91b923043f7c5fbabc6e369e7cbaef3f0 | Wallet                                   |        499.7557 ETH
+L 386 | 0x230731528a32a11122426e7688e8d9050a484a77 | ColdWallet                               |        493.8850 ETH
+L 405 | 0x0b7dc5a43ce121b4eaaa41b0f4f43bba47bb8951 | UNVERIFIED                               |        473.6791 ETH
+L 399 | 0x1a2a1c938ce3ec39b6d47113c7955baa9dd454f2 | UNVERIFIED                               |        469.3937 ETH
+L 411 | 0xab83d96de35bad6f234178fbb6507203488e9626 | UNVERIFIED                               |        469.1066 ETH
+L 406 | 0x283949d7c2ad3c8bca304df6aa5d9a2a78e02b77 | UNVERIFIED                               |        466.8845 ETH
+L 408 | 0x4d1886daf2617cbd9e27abfd0f18a54f04f33c41 | UNVERIFIED                               |        463.2229 ETH
+L 422 | 0x574fc478bc45ce144105fa44d98b4b2e4bd442cb | UNVERIFIED                               |        432.1253 ETH
+L 430 | 0xd18475521245a127a933a4fcaf99e8c45a416f7e | UNVERIFIED                               |        417.8628 ETH
+L 421 | 0x36c5f7c3fab772209e427f525b1fffe8399fb201 | UNVERIFIED                               |        416.0593 ETH
+L 400 | 0x35ffd6e268610e764ff6944d07760d0efe5e40e5 | LiquidityPoolV2                          |        413.1275 ETH
+L 437 | 0x71331c46fba44d85e293d63d1d5a8cdadf264451 | Wallet                                   |        409.6650 ETH
+L 434 | 0x2f6f1b713f54b2c1ea8ffb738ac8512a00599ff5 | UNVERIFIED                               |        404.6406 ETH
+L 435 | 0xf786c34106762ab4eeb45a51b42a62470e9d5332 | UNVERIFIED                               |        404.0580 ETH
+L 431 | 0xf9250f22e4f6ef528aec6bf1cd4cb012dd5169d4 | Wallet                                   |        403.3043 ETH
+L 451 | 0x020522bf9b8ed6ff41e2fa6765a17e20e2767d64 | UNVERIFIED                               |        400.0000 ETH
+L 439 | 0x22ef5434cc2deb6c760c7ebbc88777d1f32757f6 | Wallet                                   |        400.0000 ETH
+L 455 | 0x35bd14e205251f3ee0405bc543ceac1d776e5736 | UNVERIFIED                               |        400.0000 ETH
+L 438 | 0x05cf82965cc412494c5de53bf107ec631accf03e | UNVERIFIED                               |        399.0000 ETH
+L 433 | 0x39d46c1824dfc32ad4e80c28a825296a8ac52437 | Wallet                                   |        397.0000 ETH
+L 446 | 0xe27855ba0de5743fd6a178a370660415784e8e6a | UNVERIFIED                               |        394.5008 ETH
+L 459 | 0xa6cd930fc92f1634d8183af2fb86bd1766f2f82a | CelerWallet                              |        384.1803 ETH
+L 465 | 0x043dae09e7f51d02b8745bcf82c4c5ee86e4bc96 | UNVERIFIED                               |        360.0000 ETH
+L 482 | 0x4d8006dc86d6015d5cb1f33c4e98ca12c39fcba2 | UNVERIFIED                               |        360.0000 ETH
+L 311 | 0x072b4b3008eb2177cce628123d24e75a8e34b9b0 | MultiSigWalletWithDailyLimit             |        359.7588 ETH
+L 380 | 0xa2201234a4652a704f5539058ccb9ab6ebcd486b | MultiSigWallet                           |        355.0672 ETH
+L 189 | 0x29d38fdf26d64fa799276e6615759d27db1f1fcd | UNVERIFIED                               |        353.4523 ETH
+L 491 | 0xdef545eeac0bd8b55a9e9c6b461f96ddd0fdd0de | UNVERIFIED                               |        350.3990 ETH
+L 479 | 0xcf46cc20deba6b802707961ca3c6f3602566c2cf | UNVERIFIED                               |        350.0250 ETH
+L 473 | 0xe4aa399ac8c2c636c3f084f8176c01c5c73ed90e | Wallet                                   |        350.0000 ETH
+L 476 | 0x53ea709e81eefa48a311b2a582ad8057d45d4acc | Wallet                                   |        350.0000 ETH
+L 480 | 0x728dbf45456de6b51b1227d5cd5e2507167688c0 | Wallet                                   |        350.0000 ETH
+L 481 | 0x7fb091d48426f54f6fb8d1a43f8e33f80454f4e3 | UNVERIFIED                               |        350.0000 ETH
+L 462 | 0xaba513097f04d637727fdcda0246636e0d5d6833 | UNVERIFIED                               |        348.2397 ETH
+L 477 | 0xef5da7752c084df1cc719c64bbe06fa98b2c554c | Wallet                                   |        345.4995 ETH
+L 495 | 0x4ebcf8a133cce749ee07d4c764e10d1916f84f5c | Wallet                                   |        342.8200 ETH
+L 488 | 0xe705daf2f65228aade8c8ac4f60a586b1391228d | Wallet                                   |        340.4000 ETH
+L 501 | 0xc32050abac7dbfef4fc8dc7b96d9617394cb4e1b | UNVERIFIED                               |        340.2286 ETH
+L 416 | 0x4e0a22606a1abaa857ec4958ae9b0b38451dff4a | UNVERIFIED                               |        338.7266 ETH
+L 471 | 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad | Floor                                    |        336.0442 ETH
+L 505 | 0x160b24a430bca05262a98a07027dd2dd1802ca18 | Wallet                                   |        333.0100 ETH
+L 490 | 0x28ff414bb944b81053389f22113ad305c8ac69fa | Wallet                                   |        332.0000 ETH
+L 425 | 0x72298bd3ed75e0aa289ad61c6390596d60ffdcef | UNVERIFIED                               |        330.0876 ETH
+L 502 | 0x7100c7ce94607ef68983f133cfd59cc1833a115d | UNVERIFIED                               |        327.5360 ETH
+L 500 | 0xa08c1134cdd73ad41889f7f914ecc4d3b30c1333 | Wallet                                   |        325.2000 ETH
+L 508 | 0x2f9f02f2ba99ff5c750f95cf27d25352f71cd6a9 | Wallet                                   |        320.0010 ETH
+L 511 | 0xa1a111bc074c9cfa781f0c38e63bd51c91b8af00 | UNVERIFIED                               |        314.1485 ETH
+L 517 | 0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd | UNVERIFIED                               |        313.7111 ETH
+L 449 | 0xa4d65fd5017bb20904603f0a174bbbd04f81757c | UNVERIFIED                               |        309.1112 ETH
+L 436 | 0xe5c405c5578d84c5231d3a9a29ef4374423fa0c2 | Custodian                                |        304.8390 ETH
+L 519 | 0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e | UNVERIFIED                               |        300.9900 ETH
+L 534 | 0xb54ca24ac19098db42454c8ee8df67d260a22b1e | UNVERIFIED                               |        300.0100 ETH
+L 527 | 0xdbfb513d25df56b4c3f5258d477a395d4b735824 | UNVERIFIED                               |        293.0367 ETH
+L 532 | 0xb958a8f59ac6145851729f73c7a6968311d8b633 | UNVERIFIED                               |        293.0000 ETH
+L 523 | 0xf74bf048138a2b8f825eccabed9e02e481a0f6c0 | AdminUpgradeabilityProxy                 |        291.7089 ETH [PROXY -> 0x0634ee9e5163389a04b3ff6c9b05de71c24c1916]
+L 538 | 0xe9778e69a961e64d3cdbb34cf6778281d34667c2 | WorkLock                                 |        291.1885 ETH
+L 452 | 0x83d0d842e6db3b020f384a2af11bd14787bec8e7 | GuildBank                                |        287.3173 ETH
+L 524 | 0x0f30c808069315b3b7dfbfe149c87448b50c6d8b | UNVERIFIED                               |        285.7430 ETH
+L 543 | 0x7e5b6dd9ba1abf42bfb41e5ae8f46fe5e01aae14 | UNVERIFIED                               |        285.0163 ETH
+L 537 | 0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d | SuperBunnies                             |        284.2580 ETH
+L 544 | 0xd48b633045af65ff636f3c6edd744748351e020d | Zethr                                    |        280.8472 ETH
+L  77 | 0x7b0d44d5b2ef3a8b168fafdcc321fab0d9d5d08c | MultiSigWallet                           |        278.0273 ETH
+L 365 | 0x216550e25c54ea394d9b862375efc2c2c5cfbeb1 | UNVERIFIED                               |        274.0834 ETH
+L 560 | 0x3a5fb0f79c258942c1acf8142cbc601c1aff1ac4 | UNVERIFIED                               |        262.7057 ETH
+L 561 | 0x7ea2df0f49d1cf7cb3a328f0038822b08aeb0ac1 | UNVERIFIED                               |        261.0250 ETH
+L 569 | 0xa7d9e842efb252389d613da88eda3731512e40bd | BondedECDSAKeepFactory                   |        258.5569 ETH
+L 570 | 0x3885b0c18e3c4ab0ca2b8dc99771944404687628 | UNVERIFIED                               |        250.0000 ETH
+L 445 | 0x00f2b67b5a5ec2ff88b2be7d5a8d1a39d5929237 | UNVERIFIED                               |        247.2931 ETH
+L 573 | 0x60cd862c9c687a9de49aecdc3a99b74a4fc54ab6 | UNVERIFIED                               |        246.6907 ETH
+L 581 | 0x33a634874644593bd42765475ba4d36ed129fe97 | UNVERIFIED                               |        237.3923 ETH
+L 579 | 0x27321f84704a599ab740281e285cc4463d89a3d5 | KeepBonding                              |        234.4187 ETH
+L 578 | 0x4615cc10092b514258577dafca98c142577f1578 | UNVERIFIED                               |        232.6000 ETH
+L 593 | 0x4aea7cf559f67cedcad07e12ae6bc00f07e8cf65 | UNVERIFIED                               |        221.1098 ETH
+L 594 | 0x5eee354e36ac51e9d3f7283005cab0c55f423b23 | UNVERIFIED                               |        216.2894 ETH
+L 592 | 0x8754f54074400ce745a7ceddc928fb1b7e985ed6 | EulerBeats                               |        215.1782 ETH
+L  81 | 0x584920cad9f10a0fd94c1857ce1b2a7d0d9b50a4 | UNVERIFIED                               |        214.0890 ETH
+L 602 | 0x6198db1e212846b9ecbaee75182a456077c1ccb2 | UNVERIFIED                               |        212.8830 ETH
+L 597 | 0x075af08596c26a81384e1f06757f96c96bb1e896 | UNVERIFIED                               |        212.3831 ETH
+L 604 | 0x97ec9bfb0f6672c358620615a1e4de0348aea05c | UNVERIFIED                               |        208.6450 ETH
+L 612 | 0x899f9a0440face1397a1ee1e3f6bf3580a6633d1 | RedemptionContract                       |        206.2538 ETH
+L 615 | 0xbd3af18e0b7ebb30d49b253ab00788b92604552c | HashesDAO                                |        205.8451 ETH
+L 618 | 0x05276c19f670ffe7ba6b3bdc94e70c36b4b9dad5 | Wallet                                   |        202.1225 ETH
+L 616 | 0xd619c8da0a58b63be7fa69b4cc648916fe95fa1b | UNVERIFIED                               |        200.0000 ETH
+L 617 | 0xb9fbe1315824a466d05df4882ffac592ce9c009a | UNVERIFIED                               |        200.0000 ETH
+L 563 | 0x9149c59f087e891b659481ed665768a57247c79e | KyberReserve                             |        196.9514 ETH
+L 621 | 0x7488451db91df618759b8af15e36f70c0fdd529e | XifraICO2                                |        193.5908 ETH
+L 628 | 0x8c74dfa27be1b4fa867490a2698419a98c0bd221 | UNVERIFIED                               |        193.3200 ETH
+L 634 | 0x0c01089aedc45ab0f43467cceca6b4d3e4170bea | UNVERIFIED                               |        192.4018 ETH
+L 629 | 0x575cb87ab3c2329a0248c7d70e0ead8e57f3e3f7 | UNVERIFIED                               |        191.5095 ETH
+L 631 | 0x112918a54e3ada863cf694970da0756f1eecc68d | JavvyMultiSig                            |        190.8984 ETH
+L 639 | 0x333c100ae1a2743a1e55d73913cac6d95deb7f62 | UNVERIFIED                               |        190.0000 ETH
+L 646 | 0x2468160c241a9fed936ee1e3ceb8b2f7e2e01987 | Wallet                                   |        176.0000 ETH
+L 653 | 0x7cd5e2d0056a7a7f09cbb86e540ef4f6dccc97dd | UNVERIFIED                               |        175.5072 ETH
+L 663 | 0x2956356cd2a2bf3202f771f50d3d14a367b48070 | UNVERIFIED                               |        175.2935 ETH
+L 567 | 0x24f0bb6c9b2c3db66603fa0ec07ab0cf55cdd387 | Holder                                   |        174.6754 ETH
+L 641 | 0xce0fd5c046dddc05311567156f2e9974a5875bea | UNVERIFIED                               |        172.3829 ETH
+L 654 | 0xe29bbc8fcd866dfff36dcac6b006a3a97adba9c9 | UNVERIFIED                               |        170.1129 ETH
+L 665 | 0x379ebb850cb30cb5e50a351b6da437a00eaadc20 | UNVERIFIED                               |        167.5293 ETH
+L 678 | 0x7600977eb9effa627d6bd0da2e5be35e11566341 | UNVERIFIED                               |        165.7594 ETH
+L 683 | 0x8a909adc6c299cc4a206e730b15d2b97b0fbf0bd | UNVERIFIED                               |        164.0418 ETH
+L 685 | 0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8 | UNVERIFIED                               |        159.8510 ETH
+L 673 | 0x63658cc84a5b2b969b8df9bea129a1c933e1439f | kleee002                                 |        159.4217 ETH
+L 322 | 0xe8b672fe4745733b0a9ec1de097c98946ad712f4 | UNVERIFIED                               |        154.9766 ETH
+L 700 | 0x2829435522c1f3711ae14ed20b2345dc2fe891f4 | UNVERIFIED                               |        150.4811 ETH
+L 714 | 0xd95a6aa3e20397211e487b231211e16790a21ac9 | Wallet                                   |        150.4794 ETH
+L 696 | 0xc7c9b856d33651cc2bcd9e0099efa85f59f78302 | R1Exchange                               |        150.3627 ETH
+L 695 | 0xc249c0fc4f7283d4a58c57d8fb0cf5f126ae4ead | UNVERIFIED                               |        150.0000 ETH
+L 145 | 0xd69d7a1031e6e63a162414f9a77278757690c30e | UNVERIFIED                               |        148.6952 ETH
+L 711 | 0x7b6bce3cf38ee602030662fa24ac2ed5a32d0a02 | UNVERIFIED                               |        146.4487 ETH
+L 706 | 0xd64b1bf6fcab5add75041c89f61816c2b3d5e711 | OrbsGuardians                            |        144.0000 ETH
+L 288 | 0x57a8865cfb1ecef7253c27da6b4bc3daee5be518 | Timelock                                 |        138.7636 ETH
+L 724 | 0xdd637dda8a1c9b6b1687877615a75da0fe8af5cc | UNVERIFIED                               |        138.2615 ETH [PROXY -> 0x6683ab42aacec410d74ee1801bb89b39b6aeefbe]
+L 734 | 0x00000000a8f806c754549943b6550a2594c9a126 | UNVERIFIED                               |        138.2400 ETH
+L 727 | 0x20018893c7d8e38b14a10a00c70023c45d528fba | UNVERIFIED                               |        136.9899 ETH
+L 740 | 0x0ad3227eb47597b566ec138b3afd78cfea752de5 | FoMo3Dshort                              |        136.7659 ETH
+L 751 | 0x62ca869bafea0c77234e48018d9c67f7c0cd197a | Wallet                                   |        135.3239 ETH
+L 742 | 0x6e5e0ef477db8e26cd64f87522a1997f6dda64fb | Wallet                                   |        132.0094 ETH
+L 756 | 0x379add715d9fb53a79e6879653b60f12cc75bcaf | UNVERIFIED                               |        131.7609 ETH
+L 757 | 0xb25634bb526d615f8b6e73e04ece46eed9f8ca24 | UNVERIFIED                               |        130.7799 ETH
+L 775 | 0xa150de0e6998e05d6e19fca736ab758e698da21a | Wallet                                   |        130.3200 ETH
+L 743 | 0xa327075af2a223a1c83a36ada1126afe7430f955 | UNVERIFIED                               |        130.0000 ETH
+L 748 | 0x6f35a5e6a7301627a090822895e5e7209ed72f77 | SavingAccount                            |        129.1901 ETH
+L 763 | 0x9b4ea303ca6302dfa46b73bc660598c65de96b3d | UNVERIFIED                               |        128.7318 ETH
+L 754 | 0x88ae96845e157558ef59e9ff90e766e22e480390 | UNVERIFIED                               |        128.5010 ETH
+L 760 | 0x1a54be38f6ee09a73230cedbcbb9eb8bc5c4e8d0 | UNVERIFIED                               |        128.0000 ETH
+L 606 | 0xf346ba182872fd01e9c4bb8c3ba7846c20336003 | UNVERIFIED                               |        124.4483 ETH
+L 306 | 0x241e82c79452f51fbfc89fac6d912e021db1a3b7 | Hydro                                    |        124.0720 ETH [PROXY -> 0xbf7e93f3a5730416e2229eac9d4fa9794b327477]
+L 761 | 0x373c55c277b866a69dc047cad488154ab9759466 | UNVERIFIED                               |        123.3597 ETH
+L 804 | 0xfcbcd2da9efa379c7d3352ffd3d5877cc088cbba | UNVERIFIED                               |        123.0342 ETH
+L 798 | 0xc4c51de1abf5d60dbd329ec0f999fd8f021ae9fc | UNVERIFIED                               |        122.0703 ETH
+L 784 | 0xb39036a09865236d67875f6fd391e597b4c8425d | UNVERIFIED                               |        121.6498 ETH
+L 803 | 0x58174e9b3178074f83888b6147c1a7d2ced85c6f | UNVERIFIED                               |        119.9300 ETH
+L 796 | 0xb0bce295e0c1f7aa02510d368e514a9ae87504db | UNVERIFIED                               |        119.6083 ETH
+L 424 | 0x773a58c0ae122f56d6747bc1264f00174b3144c3 | UNVERIFIED                               |        119.1724 ETH
+L  18 | 0x3a5cc8689d1b0cef2c317bc5c0ad6ce88b27d597 | UNVERIFIED                               |        118.3998 ETH
+L 668 | 0xc5a0a17eabbb0e64dcd567b5670c8c5d5c34128c | UNVERIFIED                               |        117.6246 ETH
+L 815 | 0x1a26ef6575b7bbb864d984d9255c069f6c361a14 | Proxy__L1LiquidityPoolArguments          |        113.9167 ETH [PROXY -> 0xd24484926f1d130778b9ebd7ec594548b2d53cb1]
+L 817 | 0xb9ab8eed48852de901c13543042204c6c569b811 | UNVERIFIED                               |        113.5116 ETH
+L 830 | 0xd27e44f7f4118db2c7812a363f5b76859c20e0b3 | UNVERIFIED                               |        112.9915 ETH
+L 827 | 0x766040000d000d735f67a8bfc7c84e9c24b1943b | UNVERIFIED                               |        111.3000 ETH
+L 818 | 0x6822aaf4ab22e6cca8352a927b9ae0a8fdb58d9d | ProfitSharing                            |        111.0267 ETH
+L 832 | 0x7ea1950d7fa5167d5dc92c26e537d7875553b88e | Wallet                                   |        109.9621 ETH
+L 813 | 0xa365c183dd416f3eedf91fbda6bef30bd8d596c5 | UNVERIFIED                               |        109.8475 ETH
+L 862 | 0xd2bfceeab8ffa24cdf94faa2683df63df4bcbdc8 | UNVERIFIED                               |        109.7805 ETH
+L 838 | 0x0514afd47f635e9304028bd0dcdaed2168773ec1 | Wallet                                   |        109.5450 ETH
+L 834 | 0x4ebf5f5675a0e3293496f1d500cc1eb834ed717b | UNVERIFIED                               |        109.3490 ETH
+L 868 | 0xa33c4a314faa9684eeffa6ba334688001ea99bbc | Phoenix                                  |        108.7803 ETH
+L 854 | 0xc1bd4f07421571364617adce98a8d657f52498b7 | UNVERIFIED                               |        108.4668 ETH
+L 840 | 0x728781e75735dc0962df3a51d7ef47e798a7107e | UNVERIFIED                               |        107.2751 ETH
+L 859 | 0xe40e1531a4b56fb65571ad2ca43dc0048a316a2d | EthPrime                                 |        106.8859 ETH
+L 843 | 0xe2a59c80bbc825b3b83897c09583d843a20004d7 | UNVERIFIED                               |        106.4397 ETH
+L 828 | 0xc3c12a9e63e466a3ba99e07f3ef1f38b8b81ae1b | UNVERIFIED                               |        105.6926 ETH
+L 885 | 0xe14ab3ee81abe340b45bb26b1b166a7d2df22585 | UNVERIFIED                               |        105.5055 ETH
+L 851 | 0xe01e2a3ceafa8233021fc759e5a69863558326b6 | UNVERIFIED                               |        105.4930 ETH
+L 857 | 0xa45b966996374e9e65ab991c6fe4bfce3a56dde8 | MaticWETH                                |        104.7373 ETH
+L 878 | 0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009 | SingularDTVToken                         |        104.3913 ETH
+L 860 | 0xf90bbf5d9bcf95ce5aa5c28ce175541a288b599c | UNVERIFIED                               |        104.3210 ETH
+L 858 | 0x4e05316fe8961e7818d9cd4c18101578350be639 | UNVERIFIED                               |        103.6660 ETH
+L 893 | 0x04ab1ae22add9b0d991aca80a0eb74de14fd2a8d | UNVERIFIED                               |        103.2011 ETH
+L 849 | 0xe1d6b08f3d3b5c80c1fde685e98c04a6bcbc77e9 | UNVERIFIED                               |        101.1600 ETH
+L 879 | 0x98669654f4ab5ccede76766ad19bdfe230f96c65 | UNVERIFIED                               |        101.1380 ETH
+L 887 | 0xb8ff313d33b0e841b6b83243f6e2935166de87c1 | AdminUpgradeabilityProxy                 |        101.0295 ETH [PROXY -> 0xb9a42d02300f71ca23a100864fef2d5f82f7f833]
+L 873 | 0xab5cffaaec03efc94ab5c0c4c0bc85ae2b2b65ac | UNVERIFIED                               |        101.0000 ETH
+L 876 | 0x0d6630648e6740d2d96c562543d4e0c7bbb46577 | UNVERIFIED                               |        100.9687 ETH
+L 874 | 0x228b015ab09c32906e4b98cfc2761b96842d8724 | Wallet                                   |        100.8596 ETH
+L 888 | 0x9aca6abfe63a5ae0dc6258cefb65207ec990aa4d | DigiPulse                                |        100.5835 ETH
+L 871 | 0x73f09b50960f87af26ff4817a93c0f5efd0aa9e2 | DualSig                                  |        100.2500 ETH
+L 895 | 0x9122e2cfab13d30237ebeef0c0521d64bf0b06dc | UNVERIFIED                               |        100.0100 ETH
+L 880 | 0xae04992b4e7468f6c88084a2310d2942f12626ff | UNVERIFIED                               |        100.0000 ETH
+L 900 | 0x52a5dbcc9755de4dcc52afb25b3923287a18ea26 | UNVERIFIED                               |        100.0000 ETH
+L 910 | 0xa0589b980cb3c2e153b7ac7dc7c01c2223d7c5d7 | UNVERIFIED                               |        100.0000 ETH
+L 913 | 0xa6450bcb9f58854f3fd5a997f5d93db40f3fa4e3 | UNVERIFIED                               |        100.0000 ETH
+
+## MEDIUM VALUE (10-100 ETH)
+----------------------------------------------------------------------------------------------------
+L 902 | 0x4be6a36edaef7efcdb0859b54b0e045496f91b38 | UNVERIFIED                               |         99.0000 ETH
+L 894 | 0x48c128eafc3b937fb1f97889ad174ac02b4952cb | UNVERIFIED                               |         98.4788 ETH
+L 921 | 0x25a06d4e1f804ce62cf11b091180a5c84980d93a | Treasure                                 |         98.2802 ETH
+L 909 | 0x074403c5a4bccf6454544a5842fe98ddb694a147 | UNVERIFIED                               |         98.0965 ETH
+L 190 | 0x15a28b1701310f4e937be22392d7b50bf4ca2ba9 | UNVERIFIED                               |         97.2106 ETH
+L 912 | 0xe65f525ec48c7e95654b9824ecc358454ea9185e | UNVERIFIED                               |         95.8111 ETH
+L 916 | 0x5e8353930b557a524ff92eace9b87d82f9793124 | UNVERIFIED                               |         95.5500 ETH
+L 603 | 0x3907acb4c1818adf72d965c08e0a79af16e7ffb8 | UNVERIFIED                               |         94.9866 ETH
+L 924 | 0xd76b5c2a23ef78368d8e34288b5b65d616b746ae | EtherToken                               |         94.8983 ETH
+L 917 | 0xf9fb1c508ff49f78b60d3a96dea99fa5d7f3a8a6 | EthManager                               |         94.7925 ETH
+L 883 | 0xdc260a232ced6e544909830d7128678466420aff | UNVERIFIED                               |         93.8000 ETH
+L 936 | 0xa6b658ce4b1cdb4e7d8f97dffb549b8688cafb84 | UNVERIFIED                               |         91.1820 ETH
+L 939 | 0x18a672e11d637fffadccc99b152f4895da069601 | Rouleth                                  |         91.0021 ETH
+L 935 | 0xc618d56b6d606e59c6b87af724ab5a91eb40d1cb | LIQUID                                   |         90.9443 ETH
+L 575 | 0x2af47a65da8cd66729b4209c22017d6a5c2d2400 | StandardBounties                         |         90.3733 ETH
+L 923 | 0x68c4b7d05fae45bcb6192bb93e246c77e98360e1 | UNVERIFIED                               |         89.2371 ETH
+L 721 | 0x1f557eebbf082e73acca1367608a1c50990c15db | UNVERIFIED                               |         89.0719 ETH
+L 941 | 0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe | KyberFeeHandler                          |         88.9311 ETH
+L 953 | 0xab37e1358b639fd877f015027bb62d3ddaa7557e | LienToken                                |         88.8549 ETH
+L 931 | 0xfd24f3c1bea92b95550746419f5bda642d6ffe5b | Wallet                                   |         87.9567 ETH
+L 978 | 0x47663541167ece0b96d9e5c60f9e470b2a20f598 | UNVERIFIED                               |         87.3282 ETH
+L 772 | 0x0fa10d440522d4235c55811dc1adf4a875c16d00 | UNVERIFIED                               |         85.8235 ETH
+L 915 | 0x04f062809b244e37e7fdc21d9409469c989c2342 | Joyso                                    |         85.3487 ETH
+L 982 | 0xa98771a46dcb34b34cdad5355718f8a97c8e603e | EulerBeatsV2                             |         85.2400 ETH
+L 963 | 0xc83355ef25a104938275b46cffd94bf9917d0691 | FUTR                                     |         84.9579 ETH
+L 998 | 0x4e8ecf79ade5e2c49b9e30d795517a81e0bf00b8 | UNVERIFIED                               |         84.6564 ETH
+L 968 | 0x27a94869341838d5783368a8503fda5fbcd7987c | UNVERIFIED                               |         84.2490 ETH
+L 995 | 0x879ae0704944fb78a3a59835caf734b2c104aff2 | UNVERIFIED                               |         84.0073 ETH [PROXY -> 0x6683ab42aacec410d74ee1801bb89b39b6aeefbe]
+L1004 | 0xd79b4c6791784184e2755b2fc1659eaab0f80456 | HonestDice                               |         83.9446 ETH
+L 984 | 0x4db13686f75be16abb7d1a99b0a9ca9a281ee42c | UNVERIFIED                               |         83.7345 ETH
+L 986 | 0x8fe19c447821b4cdcdd5012bca1b5469ca96d80d | UNVERIFIED                               |         83.7095 ETH
+L 967 | 0x0337184a497565a9bd8e300dad50270cd367f206 | UNVERIFIED                               |         83.5854 ETH
+L1008 | 0x767696e13ff990d09954c7a36a49e2c4a1c804bd | IDOLvsETHBoxExchange                     |         82.7729 ETH
+L 994 | 0x12d5b7c26dd8dc6e2f71f5bf240d5e76452b2fe5 | DirectCryptTokenPreSale                  |         81.8859 ETH
+L1007 | 0x50cb61afa3f023d17276dcfb35abf85c710d1cff | WrapperLockEth                           |         81.6058 ETH
+L 971 | 0x93519cc1a51ac56cf2daa8aaafcd4073f49a19d8 | UNVERIFIED                               |         81.1442 ETH
+L 993 | 0xfd7c0c06a5bd450a8fe755eae5dc4915ea7dfc74 | UNVERIFIED                               |         81.1052 ETH
+L1013 | 0x1fad12be55386d48388367513f1f04cbef77949c | UNVERIFIED                               |         80.8699 ETH
+L 961 | 0x394d8b3c5de759b8258376fde9b394c8f237d8c4 | Wallet                                   |         80.5842 ETH
+L 973 | 0xec0d3f28d37a3393cf09ee3ad446c485b6afdaa3 | TransparentUpgradeableProxy              |         80.3804 ETH [PROXY -> 0xda2213e30200ad11419c9fe89431fdca92e4be8f]
+L 996 | 0x192bc7b427eb0c61ee99ec8e2fa668a55fb92d46 | UNVERIFIED                               |         80.0000 ETH
+L1017 | 0x6e715ab4f598eacf0016b9b35ef33e4141844ccc | UNVERIFIED                               |         80.0000 ETH
+L1012 | 0xc51b8d50990d914ba24125dce84412ea75b4340f | Wallet                                   |         79.9996 ETH
+L1010 | 0x9b54fcf429f32dbf1292fa191272e7f4174741cc | Wallet                                   |         79.6393 ETH
+L 512 | 0x142fdef3d4b26d7152ef808c3b147754216ccb36 | UNVERIFIED                               |         79.3327 ETH
+L1011 | 0x7f2401626cafe6475ed32541e72c9bf9aa1757cb | UNVERIFIED                               |         78.2121 ETH
+L1035 | 0x4aa6c62805c4352c737b424a7fd56fb96421e450 | UNVERIFIED                               |         77.9581 ETH
+L1001 | 0x52083b1a21a5abc422b1b0bce5c43ca86ef74cd1 | FoMo3Dshort                              |         77.6289 ETH
+L1025 | 0x70ae833060235444708cb598e74a3adc7ec9ac47 | UNVERIFIED                               |         76.9230 ETH
+L1016 | 0x33bf8819475025febf70ee8db36c86090b980dc6 | Wallet                                   |         76.7223 ETH
+L1023 | 0xcc89405e3cfd38412093840a3ac2f851dd395dfb | UNVERIFIED                               |         76.6000 ETH
+L1029 | 0xcb47c89cb17c10b719fc5ed9665bae157cac2cb1 | UNVERIFIED                               |         76.2817 ETH
+L1032 | 0x5995ca61d845e045cd1327a32707a66f7daccf6d | UNVERIFIED                               |         75.9886 ETH
+L1034 | 0x775dcbe3fb897547713ff8689fac4bde2fd4624e | UNVERIFIED                               |         75.7340 ETH
+L1036 | 0xc0099b50ab615412a90970f1d55a31b9853aad6f | UNVERIFIED                               |         75.6000 ETH
+L1033 | 0x7b0222aef601b28f80463e91555769301fe05520 | Wallet                                   |         75.0000 ETH
+L1038 | 0x7723912d8a75c47fe5da1c166240807002b2d42e | UNVERIFIED                               |         75.0000 ETH
+L1040 | 0x9bc218601cf13d90ae1a9f1528f1415bfa736e5f | Wallet                                   |         75.0000 ETH
+L1041 | 0xe6ecbce477c5036e15910dec9c6d7be48f00d6dd | Wallet                                   |         75.0000 ETH
+L1044 | 0x0edb1b8210938bd36cf696d0c5d12e7d60bff8d1 | Wallet                                   |         75.0000 ETH
+L  68 | 0x4f9fbb3f1e99b56e0fe2892e623ed36a76fc605d | UNVERIFIED                               |         74.9543 ETH
+L1043 | 0x120d826710247f66a4341a22823750d87adf1483 | UNVERIFIED                               |         74.8042 ETH
+L  69 | 0xd6a062cae6123c158768a5c444ca0896cc60d6b1 | UNVERIFIED                               |         74.2222 ETH [PROXY -> 0x5b9e8728e316bbeb692d22daaab74f6cbf2c4691]
+L1075 | 0x8ae213f66d98a6accc180f0ee2522245c2b330c8 | UNVERIFIED                               |         73.6971 ETH
+L1057 | 0xe7e3da4608f43fc185463f142bc80c0c9c8569d8 | Wallet                                   |         73.6376 ETH
+L1066 | 0xfd71d62a6dfe8b4e85a81f1d006e955f75aec922 | UNVERIFIED                               |         73.1788 ETH
+L1084 | 0x0992f52ff1029b5f3527834299660b2e235d9026 | UNVERIFIED                               |         73.1400 ETH
+L1048 | 0xcda3e2cf6be63d236d49b789ca31edad3aa20d4d | UNVERIFIED                               |         73.1366 ETH
+L1064 | 0x455f63e5f92dbe9d100d291bc2a1b8844fe2f1e9 | Wallet                                   |         73.0900 ETH
+L1091 | 0xcdbcb69131852bb2dc31bc54c70809e2c01b5b88 | Wallet                                   |         72.2862 ETH
+L1047 | 0x74c708615e2b601fdf3574a3b403d6f093a50482 | UNVERIFIED                               |         72.1531 ETH
+L1065 | 0x18b59a4d99f7bd96d1ef7a3e597f259ad9563e2d | UNVERIFIED                               |         70.8565 ETH
+L1080 | 0x44e081cac2406a4efe165178c2a4d77f7a7854d4 | EthPool                                  |         70.2605 ETH
+L1071 | 0x3da71558a40f63b960196cc0679847ff50fad22b | WithDrawChildDAO                         |         70.2392 ETH
+L1089 | 0x1dfd1be1c6e8ca4da3ccdbbcc83281db02a5f23e | UNVERIFIED                               |         69.6438 ETH
+L1104 | 0xbd2ed3e85faa3433c068c7b3f9c8c7d839ce88d7 | UNVERIFIED                               |         69.6010 ETH
+L1052 | 0x6baec8a087c9c140759be6c745ce16cd7bb2fd76 | UNVERIFIED                               |         69.5320 ETH
+L1093 | 0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6 | E2X                                      |         69.3577 ETH
+L1077 | 0x7011f3edc7fa43c81440f9f43a6458174113b162 | UNVERIFIED                               |         69.3000 ETH
+L1046 | 0x0d081088c6de2550787a838e494da262fd5cc29f | UNVERIFIED                               |         69.2528 ETH
+L1092 | 0x5535a72556727c221c567e0fc4208c5a99dba1cc | UNVERIFIED                               |         69.2390 ETH
+L1083 | 0x775db93999c339e04276040069e2a08aaf3c13d4 | UNVERIFIED                               |         69.1566 ETH
+L1081 | 0xfcdf5ba1fa701a0ff743ed89b62a25f7e96b5268 | Wallet                                   |         68.7650 ETH
+L1097 | 0xb6307611c06c57257ee2ad83beed39cc6650163e | MistCoin                                 |         68.3900 ETH
+L1116 | 0x87d4bd11b9644392eb7dab77c64245885c11ccbc | UNVERIFIED                               |         67.9244 ETH
+L1105 | 0xf7815c3b9187c0109206e71aea20e97c6940ea0e | UNVERIFIED                               |         67.5058 ETH
+L1121 | 0x23109458cfd469b98c07ef8d27f1f418806f27bb | UNVERIFIED                               |         66.0749 ETH
+L1130 | 0x192e16ba79baa5a043a301c6b22174f6049202c6 | UNVERIFIED                               |         65.2750 ETH
+L1126 | 0xbc1ab7f58a95cf307ba5ee18cf06b7ed0120da7a | MultiSigWalletWithDailyLimit             |         65.1021 ETH
+L1111 | 0x3a53999e9d66c6fd95d6eb3f1be6114e91a3ed94 | UNVERIFIED                               |         64.8163 ETH
+L 718 | 0xf9440930043eb3997fc70e1339dbb11f341de7a8 | UNVERIFIED                               |         64.6097 ETH
+L1124 | 0x9fb131efbac23b735d7764ab12f9e52cc68401ca | UNVERIFIED                               |         63.7358 ETH
+L1129 | 0xc39d73fca64d4ffe2c78fb17e61b9c8489f7c5fb | YesNo                                    |         63.6121 ETH
+L1135 | 0x81f681b522e4c7fbedcb536ea3893299c6d7b222 | Wallet                                   |         61.7231 ETH
+L1231 | 0x857abd669b6c3669c52391d35a7e65da7d7e8a31 | UNVERIFIED                               |         61.1935 ETH
+L1157 | 0x33c647f60a4d4372a3f84e08e98f8a9c2f678280 | UNVERIFIED                               |         61.0000 ETH
+L 686 | 0x3acad81bf4d1b80982cc656ca86231d49f8ba9dd | UNVERIFIED                               |         60.8528 ETH
+L1159 | 0xf7792e2042edf0b04afa6f3a35a67b64cc47bd76 | Wallet                                   |         60.0007 ETH
+L1161 | 0xc630a71b2dfbcc621affd33257132b50adbe1cd0 | UNVERIFIED                               |         60.0000 ETH
+L1165 | 0xa383c8390adbcd387db93babdf3f30308391bd57 | Staking                                  |         59.6723 ETH
+L1168 | 0xdf708431162ba247ddae362d2c919e0fbafcf9de | UNVERIFIED                               |         59.4501 ETH
+L1304 | 0x49f583d263e4ef938b9e09772d3394c71605df94 | UNVERIFIED                               |         59.3610 ETH
+L1193 | 0x70c54b28809749cea21e8ad310031291b322b512 | ?                                        |         59.1082 ETH
+L1194 | 0x8aab28801de3bb9dc96c6c149b88b7e69008f08e | ?                                        |         58.9603 ETH
+L1167 | 0x86afdaccb07a11e4aa604f3aa0517d6391b23bbc | ?                                        |         58.7261 ETH
+L1154 | 0xc330c1a3c7db9c75f60aed0a9b7c0fc5fa22d5a2 | ?                                        |         58.4561 ETH
+L1196 | 0x21442464500d33413423570cf3a5a9b46b5966a7 | ?                                        |         58.0000 ETH
+L1199 | 0xe2e5d0e1422e927abab19ad2067f802ad07fb364 | ?                                        |         57.8693 ETH
+L1176 | 0x5b67930050adb057cff0f3290e9496920085ba4b | ?                                        |         57.8075 ETH
+L1212 | 0x9a4cd44c1a55cfda565430dee9bfb54f2aacfd6a | ?                                        |         57.5040 ETH
+L1177 | 0x53b04999c1ff2d77fcdde98935bb936a67209e4c | ?                                        |         57.3537 ETH
+L1186 | 0xe6bd9c2996e41f2ac1fa1eeff2abb25fdb6c00f6 | ?                                        |         57.3008 ETH
+L1184 | 0x0efef0b34638addc8833ba729ae20016b5f24ffc | ?                                        |         57.2496 ETH
+L1180 | 0xa3e4918c394bf96072699afb6456ddb4d37d50c8 | ?                                        |         57.1931 ETH
+L1189 | 0x2adfc2febf51d75d195ccd903251c099fdd22f20 | ?                                        |         56.8250 ETH
+L1037 | 0x55d3eeac5fc4703f483209fd18dac46d4f47cb70 | ?                                        |         56.4780 ETH
+L1183 | 0x918ceeeab9ca2d1ef005c5249c69597f7984ee4d | ?                                        |         56.3554 ETH
+L1190 | 0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad | ?                                        |         56.3020 ETH
+L1214 | 0x2037cafb7c0bcdcac5ecfc69fb4da39100a2f0b6 | ?                                        |         55.9329 ETH
+L1230 | 0x2387a684f010936ce7267b0110c980c867533ff6 | ?                                        |         55.6486 ETH
+L1188 | 0xf406f7a9046793267bc276908778b29563323996 | ?                                        |         55.6423 ETH
+L1243 | 0x174150478891bdd4eaefab50fb24b9126f289fa6 | ?                                        |         55.3329 ETH
+L1204 | 0xc0bd5c193a090542e28151654e30d963fad57a12 | ?                                        |         55.2658 ETH
+L1224 | 0xaa012cb378ac19977d8c2a048ac2ca07b2419732 | ?                                        |         54.7433 ETH
+L1219 | 0x57794226cfbf70972203277bde51663f3bc52026 | ?                                        |         54.6000 ETH
+L1233 | 0x257ee99f9c4db0ffae88d23d4d9532153807360f | ?                                        |         53.2316 ETH
+L 450 | 0xbb44e3349c23cc430cae6ebbaf0256c9f2a1872f | ?                                        |         52.7151 ETH
+L 156 | 0xae5fb390e5c4fa1962e39e98dbfb0ed8055ed7a9 | ?                                        |         52.5437 ETH
+L1244 | 0xabefec93451a2cd5d864ff7b0b1604dfc60e9688 | ?                                        |         52.2399 ETH
+L1260 | 0xd949cc6bcbcc773c80c21c391180519147397244 | ?                                        |         51.9549 ETH
+L1263 | 0xa35375621bc9bfc0f264b8eafee1216254fa5db9 | ?                                        |         51.8891 ETH
+L1202 | 0x1d90d50d5dd04fa7c8bef89aa5872f0701be7982 | ?                                        |         51.5132 ETH
+L1307 | 0x4f5bb41e994acfd84aa1389089bd87fa3bbac939 | ?                                        |         51.0000 ETH
+L1308 | 0xba4e0d3b643b2150d9ef5348fe0590c463ce7380 | ?                                        |         50.7869 ETH
+L1271 | 0xa74642aeae3e2fd79150c910eb5368b64f864b1e | ?                                        |         50.6383 ETH
+L 812 | 0x894f3a40ab8051b350f85b3edeb7c7b83fcb6dac | ?                                        |         50.5918 ETH
+L1240 | 0x96e423291765c60e0fbc2cfb2bc538fb6ccdadd9 | ?                                        |         50.4597 ETH
+L1326 | 0x87410ee93bda2445339c9372b20bf25e138f858c | ?                                        |         50.2851 ETH
+L1270 | 0x05a8f364c1748b248c6e170d131bed179382e037 | ?                                        |         50.2636 ETH
+L1325 | 0x4b0bf65425f8cb3c1874fe5a0cd9d15437f5afc2 | ?                                        |         50.0115 ETH
+L1273 | 0xed44f3c2081480b08643fe1ca281fab9ed643735 | ?                                        |         50.0022 ETH
+L1285 | 0xd044a10f1ee327b71752cf5f08575314628b210c | ?                                        |         50.0001 ETH
+L1268 | 0xa650a0ddc5ca28169179cdb999243f5b70bafcfa | ?                                        |         50.0000 ETH
+L1280 | 0xff2c689cb750f2a7d46e7471521189ced948f965 | ?                                        |         50.0000 ETH
+L1283 | 0x3c7bd91eab9c711e8cc52d25d4b557b329743ee6 | ?                                        |         50.0000 ETH
+L1286 | 0x18639f44f946983bf3413d9b51322d05c29d269e | ?                                        |         50.0000 ETH
+L1287 | 0x4923fe82c51b38f7a9d9f62d4a38f5d88d1b9d3e | ?                                        |         50.0000 ETH
+L1294 | 0x48413a80f04b74b33edd6b77c0a7d78209abf1d4 | ?                                        |         50.0000 ETH
+L1324 | 0x3bf5416fed0b1d5b884b857e62a7681c0a04802a | ?                                        |         50.0000 ETH
+L1269 | 0xb140a429c342083e97daf42d5d82634bd7ade7d4 | ?                                        |         49.9872 ETH
+L1258 | 0x2cc2720ec4263ca730e6209348673665939c29e2 | ?                                        |         49.4197 ETH
+L1281 | 0x29488e24cfdaa52a0b837217926c0c0853db7962 | ?                                        |         49.4070 ETH
+L1293 | 0xde5120b839e79470f18a86cdc8e78ce48d1b30f3 | ?                                        |         49.2428 ETH
+L1300 | 0xbbd2b8f98e4ffd75741119c27bee0da0f88e5904 | ?                                        |         49.1405 ETH
+L1301 | 0xbf2aeab03b82c182599930217272ef0fc5cf662b | ?                                        |         48.9362 ETH
+L1282 | 0x6556488fcff3fb7b752cd028df397992bb97703e | ?                                        |         48.8238 ETH
+L1290 | 0x589be9ccb62e7148413e3df4f3d6a1ce6954cf17 | ?                                        |         48.5982 ETH
+L1162 | 0xbc7250c8c3eca1dfc1728620af835fca489bfdf3 | ?                                        |         48.4988 ETH
+L1295 | 0xa5c201d317fb9bd84a3c5fa7033896c84c5888d9 | ?                                        |         48.4573 ETH
+L1312 | 0x8a31a724821c8c9b6e834bafffb9a63de8fdfd06 | ?                                        |         47.6632 ETH
+L1319 | 0xb6bbf89c3dbba20cb4d5cabaa4a386acbbab455e | ?                                        |         47.1302 ETH
+L1343 | 0x7ee41a4c66e92fe28abd5bde30ad644a2dc8b15f | ?                                        |         46.7410 ETH
+L1336 | 0x257e07b9ad34f2b88ef4c3ec31cf583f7729474f | ?                                        |         46.6891 ETH
+L 620 | 0x592a94353879a5bc2a50f0cd5037b7a91e3f5aef | ?                                        |         46.5824 ETH
+L1379 | 0x6ab44cc4a1d0052d36c571f2a9f964c349f2c9d5 | ?                                        |         46.2923 ETH
+L1384 | 0x22a97c80d7e0a9ae616737e3b8b531248f4ef91d | ?                                        |         45.7447 ETH
+L1355 | 0xcd806502ad2f9aeb32e23f8d647341d4b568201d | ?                                        |         45.2352 ETH
+L1363 | 0x9fb7fd8d4c11b876f343d22568df0ec7e9e0e950 | ?                                        |         45.1995 ETH
+L1356 | 0x80e893401539fde52f390308273149444aa08680 | ?                                        |         45.0000 ETH
+L1369 | 0xdd85fd9b66996b84b31fc5a31598a242fcb6425b | ?                                        |         44.9460 ETH
+L1371 | 0xf0542ed44d268c85875b3b84b0e7ce0773e9aeef | ?                                        |         44.2500 ETH
+L1350 | 0x8125afd067094cd573255f82795339b9fe2a40ab | ?                                        |         44.1712 ETH
+L1383 | 0x9508008227b6b3391959334604677d60169ef540 | ?                                        |         43.9350 ETH
+L1410 | 0x48b884fe1b6f92ca21646260001307b8e5b83e25 | ?                                        |         43.9085 ETH
+L1386 | 0xba88803bbfc17963fe7711668209a0efb6f89075 | ?                                        |         43.5891 ETH
+L1385 | 0xf4c27b8b002389864ac214cb13bfeef4cc5c4e8d | ?                                        |         43.5504 ETH
+L1377 | 0x1a94656a6245379bc0d9c64c402197528edb2bd1 | ?                                        |         43.5230 ETH
+L1354 | 0x032c3617cf609f90a4a824c2aac25a228a966d33 | ?                                        |         43.4500 ETH
+L1424 | 0x9bcccfe019c78cf85a44044d7ae718e5ef8c419b | ?                                        |         43.3420 ETH
+L1387 | 0xe2c8f743eb2d15d5d1bbd24c03f7aa43ac3e2187 | ?                                        |         43.1681 ETH
+L1401 | 0xefe16f7bf9b7eabd8fcd4274baaf0a91d30ad087 | ?                                        |         42.8500 ETH
+L1399 | 0x647c91c64d4fa8ebe753c59abb792195b60f1dc4 | ?                                        |         42.7126 ETH
+L1404 | 0x6db1c1b318275df254bb47c63e7f316380baf4be | ?                                        |         42.5675 ETH
+L 800 | 0x4c75da685109945d235c42151f9ec21162ee07be | ?                                        |         42.4723 ETH
+L1390 | 0x734e1524c99e28defbb9a14e0bffb0adfef2515b | ?                                        |         42.4077 ETH
+L1398 | 0x3e22bb2279d6bea3cfe57f3ed608fc3b1deadadf | ?                                        |         42.1759 ETH
+L1376 | 0xc5e9ddebb09cd64dfacab4011a0d5cedaf7c9bdb | ?                                        |         42.0092 ETH
+L1420 | 0x45c3844dea2e9fe9226524411de6d907188a1a9f | ?                                        |         41.5000 ETH
+L1391 | 0x0b8d56c26d8cf16fe1bddf4967753503d974de06 | ?                                        |         41.1035 ETH
+L 951 | 0xa264607aa3169061f671ec4f2bdbdca8a6b71bb1 | ?                                        |         40.9021 ETH
+L 554 | 0x231916cb0ad5d50596e3f824e9df4a212c17dd01 | ?                                        |         40.7764 ETH
+L1473 | 0xbe424828844ef9d8d81067a6a81b75dffdfe3900 | ?                                        |         40.7383 ETH
+L1447 | 0x39a31ccd63cd1b186392654a2d520f73cc19274f | ?                                        |         40.6310 ETH
+L1467 | 0x009f3de1e8878cda9c2e94a6ce6084d9ca86425c | ?                                        |         40.4109 ETH
+L1400 | 0x767b8c6fb76db2e2a547819ba7afd2006d3de6b2 | ?                                        |         39.9882 ETH
+L1455 | 0xec752a0eb50fe22fedbfcfdb36e7786b18edc6fd | ?                                        |         39.9586 ETH
+L1446 | 0xa0d031c090974d2bdb0ffc22124f08532e1dc768 | ?                                        |         39.7581 ETH
+L1459 | 0x416d7489a4b0e5130b7e53fc490a329975674830 | ?                                        |         39.7576 ETH
+L1496 | 0x9380a66619b5f6ca17629054bfceda879db4268c | ?                                        |         39.7474 ETH
+L1485 | 0x141044ccc363d6e8d92dd8983422775913e304ec | ?                                        |         39.6600 ETH
+L1456 | 0x40a05d4ce308bf600cb275d7a3e9113518f59c54 | ?                                        |         39.4771 ETH
+L1498 | 0xd94dd612d4fa3051a30a5b062f8e1e960cf88c27 | ?                                        |         39.3625 ETH
+L1453 | 0x97e3bb6e91553acb61173f60005d249c720afe2e | ?                                        |         39.2676 ETH
+L1457 | 0xf8f6e626af09b0455acd9162beb5a484724f25b5 | ?                                        |         39.2008 ETH
+L1484 | 0x9b134a2f8b4aae758634a2d88f77204cb1be4a64 | ?                                        |         39.1961 ETH
+L1503 | 0xe303a8cc37c96669c7ba5aee1134bb530e766bdf | ?                                        |         39.0000 ETH
+L1468 | 0x2b78a837c37549539c62ab54a235a8e19fea812f | ?                                        |         38.8202 ETH
+L1472 | 0xa1ffaa10feebb4c17001b771cc8a48abe3339368 | ?                                        |         38.7406 ETH
+L1478 | 0x99ff3fecec2c986d88aaf0998f92ee354a015450 | ?                                        |         38.6700 ETH
+L1163 | 0x44bacf104489c3c0e1d70eb94f50736dcf5bc82f | ?                                        |         38.5650 ETH
+L1469 | 0xe8c048714e838a33adfdbb753b01644fbdc2defa | ?                                        |         38.5000 ETH
+L1477 | 0xf5fe6b716c0cd0e88059d8b3d8385c086012eb0e | ?                                        |         38.1353 ETH
+L1492 | 0x37a9679c41e99db270bda88de8ff50c0cd23f326 | ?                                        |         38.0100 ETH
+L  83 | 0x592cb3999d84e061e5e66724c167a4cb8f117ee2 | ?                                        |         37.9421 ETH
+L1519 | 0x68d794cdecc92a512dbf5471b08bc058dcab18f1 | ?                                        |         37.9128 ETH
+L1526 | 0x5cc2db43f9c2e2029aee159be60a9dda50b05d4a | ?                                        |         37.9063 ETH
+L1490 | 0x5f3f130e5d399247c29738b16d7bff746f24cf27 | ?                                        |         37.8000 ETH
+L1504 | 0x8d8d0779d245ca2eaa8ba9f874c4994b0f5036a0 | ?                                        |         37.5973 ETH
+L1491 | 0xf0a924661b0263e5ce12756d07f45b8668c53380 | ?                                        |         37.5085 ETH
+L1495 | 0x4a627b324189014fa757ed7cc730b180879232d7 | ?                                        |         37.2127 ETH
+L1501 | 0x44ab562f1f72a22b6980371116403fd35008c5a6 | ?                                        |         37.1763 ETH
+L1524 | 0xe9e3f9cfc1a64dfca53614a0182cfad56c10624f | ?                                        |         37.0700 ETH
+L1521 | 0xa9e4e3b1da2462752aea980698c335e70e9ab26c | ?                                        |         36.9791 ETH
+L1505 | 0xe31763aad9294f073ddf18b36503ed037ae5e737 | ?                                        |         36.8781 ETH
+L1545 | 0x3a1827b2ce334cd9c412eb5cdce2738815fc05cd | ?                                        |         36.7501 ETH
+L1520 | 0x651678b95ba2cec634af1b985e17d75eb2db47d5 | ?                                        |         36.7286 ETH
+L1530 | 0xd65f5c7634bb7b61e4753b1248b76eb7cacc0cac | ?                                        |         36.5376 ETH
+L1332 | 0xec7ab2aaf588ba40b8dbe757183c91f8c2082020 | ?                                        |         36.5082 ETH
+L1538 | 0xc50489a925e9c8dcfe792951fe85f96d14f41ffc | ?                                        |         36.2959 ETH
+L1559 | 0x7f16d37b2919fa96cc8a35ee0d7546f998ff4ecc | ?                                        |         36.1788 ETH
+L1553 | 0xdd3a83fedaeaf989f6e3421f580ca638dc84ec69 | ?                                        |         36.0283 ETH
+L1525 | 0x0cdbdc5f361a0b5417d72182a434411979dcf30e | ?                                        |         35.8194 ETH
+L1523 | 0xac96f9af03d5eb1bec82a4bdc8071c289b7ac6d6 | ?                                        |         35.5545 ETH
+L1562 | 0x8fb70b9ccd522b21e341fcdce7ff1d37b521376f | ?                                        |         35.4397 ETH
+L1563 | 0x0f90ef4e2526e3d1791862574f9fb26a0f39ec86 | ?                                        |         35.1230 ETH
+L1548 | 0x11ff18d644ea2048a42c2fa141242cc53e3caabf | ?                                        |         35.0000 ETH
+L1565 | 0xbebd06f73490e9ce37ea7df9925ad3c0fa3497e2 | ?                                        |         34.9950 ETH
+L1552 | 0xda8d7ff0d043848a689125e2c7ab87b16a0cbe81 | ?                                        |         34.7662 ETH
+L1558 | 0xce00901a0638d758d6f89d59dfa32120d2259b0c | ?                                        |         34.6792 ETH
+L1567 | 0xc310644a0cf1cae7e240a48090c3cdb9edb53941 | ?                                        |         34.2073 ETH
+L 245 | 0xbba3c74a006f199193645e35a936b75b605cb2bc | ?                                        |         31.5974 ETH
+L1421 | 0x0e87bf5286c4091e0eeb7814d802115dfbb4c4cd | ?                                        |         30.9037 ETH
+L1005 | 0x3408d13d5deb25db529eff2ea53d3aaf79dc977b | ?                                        |         30.4854 ETH
+L1461 | 0x6e10aacb89a28d6fa0fe68790777fec7e7f01890 | ?                                        |         30.1714 ETH
+L1138 | 0xa96853390c776ce8307b46b4d1a857ab310ab018 | ?                                        |         30.1460 ETH
+L 844 | 0xa68d85df56e733a06443306a095646317b5fa633 | ?                                        |         27.7879 ETH
+L1198 | 0xa96a65c051bf88b4095ee1f2451c2a9d43f53ae2 | ?                                        |         27.6971 ETH
+L1497 | 0xf7686cf0d88b3c1b474ec76735b4e94a0c3a28f3 | ?                                        |         25.6388 ETH
+L 601 | 0xe0b7927c4af23765cb51314a0e0521a9645f0e2a | ?                                        |         25.3819 ETH
+L 333 | 0x6941627cba3518385e75de75d25a189185672bfe | ?                                        |         21.9623 ETH
+L 992 | 0x38741a69785e84399fcf7c5ad61d572f7ecb1dab | ?                                        |         21.8942 ETH
+L 257 | 0x212b32f8ab8a1b5751632ba0729149c5db98348a | ?                                        |         20.9543 ETH
+L 847 | 0xe82906b6b1b04f631d126c974af57a3a7b6a99d9 | ?                                        |         20.6129 ETH
+L1006 | 0x4591fd0c3160cdbfef4caf804df3e45da23af56a | ?                                        |         19.0266 ETH
+L 737 | 0xf977adad470808a92c2765f6fb37df211db4e823 | ?                                        |         17.8609 ETH
+L 279 | 0xae78736cd615f374d3085123a210448e74fc6393 | ?                                        |         17.1984 ETH
+L 710 | 0x36946070a8059196bf51af7af66642bdf5720184 | ?                                        |         15.0510 ETH
+L  67 | 0xb8c77482e45f1f44de1745f52c74426c631bdd52 | ?                                        |         14.7489 ETH
+L1207 | 0xfe87913053e7361ef5f7d8816d90ed5523f0258f | ?                                        |         13.7882 ETH
+L1289 | 0x8cbd6dfdd2cc917793746613a648c600afb020b1 | ?                                        |         13.5635 ETH
+L1334 | 0x03cc979c46b030c4abd7d4063cd075cb38cd0919 | ?                                        |         13.4600 ETH
+L1470 | 0x683b8448eedb7f16cdb5444e01e750a20ffb710d | ?                                        |         13.2711 ETH
+L 655 | 0xa6d4462a24d0cac66bf6cb679efe3b90cf741f75 | ?                                        |         12.9754 ETH
+L1310 | 0xf4e4802b521458380ccfee452d6f9b8b3fd6cef0 | ?                                        |         12.9049 ETH
+L1394 | 0xf4128b00afda933428056d0f0d1d7652af7e2b35 | ?                                        |         12.4492 ETH
+L 979 | 0x7b3e509c78faee4c589d3d07ea0c8929aa2835e3 | ?                                        |         11.9669 ETH
+L 846 | 0x6fcbbb527fb2954bed2b224a5bb7c23c5aeeb6e1 | ?                                        |         11.9613 ETH
+L 231 | 0x84db6ee82b7cf3b47e8f19270abde5718b936670 | ?                                        |         11.9489 ETH
+L1098 | 0x94b18793b93b524b110fead408b955422b982fa4 | ?                                        |         11.7307 ETH
+L1209 | 0x613a983742564500c31384b987fd06fa689bf060 | ?                                        |         11.2944 ETH
+L1143 | 0xe5cafdf7cc3c74a33fa0e829680b1760f3003fb4 | ?                                        |         10.9456 ETH
+L 766 | 0xdfa6edae2ec0cf1d4a60542422724a48195a5071 | ?                                        |         10.3866 ETH
+L  63 | 0x5f65f7b609678448494de4c87521cdf6cef1e932 | ?                                        |         10.0155 ETH
+L1409 | 0xc40d7b9ca90eaca4a6e067b6ec689fd29f4a8b3c | ?                                        |         10.0000 ETH
+
+## LOW VALUE (1-10 ETH)
+----------------------------------------------------------------------------------------------------
+L 643 | 0x33c0d33a0d4312562ad622f91d12b0ac47366ee1 | ?                                        |          9.3302 ETH
+L 193 | 0xac11b241ddb06a419501c670e608a3b58eaf6373 | ?                                        |          8.8900 ETH
+L 514 | 0x897c03a77039c31df13f3c632b7e46191839bbac | ?                                        |          8.2725 ETH
+L1546 | 0x0ae7106b8022a771bf1e81dcdd1eacd9a5814c94 | ?                                        |          7.6841 ETH
+L 338 | 0xfceaaaeb8d564a9d0e71ef36f027b9d162bc334e | ?                                        |          7.4341 ETH
+L1117 | 0x3ea50b7ef6a7eaf7e966e2cb72b519c16557497c | ?                                        |          7.2458 ETH
+L  80 | 0x2796317b0ff8538f253012862c06787adfb8ceb6 | ?                                        |          5.6100 ETH
+L 623 | 0x2a95ac4182cce856d26affea0b62ee59a340ac9b | ?                                        |          5.5841 ETH
+L 484 | 0xaa5bbd5a177a588b9f213505ca3740b444dbd586 | ?                                        |          4.6877 ETH
+L1482 | 0x08daf71efa7915807bc5675ad402989d7820cf6f | ?                                        |          4.4555 ETH
+L 130 | 0x223592a191ecfc7fdc38a9256c3bd96e771539a9 | ?                                        |          4.2030 ETH
+L 732 | 0x1e887e7115321b4ee5d58dd446ec09e12b45d81b | ?                                        |          2.8806 ETH
+L1380 | 0x1443e7c1cce72662545d94779120c59251447e91 | ?                                        |          2.2795 ETH
+L 625 | 0x8d90113a1e286a5ab3e496fbd1853f265e5913c6 | ?                                        |          2.1680 ETH
+L 494 | 0xa32ff8ca08036337fabf50fa029812361cd176c8 | ?                                        |          2.0485 ETH
+L  38 | 0x384f5cf955b39b76c47a440f14c31ad39fd39d00 | ?                                        |          2.0000 ETH
+L1366 | 0x780e9996ec934cba0e2fc830c9b9f3e19f99ec3b | ?                                        |          1.7617 ETH
+L 182 | 0x8d1f2ebfaccf1136db76fdd1b86f1dede2d23852 | ?                                        |          1.5539 ETH
+L 746 | 0x40c049c7d7fb97372d73eaddb71997cac68f3ddd | ?                                        |          1.4603 ETH
+L 118 | 0x17e00383a843a9922bca3b280c0ade9f8ba48449 | ?                                        |          1.2719 ETH
+L1317 | 0xe5d7ccc5fc3b3216c4dff3a59442f1d83038468c | ?                                        |          1.2716 ETH
+L1205 | 0x0401b3e1f554b574da26482311dfb9414e382afa | ?                                        |          1.0000 ETH
+
+## MINIMAL VALUE (0.01-1 ETH)
+----------------------------------------------------------------------------------------------------
+L 530 | 0x3f9078b8fbcb1c4e03b41fa9e5a0532a28848db7 | ?                                        |          0.9974 ETH
+L1370 | 0x82147c5a7e850ea4e28155df107f2590fd4ba327 | ?                                        |          0.9670 ETH
+L1544 | 0x16a0772b17ae004e6645e0e95bf50ad69498a34e | ?                                        |          0.8877 ETH
+L 664 | 0xa38b6742cef9573f7f97c387278fa31482539c3d | ?                                        |          0.8000 ETH
+L 486 | 0xa54074b2cc0e96a43048d4a68472f7f046ac0da8 | ?                                        |          0.7887 ETH
+L 922 | 0xed1b150f589c5e3d4b7d5cee3fa4177ede3f63fa | ?                                        |          0.7550 ETH
+L 456 | 0x89c527764f03bcb7dc469707b23b79c1d7beb780 | ?                                        |          0.6020 ETH
+L1333 | 0x41ade1cd005741bd093b4df7391fdd8347dc42ee | ?                                        |          0.4427 ETH
+L1090 | 0x1d57ef26709beb756e026308413f685339a73a9d | ?                                        |          0.3634 ETH
+L1133 | 0x453095fc585c5fda2756ed16990463038a6d8a17 | ?                                        |          0.3507 ETH
+L1292 | 0x851b7f3ab81bd8df354f0d7640efcd7288553419 | ?                                        |          0.3179 ETH
+L 133 | 0x593aebee9117eea447279e5973f64c68d8e977a0 | ?                                        |          0.2825 ETH
+L 135 | 0xc05ec5235ce6050375adce1f86bbec949c3c366f | ?                                        |          0.2760 ETH
+L1561 | 0x4d268a7d4c16ceb5a606c173bd974984343fea13 | ?                                        |          0.1950 ETH
+L1252 | 0x72ca0501427bb8f089c1c4f767cb17d017e803a9 | ?                                        |          0.1803 ETH
+L 458 | 0x7f98d265ba2609c1534d12cf6b0976505ad7f653 | ?                                        |          0.1782 ETH
+L1079 | 0x31efc4aeaa7c39e54a33fdc3c46ee2bd70ae0a09 | ?                                        |          0.1659 ETH
+L1140 | 0x0242514106114deaa99fd81574142c36edb03b6d | ?                                        |          0.1600 ETH
+L1359 | 0xc6cde7c39eb2f0f0095f41570af89efc2c1ea828 | ?                                        |          0.1528 ETH
+L1227 | 0xa03c590340b72fef861df1fef1355d18ad60b11d | ?                                        |          0.1425 ETH
+L1397 | 0x456d8f0d25a4e787ee60c401f8b963a465148f70 | ?                                        |          0.1409 ETH
+L 949 | 0x181aea6936b407514ebfc0754a37704eb8d98f91 | ?                                        |          0.1342 ETH
+L 793 | 0xd6ad7a6750a7593e092a9b218d66c0a814a3436e | ?                                        |          0.1200 ETH
+L1540 | 0x04aa51bbcb46541455ccf1b8bef2ebc5d3787ec9 | ?                                        |          0.1067 ETH
+L 689 | 0xc63a69cc72f8ce05fc590abaf574554a8b17886d | ?                                        |          0.0939 ETH
+L 550 | 0xc05e61d0e7a63d27546389b7ad62fdff5a91aace | ?                                        |          0.0900 ETH
+L 671 | 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01 | ?                                        |          0.0892 ETH
+L1564 | 0x98945bc69a554f8b129b09ac8afdc2cc2431c48e | ?                                        |          0.0890 ETH
+L 107 | 0xd51a44d3fae010294c616388b506acda1bfaae46 | ?                                        |          0.0844 ETH
+L1327 | 0xe7f72bc0252ca7b16dbb72eeee1afcdb2429f2dd | ?                                        |          0.0837 ETH
+L  65 | 0x542fda317318ebf1d3deaf76e0b632741a7e677d | ?                                        |          0.0800 ETH
+L 577 | 0x986ee2b944c42d017f52af21c4c69b84dbea35d8 | ?                                        |          0.0681 ETH
+L1266 | 0xe63151a0ed4e5fafdc951d877102cf0977abd365 | ?                                        |          0.0490 ETH
+L 613 | 0x7095f0b91a1010c11820b4e263927835a4cf52c9 | ?                                        |          0.0418 ETH
+L 216 | 0x38b78904a6b44f63eb81d98937fc6614870cfbb9 | ?                                        |          0.0400 ETH
+L1114 | 0x545a25cbbcb63a5b6b65af7896172629ca763645 | ?                                        |          0.0399 ETH
+L 907 | 0x0fabaf48bbf864a3947bdd0ba9d764791a60467a | ?                                        |          0.0300 ETH
+L 835 | 0xe489ca2f76504f0f9b4c474a8e84c8e01fd79eed | ?                                        |          0.0230 ETH
+L  20 | 0x25f2226b597e8f9514b3f68f00f494cf4f286491 | ?                                        |          0.0221 ETH
+L 368 | 0x1bef7f8798256e033eaa42f005d2b53079b90ffe | ?                                        |          0.0168 ETH
+L 555 | 0x4a14347083b80e5216ca31350a2d21702ac3650d | ?                                        |          0.0166 ETH
+L 448 | 0x25751853eab4d0eb3652b5eb6ecb102a2789644b | ?                                        |          0.0100 ETH
+L1201 | 0xd80e558027ee753a0b95757dc3521d0326f13da2 | ?                                        |          0.0100 ETH
+
+
+## SUMMARY
+----------------------------------------------------------------------------------------------------
+High (>100 ETH): 298
+Medium (10-100): 274
+Low (1-10):      22
+Minimal (0.01-1):43
+Dust (<0.01):    33
+Zero/Error:      898
+Total:           1568
+
+## DEFI CANDIDATES (by name pattern)
+----------------------------------------------------------------------------------------------------
+0x2a0c0dbecc7e4d658f48e01e3fa353f44050c208 | Exchange                                 |   16522.1489 ETH | tags: exchange
+0xfe89cc7abb2c4183683ab71653c4cdc9b02d44b7 | TimelockController                       |    4143.9546 ETH | tags: controller
+0xe61dd9ca7364225afbfb79e15ad33864424e6ae4 | Bridge                                   |    2026.1703 ETH | tags: bridge
+0x3d32e8b97ed5881324241cf03b2da5e2ebce5521 | CollSurplusPool                          |    1605.2148 ETH | tags: pool
+0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011 | WrapperLockEth                           |     950.9351 ETH | tags: wrapper
+0x66017d22b0f8556afdd19fc67041899eb65a21bb | StabilityPool                            |     649.7733 ETH | tags: pool
+0xb8901acb165ed027e32754e0ffe830802919727f | L1_ETH_Bridge                            |     613.0445 ETH | tags: bridge
+0x35ffd6e268610e764ff6944d07760d0efe5e40e5 | LiquidityPoolV2                          |     413.1275 ETH | tags: pool,liquidity
+0x9149c59f087e891b659481ed665768a57247c79e | KyberReserve                             |     196.9514 ETH | tags: reserve
+0xc7c9b856d33651cc2bcd9e0099efa85f59f78302 | R1Exchange                               |     150.3627 ETH | tags: exchange
+0x1a26ef6575b7bbb864d984d9255c069f6c361a14 | Proxy__L1LiquidityPoolArguments          |     113.9167 ETH | tags: pool,liquidity [PROXY -> 0xd24484926f1d130778b9ebd7ec594548b2d53cb1]
+0x767696e13ff990d09954c7a36a49e2c4a1c804bd | IDOLvsETHBoxExchange                     |      82.7729 ETH | tags: exchange
+0x50cb61afa3f023d17276dcfb35abf85c710d1cff | WrapperLockEth                           |      81.6058 ETH | tags: wrapper
+0x44e081cac2406a4efe165178c2a4d77f7a7854d4 | EthPool                                  |      70.2605 ETH | tags: pool

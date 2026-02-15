@@ -1,0 +1,1909 @@
+VULNERABILITY PATTERN SCAN RESULTS
+====================================================================================================
+
+## HIGH SEVERITY FINDINGS
+----------------------------------------------------------------------------------------------------
+[HIGH] 0x04f062809b244e37e7fdc21d9409469c989c2342.sol:225 - Withdraw function (check access control)
+  CODE: function withdraw(address token, uint256 amount) external {
+
+[HIGH] 0x04f062809b244e37e7fdc21d9409469c989c2342.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x0b7ffc1f4ad541a4ed16b40d8c37f0929158d101.sol:38 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\n\n/**\n * @dev Collection of functions r
+
+[HIGH] 0x0b7ffc1f4ad541a4ed16b40d8c37f0929158d101.sol:47 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity >=0.6.0;\n\ninterface IWETH {\n    function deposit() external payable;\n\n    function tran
+
+[HIGH] 0x0b7ffc1f4ad541a4ed16b40d8c37f0929158d101.sol:38 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\n\n/**\n * @dev Collection of functions r
+
+[HIGH] 0x0b7ffc1f4ad541a4ed16b40d8c37f0929158d101_full.sol:507 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x0b7ffc1f4ad541a4ed16b40d8c37f0929158d101_full.sol:568 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0x0b7ffc1f4ad541a4ed16b40d8c37f0929158d101_full.sol:1493 - Withdraw function (check access control)
+  CODE: function withdraw(uint256) external;
+
+[HIGH] 0x0b7ffc1f4ad541a4ed16b40d8c37f0929158d101_full.sol:510 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] 0x0b7ffc1f4ad541a4ed16b40d8c37f0929158d101_full.sol:572 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:513 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:1474 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = callee.delegatecall(data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:1527 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = implementation.delegatecall(msg.data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:400 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:461 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:1221 - Balance-based accounting (donation attack vector)
+  CODE: uint256 SHARDBal = SHARD.balanceOf(address(this));
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:763 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address, address) external;
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:1161 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public virtual {
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:1647 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public override {
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:403 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:465 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce.sol:1108 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = msg.sender.call{value: _amount}(new bytes(0));
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:513 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:1474 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = callee.delegatecall(data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:1527 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = implementation.delegatecall(msg.data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:400 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:461 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:1221 - Balance-based accounting (donation attack vector)
+  CODE: uint256 SHARDBal = SHARD.balanceOf(address(this));
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:763 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address, address) external;
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:1161 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public virtual {
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:1647 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public override {
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:403 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:465 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] 0x0feccb11c5b61b3922c511d0f002c0b72d770dce_flat.sol:1108 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = msg.sender.call{value: _amount}(new bytes(0));
+
+[HIGH] 0x12d66f87a04a9e220743712ce6d9bb1b5616b8fc.sol:246 - Withdraw function (check access control)
+  CODE: function withdraw(bytes calldata _proof, bytes32 _root, bytes32 _nullifierHash, address payable _recipient, address paya
+
+[HIGH] 0x167cb3f2446f829eb327344b66e271d1a7efec9a.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x167cb3f2446f829eb327344b66e271d1a7efec9a_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:195 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:417 - Balance-based accounting (donation attack vector)
+  CODE: uint256 b = IERC20(token).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:510 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(token).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:518 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(compound).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:536 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(fulcrum).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:539 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(aaveToken).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:543 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(token).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:551 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(compound).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:569 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(fulcrum).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:572 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(aaveToken).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:755 - Balance-based accounting (donation attack vector)
+  CODE: uint256 b = IERC20(token).balanceOf(address(this));
+
+[HIGH] 0x16de59092dae5ccf4a1e6439d611fd0653f0bd01.sol:235 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] 0x1e0447b19bb6ecfdae1e4ae1694b0c3659614e4e.sol:2362 - Balance-based accounting (donation attack vector)
+  CODE: uint256 actualBalance = token.balanceOf(address(this));
+
+[HIGH] 0x1e0447b19bb6ecfdae1e4ae1694b0c3659614e4e.sol:2384 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balance = token.balanceOf(address(this));
+
+[HIGH] 0x1e0447b19bb6ecfdae1e4ae1694b0c3659614e4e_impl.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x25a06d4e1f804ce62cf11b091180a5c84980d93a.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:32 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.5.17;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol\";\nimport
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:47 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity ^0.5.4;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol\";\nimport
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:5 - Withdraw function (check access control)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:11 - Withdraw function (check access control)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:14 - Withdraw function (check access control)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:38 - Withdraw function (check access control)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:47 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity ^0.5.4;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol\";\nimport
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:68 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.5.17;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol\";\nimport
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:38 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:65 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "pragma solidity 0.5.17;\n\nimport \"../../TokenGrant.sol\";\nimport \"../../TokenStakingEscrow.sol\";\nimpor
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:95 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "pragma solidity ^0.5.0;\n\nimport \"./IERC20.sol\";\nimport \"../../math/SafeMath.sol\";\nimport \"../../uti
+
+[HIGH] 0x27321f84704a599ab740281e285cc4463d89a3d5.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x2a0c0dbecc7e4d658f48e01e3fa353f44050c208.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1022 - delegatecall (check if target is user-controlled)
+  CODE: let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1155 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1243 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = newImplementation.delegatecall(data);
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1297 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:642 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:818 - Balance-based accounting (donation attack vector)
+  CODE: (bool success,) = msg.sender.call.value(address(this).balance)("");
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:823 - Balance-based accounting (donation attack vector)
+  CODE: ERC20(_token).balanceOf(address(this))
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1497 - Balance-based accounting (donation attack vector)
+  CODE: return address(this).balance;
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1499 - Balance-based accounting (donation attack vector)
+  CODE: return ERC20(_token).balanceOf(address(this));
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:34 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize() external;
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:764 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _operator) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:801 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _nextOwner) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:845 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize() public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:876 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address sender) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:938 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address sender) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1292 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, bytes memory _data) public payable {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1318 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, address _admin, bytes memory _data) public payable {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1352 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(string memory _VERSION, address _borrower) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:23 - Withdraw function (check access control)
+  CODE: function withdraw(address payable _to, IKToken _kToken, uint256 _kTokenAmount) external;
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1444 - Withdraw function (check access control)
+  CODE: function withdraw(address payable _to, IKToken _kToken, uint256 _kTokenAmount) external nonReentrant whenNotPaused {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:710 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5.sol:1531 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = address(_newLP).call.value(borrowableBalance(token))("");
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1022 - delegatecall (check if target is user-controlled)
+  CODE: let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1155 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1243 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = newImplementation.delegatecall(data);
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1297 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:642 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:818 - Balance-based accounting (donation attack vector)
+  CODE: (bool success,) = msg.sender.call.value(address(this).balance)("");
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:823 - Balance-based accounting (donation attack vector)
+  CODE: ERC20(_token).balanceOf(address(this))
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1497 - Balance-based accounting (donation attack vector)
+  CODE: return address(this).balance;
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1499 - Balance-based accounting (donation attack vector)
+  CODE: return ERC20(_token).balanceOf(address(this));
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:34 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize() external;
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:764 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _operator) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:801 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _nextOwner) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:845 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize() public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:876 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address sender) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:938 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address sender) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1292 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, bytes memory _data) public payable {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1318 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, address _admin, bytes memory _data) public payable {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1352 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(string memory _VERSION, address _borrower) public initializer {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:23 - Withdraw function (check access control)
+  CODE: function withdraw(address payable _to, IKToken _kToken, uint256 _kTokenAmount) external;
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1444 - Withdraw function (check access control)
+  CODE: function withdraw(address payable _to, IKToken _kToken, uint256 _kTokenAmount) external nonReentrant whenNotPaused {
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:710 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] 0x35ffd6e268610e764ff6944d07760d0efe5e40e5_flat.sol:1531 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = address(_newLP).call.value(borrowableBalance(token))("");
+
+[HIGH] 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b.sol:5 - delegatecall (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\nimport { iL1ChugSplashDeployer } from \"./interf
+
+[HIGH] 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b_impl.sol:1330 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b_impl.sol:1200 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b_impl.sol:1273 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b_impl.sol:386 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = _to.call{ value: _amount }(new bytes(0));
+
+[HIGH] 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b_impl.sol:403 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = _to.call{value: _amount}(new bytes(0));
+
+[HIGH] 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b_impl.sol:1202 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: amount}("");
+
+[HIGH] 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b_impl.sol:1276 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{value: value}(data);
+
+[HIGH] 0x3d32e8b97ed5881324241cf03b2da5e2ebce5521.sol:5 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.11;\n\nimport \"./Interfaces/ICollSurplusPool.sol\";\
+
+[HIGH] 0x3d32e8b97ed5881324241cf03b2da5e2ebce5521_flat.sol:94 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = _account.call{ value: claimableColl }("");
+
+[HIGH] 0x3fda67f7583380e67ef93072294a7fac882fd7e7.sol:430 - Balance-based accounting (donation attack vector)
+  CODE: return token.balanceOf(address(this));
+
+[HIGH] 0x3fda67f7583380e67ef93072294a7fac882fd7e7.sol:1630 - Withdraw function (check access control)
+  CODE: function withdraw(address asset, uint requestedAmount) public returns (uint) {
+
+[HIGH] 0x3fda67f7583380e67ef93072294a7fac882fd7e7.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:5 - Balance-based accounting (donation attack vector)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:89 - Balance-based accounting (donation attack vector)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport '../libraries/math/Math.sol';\nimport '.
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:92 - Balance-based accounting (donation attack vector)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport './TransferHelper.sol';\nimport '../mock
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:5 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:50 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\ninterface IUniswapV2Pair {\n    event Approval(
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:89 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport '../libraries/math/Math.sol';\nimport '.
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:20 - Withdraw function (check access control)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\ninterface IWETH {\n    function deposit() exter
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:74 - Withdraw function (check access control)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"../libraries/token/IERC20.sol\";\nimp
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:77 - Withdraw function (check access control)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"../libraries/token/IERC20.sol\";\nimp
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:5 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:38 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:62 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad.sol:80 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\n// helper methods for interacting with ERC20 to
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:121 - Balance-based accounting (donation attack vector)
+  CODE: uint256 totalXVIX = IERC20(xvix).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:216 - Balance-based accounting (donation attack vector)
+  CODE: uint256 amountXVIX = IERC20(xvix).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:217 - Balance-based accounting (donation attack vector)
+  CODE: uint256 amountToken = IERC20(ILGEToken(_lgeToken).token()).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:292 - Balance-based accounting (donation attack vector)
+  CODE: uint256 pairBalance = IERC20(pair).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:310 - Balance-based accounting (donation attack vector)
+  CODE: uint256 amountETH = address(this).balance;
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:330 - Balance-based accounting (donation attack vector)
+  CODE: uint256 amountDAI = IERC20(dai).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2417 - Balance-based accounting (donation attack vector)
+  CODE: uint balance0 = IERC20(token0).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2418 - Balance-based accounting (donation attack vector)
+  CODE: uint balance1 = IERC20(token1).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2443 - Balance-based accounting (donation attack vector)
+  CODE: uint balance0 = IERC20(_token0).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2444 - Balance-based accounting (donation attack vector)
+  CODE: uint balance1 = IERC20(_token1).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2445 - Balance-based accounting (donation attack vector)
+  CODE: uint liquidity = balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2455 - Balance-based accounting (donation attack vector)
+  CODE: balance0 = IERC20(_token0).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2456 - Balance-based accounting (donation attack vector)
+  CODE: balance1 = IERC20(_token1).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2478 - Balance-based accounting (donation attack vector)
+  CODE: balance0 = IERC20(_token0).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2479 - Balance-based accounting (donation attack vector)
+  CODE: balance1 = IERC20(_token1).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2498 - Balance-based accounting (donation attack vector)
+  CODE: _safeTransfer(_token0, to, IERC20(_token0).balanceOf(address(this)).sub(reserve0));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2499 - Balance-based accounting (donation attack vector)
+  CODE: _safeTransfer(_token1, to, IERC20(_token1).balanceOf(address(this)).sub(reserve1));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2504 - Balance-based accounting (donation attack vector)
+  CODE: _update(IERC20(token0).balanceOf(address(this)), IERC20(token1).balanceOf(address(this)), reserve0, reserve1);
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2672 - Balance-based accounting (donation attack vector)
+  CODE: TransferHelper.safeTransfer(token, to, IERC20(token).balanceOf(address(this)));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2859 - Balance-based accounting (donation attack vector)
+  CODE: uint amountOut = IERC20(WETH).balanceOf(address(this));
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:938 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address, address) external;
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2371 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _token0, address _token1) external override {
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:683 - Withdraw function (check access control)
+  CODE: function withdraw(uint) external;
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:1564 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) public {
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:1885 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) public {
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:91 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = floor.call{value: floorETH}("");
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:161 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = _to.call{value: amountWETH}("");
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:836 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = _receiver.call{value: refundAmount}("");
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:1178 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = floor.call{value: msg.value}("");
+
+[HIGH] 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad_flat.sol:2168 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = to.call{value:value}(new bytes(0));
+
+[HIGH] 0x43ab622752d766d694c005acfb78b1fc60f35b69.sol:420 - delegatecall (check if target is user-controlled)
+  CODE: delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)
+
+[HIGH] 0x43ab622752d766d694c005acfb78b1fc60f35b69.sol:432 - delegatecall (check if target is user-controlled)
+  CODE: _walletLibrary.delegatecall(msg.data);
+
+[HIGH] 0x43ab622752d766d694c005acfb78b1fc60f35b69.sol:443 - delegatecall (check if target is user-controlled)
+  CODE: return _walletLibrary.delegatecall(msg.data);
+
+[HIGH] 0x43ab622752d766d694c005acfb78b1fc60f35b69.sol:447 - delegatecall (check if target is user-controlled)
+  CODE: return _walletLibrary.delegatecall(msg.data);
+
+[HIGH] 0x43ab622752d766d694c005acfb78b1fc60f35b69.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x44e081cac2406a4efe165178c2a4d77f7a7854d4.sol:11 - Withdraw function (check access control)
+  CODE: function withdraw(uint _value) external;
+
+[HIGH] 0x44e081cac2406a4efe165178c2a4d77f7a7854d4.sol:49 - Withdraw function (check access control)
+  CODE: function withdraw(bytes32 _walletId, address _tokenAddress, address _receiver, uint _amount) external;
+
+[HIGH] 0x44e081cac2406a4efe165178c2a4d77f7a7854d4.sol:191 - Withdraw function (check access control)
+  CODE: function withdraw(uint _value) public {
+
+[HIGH] 0x44e081cac2406a4efe165178c2a4d77f7a7854d4.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c.sol:101 - delegatecall (check if target is user-controlled)
+  CODE: let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c.sol:214 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = _logic.delegatecall(_data);
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c.sol:305 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = newImplementation.delegatecall(data);
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c.sol:55 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, 'Address: insufficient balance');
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c.sol:209 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, bytes memory _data) public payable {
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c.sol:58 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: amount}('');
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1241 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1178 - Balance-based accounting (donation attack vector)
+  CODE: if (address(this).balance < amount) {
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1179 - Balance-based accounting (donation attack vector)
+  CODE: revert Errors.InsufficientBalance(address(this).balance, amount);
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1220 - Balance-based accounting (donation attack vector)
+  CODE: if (address(this).balance < value) {
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1221 - Balance-based accounting (donation attack vector)
+  CODE: revert Errors.InsufficientBalance(address(this).balance, value);
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1457 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(uint256 nextStreamId, address admin) external virtual initializer {
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1939 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(uint256, address admin) external virtual override initializer {
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1182 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: amount}("");
+
+[HIGH] 0x464c71f6c2f760dda6093dcb91c24c39e5d6e18c_impl.sol:1223 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{value: value}(data);
+
+[HIGH] 0x4edd62189732e9ff476aba880b48c29432a7ac9b.sol:1 - delegatecall (check if target is user-controlled)
+  CODE: {"BlockDirectCall.sol":{"content":"/*\n  Copyright 2019-2021 StarkWare Industries Ltd.\n\n  Licensed under the Apache Li
+
+[HIGH] 0x4edd62189732e9ff476aba880b48c29432a7ac9b.sol:1 - Public initialize function (uninitialized proxy risk)
+  CODE: {"BlockDirectCall.sol":{"content":"/*\n  Copyright 2019-2021 StarkWare Industries Ltd.\n\n  Licensed under the Apache Li
+
+[HIGH] 0x4edd62189732e9ff476aba880b48c29432a7ac9b.sol:1 - Arbitrary address call (check if target is user-controlled)
+  CODE: {"BlockDirectCall.sol":{"content":"/*\n  Copyright 2019-2021 StarkWare Industries Ltd.\n\n  Licensed under the Apache Li
+
+[HIGH] 0x4edd62189732e9ff476aba880b48c29432a7ac9b.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x5fdcca53617f4d2b9134b29090c87d01058e27e9.sol:1 - delegatecall (check if target is user-controlled)
+  CODE: {"Common.sol":{"content":"/*\n  Copyright 2019,2020 StarkWare Industries Ltd.\n\n  Licensed under the Apache License, Ve
+
+[HIGH] 0x5fdcca53617f4d2b9134b29090c87d01058e27e9.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x66017d22b0f8556afdd19fc67041899eb65a21bb.sol:5 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.11;\n\nimport './Interfaces/IBorrowerOperations.sol';
+
+[HIGH] 0x66017d22b0f8556afdd19fc67041899eb65a21bb_flat.sol:840 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = msg.sender.call{ value: _amount }("");
+
+[HIGH] 0x6822aaf4ab22e6cca8352a927b9ae0a8fdb58d9d.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x6822aaf4ab22e6cca8352a927b9ae0a8fdb58d9d_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x6bfad42cfc4efc96f529d786d643ff4a8b89fa52.sol:8 - delegatecall (check if target is user-controlled)
+  CODE: "content": "pragma solidity ^0.6;\n\ncontract AdminControlled {\n    address public admin;\n    uint public paused;\n\n 
+
+[HIGH] 0x6bfad42cfc4efc96f529d786d643ff4a8b89fa52.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x6bfad42cfc4efc96f529d786d643ff4a8b89fa52_flat.sol:193 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory rdata) = target.delegatecall(data);
+
+[HIGH] 0x6bfad42cfc4efc96f529d786d643ff4a8b89fa52_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd.sol:325 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd.sol:386 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd.sol:328 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd.sol:394 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd.sol:2460 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = to.call{value: amount}("");
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd_flat.sol:325 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd_flat.sol:386 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd_flat.sol:328 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd_flat.sol:394 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+
+[HIGH] 0x767696e13ff990d09954c7a36a49e2c4a1c804bd_flat.sol:2460 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = to.call{value: amount}("");
+
+[HIGH] 0x83b7ce402a0e756e901c4a9d1cafa27ca9572afc.sol:37 - delegatecall (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts (last updated v5.1.0) (utils/Address.sol)\n\nprag
+
+[HIGH] 0x83b7ce402a0e756e901c4a9d1cafa27ca9572afc.sol:37 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts (last updated v5.1.0) (utils/Address.sol)\n\nprag
+
+[HIGH] 0x83b7ce402a0e756e901c4a9d1cafa27ca9572afc.sol:46 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport {AccessControlUpgradeable} from 'openzepp
+
+[HIGH] 0x83b7ce402a0e756e901c4a9d1cafa27ca9572afc.sol:52 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport {Collector, ICollector} from 'aave-v3-ori
+
+[HIGH] 0x83b7ce402a0e756e901c4a9d1cafa27ca9572afc.sol:37 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts (last updated v5.1.0) (utils/Address.sol)\n\nprag
+
+[HIGH] 0x83d0d842e6db3b020f384a2af11bd14787bec8e7.sol:126 - Withdraw function (check access control)
+  CODE: function withdraw(address token, address receiver, uint256 amount) external returns (bool result) {
+
+[HIGH] 0x83d0d842e6db3b020f384a2af11bd14787bec8e7.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x8754f54074400ce745a7ceddc928fb1b7e985ed6.sol:35 - delegatecall (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\n\n/**\n * @dev Collection of functions r
+
+[HIGH] 0x8754f54074400ce745a7ceddc928fb1b7e985ed6.sol:5 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.0 <0.8.0;\n\nimport \"@openzeppelin/contracts/acces
+
+[HIGH] 0x8754f54074400ce745a7ceddc928fb1b7e985ed6.sol:35 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\n\n/**\n * @dev Collection of functions r
+
+[HIGH] 0x8754f54074400ce745a7ceddc928fb1b7e985ed6.sol:5 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.0 <0.8.0;\n\nimport \"@openzeppelin/contracts/acces
+
+[HIGH] 0x8754f54074400ce745a7ceddc928fb1b7e985ed6.sol:35 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\n\n/**\n * @dev Collection of functions r
+
+[HIGH] 0x8798249c2e607446efb7ad49ec89dd1865ff4272.sol:325 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0x8798249c2e607446efb7ad49ec89dd1865ff4272.sol:386 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0x8798249c2e607446efb7ad49ec89dd1865ff4272.sol:741 - Balance-based accounting (donation attack vector)
+  CODE: uint256 totalSushi = sushi.balanceOf(address(this));
+
+[HIGH] 0x8798249c2e607446efb7ad49ec89dd1865ff4272.sol:755 - Balance-based accounting (donation attack vector)
+  CODE: uint256 what = _share.mul(sushi.balanceOf(address(this))).div(totalShares);
+
+[HIGH] 0x8798249c2e607446efb7ad49ec89dd1865ff4272.sol:328 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] 0x8798249c2e607446efb7ad49ec89dd1865ff4272.sol:394 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+
+[HIGH] 0x899f9a0440face1397a1ee1e3f6bf3580a6633d1.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x910cbd523d972eb0a6f4cae4618ad62622b39dbf.sol:248 - Withdraw function (check access control)
+  CODE: function withdraw(bytes calldata _proof, bytes32 _root, bytes32 _nullifierHash, address payable _recipient, address paya
+
+[HIGH] 0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6.sol:1768 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance != 0, "E2X: No value");
+
+[HIGH] 0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x9fa8fa61a10ff892e4ebceb7f4e0fc684c2ce0a9.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0x9fa8fa61a10ff892e4ebceb7f4e0fc684c2ce0a9_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xa0cfe8af2ab5c9232714647702dbacf862ea4798.sol:26 - delegatecall (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Collection of functions related t
+
+[HIGH] 0xa0cfe8af2ab5c9232714647702dbacf862ea4798.sol:26 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Collection of functions related t
+
+[HIGH] 0xa0cfe8af2ab5c9232714647702dbacf862ea4798.sol:14 - Withdraw function (check access control)
+  CODE: "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\n/**\n * @title IL2ERC20Bridge\n */\ninterface IL
+
+[HIGH] 0xa0cfe8af2ab5c9232714647702dbacf862ea4798.sol:5 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\n/* Interface Imports */\nimport { IL1StandardBri
+
+[HIGH] 0xa0cfe8af2ab5c9232714647702dbacf862ea4798.sol:26 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Collection of functions related t
+
+[HIGH] 0xa62142888aba8370742be823c1782d17a0389da1.sol:1326 - Arbitrary address call (check if target is user-controlled)
+  CODE: if (!address(Jekyll_Island_Inc).call.value(_com)(bytes4(keccak256("deposit()"))))
+
+[HIGH] 0xa62142888aba8370742be823c1782d17a0389da1.sol:1440 - Arbitrary address call (check if target is user-controlled)
+  CODE: if (!address(Jekyll_Island_Inc).call.value(_com)(bytes4(keccak256("deposit()"))))
+
+[HIGH] 0xa62142888aba8370742be823c1782d17a0389da1.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xa62142888aba8370742be823c1782d17a0389da1_flat.sol:1326 - Arbitrary address call (check if target is user-controlled)
+  CODE: if (!address(Jekyll_Island_Inc).call.value(_com)(bytes4(keccak256("deposit()"))))
+
+[HIGH] 0xa62142888aba8370742be823c1782d17a0389da1_flat.sol:1440 - Arbitrary address call (check if target is user-controlled)
+  CODE: if (!address(Jekyll_Island_Inc).call.value(_com)(bytes4(keccak256("deposit()"))))
+
+[HIGH] 0xa62142888aba8370742be823c1782d17a0389da1_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xa6cd930fc92f1634d8183af2fb86bd1766f2f82a.sol:15 - Withdraw function (check access control)
+  CODE: function withdraw(bytes32 _walletId, address _tokenAddress, address _receiver, uint _amount) external;
+
+[HIGH] 0xa6cd930fc92f1634d8183af2fb86bd1766f2f82a.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xa6cd930fc92f1634d8183af2fb86bd1766f2f82a_flat.sol:15 - Withdraw function (check access control)
+  CODE: function withdraw(bytes32 _walletId, address _tokenAddress, address _receiver, uint _amount) external;
+
+[HIGH] 0xa6cd930fc92f1634d8183af2fb86bd1766f2f82a_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:98 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.5.17;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol\";\nimport
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:113 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity ^0.5.4;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol\";\nimport
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:11 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:20 - Withdraw function (check access control)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:104 - Withdraw function (check access control)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:113 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity ^0.5.4;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol\";\nimport
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:134 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.5.17;\n\nimport \"openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol\";\nimport
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:173 - Withdraw function (check access control)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:176 - Withdraw function (check access control)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:11 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:32 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:104 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "/**\n▓▓▌ ▓▓ ▐▓▓ ▓▓▓▓▓▓▓▓▓▓▌▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄\n▓▓▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓▓▓▌
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:131 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "pragma solidity 0.5.17;\n\nimport \"../../TokenGrant.sol\";\nimport \"../../TokenStakingEscrow.sol\";\nimpor
+
+[HIGH] 0xa7d9e842efb252389d613da88eda3731512e40bd.sol:161 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "pragma solidity ^0.5.0;\n\nimport \"./IERC20.sol\";\nimport \"../../math/SafeMath.sol\";\nimport \"../../uti
+
+[HIGH] 0xa98771a46dcb34b34cdad5355718f8a97c8e603e.sol:17 - delegatecall (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\n\n/**\n * @dev Collection of functions r
+
+[HIGH] 0xa98771a46dcb34b34cdad5355718f8a97c8e603e.sol:5 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// Copyright © 2021 Treum.io, a ConsenSys AG company. All rights reserved.\n// BY USING THIS SMART CONTRACT,
+
+[HIGH] 0xa98771a46dcb34b34cdad5355718f8a97c8e603e.sol:17 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\n\n/**\n * @dev Collection of functions r
+
+[HIGH] 0xa98771a46dcb34b34cdad5355718f8a97c8e603e.sol:23 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.0 <0.8.0;\n\nimport \"@openzeppelin/contracts/utils
+
+[HIGH] 0xa98771a46dcb34b34cdad5355718f8a97c8e603e.sol:17 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\n\n/**\n * @dev Collection of functions r
+
+[HIGH] 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011.sol:248 - Balance-based accounting (donation attack vector)
+  CODE: require(ERC20(_token).balanceOf(address(this)) > 0);
+
+[HIGH] 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011.sol:250 - Balance-based accounting (donation attack vector)
+  CODE: ERC20Old(_token).transfer(msg.sender, ERC20(_token).balanceOf(address(this)));
+
+[HIGH] 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011.sol:252 - Balance-based accounting (donation attack vector)
+  CODE: ERC20(_token).transfer(msg.sender, ERC20(_token).balanceOf(address(this)));
+
+[HIGH] 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011_flat.sol:248 - Balance-based accounting (donation attack vector)
+  CODE: require(ERC20(_token).balanceOf(address(this)) > 0);
+
+[HIGH] 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011_flat.sol:250 - Balance-based accounting (donation attack vector)
+  CODE: ERC20Old(_token).transfer(msg.sender, ERC20(_token).balanceOf(address(this)));
+
+[HIGH] 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011_flat.sol:252 - Balance-based accounting (donation attack vector)
+  CODE: ERC20(_token).transfer(msg.sender, ERC20(_token).balanceOf(address(this)));
+
+[HIGH] 0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xab37e1358b639fd877f015027bb62d3ddaa7557e.sol:355 - Balance-based accounting (donation attack vector)
+  CODE: address(this).balance >= amount,
+
+[HIGH] 0xab37e1358b639fd877f015027bb62d3ddaa7557e.sol:1758 - Balance-based accounting (donation attack vector)
+  CODE: tokenBalance = address(this).balance;
+
+[HIGH] 0xab37e1358b639fd877f015027bb62d3ddaa7557e.sol:1760 - Balance-based accounting (donation attack vector)
+  CODE: tokenBalance = IERC20(token).balanceOf(address(this));
+
+[HIGH] 0xab37e1358b639fd877f015027bb62d3ddaa7557e.sol:360 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: amount}("");
+
+[HIGH] 0xab37e1358b639fd877f015027bb62d3ddaa7557e.sol:492 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] 0xab37e1358b639fd877f015027bb62d3ddaa7557e.sol:1699 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: total}("");
+
+[HIGH] 0xb3775fb83f7d12a36e0475abdd1fca35c091efbe.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xb3775fb83f7d12a36e0475abdd1fca35c091efbe_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xb59a226a2b8a2f2b0512baa35cc348b6b213b671.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xb59a226a2b8a2f2b0512baa35cc348b6b213b671_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xb8901acb165ed027e32754e0ffe830802919727f.sol:5 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\npragma experimental ABIEncoderV2;\n\nimport \"./
+
+[HIGH] 0xb8901acb165ed027e32754e0ffe830802919727f_flat.sol:19 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: amount}(new bytes(0));
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:298 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:359 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:1501 - Balance-based accounting (donation attack vector)
+  CODE: uint256 bal = lpToken.balanceOf(address(this));
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:1504 - Balance-based accounting (donation attack vector)
+  CODE: require(bal == newLpToken.balanceOf(address(this)), "migrate: bad");
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:1526 - Balance-based accounting (donation attack vector)
+  CODE: uint256 lpSupply = pool.lpToken.balanceOf(address(this));
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:1549 - Balance-based accounting (donation attack vector)
+  CODE: uint256 lpSupply = pool.lpToken.balanceOf(address(this));
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:1603 - Balance-based accounting (donation attack vector)
+  CODE: uint256 sushiBal = sushi.balanceOf(address(this));
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:1578 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public {
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:301 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] 0xc2edad668740f1aa35e4d8f227fb8e17dca888cd.sol:367 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+
+[HIGH] 0xc7c9b856d33651cc2bcd9e0099efa85f59f78302.sol:254 - Withdraw function (check access control)
+  CODE: function withdraw(address token, uint256 amount, uint256 channelId) public {
+
+[HIGH] 0xc7c9b856d33651cc2bcd9e0099efa85f59f78302.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xc7c9b856d33651cc2bcd9e0099efa85f59f78302_flat.sol:254 - Withdraw function (check access control)
+  CODE: function withdraw(address token, uint256 amount, uint256 channelId) public {
+
+[HIGH] 0xc7c9b856d33651cc2bcd9e0099efa85f59f78302_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xd216153c06e857cd7f72665e0af1d7d82172f494.sol:74 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount, address payable dest) public;
+
+[HIGH] 0xd216153c06e857cd7f72665e0af1d7d82172f494.sol:1482 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount, address payable dest) public {
+
+[HIGH] 0xd216153c06e857cd7f72665e0af1d7d82172f494.sol:1628 - Arbitrary address call (check if target is user-controlled)
+  CODE: (, bytes memory relayCallStatus) = address(this).call(data);
+
+[HIGH] 0xd216153c06e857cd7f72665e0af1d7d82172f494.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xd216153c06e857cd7f72665e0af1d7d82172f494_flat.sol:74 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount, address payable dest) public;
+
+[HIGH] 0xd216153c06e857cd7f72665e0af1d7d82172f494_flat.sol:1482 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount, address payable dest) public {
+
+[HIGH] 0xd216153c06e857cd7f72665e0af1d7d82172f494_flat.sol:1628 - Arbitrary address call (check if target is user-controlled)
+  CODE: (, bytes memory relayCallStatus) = address(this).call(data);
+
+[HIGH] 0xd216153c06e857cd7f72665e0af1d7d82172f494_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xd48b633045af65ff636f3c6edd744748351e020d.sol:619 - Balance-based accounting (donation attack vector)
+  CODE: return address(this).balance;
+
+[HIGH] 0xd48b633045af65ff636f3c6edd744748351e020d.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431.sol:11 - delegatecall (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Collection of functions related t
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431.sol:11 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Collection of functions related t
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431.sol:23 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.6;\n\nimport \"@openzeppelin/contracts/token/ERC721/IER
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431.sol:47 - Withdraw function (check access control)
+  CODE: "content": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.6;\n\nimport \"@openzeppelin/contracts/token/ERC20/IERC
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431.sol:11 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Collection of functions related t
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431_flat.sol:1657 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431_flat.sol:1527 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431_flat.sol:1600 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431_flat.sol:2042 - Balance-based accounting (donation attack vector)
+  CODE: address(this).balance >= _amount,
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431_flat.sol:3739 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _amount, address payable _beneficiary) external;
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431_flat.sol:1529 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: amount}("");
+
+[HIGH] 0xd569d3cce55b71a8a3f3c418c329a66e5f714431_flat.sol:1603 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{value: value}(data);
+
+[HIGH] 0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5.sol:100 - delegatecall (check if target is user-controlled)
+  CODE: let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)
+
+[HIGH] 0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5.sol:213 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = _logic.delegatecall(_data);
+
+[HIGH] 0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5.sol:282 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = newImplementation.delegatecall(data);
+
+[HIGH] 0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5.sol:55 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, 'Address: insufficient balance');
+
+[HIGH] 0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5.sol:208 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, bytes memory _data) public payable {
+
+[HIGH] 0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5.sol:58 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: amount}('');
+
+[HIGH] 0xe5a04d98538231b0fab9aba60cd73ce4ff3039df.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xe5a04d98538231b0fab9aba60cd73ce4ff3039df_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xe61dd9ca7364225afbfb79e15ad33864424e6ae4.sol:769 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Bridge:not enough native token");
+
+[HIGH] 0xe61dd9ca7364225afbfb79e15ad33864424e6ae4.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xe61dd9ca7364225afbfb79e15ad33864424e6ae4_flat.sol:769 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Bridge:not enough native token");
+
+[HIGH] 0xe61dd9ca7364225afbfb79e15ad33864424e6ae4_flat.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xe9778e69a961e64d3cdbb34cf6778281d34667c2.sol:1 - delegatecall (check if target is user-controlled)
+  CODE: {"AdditionalMath.sol":{"content":"// SPDX-License-Identifier: AGPL-3.0-or-later\n\npragma solidity ^0.7.0;\n\n\nimport \
+
+[HIGH] 0xe9778e69a961e64d3cdbb34cf6778281d34667c2.sol:1 - Balance-based accounting (donation attack vector)
+  CODE: {"AdditionalMath.sol":{"content":"// SPDX-License-Identifier: AGPL-3.0-or-later\n\npragma solidity ^0.7.0;\n\n\nimport \
+
+[HIGH] 0xe9778e69a961e64d3cdbb34cf6778281d34667c2.sol:1 - Public initialize function (uninitialized proxy risk)
+  CODE: {"AdditionalMath.sol":{"content":"// SPDX-License-Identifier: AGPL-3.0-or-later\n\npragma solidity ^0.7.0;\n\n\nimport \
+
+[HIGH] 0xe9778e69a961e64d3cdbb34cf6778281d34667c2.sol:1 - Arbitrary address call (check if target is user-controlled)
+  CODE: {"AdditionalMath.sol":{"content":"// SPDX-License-Identifier: AGPL-3.0-or-later\n\npragma solidity ^0.7.0;\n\n\nimport \
+
+[HIGH] 0xf4e11b89519eccd988a56749f1c64ad9bfe0298f.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xf5bce5077908a1b7370b9ae04adc565ebd643966.sol:628 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory result) = address(this).delegatecall(calls[i]);
+
+[HIGH] 0xf5bce5077908a1b7370b9ae04adc565ebd643966.sol:762 - Balance-based accounting (donation attack vector)
+  CODE: amount = token.balanceOf(address(this)).add(strategyData[token].balance);
+
+[HIGH] 0xf5bce5077908a1b7370b9ae04adc565ebd643966.sol:94 - Withdraw function (check access control)
+  CODE: function withdraw(uint256) external;
+
+[HIGH] 0xf5bce5077908a1b7370b9ae04adc565ebd643966.sol:116 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) external returns (uint256 actualAmount);
+
+[HIGH] 0xf5bce5077908a1b7370b9ae04adc565ebd643966.sol:144 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory data) = address(token).call(abi.encodeWithSelector(SIG_TRANSFER, to, amount));
+
+[HIGH] 0xf5bce5077908a1b7370b9ae04adc565ebd643966.sol:160 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory data) = address(token).call(abi.encodeWithSelector(SIG_TRANSFER_FROM, from, to, amount));
+
+[HIGH] 0xf5bce5077908a1b7370b9ae04adc565ebd643966.sol:899 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = to.call{value: amount}("");
+
+[HIGH] 0xf5bce5077908a1b7370b9ae04adc565ebd643966.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] 0xf74bf048138a2b8f825eccabed9e02e481a0f6c0.sol:41 - delegatecall (check if target is user-controlled)
+  CODE: let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)
+
+[HIGH] 0xf74bf048138a2b8f825eccabed9e02e481a0f6c0.sol:189 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] 0xf74bf048138a2b8f825eccabed9e02e481a0f6c0.sol:282 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = newImplementation.delegatecall(data);
+
+[HIGH] 0xf9fb1c508ff49f78b60d3a96dea99fa5d7f3a8a6.sol:304 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] 0xf9fb1c508ff49f78b60d3a96dea99fa5d7f3a8a6.sol:379 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] 0xfe89cc7abb2c4183683ab71653c4cdc9b02d44b7.sol:635 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = target.call{value: value}(data);
+
+[HIGH] 0xfe89cc7abb2c4183683ab71653c4cdc9b02d44b7.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] AceDapp.sol:129 - Balance-based accounting (donation attack vector)
+  CODE: uint256 Contract_Bal = SafeMath.sub((address(this).balance), InterestPool_);
+
+[HIGH] AceDapp.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] ConvexStakingWrapperAbra.sol:550 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] ConvexStakingWrapperAbra.sol:437 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] ConvexStakingWrapperAbra.sol:498 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] ConvexStakingWrapperAbra.sol:1224 - Balance-based accounting (donation attack vector)
+  CODE: uint256 bal = IERC20(cvx).balanceOf(address(this));
+
+[HIGH] ConvexStakingWrapperAbra.sol:1265 - Balance-based accounting (donation attack vector)
+  CODE: uint256 bal = IERC20(reward.reward_token).balanceOf(address(this));
+
+[HIGH] ConvexStakingWrapperAbra.sol:1352 - Balance-based accounting (donation attack vector)
+  CODE: uint256 bal = IERC20(reward.reward_token).balanceOf(address(this));
+
+[HIGH] ConvexStakingWrapperAbra.sol:24 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount, bool claim) external;
+
+[HIGH] ConvexStakingWrapperAbra.sol:1410 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _amount) external nonReentrant {
+
+[HIGH] ConvexStakingWrapperAbra.sol:440 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] ConvexStakingWrapperAbra.sol:502 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] Proceeds.sol:842 - Balance-based accounting (donation attack vector)
+  CODE: if (which == WhichToken.Eth) return address(this).balance;
+
+[HIGH] Proceeds.sol:950 - Balance-based accounting (donation attack vector)
+  CODE: uint val = ((address(this).balance).mul(25)).div(10000);
+
+[HIGH] Proceeds.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] acid.sol:74 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= _wei, "Contract does not have enough funds");
+
+[HIGH] acid.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] adx_flash_loans.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] adx_loyalty_pool.sol:210 - Balance-based accounting (donation attack vector)
+  CODE: uint totalADX = ADXToken.balanceOf(address(this));
+
+[HIGH] adx_loyalty_pool.sol:219 - Balance-based accounting (donation attack vector)
+  CODE: return ADXToken.balanceOf(address(this))
+
+[HIGH] adx_loyalty_pool.sol:239 - Balance-based accounting (donation attack vector)
+  CODE: uint totalADX = ADXToken.balanceOf(address(this));
+
+[HIGH] adx_loyalty_pool.sol:253 - Balance-based accounting (donation attack vector)
+  CODE: uint256 totalADX = ADXToken.balanceOf(address(this));
+
+[HIGH] adx_loyalty_pool.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] cdai.sol:831 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = callee.delegatecall(data);
+
+[HIGH] cdai.sol:875 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = implementation.delegatecall(msg.data);
+
+[HIGH] cdai.sol:1020 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balance = token.balanceOf(address(this));
+
+[HIGH] cdai.sol:1042 - Balance-based accounting (donation attack vector)
+  CODE: return token.balanceOf(address(this));
+
+[HIGH] cdai.sol:1058 - Balance-based accounting (donation attack vector)
+  CODE: uint balanceBefore = EIP20Interface(underlying_).balanceOf(address(this));
+
+[HIGH] cdai.sol:1078 - Balance-based accounting (donation attack vector)
+  CODE: uint balanceAfter = EIP20Interface(underlying_).balanceOf(address(this));
+
+[HIGH] cdai_impl.sol:128 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balance = token.balanceOf(address(this));
+
+[HIGH] cdai_impl.sol:150 - Balance-based accounting (donation attack vector)
+  CODE: return token.balanceOf(address(this));
+
+[HIGH] cdai_impl.sol:166 - Balance-based accounting (donation attack vector)
+  CODE: uint balanceBefore = EIP20Interface(underlying_).balanceOf(address(this));
+
+[HIGH] cdai_impl.sol:186 - Balance-based accounting (donation attack vector)
+  CODE: uint balanceAfter = EIP20Interface(underlying_).balanceOf(address(this));
+
+[HIGH] celerwallet.sol:15 - Withdraw function (check access control)
+  CODE: function withdraw(bytes32 _walletId, address _tokenAddress, address _receiver, uint _amount) external;
+
+[HIGH] celerwallet.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] clipper_contracts_ClipperExchangeInterface.sol:255 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) external nonReentrant {
+
+[HIGH] clipper_contracts_ClipperPool.sol:201 - Balance-based accounting (donation attack vector)
+  CODE: assets[token] = Asset(oracle, rawMarketShare, marketShareDecimalsAdjusted, token.balanceOf(address(this)), 0);
+
+[HIGH] clipper_contracts_ClipperPool.sol:337 - Balance-based accounting (donation attack vector)
+  CODE: lastETHBalance = address(this).balance;
+
+[HIGH] clipper_contracts_ClipperPool.sol:339 - Balance-based accounting (donation attack vector)
+  CODE: assets[token].lastBalance = token.balanceOf(address(this));
+
+[HIGH] compound_v1_moneymarket.sol:430 - Balance-based accounting (donation attack vector)
+  CODE: return token.balanceOf(address(this));
+
+[HIGH] compound_v1_moneymarket.sol:1630 - Withdraw function (check access control)
+  CODE: function withdraw(address asset, uint requestedAmount) public returns (uint) {
+
+[HIGH] compound_v1_moneymarket.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] conditional_tokens.sol:2362 - Balance-based accounting (donation attack vector)
+  CODE: uint256 actualBalance = token.balanceOf(address(this));
+
+[HIGH] conditional_tokens.sol:2384 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balance = token.balanceOf(address(this));
+
+[HIGH] daovault.sol:391 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] daovault.sol:452 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] daovault.sol:686 - Balance-based accounting (donation attack vector)
+  CODE: uint256 tonBalance = ton.balanceOf(address(this));
+
+[HIGH] daovault.sol:687 - Balance-based accounting (donation attack vector)
+  CODE: uint256 wtonBalance = wton.balanceOf(address(this));
+
+[HIGH] daovault.sol:712 - Balance-based accounting (donation attack vector)
+  CODE: uint256 tonBalance = ton.balanceOf(address(this));
+
+[HIGH] daovault.sol:713 - Balance-based accounting (donation attack vector)
+  CODE: uint256 wtonBalance = wton.balanceOf(address(this));
+
+[HIGH] daovault.sol:739 - Balance-based accounting (donation attack vector)
+  CODE: require(IERC20(_token).balanceOf(address(this)) >= _amount, "DAOVault: not enough balance");
+
+[HIGH] daovault.sol:394 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] daovault.sol:456 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] degenbox.sol:629 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory result) = address(this).delegatecall(calls[i]);
+
+[HIGH] degenbox.sol:763 - Balance-based accounting (donation attack vector)
+  CODE: amount = token.balanceOf(address(this)).add(strategyData[token].balance);
+
+[HIGH] degenbox.sol:95 - Withdraw function (check access control)
+  CODE: function withdraw(uint256) external;
+
+[HIGH] degenbox.sol:117 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) external returns (uint256 actualAmount);
+
+[HIGH] degenbox.sol:145 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory data) = address(token).call(abi.encodeWithSelector(SIG_TRANSFER, to, amount));
+
+[HIGH] degenbox.sol:161 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory data) = address(token).call(abi.encodeWithSelector(SIG_TRANSFER_FROM, from, to, amount));
+
+[HIGH] degenbox.sol:900 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = to.call{value: amount}("");
+
+[HIGH] degenbox.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] dex2.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] dodo_pmm.sol:296 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] dodo_pmm.sol:357 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] dodo_pmm.sol:1101 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) external;
+
+[HIGH] dodo_pmm.sol:299 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] dodo_pmm.sol:365 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+
+[HIGH] etherdelta.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] etherflip.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] ethprime.sol:207 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = address(dapp).call.value(deposited)(abi.encodePacked(dapp.deposit.selector, ab
+
+[HIGH] ethprime.sol:234 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = address(dapp).call(abi.encodePacked(dapp.cashout.selector, abi.encode(msg.send
+
+[HIGH] ethprime.sol:258 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = address(dapp).call(abi.encodePacked(dapp.claimDivs.selector, abi.encode(player
+
+[HIGH] ethprime.sol:325 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = address(dapp).call(abi.encodePacked(dapp.cashout.selector, abi.encode(msg.send
+
+[HIGH] ethprime.sol:378 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = address(dapp).call(abi.encodePacked(dapp.currentDivs.selector, abi.encode(play
+
+[HIGH] ethprime.sol:416 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = address(dapp).call(abi.encodePacked(dapp.currentValue.selector, abi.encode(pla
+
+[HIGH] ethprime.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] feg_token.sol:282 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] feg_token.sol:343 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] feg_token.sol:285 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] feg_token.sol:351 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+
+[HIGH] fegstake.sol:409 - Balance-based accounting (donation attack vector)
+  CODE: uint256 transferToAmount = (IERC20(FEG).balanceOf(address(this))).sub(totalStakes);
+
+[HIGH] fegstake.sol:530 - Balance-based accounting (donation attack vector)
+  CODE: require(IERC20(_token).transfer(owner, IERC20(_token).balanceOf(address(this))), "Error in retrieving tokens");
+
+[HIGH] fegstake.sol:531 - Balance-based accounting (donation attack vector)
+  CODE: owner.transfer(address(this).balance);
+
+[HIGH] floor.sol:5 - Balance-based accounting (donation attack vector)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] floor.sol:89 - Balance-based accounting (donation attack vector)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport '../libraries/math/Math.sol';\nimport '.
+
+[HIGH] floor.sol:92 - Balance-based accounting (donation attack vector)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport './TransferHelper.sol';\nimport '../mock
+
+[HIGH] floor.sol:5 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] floor.sol:50 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\ninterface IUniswapV2Pair {\n    event Approval(
+
+[HIGH] floor.sol:89 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport '../libraries/math/Math.sol';\nimport '.
+
+[HIGH] floor.sol:20 - Withdraw function (check access control)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\ninterface IWETH {\n    function deposit() exter
+
+[HIGH] floor.sol:74 - Withdraw function (check access control)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"../libraries/token/IERC20.sol\";\nimp
+
+[HIGH] floor.sol:77 - Withdraw function (check access control)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"../libraries/token/IERC20.sol\";\nimp
+
+[HIGH] floor.sol:5 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] floor.sol:38 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] floor.sol:62 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\nimport \"./libraries/math/SafeMath.sol\";\nimpo
+
+[HIGH] floor.sol:80 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.6.12;\n\n// helper methods for interacting with ERC20 to
+
+[HIGH] harvest_reward_pool.sol:608 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] harvest_reward_pool.sol:759 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) public {
+
+[HIGH] harvest_reward_pool.sol:850 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) public updateReward(msg.sender) {
+
+[HIGH] harvest_reward_pool.sol:683 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] hydro.sol:183 - Balance-based accounting (donation attack vector)
+  CODE: cashableAmount = address(this).balance - uint256(state.cash[asset]);
+
+[HIGH] hydro.sol:185 - Balance-based accounting (donation attack vector)
+  CODE: cashableAmount = IStandardToken(asset).balanceOf(address(this)) - uint256(state.cash[asset]);
+
+[HIGH] hydro.sol:3785 - Balance-based accounting (donation attack vector)
+  CODE: require(uint256(state.cash[asset]) <= address(this).balance, "CONTRACT_BALANCE_NOT_ENOUGH");
+
+[HIGH] hydro.sol:3789 - Balance-based accounting (donation attack vector)
+  CODE: require(uint256(state.cash[asset]) <= IStandardToken(asset).balanceOf(address(this)), "CONTRACT_BALANCE_NOT_ENOUGH");
+
+[HIGH] hydro.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] kyberfee.sol:1041 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balance = address(this).balance;
+
+[HIGH] kyberfee.sol:914 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = staker.call{value: amountWei}("");
+
+[HIGH] kyberfee.sol:940 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = rebateWallet.call{value: amountWei}("");
+
+[HIGH] kyberfee.sol:967 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = platformWallet.call{value: amountWei}("");
+
+[HIGH] lien.sol:355 - Balance-based accounting (donation attack vector)
+  CODE: address(this).balance >= amount,
+
+[HIGH] lien.sol:1758 - Balance-based accounting (donation attack vector)
+  CODE: tokenBalance = address(this).balance;
+
+[HIGH] lien.sol:1760 - Balance-based accounting (donation attack vector)
+  CODE: tokenBalance = IERC20(token).balanceOf(address(this));
+
+[HIGH] lien.sol:360 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: amount}("");
+
+[HIGH] lien.sol:492 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] lien.sol:1699 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{value: total}("");
+
+[HIGH] liquiditypool_v2.sol:1022 - delegatecall (check if target is user-controlled)
+  CODE: let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)
+
+[HIGH] liquiditypool_v2.sol:1155 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] liquiditypool_v2.sol:1243 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = newImplementation.delegatecall(data);
+
+[HIGH] liquiditypool_v2.sol:1297 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] liquiditypool_v2.sol:642 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] liquiditypool_v2.sol:818 - Balance-based accounting (donation attack vector)
+  CODE: (bool success,) = msg.sender.call.value(address(this).balance)("");
+
+[HIGH] liquiditypool_v2.sol:823 - Balance-based accounting (donation attack vector)
+  CODE: ERC20(_token).balanceOf(address(this))
+
+[HIGH] liquiditypool_v2.sol:1497 - Balance-based accounting (donation attack vector)
+  CODE: return address(this).balance;
+
+[HIGH] liquiditypool_v2.sol:1499 - Balance-based accounting (donation attack vector)
+  CODE: return ERC20(_token).balanceOf(address(this));
+
+[HIGH] liquiditypool_v2.sol:34 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize() external;
+
+[HIGH] liquiditypool_v2.sol:764 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _operator) public initializer {
+
+[HIGH] liquiditypool_v2.sol:801 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _nextOwner) public initializer {
+
+[HIGH] liquiditypool_v2.sol:845 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize() public initializer {
+
+[HIGH] liquiditypool_v2.sol:876 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address sender) public initializer {
+
+[HIGH] liquiditypool_v2.sol:938 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address sender) public initializer {
+
+[HIGH] liquiditypool_v2.sol:1292 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, bytes memory _data) public payable {
+
+[HIGH] liquiditypool_v2.sol:1318 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, address _admin, bytes memory _data) public payable {
+
+[HIGH] liquiditypool_v2.sol:1352 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(string memory _VERSION, address _borrower) public initializer {
+
+[HIGH] liquiditypool_v2.sol:23 - Withdraw function (check access control)
+  CODE: function withdraw(address payable _to, IKToken _kToken, uint256 _kTokenAmount) external;
+
+[HIGH] liquiditypool_v2.sol:1444 - Withdraw function (check access control)
+  CODE: function withdraw(address payable _to, IKToken _kToken, uint256 _kTokenAmount) external nonReentrant whenNotPaused {
+
+[HIGH] liquiditypool_v2.sol:710 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] liquiditypool_v2.sol:1531 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = address(_newLP).call.value(borrowableBalance(token))("");
+
+[HIGH] liquiditypoolv2.sol:1022 - delegatecall (check if target is user-controlled)
+  CODE: let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)
+
+[HIGH] liquiditypoolv2.sol:1155 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] liquiditypoolv2.sol:1243 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = newImplementation.delegatecall(data);
+
+[HIGH] liquiditypoolv2.sol:1297 - delegatecall (check if target is user-controlled)
+  CODE: (bool success,) = _logic.delegatecall(_data);
+
+[HIGH] liquiditypoolv2.sol:642 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] liquiditypoolv2.sol:818 - Balance-based accounting (donation attack vector)
+  CODE: (bool success,) = msg.sender.call.value(address(this).balance)("");
+
+[HIGH] liquiditypoolv2.sol:823 - Balance-based accounting (donation attack vector)
+  CODE: ERC20(_token).balanceOf(address(this))
+
+[HIGH] liquiditypoolv2.sol:1497 - Balance-based accounting (donation attack vector)
+  CODE: return address(this).balance;
+
+[HIGH] liquiditypoolv2.sol:1499 - Balance-based accounting (donation attack vector)
+  CODE: return ERC20(_token).balanceOf(address(this));
+
+[HIGH] liquiditypoolv2.sol:34 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize() external;
+
+[HIGH] liquiditypoolv2.sol:764 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _operator) public initializer {
+
+[HIGH] liquiditypoolv2.sol:801 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _nextOwner) public initializer {
+
+[HIGH] liquiditypoolv2.sol:845 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize() public initializer {
+
+[HIGH] liquiditypoolv2.sol:876 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address sender) public initializer {
+
+[HIGH] liquiditypoolv2.sol:938 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address sender) public initializer {
+
+[HIGH] liquiditypoolv2.sol:1292 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, bytes memory _data) public payable {
+
+[HIGH] liquiditypoolv2.sol:1318 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address _logic, address _admin, bytes memory _data) public payable {
+
+[HIGH] liquiditypoolv2.sol:1352 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(string memory _VERSION, address _borrower) public initializer {
+
+[HIGH] liquiditypoolv2.sol:23 - Withdraw function (check access control)
+  CODE: function withdraw(address payable _to, IKToken _kToken, uint256 _kTokenAmount) external;
+
+[HIGH] liquiditypoolv2.sol:1444 - Withdraw function (check access control)
+  CODE: function withdraw(address payable _to, IKToken _kToken, uint256 _kTokenAmount) external nonReentrant whenNotPaused {
+
+[HIGH] liquiditypoolv2.sol:710 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] liquiditypoolv2.sol:1531 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success,) = address(_newLP).call.value(borrowableBalance(token))("");
+
+[HIGH] marketing_mining.sol:513 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] marketing_mining.sol:1474 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = callee.delegatecall(data);
+
+[HIGH] marketing_mining.sol:1527 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = implementation.delegatecall(msg.data);
+
+[HIGH] marketing_mining.sol:400 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] marketing_mining.sol:461 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] marketing_mining.sol:1221 - Balance-based accounting (donation attack vector)
+  CODE: uint256 SHARDBal = SHARD.balanceOf(address(this));
+
+[HIGH] marketing_mining.sol:763 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address, address) external;
+
+[HIGH] marketing_mining.sol:1161 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public virtual {
+
+[HIGH] marketing_mining.sol:1647 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public override {
+
+[HIGH] marketing_mining.sol:403 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] marketing_mining.sol:465 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] marketing_mining.sol:1108 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = msg.sender.call{value: _amount}(new bytes(0));
+
+[HIGH] marketing_mining_delegate.sol:514 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] marketing_mining_delegate.sol:401 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] marketing_mining_delegate.sol:462 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] marketing_mining_delegate.sol:1222 - Balance-based accounting (donation attack vector)
+  CODE: uint256 SHARDBal = SHARD.balanceOf(address(this));
+
+[HIGH] marketing_mining_delegate.sol:764 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address, address) external;
+
+[HIGH] marketing_mining_delegate.sol:1162 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public virtual {
+
+[HIGH] marketing_mining_delegate.sol:404 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] marketing_mining_delegate.sol:466 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] marketing_mining_delegate.sol:1109 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = msg.sender.call{value: _amount}(new bytes(0));
+
+[HIGH] marketing_mining_delegator.sol:513 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] marketing_mining_delegator.sol:1474 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returnData) = callee.delegatecall(data);
+
+[HIGH] marketing_mining_delegator.sol:1527 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, ) = implementation.delegatecall(msg.data);
+
+[HIGH] marketing_mining_delegator.sol:400 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] marketing_mining_delegator.sol:461 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] marketing_mining_delegator.sol:1221 - Balance-based accounting (donation attack vector)
+  CODE: uint256 SHARDBal = SHARD.balanceOf(address(this));
+
+[HIGH] marketing_mining_delegator.sol:763 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address, address) external;
+
+[HIGH] marketing_mining_delegator.sol:1161 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public virtual {
+
+[HIGH] marketing_mining_delegator.sol:1647 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public override {
+
+[HIGH] marketing_mining_delegator.sol:403 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] marketing_mining_delegator.sol:465 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] marketing_mining_delegator.sol:1108 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = msg.sender.call{value: _amount}(new bytes(0));
+
+[HIGH] marketing_mining_impl.sol:514 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] marketing_mining_impl.sol:401 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] marketing_mining_impl.sol:462 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] marketing_mining_impl.sol:1222 - Balance-based accounting (donation attack vector)
+  CODE: uint256 SHARDBal = SHARD.balanceOf(address(this));
+
+[HIGH] marketing_mining_impl.sol:764 - Public initialize function (uninitialized proxy risk)
+  CODE: function initialize(address, address) external;
+
+[HIGH] marketing_mining_impl.sol:1162 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public virtual {
+
+[HIGH] marketing_mining_impl.sol:404 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] marketing_mining_impl.sol:466 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] marketing_mining_impl.sol:1109 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = msg.sender.call{value: _amount}(new bytes(0));
+
+[HIGH] masterchef.sol:298 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] masterchef.sol:359 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] masterchef.sol:1501 - Balance-based accounting (donation attack vector)
+  CODE: uint256 bal = lpToken.balanceOf(address(this));
+
+[HIGH] masterchef.sol:1504 - Balance-based accounting (donation attack vector)
+  CODE: require(bal == newLpToken.balanceOf(address(this)), "migrate: bad");
+
+[HIGH] masterchef.sol:1526 - Balance-based accounting (donation attack vector)
+  CODE: uint256 lpSupply = pool.lpToken.balanceOf(address(this));
+
+[HIGH] masterchef.sol:1549 - Balance-based accounting (donation attack vector)
+  CODE: uint256 lpSupply = pool.lpToken.balanceOf(address(this));
+
+[HIGH] masterchef.sol:1603 - Balance-based accounting (donation attack vector)
+  CODE: uint256 sushiBal = sushi.balanceOf(address(this));
+
+[HIGH] masterchef.sol:1578 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _pid, uint256 _amount) public {
+
+[HIGH] masterchef.sol:301 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] masterchef.sol:367 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+
+[HIGH] opyn_contracts_core_OpynPerpVault.sol:272 - Balance-based accounting (donation attack vector)
+  CODE: uint256 wantedAssetBalanceBefore = wantedAssetToken.balanceOf(address(this));
+
+[HIGH] opyn_contracts_core_OpynPerpVault.sol:275 - Balance-based accounting (donation attack vector)
+  CODE: uint256 wantedAssetBalanceAfter = wantedAssetToken.balanceOf(address(this));
+
+[HIGH] opyn_contracts_core_OpynPerpVault.sol:414 - Balance-based accounting (donation attack vector)
+  CODE: uint256 curveLPTokenToDeposit = curveLPToken.balanceOf(address(this));
+
+[HIGH] opyn_contracts_core_OpynPerpVault.sol:451 - Balance-based accounting (donation attack vector)
+  CODE: return curveLPToken.balanceOf(address(this));
+
+[HIGH] opyn_contracts_core_OpynPerpVault.sol:458 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(sdTokenAddress).balanceOf(address(this));
+
+[HIGH] perpetualv1.sol:363 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] perpetualv1.sol:1556 - Balance-based accounting (donation attack vector)
+  CODE: uint256 contractBalance = IERC20(_TOKEN_).balanceOf(address(this));
+
+[HIGH] perpetualv1.sol:433 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = address(token).call(data);
+
+[HIGH] r1exchange.sol:254 - Withdraw function (check access control)
+  CODE: function withdraw(address token, uint256 amount, uint256 channelId) public {
+
+[HIGH] r1exchange.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] safebox.sol:5 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/ERC20.sol
+
+[HIGH] safebox.sol:14 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC1155/ERC1155
+
+[HIGH] safebox.sol:32 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC1155/ERC1155
+
+[HIGH] safebox.sol:47 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\npragma experimental ABIEncoderV2;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.
+
+[HIGH] safebox.sol:50 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/IERC20.so
+
+[HIGH] safebox.sol:77 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\npragma experimental ABIEncoderV2;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.
+
+[HIGH] safebox.sol:86 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\npragma experimental ABIEncoderV2;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.
+
+[HIGH] safebox.sol:92 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\npragma experimental ABIEncoderV2;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.
+
+[HIGH] safebox.sol:98 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/IERC20.so
+
+[HIGH] safebox.sol:101 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface MockUniswapV2FactoryIUniswapV2Factory {\n  event PairCreated(address in
+
+[HIGH] safebox.sol:113 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface MockUniswapV2Router02IUniswapV2Factory {\n  event PairCreated(address i
+
+[HIGH] safebox.sol:119 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\ncontract MockWETH {\n  string public name = 'Wrapped Ether';\n  string public sym
+
+[HIGH] safebox.sol:164 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/IERC20.so
+
+[HIGH] safebox.sol:167 - Balance-based accounting (donation attack vector)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/ERC20.sol
+
+[HIGH] safebox.sol:182 - Balance-based accounting (donation attack vector)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.6.2;\n\n/**\n * @dev Collection of functions related t
+
+[HIGH] safebox.sol:71 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "pragma solidity >=0.5.0;\n\n// https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/interfaces/I
+
+[HIGH] safebox.sol:101 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface MockUniswapV2FactoryIUniswapV2Factory {\n  event PairCreated(address in
+
+[HIGH] safebox.sol:113 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface MockUniswapV2Router02IUniswapV2Factory {\n  event PairCreated(address i
+
+[HIGH] safebox.sol:164 - Public initialize function (uninitialized proxy risk)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/IERC20.so
+
+[HIGH] safebox.sol:5 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/ERC20.sol
+
+[HIGH] safebox.sol:29 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface IStakingRewards {\n  function rewardPerToken() external view returns (u
+
+[HIGH] safebox.sol:38 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface ILiquidityGauge {\n  function minter() external view returns (address);
+
+[HIGH] safebox.sol:44 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface IMasterChef {\n  function sushi() external view returns (address);\n\n 
+
+[HIGH] safebox.sol:59 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface IWETH {\n  function balanceOf(address user) external returns (uint);\n\
+
+[HIGH] safebox.sol:113 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface MockUniswapV2Router02IUniswapV2Factory {\n  event PairCreated(address i
+
+[HIGH] safebox.sol:119 - Withdraw function (check access control)
+  CODE: "content": "pragma solidity 0.6.12;\n\ncontract MockWETH {\n  string public name = 'Wrapped Ether';\n  string public sym
+
+[HIGH] safebox.sol:50 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/IERC20.so
+
+[HIGH] safebox.sol:113 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "pragma solidity 0.6.12;\n\ninterface MockUniswapV2Router02IUniswapV2Factory {\n  event PairCreated(address i
+
+[HIGH] safebox.sol:164 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/IERC20.so
+
+[HIGH] safebox.sol:167 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "pragma solidity 0.6.12;\n\nimport 'OpenZeppelin/openzeppelin-contracts@3.2.0/contracts/token/ERC20/ERC20.sol
+
+[HIGH] safebox.sol:182 - Arbitrary address call (check if target is user-controlled)
+  CODE: "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.6.2;\n\n/**\n * @dev Collection of functions related t
+
+[HIGH] smoothy_v1.sol:466 - delegatecall (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.delegatecall(data);
+
+[HIGH] smoothy_v1.sol:353 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] smoothy_v1.sol:414 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] smoothy_v1.sol:1477 - Balance-based accounting (donation attack vector)
+  CODE: uint256 share = YERC20(_yTokenAddresses[tid]).balanceOf(address(this));
+
+[HIGH] smoothy_v1.sol:1645 - Balance-based accounting (donation attack vector)
+  CODE: return IERC20(address(info)).balanceOf(address(this))
+
+[HIGH] smoothy_v1.sol:1658 - Balance-based accounting (donation attack vector)
+  CODE: cashUnnormalized = IERC20(address(info)).balanceOf(address(this));
+
+[HIGH] smoothy_v1.sol:1659 - Balance-based accounting (donation attack vector)
+  CODE: uint256 share = YERC20(yAddr).balanceOf(address(this));
+
+[HIGH] smoothy_v1.sol:1714 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balanceBefore = IERC20(address(info)).balanceOf(address(this));
+
+[HIGH] smoothy_v1.sol:1716 - Balance-based accounting (donation attack vector)
+  CODE: uint256 actualDeposit = balanceBefore.sub(IERC20(address(info)).balanceOf(address(this)));
+
+[HIGH] smoothy_v1.sol:1724 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balanceBefore = IERC20(address(info)).balanceOf(address(this));
+
+[HIGH] smoothy_v1.sol:1727 - Balance-based accounting (donation attack vector)
+  CODE: uint256 actualWithdraw = IERC20(address(info)).balanceOf(address(this)).sub(balanceBefore);
+
+[HIGH] smoothy_v1.sol:1777 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balanceBefore = IERC20(address(info)).balanceOf(address(this));
+
+[HIGH] smoothy_v1.sol:1779 - Balance-based accounting (donation attack vector)
+  CODE: uint256 actualWithdraw = IERC20(address(info)).balanceOf(address(this)).sub(balanceBefore);
+
+[HIGH] smoothy_v1.sol:1795 - Balance-based accounting (donation attack vector)
+  CODE: if (IERC20(address(info)).balanceOf(address(this)) < amountUnnormalized) {
+
+[HIGH] smoothy_v1.sol:1082 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 _shares) external;
+
+[HIGH] smoothy_v1.sol:356 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] smoothy_v1.sol:418 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: value }(data);
+
+[HIGH] tristers.sol:1 - Balance-based accounting (donation attack vector)
+  CODE: {"Address.sol":{"content":"pragma solidity \u003c= 0.5.4;\n\nlibrary Address {\n\n    function isContract(address accoun
+
+[HIGH] tristers.sol:1 - Arbitrary address call (check if target is user-controlled)
+  CODE: {"Address.sol":{"content":"pragma solidity \u003c= 0.5.4;\n\nlibrary Address {\n\n    function isContract(address accoun
+
+[HIGH] tristers.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] weth_strategy.sol:738 - Balance-based accounting (donation attack vector)
+  CODE: uint256 contractBalance = strategyToken.balanceOf(address(this));
+
+[HIGH] weth_strategy.sol:780 - Balance-based accounting (donation attack vector)
+  CODE: actualAmount = strategyToken.balanceOf(address(this));
+
+[HIGH] weth_strategy.sol:789 - Balance-based accounting (donation attack vector)
+  CODE: uint256 actualBalance = strategyToken.balanceOf(address(this));
+
+[HIGH] weth_strategy.sol:968 - Balance-based accounting (donation attack vector)
+  CODE: uint256 balance = strategyToken.balanceOf(address(this));
+
+[HIGH] weth_strategy.sol:993 - Balance-based accounting (donation attack vector)
+  CODE: uint256 amountInBefore = IERC20(strategyToken).balanceOf(address(this));
+
+[HIGH] weth_strategy.sol:994 - Balance-based accounting (donation attack vector)
+  CODE: uint256 amountOutBefore = tokenOut.balanceOf(address(this));
+
+[HIGH] weth_strategy.sol:1001 - Balance-based accounting (donation attack vector)
+  CODE: uint256 amountOut = tokenOut.balanceOf(address(this)) - amountOutBefore;
+
+[HIGH] weth_strategy.sol:1006 - Balance-based accounting (donation attack vector)
+  CODE: uint256 amountIn = amountInBefore - IERC20(strategyToken).balanceOf(address(this));
+
+[HIGH] weth_strategy.sol:543 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) external returns (uint256 actualAmount);
+
+[HIGH] weth_strategy.sol:932 - Withdraw function (check access control)
+  CODE: function withdraw(uint256 amount) external override isActive onlyBentoBox returns (uint256 actualAmount) {
+
+[HIGH] weth_strategy.sol:214 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory data) = address(token).call(abi.encodeWithSelector(SIG_TRANSFER, to, amount));
+
+[HIGH] weth_strategy.sol:230 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory data) = address(token).call(abi.encodeWithSelector(SIG_TRANSFER_FROM, from, to, amount));
+
+[HIGH] weth_strategy.sol:808 - Arbitrary address call (check if target is user-controlled)
+  CODE: (success, ) = to.call{value: value}(data);
+
+[HIGH] weth_strategy.sol:0 - Contract transfers ETH but has NO ReentrancyGuard
+
+[HIGH] xsushi.sol:325 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= amount, "Address: insufficient balance");
+
+[HIGH] xsushi.sol:386 - Balance-based accounting (donation attack vector)
+  CODE: require(address(this).balance >= value, "Address: insufficient balance for call");
+
+[HIGH] xsushi.sol:741 - Balance-based accounting (donation attack vector)
+  CODE: uint256 totalSushi = sushi.balanceOf(address(this));
+
+[HIGH] xsushi.sol:755 - Balance-based accounting (donation attack vector)
+  CODE: uint256 what = _share.mul(sushi.balanceOf(address(this))).div(totalShares);
+
+[HIGH] xsushi.sol:328 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, ) = recipient.call{ value: amount }("");
+
+[HIGH] xsushi.sol:394 - Arbitrary address call (check if target is user-controlled)
+  CODE: (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+
+
+## SUMMARY
+Total files scanned: 125
+HIGH: 652
+MEDIUM: 429
+LOW: 101
+INFO: 307
