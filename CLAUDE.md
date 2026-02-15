@@ -1,10 +1,12 @@
-# CLAUDE.md v12.6 — Protocol Vuln Discovery OS (2026-02-06)
-## bundle -> map -> hypothesize -> execute -> prove
-## Evidence-first • Feasibility-first • Composition-first • Fork-grounded
+## understand the machine → derive what must be true → prove what isn't
+## bundle -> map -> reason -> hypothesize -> execute -> prove
+## Evidence-first • Feasibility-first • Composition-first • Fork-grounded • Reasoning-deep
 
-This file is a **decision-complete runbook** for turning a protocol into **reviewable artifacts** (graphs, storage surfaces, source bundles, evidence) and then into **fork-grounded exploit proofs** (or falsified hypotheses) using the installed skills.
+This file is a **decision-complete runbook** for turning a protocol into **reviewable artifacts** (graphs, storage surfaces, source bundles, evidence) and then into **fork-grounded exploit proofs** (or falsified hypotheses) through **deep economic reasoning from first principles** using the installed skills.
 
-Key intent: integrate **bundle -> map -> hypothesize -> execute -> prove** using the workspace skills:
+Your targets are the vulnerabilities that survived multiple professional audits. They exist because they require understanding the protocol as a complete economic system, not as a collection of functions. No tool finds them. No checklist covers them. Only deep reasoning about the specific protocol's design reveals them.
+
+Key intent: integrate **bundle -> map -> reason -> hypothesize -> execute -> prove** using the workspace skills:
 - `sourcify-contract-bundler` (address->universe mapping + sources + ABI + proxies + optional SQD evidence)
 - `traverse-protocol-analysis` (full-surface static maps; do not miss callables)
 - `ityfuzz-protocol-hunter` (dynamic, sequence-driven search + PoCs)
@@ -213,6 +215,8 @@ Use this to keep the agent's decision-making correct under real-world time press
 - If the bug is "unknown sequence, cross-contract chaining": route to `ityfuzz-protocol-hunter`, but only after Phase C coverage gates exist (entrypoints, control plane, taint map, tokens, numeric boundaries, feasibility).
 - If evidence needs scale over wide block ranges (forensics, provenance, "what happened across a window"): use SQD via `sourcify-contract-bundler` and treat it as bulk evidence, not as your per-tx debugger.
 - If two iterations do not change beliefs: pivot corridors (auth bypass vs accounting vs oracle vs sequencing), and redesign the next cheapest discriminator (do not just re-run the same fuzzer config longer).
+- If all surface-level hypotheses are exhausted: re-enter Section 3.6.4 deep reasoning directives systematically — time, scale, emptiness/fullness, identity/confusion, information asymmetry, missing code, disagreement, incentive failure, reflexivity, ordering. Each directive is a new lens on the same protocol state. Record new hypotheses in `notes/hypotheses.md`.
+- If composition opportunities exist (multiple protocols, shared state, token as both collateral and governance): apply Section 3.6.3 composition of violations — ask whether violation A enables violation B, whether cross-protocol state manipulation amplifies extraction.
 
 # 3) Hybrid Memory & Context Management (Mandatory)
 
@@ -275,6 +279,8 @@ notes_paths:
   - <engagement_root>/notes/feasibility.md
   - <engagement_root>/notes/evm-semantics.md
   - <engagement_root>/notes/message-path.md
+  - <engagement_root>/notes/value-flows.md
+  - <engagement_root>/notes/assumptions.md
   - <engagement_root>/notes/hypotheses.md
 ```
 
@@ -318,15 +324,31 @@ Create and maintain `<engagement_root>/memory.md` using this template:
 - feasibility:
 - evm semantics (if needed):
 - message path (if needed):
+- value flows (Section 3.6.1):
+- assumptions (Section 3.6.2):
+- hypotheses:
 
 ## Value Model Summary (custody vs entitlements)
 - custody assets:
 - entitlements:
 - key measurements (prices/rates/indices/eligibility):
 - key settlements (redeem/withdraw/liquidate/claim):
+- solvency equation: [explicit mathematical relationship]
+
+## Economic Model (Section 3.6)
+- money entry points:
+- money exit points:
+- value transforms (where computation can err):
+- fee extraction (from whom to whom):
+- actor dual-roles identified:
+- dependency gaps (guarantee vs assumption):
+- top implicit assumptions (3-5 most dangerous):
 
 ## Top 3 Hypotheses (sequence archetypes)
-1) <sequence hypothesis> (optionally: setup/distort/realize/unwind)
+1) <sequence hypothesis> (setup/distort/realize/unwind)
+   - broken assumption:
+   - reasoning chain depth: [N steps]
+   - estimated extractable value:
 2) ...
 3) ...
 
@@ -370,6 +392,9 @@ Required `notes/` files (create empty stubs early; fill as you learn):
 - `notes/feasibility.md`: attacker-tier feasibility ledger for each top hypothesis (ordering/oracle/liquidity/capital constraints).
 - `notes/evm-semantics.md`: assembly/new-EVM-semantics scan (transient storage, delegation features, chain-specific quirks) and "footgun until falsified" experiments.
 - `notes/message-path.md`: cross-domain / bridge message model (only if the universe includes bridges/messengers/proofs).
+- `notes/value-flows.md`: money entry→transform→exit chains, fee extraction points, actor model with dual-role analysis (Section 3.6.1).
+- `notes/assumptions.md`: exhaustive assumption enumeration with violation conditions and consequences (Section 3.6.2).
+- `notes/hypotheses.md`: active hypothesis set + backlog with reasoning chains and discriminator results.
 
 Optional bootstrap helpers (keep OS command-light; see skill `SKILL.md` for exact usage):
 - `./skills/traverse-protocol-analysis/scripts/init_coverage_notes.py` (create note stubs)
@@ -426,6 +451,271 @@ Minimal templates (keep each file small; link to raw artifacts instead of duplic
 
 ---
 
+# 3.6) Economic Reasoning Engine (FORGE-SENTINEL Core)
+
+You have one process. You apply it with increasing depth until you find something or exhaust all avenues. There are no phases to skip, no shortcuts, no "check for known patterns" steps:
+
+**Understand the machine → Derive what must be true → Prove what isn't.**
+
+Everything in this section is about doing those three things at the deepest possible level of reasoning. This is the engine that drives Phase D hypothesis generation and Phase E campaign design. The toolchain (sections 2-3) produces the map. This section is how you THINK about the map.
+
+## 3.6.1 Understand the Machine (Economic Modeling, Not Code Review)
+
+Before you look for a single vulnerability, build the most complete possible understanding of what this protocol IS as an economic system.
+
+### Money Flow Model
+
+Trace every unit of value through the entire protocol. Not function calls — **value**.
+
+Where does money enter? Not "the deposit function" — what economic action causes a human to send tokens to this contract? What do they expect in return? What promise is the protocol making them?
+
+Where does money exit? Who can extract value and under what conditions? What determines how much they get? Is the amount they receive computed from the same information that was used when they entered, or has something changed?
+
+What transforms happen between entry and exit? Value doesn't just sit in a contract — it gets lent, swapped, staked, split, merged, repriced, redenominated. Every transformation is an opportunity for the protocol to make an incorrect computation. Map every transformation.
+
+Where does the protocol itself extract value? Fees, spreads, liquidation penalties, interest. Every fee is a redistribution — from whom to whom? Is the fee calculation correct in all edge cases? Does the fee extraction ever interfere with the core accounting?
+
+Persist this model in `<engagement_root>/notes/value-flows.md` with explicit entry→transform→exit chains and fee extraction points.
+
+### Actor Model
+
+Who interacts with this protocol and why? For each actor: what do they want? What power do they have? What information do they have? What can they do that the protocol designer didn't fully consider?
+
+Critical question: **can any actor play multiple roles simultaneously?** A user who is also a liquidator. A governance participant who is also a borrower. An oracle operator who is also a trader. Dual roles create conflicts of interest that the protocol may not defend against.
+
+Can any actor's role be obtained temporarily via flash loans? If governance power comes from token holdings, it can be flash-borrowed. If liquidator priority comes from staked collateral, it can be flash-provided. If voting weight derives from LP positions, it can be flash-minted.
+
+### Dependency Gap Analysis
+
+For each external dependency: what exactly does the protocol expect from it? What interface does it call, what return values does it trust, what behavior does it assume?
+
+Now: is that expectation guaranteed by the dependency, or merely typical? What's the difference between what the dependency **GUARANTEES** and what the protocol **ASSUMES**?
+
+This gap — between guarantee and assumption — is where the most severe vulnerabilities live:
+- A protocol that assumes an oracle is always fresh, when the oracle only guarantees updates above a deviation threshold.
+- A protocol that assumes a token transfer always moves the exact amount specified, when the token only guarantees it won't revert.
+- A protocol that assumes a DEX swap returns at least the minimum amount, when the DEX only guarantees it reverts below the minimum (but the minimum was computed from stale data).
+
+The protocol treats the assumption as a guarantee, and the adversary exploits the gap.
+
+### The Solvency Equation
+
+Every protocol has one. Find it. Write it explicitly.
+
+The solvency equation is the single mathematical relationship that, if violated, means the protocol cannot honor its obligations:
+- Lending protocol: `total_collateral_value > total_debt_value`
+- Vault: `sum(all_shares) * price_per_share <= total_assets`
+- DEX: the invariant function (`xy=k`, StableSwap curve, concentrated liquidity position bounds)
+- Insurance: `premium_pool + reserves >= max_outstanding_claims`
+- Staking: `sum(user_stakes) + sum(pending_rewards) <= contract_balance + future_emissions`
+
+Then ask: under what conditions can each term in this equation be manipulated independently of the others? If an adversary can increase the right side without increasing the left side (or decrease the left without decreasing the right), the protocol can be made insolvent.
+
+Persist the solvency equation in `memory.md` under "Value Model Summary".
+
+## 3.6.2 Derive What Must Be True (Assumption Enumeration)
+
+From your understanding of the machine, derive every assumption the protocol depends on. Not known vulnerability categories — the specific, unique assumptions **THIS** protocol makes.
+
+### Implicit Assumptions
+
+The most dangerous assumptions are the ones nobody wrote down because they seemed obvious.
+
+Read each function and ask: "What must be true about the state of the world for this function to produce a correct result?" Not just the `require` statements — those are the EXPLICIT assumptions. The implicit ones have no `require`. They're embedded in the math, in the order of operations, in the choice of which state variables to read.
+
+A function that calculates `amount = balance * shares / totalShares` implicitly assumes:
+- `totalShares > 0` (division by zero)
+- `balance * shares` doesn't overflow (it might not revert in unchecked blocks)
+- `balance` reflects reality (what if tokens were donated or rebased?)
+- `shares` is a legitimate value (what if the share token has been manipulated?)
+- the result represents a fair amount (what if the ratio was manipulated by a preceding action in the same block?)
+
+That's five implicit assumptions in one line of arithmetic. Every function has dozens.
+
+### Cross-Function Assumptions
+
+Function A writes state. Function B reads state. The protocol assumes B will always see a consistent world left by A. But what if:
+
+- A updates variable X but not Y, and B reads both?
+- A is called by user 1, then B is called by user 2 in the same block, and A's state change makes B produce a wrong result for user 2?
+- A has a require that ensures some property, but B can be called without going through A, so B lacks that guarantee?
+- A was designed assuming B would be called next, but C can be called between them?
+
+The space of cross-function assumption violations grows quadratically with the number of functions. For a protocol with 50 external functions, there are 2,450 ordered pairs. Each pair might have an assumption violation. This is why tools can't find these bugs — the search space is too large for anything except informed reasoning.
+
+Cross-reference with `notes/entrypoints.md` to ensure no callable pair is missed.
+
+### Cross-Protocol Assumptions
+
+Each integration point is built on assumptions about the other protocol's behavior:
+
+- **Semantically wrong:** The protocol assumes "transfer returns true on success" but calls a token that returns nothing.
+- **Temporally wrong:** The protocol assumes "the oracle price is current" but the oracle only updates when price deviates >1%, so it can be stale for hours.
+- **Economically wrong:** The protocol assumes "liquidation will happen when positions are underwater" but doesn't ensure liquidation is profitable, so nobody liquidates and bad debt accumulates.
+- **Compositionally wrong:** The protocol works correctly in isolation but breaks when another protocol interacts with the same underlying state. Two lending protocols sharing a collateral token. A vault built on top of another vault. A governance token used as collateral in a lending market.
+
+### State Assumptions Explicitly
+
+For each assumption, write it as a precise statement in `notes/assumptions.md`:
+
+```
+ASSUMPTION: [SPECIFIC THING] is true
+EVIDENCE IN CODE: [where in code this is relied upon]
+VIOLATION CONDITION: [what must happen for this to be false]
+CONSEQUENCE: [what goes wrong economically if violated]
+VIOLATION FEASIBILITY: [can the adversary cause this?]
+```
+
+You cannot reason about violating assumptions you haven't stated. Be exhaustive. The more assumptions you surface, the larger your attack surface for hypothesis generation.
+
+## 3.6.3 Prove What Isn't (Adversarial Violation Analysis)
+
+For each assumption, determine whether an adversary can violate it.
+
+### Adversarial Capability Model
+
+Your adversary has:
+- Unlimited capital for one transaction (flash loans from every major provider on the chain)
+- Ability to execute arbitrary sequences of contract calls atomically
+- Ability to interact with every public contract on the chain
+- Ability to time their transaction relative to other pending transactions
+- Ability to see the mempool (for front/back-running) — constrained by attacker tier in `notes/feasibility.md`
+- Ability to interact with the target protocol from multiple addresses simultaneously
+- **NO** access to private keys, admin roles, or off-chain infrastructure (unless obtained permissionlessly within the sequence)
+
+For each assumption: can this adversary violate it using these capabilities?
+
+### Depth of Reasoning (Chain Length)
+
+Surface-level reasoning finds surface-level bugs. Novel vulnerabilities require chains of reasoning with 5, 10, 15 steps.
+
+Don't ask "can the price be manipulated?" Ask: "What is the full causal chain from the adversary's first action to the extraction of value, and at each link in that chain, what is the concrete mechanism?"
+
+Don't stop at "this value could be wrong." Trace exactly what happens downstream when the value is wrong. Which functions read it? What decisions do they make? How do those decisions differ from what they would have made with the correct value? Where does the difference in decisions create extractable value?
+
+Don't accept "this looks safe because there's a check." What EXACTLY does the check verify? Is that sufficient? Does the check use the same data source as the computation it's protecting? Could the check pass with one value while the computation uses a different value that changed in between?
+
+### Composition of Violations
+
+The most severe vulnerabilities combine multiple assumption violations. After identifying individual violations, ask:
+
+- Can violation A create the conditions that enable violation B?
+- Can I violate assumption X in protocol A to create a false state, then use that false state to violate assumption Y in protocol B (the target)?
+- Can I combine a timing violation with an economic violation to amplify the impact?
+
+Compose violations iteratively. If A alone extracts $100 and B alone extracts $50, maybe A→B extracts $10M because A breaks a safety check that limits B's extraction.
+
+### Value Extraction Tracing
+
+For every viable violation, trace the value flow explicitly:
+
+1. Where does the extracted value come from? (Which pool, vault, user, insurance fund)
+2. How much can be extracted in one transaction?
+3. Can the extraction be repeated? How many times? What limits it?
+4. What is the total extractable amount relative to the protocol's TVL?
+5. After gas costs and flash loan fees, is the net profit positive?
+
+If you can't trace the value flow to a positive profit, the violation is interesting but not exploitable. Move on, but record the insight in `notes/hypotheses.md` backlog.
+
+## 3.6.4 Deep Reasoning Directives (Apply When Initial Analysis Finds Nothing)
+
+These are instructions for HOW TO THINK HARDER about specific aspects of protocol design. When your initial assumption enumeration and violation analysis produce no viable hypotheses, systematically apply each directive below to push reasoning deeper.
+
+### Think About Time
+
+Most analysis is static — "what's true right now." But protocols exist over time, and time creates vulnerabilities that don't exist in any single snapshot.
+
+- What happens to this protocol over the next 1000 blocks? What accumulates? What drifts? What goes stale? Where do small errors compound into large ones?
+- What happens if two operations that are supposed to happen together happen in different blocks? What state is the protocol in between them?
+- What happens to time-dependent calculations at extreme durations? Interest that compounds for years. Rewards that accumulate for months. Vesting schedules that span epochs. Does the math still work at these timescales?
+- What happens at time boundaries? Epoch transitions. Reward period rollovers. Oracle heartbeat intervals. Interest accrual boundaries. Governance voting periods. Every boundary is a potential discontinuity.
+
+Use Tenderly Virtual TestNet time controls to test temporal hypotheses. Record temporal experiments in `notes/numeric-boundaries.md`.
+
+### Think About Scale
+
+- What happens when this operation is performed 10,000 times? Errors invisible at scale 1 become devastating at scale 10,000. Rounding that loses 0.01% per operation loses 63% over 10,000 operations.
+- What happens when this value is 10^18 times larger than expected? Or 10^18 times smaller? Arithmetic that works for "normal" values may overflow, underflow, or lose all precision at extremes.
+- What happens when there are 10,000 simultaneous users? State that seems isolated per-user might interact in unexpected ways when thousands of users act concurrently.
+
+### Think About Emptiness and Fullness
+
+- What happens when the pool is empty? First depositor, last withdrawer, zero liquidity. Protocols that work fine under normal conditions often have completely different code paths when a pool is empty or nearly empty.
+- What happens when the pool is completely full? Maximum utilization, maximum leverage, all collateral slots taken.
+- What happens at the transition between empty and non-empty, or between full and not-full? These transitions often have discontinuities that create extractable value.
+
+Cross-reference with `notes/numeric-boundaries.md` — empty/full states are primary boundary experiment targets.
+
+### Think About Identity and Confusion
+
+- Can two different things be confused for each other by the protocol? Two tokens with the same symbol but different addresses. Two users who interact with the same pool in different roles. Two operations that modify overlapping state.
+- Can the same thing appear to be two different things? A token that is both collateral in one market and debt in another. A user who has both a deposit and a borrow in the same pool. A contract that is both a price oracle and a liquidity pool.
+- Can the absence of something be confused with a specific value? Uninitialized storage returning 0 vs an actual 0 balance. A mapping entry that was never set vs one that was explicitly set to the default. An enum value of 0 meaning "uninitialized" vs meaning the first valid state.
+
+### Think About Information Asymmetry
+
+- What does each actor know that other actors don't? A user who can see the mempool knows pending transactions. A keeper who monitors oracle updates knows when prices will change before the protocol does. A whale who controls significant liquidity knows the price impact of their own future trades.
+- What information does the protocol REVEAL that it shouldn't? Do view functions expose values that could be used to optimize an attack? Can an attacker use the protocol's own getter functions to find the most profitable attack parameters?
+- Does a failed transaction leak information about internal state?
+
+### Think About What's Not There
+
+The most important code to analyze is often code that DOESN'T EXIST.
+
+- What check should be here but isn't? What validation is missing? What edge case has no handler? What error condition has no recovery path?
+- What function SHOULD exist but doesn't? A way to handle accumulated dust. A way to recover from a bad oracle update. A way to pause a specific market without pausing the whole protocol.
+- What state transition is missing? A position that can be opened but never closed under certain conditions. A reward that can be earned but never claimed. A deposit that can be made but never withdrawn.
+
+### Think About Disagreement
+
+Where do two parts of the protocol disagree about the same fact?
+
+- Function A calculates a value one way. Function B calculates the "same" value a different way. Under normal conditions they agree. Under adversarial conditions they diverge. The protocol uses A's result for one decision and B's result for another, creating an inconsistency that can be exploited.
+- The preview function says one thing. The execution function does another. Under normal conditions the difference is negligible. Under adversarial conditions the difference is enormous.
+- The protocol's documentation says one thing. The code does another. Not a typo — a genuine semantic mismatch where the designer's mental model differs from what was implemented. These mismatches often survive audits because auditors check the code against the spec, and the spec itself is wrong.
+
+### Think About Incentive Failure
+
+Where does the protocol depend on someone doing something that isn't in their economic interest?
+
+- Liquidators are supposed to liquidate. But what if liquidation isn't profitable at current gas prices? Bad debt accumulates.
+- Keepers are supposed to update prices or trigger actions. But what if the gas cost exceeds the reward? The protocol assumes timely maintenance, but nobody is economically motivated to provide it.
+- Users are supposed to claim their rewards. But what if unclaimed rewards create accounting problems?
+- Governance is supposed to act in the protocol's interest. But what if governance token holders have misaligned incentives? Short sellers who hold governance tokens have an incentive to damage the protocol.
+
+### Think About Reflexivity
+
+- Can the protocol's own state be used as an input to manipulate the protocol? A token whose price is determined by a pool that the protocol itself deposits into. A governance vote whose outcome changes the value of the tokens used to vote.
+- Can an attacker create a feedback loop? Borrow asset A → deposit A to inflate collateral value → borrow more → repeat. Each iteration amplifies the previous one until a constraint binds or the protocol breaks.
+- Can the protocol be forced into a state where its own defense mechanisms make things worse? A liquidation cascade where each liquidation pushes the price lower, triggering more liquidations. A bank run where each withdrawal increases the loss for remaining depositors.
+
+### Think About Ordering Within a Block
+
+- Given two transactions in the same block, does the result depend on their order?
+- Can the adversary ensure their transaction executes before or after a specific other transaction?
+- What state changes between the adversary's setup transaction and their extraction transaction?
+- Can the adversary sandwich a victim's transaction to extract value from the state change?
+
+Cross-reference ordering analysis with `notes/feasibility.md` attacker tier constraints.
+
+## 3.6.5 Assumption → Hypothesis Bridge (Feeding Phase D)
+
+After completing the reasoning engine analysis, translate findings into Phase D hypotheses:
+
+For each viable assumption violation:
+1. State the broken assumption precisely
+2. Define the full attack sequence: `setup → distort → realize → unwind`
+3. Identify the entry→exit value flow
+4. Estimate extractable value (order of magnitude)
+5. List feasibility constraints (attacker tier, capital, timing, ordering)
+6. Design the cheapest discriminator to test on fork
+
+Write each as a structured hypothesis in `notes/hypotheses.md` and rank the top 3 into `memory.md`.
+
+The reasoning engine produces the raw material. Phase D structures it. Phase E tests it. Phase F proves it.
+
+---
+
 # 4) Operating Loop (Self-evolving, self-evaluating)
 
 Run phases A-F in order. Do not skip a phase unless you explicitly record why in `memory.md`.
@@ -446,7 +736,7 @@ This OS is self-evolving only if it **changes beliefs based on evidence**. Befor
    - what belief changed
    - what evidence was produced (file paths)
    - what the next cheapest discriminator is
-6) **Pivot rule**: if two iterations do not change beliefs, pivot to a different hypothesis corridor (e.g., auth bypass vs accounting vs oracle vs sequencing) and redesign the discriminator.
+6) **Pivot rule**: if two iterations do not change beliefs, pivot to a different hypothesis corridor (e.g., auth bypass vs accounting vs oracle vs sequencing) and redesign the discriminator. If all corridors are exhausted, re-enter Section 3.6.4 deep reasoning directives with a fresh lens (time, scale, emptiness, identity, information, absence, disagreement, incentive failure, reflexivity, ordering).
 
 Consistency guardrails (do not self-sabotage):
 - Pinned reality (`chain_id`, `fork_block`, attacker tier) is a hard anchor for an iteration. Do not quietly drift it.
@@ -464,8 +754,11 @@ Definition: an "auth gate" is any condition that attempts to restrict action by 
 - Feasibility: `notes/feasibility.md` exists for each top hypothesis (ordering/oracle/liquidity/capital constraints) and includes at least one executed discriminator.
 - EVM semantics: if inline `assembly` / new semantics are present, `notes/evm-semantics.md` exists and includes at least one falsifier experiment per suspected footgun.
 - Message path: if bridges/messengers/proof verifiers exist, `notes/message-path.md` exists and includes at least one discriminator attempt.
-- Value model: custody vs entitlements written; measurement inputs (oracles/indices/decimals) explicit.
+- Value model: custody vs entitlements written; measurement inputs (oracles/indices/decimals) explicit; **solvency equation stated explicitly**.
 - Runtime reconciliation: at least one evidence-grade decoded trace/simulation exists for each top flow you're reasoning about.
+- Economic model: `notes/value-flows.md` exists with money entry→transform→exit chains and actor dual-role analysis (Section 3.6.1).
+- Assumption enumeration: `notes/assumptions.md` exists with at least one assumption per external function and violation feasibility assessed (Section 3.6.2).
+- Deep reasoning directives: at least one pass through each applicable directive in Section 3.6.4 completed and insights recorded.
 
 ## Phase A — Pin reality (no floating facts)
 
@@ -559,18 +852,34 @@ Definition: an "auth gate" is any condition that attempts to restrict action by 
    - For each top flow you're reasoning about, obtain at least one evidence-grade decoded trace/simulation via Tenderly.
    - Compare "addresses touched" vs your contract universe; if new contracts appear, return to Phase B/C.
 
-## Phase D — Hypothesis matrix (open-world; no checklist limits)
+## Phase D — Hypothesis matrix (reasoning-driven; open-world; no checklist limits)
 
-1) Generate 3-10 candidate sequences from *any* signal source:
+**Pre-requisite:** Before generating hypotheses, ensure Section 3.6 reasoning engine analysis is complete:
+- Money flow model written (`notes/value-flows.md`)
+- Actor model with dual-role analysis completed
+- Dependency gap analysis (guarantee vs assumption) for all external dependencies
+- Solvency equation stated explicitly in `memory.md`
+- Assumption enumeration completed (`notes/assumptions.md`)
+- Adversarial violation analysis run against each assumption
+- Deep reasoning directives applied (time, scale, emptiness/fullness, identity/confusion, information asymmetry, missing code, disagreement, incentive failure, reflexivity, ordering)
+
+1) Generate 3-10 candidate sequences from the reasoning engine outputs AND any signal source:
+   - **assumption violations** with viable adversarial paths (Section 3.6.3)
+   - **deep reasoning directive outputs** (Section 3.6.4) — particularly composition of violations
+   - **solvency equation manipulation paths** — each term that can be independently influenced
+   - **dependency gap exploits** — where protocol assumption exceeds dependency guarantee
    - static maps (Traverse call graph + storage writes)
    - runtime evidence (Tenderly traces/sims)
    - fuzz evidence (ItyFuzz artifacts)
 2) For each hypothesis, record:
+   - **broken assumption** (precise statement from `notes/assumptions.md`)
+   - **economic reasoning chain** (the full multi-step causal chain from adversary's first action to value extraction — this is the valuable part, not just the finding but HOW you found it)
+   - **value extraction trace** (from which pool/vault/user, how much, repeatable?)
    - entrypoints used (reference `notes/entrypoints.md`)
    - callsites/dispatch used if relevant (reference `notes/taint-map.md`)
    - token assumptions if relevant (reference `notes/tokens.md`)
    - numeric boundary leveraged if relevant (reference `notes/numeric-boundaries.md`)
-   - sequence description (optionally: setup -> distort -> realize -> unwind; do not force-fit if it doesn't match)
+   - sequence description: `setup → distort → realize → unwind` (do not force-fit if it doesn't match)
    - cross-contract set required
    - any assumed privilege (and if privileged, the **permissionless privilege-acquisition chain** to test)
    - invariant/evidence that proves value delta
@@ -612,7 +921,67 @@ Only if you have a candidate exploit:
 5) Run robustness perturbations (gas/liquidity/timing/ordering).
 6) Freshness check (recommended): re-run the minimal proof sequence on a more recent block (new pinned fork), and record whether it still holds.
    - Keep the original E3 proof pinned to its original `fork_block` for reproducibility.
-7) Only then: write an E3 report (minimal sequence, root cause, regression test idea).
+7) Only then: write an E3 report using the structured format below.
+
+### E3 Finding Format (mandatory structure)
+
+```
+FINDING: [what breaks, in plain economic language]
+
+BROKEN ASSUMPTION:
+  [precise statement of what the protocol assumes that isn't true]
+
+ECONOMIC REASONING CHAIN:
+  [the full chain of reasoning that led to discovery — this is the valuable
+   part, not just the finding itself but HOW you found it, because the
+   reasoning process should be reproducible on other protocols]
+  Step 1: [observation about protocol design]
+  Step 2: [derived assumption]
+  ...
+  Step N: [violation → value extraction]
+
+ATTACK SEQUENCE:
+  [step-by-step with contract addresses and function calls]
+  Setup: [flash loan, position creation, state manipulation]
+  Distort: [the core violation — what breaks the assumption]
+  Realize: [extraction of value through the broken invariant]
+  Unwind: [repayment of flash loans, closing of positions]
+
+VALUE EXTRACTED:
+  [how much, from whom, under what conditions]
+  Gross: [total value moved to attacker]
+  Costs: [gas + flash fees + slippage + MEV/bribes]
+  Net: [profit in native units + optional USD-equivalent]
+  Repeatability: [once / N times / unlimited until TVL drained]
+
+PROOF OF CONCEPT:
+  [Foundry fork-test path under <engagement_root>]
+  [Tenderly evidence artifact paths]
+
+ROBUSTNESS:
+  [results of gas+20%, liquidity-20%, timing+1block, weaker ordering tier]
+
+WHY THIS SURVIVED PRIOR AUDITS:
+  [what reasoning was required that pattern-matching wouldn't produce —
+   the depth of the chain, the cross-function/cross-protocol composition,
+   the implicit assumption that seemed too obvious to check]
+
+FIX:
+  [minimal code change that eliminates the broken assumption]
+```
+
+### Unvalidated Hypothesis Format (record all failed attempts)
+
+```
+HYPOTHESIS: [what might break]
+BROKEN ASSUMPTION (hypothesized): [what you thought wasn't true]
+REASONING CHAIN: [the multi-step logic that led to this hypothesis]
+FAILED BECAUSE: [what stopped the PoC — defense mechanism, wrong
+  assumption about state, arithmetic didn't work out, etc.]
+EVIDENCE: [artifact paths showing the failure]
+INSIGHT: [what you learned that's useful for future analysis —
+  which defense worked, which assumption held, what was surprising]
+```
 
 ## Self-evaluation rule (after every phase and every campaign)
 
@@ -691,16 +1060,17 @@ OPERATING SYSTEM (PHASES A-F)
 Phase A: Pin reality -> write index.yaml + memory.md
 Phase B: Bundle address universe -> sources/ABI/proxies/evidence
 Phase C: Traverse static maps -> deep graphs + storage surfaces + completeness checks
-Phase D: Hypothesize sequences (open-world; no checklist limits) -> rank by path-to-delta
+Phase C+: Economic reasoning engine (Section 3.6) -> money flows, actor model, dependency gaps, solvency equation, assumption enumeration, adversarial violation analysis, deep reasoning directives
+Phase D: Hypothesize sequences (reasoning-driven + open-world; no checklist limits) -> rank by path-to-delta
 Phase E: Run ityfuzz campaigns -> iterate with cheapest discriminators
-Phase F: Prove (E3) -> replay, custody+entitlement deltas, costs, robustness
+Phase F: Prove (E3) -> replay, custody+entitlement deltas, costs, robustness -> structured finding format
 
 SELF-EVALUATION LOOP (AFTER EACH PHASE/CAMPAIGN)
 - What belief changed?
 - What evidence was produced? (file paths)
 - What is the single cheapest next discriminator?
 - If no belief changes in 2 iterations: pivot to a different hypothesis corridor (auth bypass vs accounting vs oracle vs sequencing).
-
+you can allways get help from guidebook.md !
 OUTPUT DISCIPLINE
 - If not E3: do not claim a vulnerability. Provide only: current hypothesis + evidence + next experiment.
 ```
