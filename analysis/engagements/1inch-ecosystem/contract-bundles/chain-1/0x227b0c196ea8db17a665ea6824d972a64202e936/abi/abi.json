@@ -1,0 +1,2026 @@
+[
+  {
+    "name": "NonceIncreased",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "maker",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "oldNonce",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "newNonce",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OrderCanceled",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "maker",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "orderHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "remainingRaw",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OrderFilled",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "taker",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "orderHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "remaining",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "makingAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "takingAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OrderFilledRFQ",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "taker",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "orderHash",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "makingAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "takingAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OwnershipTransferred",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "previousOwner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "newOwner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "UpdatedInteractionWhitelist",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "isWhitelist",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "DOMAIN_SEPARATOR",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "LIMIT_ORDER_RFQ_TYPEHASH",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "LIMIT_ORDER_TYPEHASH",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "advanceNonce",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "amount",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "and",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "targets",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "data",
+        "type": "bytes[]",
+        "internalType": "bytes[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "arbitraryStaticCall",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "data",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "cancelBatchOrders",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "orders",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "salt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "feeRecipient",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makerTokenFeePercent",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "makerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "takerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getMakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getTakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "predicate",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "permit",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "interaction",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ],
+        "internalType": "struct OrderMixin.Order[]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "cancelOrder",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "salt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "feeRecipient",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makerTokenFeePercent",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "makerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "takerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getMakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getTakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "predicate",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "permit",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "interaction",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ],
+        "internalType": "struct OrderMixin.Order"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "cancelOrderRFQ",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "orderInfo",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "checkPredicate",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "salt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "feeRecipient",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makerTokenFeePercent",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "makerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "takerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getMakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getTakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "predicate",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "permit",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "interaction",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ],
+        "internalType": "struct OrderMixin.Order"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "doublePrice",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "oracle1",
+        "type": "address",
+        "internalType": "contract AggregatorV3Interface"
+      },
+      {
+        "name": "oracle2",
+        "type": "address",
+        "internalType": "contract AggregatorV3Interface"
+      },
+      {
+        "name": "spread",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "eq",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "value",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "data",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "fillBatchOrdersTo",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "params",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "orders",
+            "type": "tuple[]",
+            "components": [
+              {
+                "name": "salt",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "makerAsset",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "takerAsset",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "maker",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "receiver",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "allowedSender",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "makingAmount",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "takingAmount",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "feeRecipient",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "makerTokenFeePercent",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "makerAssetData",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "takerAssetData",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "getMakerAmount",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "getTakerAmount",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "predicate",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "permit",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "interaction",
+                "type": "bytes",
+                "internalType": "bytes"
+              }
+            ],
+            "internalType": "struct OrderMixin.Order[]"
+          },
+          {
+            "name": "signatures",
+            "type": "bytes[]",
+            "internalType": "bytes[]"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "thresholdAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "target",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "internalType": "struct OrderMixin.FillBatchOrdersParams"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "fillOrder",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "salt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "feeRecipient",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makerTokenFeePercent",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "makerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "takerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getMakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getTakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "predicate",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "permit",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "interaction",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ],
+        "internalType": "struct OrderMixin.Order"
+      },
+      {
+        "name": "signature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "makingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "takingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "thresholdAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "callbackData",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "fillOrderRFQ",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "info",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "contract IERC20"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "contract IERC20"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makingAmountThreshold",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct OrderRFQMixin.OrderRFQ"
+      },
+      {
+        "name": "signature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "makingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "takingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "fillOrderRFQTo",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "info",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "contract IERC20"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "contract IERC20"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makingAmountThreshold",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct OrderRFQMixin.OrderRFQ"
+      },
+      {
+        "name": "signature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "makingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "takingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "fillOrderRFQToWithPermit",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "info",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "contract IERC20"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "contract IERC20"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makingAmountThreshold",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct OrderRFQMixin.OrderRFQ"
+      },
+      {
+        "name": "signature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "makingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "takingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "permit",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "fillOrderTo",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "params",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "order",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "salt",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "makerAsset",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "takerAsset",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "maker",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "receiver",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "allowedSender",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "makingAmount",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "takingAmount",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "feeRecipient",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "makerTokenFeePercent",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "makerAssetData",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "takerAssetData",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "getMakerAmount",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "getTakerAmount",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "predicate",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "permit",
+                "type": "bytes",
+                "internalType": "bytes"
+              },
+              {
+                "name": "interaction",
+                "type": "bytes",
+                "internalType": "bytes"
+              }
+            ],
+            "internalType": "struct OrderMixin.Order"
+          },
+          {
+            "name": "signature",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "thresholdAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "target",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "callbackData",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ],
+        "internalType": "struct OrderMixin.FillOrderParams"
+      },
+      {
+        "name": "isForcedFill",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "fillOrderToWithPermit",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "salt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "feeRecipient",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makerTokenFeePercent",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "makerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "takerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getMakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getTakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "predicate",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "permit",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "interaction",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ],
+        "internalType": "struct OrderMixin.Order"
+      },
+      {
+        "name": "signature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "makingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "takingAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "thresholdAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "permit",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "callbackData",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "getMakerAmount",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "orderMakerAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "orderTakerAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "swapTakerAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "name": "getTakerAmount",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "orderMakerAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "orderTakerAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "swapMakerAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "name": "gt",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "value",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "data",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "hashOrder",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "salt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "feeRecipient",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makerTokenFeePercent",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "makerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "takerAssetData",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getMakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "getTakerAmount",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "predicate",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "permit",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "interaction",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ],
+        "internalType": "struct OrderMixin.Order"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "hashOrderRFQ",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "order",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "info",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makerAsset",
+            "type": "address",
+            "internalType": "contract IERC20"
+          },
+          {
+            "name": "takerAsset",
+            "type": "address",
+            "internalType": "contract IERC20"
+          },
+          {
+            "name": "maker",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "allowedSender",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "makingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "takingAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "makingAmountThreshold",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct OrderRFQMixin.OrderRFQ"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "increaseNonce",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "invalidatorForOrderRFQ",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "maker",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "slot",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "lt",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "value",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "data",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "nonce",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "nonceEquals",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "makerAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "makerNonce",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "or",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "targets",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "data",
+        "type": "bytes[]",
+        "internalType": "bytes[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "owner",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "remaining",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "orderHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "remainingRaw",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "orderHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "remainingsRaw",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "orderHashes",
+        "type": "bytes32[]",
+        "internalType": "bytes32[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "renounceOwnership",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "simulateCalls",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "targets",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "data",
+        "type": "bytes[]",
+        "internalType": "bytes[]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "singlePrice",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "oracle",
+        "type": "address",
+        "internalType": "contract AggregatorV3Interface"
+      },
+      {
+        "name": "inverseAndSpread",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "timestampBelow",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "time",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "transferOwnership",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "newOwner",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "updateInteractionWhitelist",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "isWhitelist",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  }
+]

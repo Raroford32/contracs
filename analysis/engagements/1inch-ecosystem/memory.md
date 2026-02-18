@@ -2,7 +2,7 @@
 
 ## Pinned Reality
 - chain_id: 1
-- fork_block: 24482400
+- fork_block: latest (dynamic fork via RPC)
 - attacker_tier: public mempool (escalate to builder if needed)
 - capital_model: flash loans from Aave/dYdX/Balancer, unlimited single-tx capital
 
@@ -11,95 +11,115 @@
 - AggregationRouterV5: 0x1111111254EEB25477B68fb85Ed929f73A960582
 - AggregationRouterV4: 0x1111111254fb6c44bAC0beD2854e76F90643097d
 - AggregationRouterV3: 0x11111112542D85B3EF69AE05771c2dCCff4fAa26
-- 1INCH Token: 0x111111111117dC0aa78b770fA6A738034120C302 (ERC20Permit + Burnable + Ownable)
-- st1INCH: 0x9A0C8Ff858d273f57072D714bca7411D717501D7 (non-transferable, 30-day min lock)
+- OneInchExchangeV2: 0x111111125434b319222CdBf8C261674aDB56F3ae
+- 1INCH Token: 0x111111111117dC0aa78b770fA6A738034120C302
+- st1INCH: 0x9A0C8Ff858d273f57072D714bca7411D717501D7 (260M 1INCH, non-transferable, 30-day min lock)
 - LimitOrderProtocolV2: 0x119c71D3BbAC22029622cbaEc24854d3D32D2828
 - LimitOrderProtocolV3: 0x227B0c196eA8db17A665EA6824D972A64202E936
-- Settlement: 0xfb2809a5314473E1165f6B58018E20ed8F07b840
+- Settlement (Fusion): 0xfb2809a5314473E1165f6B58018E20ed8F07b840
+- FeeBank: 0x3608aA1a7F15f0F6e7119FD3CB47C69D4dAfBeAd
 - OffchainOracle: 0x07D91f5fb9Bf7798734C3f606dB065549F6893bb
 - MooniswapFactory: 0xbAF9A5d4b0052359326A6CDAb54BABAa3a3A9643
-- OneInchExchange (V2): 0x111111125434b319222CdBf8C261674aDB56F3ae
-- Permit2 (shared): 0x000000000022D473030F116dDEE9F6B43aC78BA3
-- UniV3 Factory: 0x1F98431c8aD98523631AE4a59f267346ea31F984
-- WETH: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
-- 0x111cff45... ($98M): Gnosis MultiSigWallet 3-of-3, NOT a 1inch protocol contract
-- Router V6 Owner: 0x9F8102b1bB05785BaD2874f2C7B1aaea4c6D976a
+- MooniswapPool3 (ETH/WBTC): 0x6a11F3E5a01D129e566d783A7b6E8862bFD66CcA
 
 ## Control Plane & Auth
 - V6: Ownable (OZ v5) + Pausable + EIP-712 sigs + MakerTraits + nonce/epoch
-- V5: Ownable (OZ v4) + simulate() delegatecall (always reverts) + destroy() selfdestruct
-- V4: Ownable + destroy() selfdestruct
-- V3: Ownable only
-- st1INCH: Ownable, no governance execution, non-transferable, 30-day min lock
-- Governance: Off-chain Snapshot + multisig execution (NOT atomic, NOT exploitable)
-- bypass hypotheses: All falsified — standard OZ implementations, no reinit, not upgradeable
+- V5: Ownable + simulate() delegatecall (always reverts) + destroy() selfdestruct
+- Settlement: onlyLimitOrderProtocol modifier + Whitelist + priority fee validation
+- st1INCH: Ownable, non-transferable, ReentrancyGuard on ERC20Pods, time-locked
+- LOP V3: interaction whitelist, per-order invalidator (CEI correct)
+- LOP V2: NO interaction whitelist (but callback target is maker-signed)
+- bypass hypotheses: All falsified (standard OZ, no reinit, not upgradeable)
 
-## Coverage Status
-- entrypoints: notes from V6 engagement (analysis/engagements/1inch-v6/notes/entrypoints.md)
-- control plane: analysis/engagements/1inch-v6/notes/control-plane.md + ecosystem notes
-- taint map: analysis/engagements/1inch-v6/notes/taint-map.md (11 callsites)
-- tokens: analysis/engagements/1inch-v6/notes/tokens.md
-- numeric boundaries: analysis/engagements/1inch-v6/notes/numeric-boundaries.md
-- feasibility: analysis/engagements/1inch-v6/notes/feasibility.md
-- value flows: analysis/engagements/1inch-v6/notes/value-flows.md
-- assumptions: analysis/engagements/1inch-v6/notes/assumptions.md
-- hypotheses: notes/hypotheses.md (H7-H15 all resolved)
-- approval surface: notes/approval-surface.md (V5 complete, V4 confirmed safe, V3 minimal)
-- unknown contract: notes/unknown-98m-contract.md (Gnosis multisig, not exploitable)
+## Coverage Status (paths relative to analysis/engagements/1inch-ecosystem/)
+- fork tests: exploit_test/test/OneInchEcosystemExploit.t.sol (10 tests)
+- fork tests: exploit_test/test/OracleDeepExploit.t.sol (5 tests)
+- fork tests: exploit_test/test/CrossContractExploit.t.sol (9 tests)
+- bundled sources: contract-bundles/chain-1/ (11 addresses bundled)
+- V6-specific notes: ../1inch-v6/notes/ (entrypoints, control-plane, taint-map, tokens, etc.)
 
 ## Value Model Summary
-- custody assets: NONE between txs (non-custodial router, 1-wei gas optimization) across ALL versions
-- entitlements: N/A (routers don't track entitlements)
-- key measurements: minReturn check on output (V6), threshold in takerTraits (V6 limit orders)
-- key settlements: transferFrom(msg.sender, pool/recipient, amount) — invariant across V3-V6
-- solvency equation: router_balance <= 1 wei per token (by design, all versions)
+- custody assets: NONE in routers (0 balance in V6; dust in V3/V5)
+- st1INCH custody: 260,219,530 1INCH (~$78M+), protected by non-transferable + time-lock
+- FeeBank: resolver credit system, deposit/withdraw 1INCH, checked math
+- solvency: st1INCH 1INCH balance == totalDeposits (surplus = 0, exactly solvent)
 
-## Economic Model
-- money entry: user tokens via transferFrom(msg.sender, ...) — ALL versions
-- money exit: pool output to user-specified recipient
-- value transforms: external DEX pools (not the router)
-- fee extraction: no explicit protocol fee in router; 1inch captures spread off-chain
-- actor dual-roles: none exploitable identified across ecosystem
-- dependency gaps: none — external pools enforce their own invariants
-- top implicit assumptions:
-  1. Router holds no value between txs (A1 — CONFIRMED, <=1 wei by design)
-  2. Source tokens always from msg.sender (A2 — VERIFIED across ALL 4 router versions)
-  3. CREATE2 prevents fake V3 pool callbacks (A3 — VERIFIED in V4/V5/V6)
-  4. ECDSA/ERC-1271 prevents forged order signatures (A4 — VERIFIED)
-  5. Permit2 allowances are per-spender (A5 — VERIFIED, no cross-protocol confusion)
+## Corridor Results (ALL with fork evidence)
 
-## Confirmed Findings (not E3)
-1) H1: curveSwapCallback — V6 only, anyone can drain router balance, zero access control
-   - impact: < $0.01 (router balance = 0 in practice)
-2) H2: uniswapV3SwapCallback payer==self — V6 only, same drain via FakeV3Pool
-   - impact: same as H1
+### Corridor A: Mooniswap AMM — EXHAUSTED
+- Sandwich: -18.88 ETH loss on 50 ETH attempt (virtual balance protection)
+- Virtual balance decay: 33.91 ETH loss on 100 ETH round-trip even after full 108s decay
+- Rounding loop: 0.647 ETH loss over 10x 1 ETH round-trips (~1.5% per trip)
+- Donation: No receive() for ETH; ERC20 donation doesn't bypass virtual balance
+- LP manipulation: k invariant increases (fees captured correctly)
+- Referral extraction: Zero LP rewards earned
+- First depositor: Factory active but no victim value to extract
 
-## Falsified Hypotheses (all evidence-grounded)
-- H3: Multi-hop theft — attacker = caller = fund source
-- H4: Taker reentrancy — CEI per-order prevents double-fill
-- H5: Assembly overflow — clean masking, V2 k-check defense-in-depth
-- H6: transferFrom suffix — standard ERC20 ignores extra calldata
-- H7: Cross-router approval drain — ALL routers (V3/V4/V5/V6) use msg.sender or ECDSA-verified maker
-- H8: Permit2 cross-protocol confusion — per-spender allowances, always msg.sender or verified maker
-- H9: IERC1271 contract signature confusion — tokens must come from maker contract via transferFrom
-- H10: Pre-interaction state manipulation — amounts computed before pre-interaction, CEI pattern
-- H11: Flash loan limit order fills — designed behavior, not an exploit
-- H12: Callback chain amplification — attacker can only steal own tokens
-- H14: st1INCH governance flash attack — 5 independent kill points (30-day lock, no on-chain governance, non-transferable, off-chain Snapshot, independent owner addresses)
-- H15: Taker mid-swap manipulation — amounts fixed before takerInteraction, threshold protection
-- Approval drain — all transferFrom sites across V3-V6 use msg.sender or ECDSA-verified maker
+### Corridor B: Settlement/Fusion — EXHAUSTED
+- Priority fee: Valid EVM constraint, no underflow
+- Dutch auction math: Correct piecewise linear interpolation + gas bump compensation
+- IntegratorFee _sendEth: State written before external calls
+- WhitelistExtension: 80-bit masking, 2^80 infeasible to brute-force
+- ResolverFee: In order extension (maker-signed, immutable)
+
+### Corridor C: OffchainOracle — EXHAUSTED
+- WBTC via Mooniswap: 137 bps change at 200 ETH cost (cost-prohibitive)
+- 1INCH via Mooniswap: 1 bps from 55 ETH (negligible)
+- USDC/USDT: 0 bps (negligible)
+- WETH/USDC: 0 bps change even after 200 ETH manipulation
+- Adapter weights: Top 2 WETH adapters via 0xFFFF dominate (99.9% of weight^2)
+
+### Corridor D: LOP V2/V3 — EXHAUSTED
+- V2 unwhitelisted interaction: Callback target is maker-signed, not attacker-controlled
+- V3 CEI: Per-order invalidator written BEFORE external calls, prevents double-fill
+- V3 taker interaction: Flash fill by design, amounts fixed before callback
+- V3 extension data: Included in EIP-712 order hash (maker-signed, immutable)
+
+### Corridor E: V6 Router — EXHAUSTED
+- curveSwapCallback: Zero access control BUT router holds 0 balance
+- uniswapV3SwapCallback (payer==self): Same — 0 balance to drain
+- simulate(): Always reverts (state rollback), safe by design
+- Generic swap: Executor runs in own context, cannot abuse router approvals
+
+### Additional Vectors — EXHAUSTED
+- st1INCH early withdrawal: loss + ret == depAmount exactly at ALL time points
+- st1INCH dust deposit: 1 wei → 4 wei stBal, 0 voting power, no exploitation
+- st1INCH depositFor: Can only ADD value, cannot extend lock or reduce balance
+- st1INCH solvency: Exactly 0 surplus (tight but correct)
+- FeeBank/FeeBankCharger: Checked math, proper invariant, supply-bounded unchecked ops
+- ERC20Pods: ReentrancyGuard, 500k gas limit, silent failure = no protocol harm
+- VotingPowerCalculator: Exponential decay via bit-manipulation, rounding bias systematic but negligible
+- Legacy routers: V3 holds ~$881 (263 USDC + 618 USDT), V2 holds ~$1,308 USDT — not E3 scale
+- Cross-protocol oracle→predicate: Cost-prohibitive (~200 ETH for <2% change)
+
+## Falsified Hypotheses (27 total, all with evidence)
+- H1-H15: See notes/hypotheses.md (original V6 analysis)
+- H16: Mooniswap sandwich — fork test: -18.88 ETH loss
+- H17: Virtual balance decay exploit — fork test: -33.91 ETH after full decay
+- H18: Oracle manipulation → downstream — fork test: 0 bps on WETH/USDC
+- H19: Mooniswap donation — fork test: no receive()
+- H20: LP token manipulation — fork test: k invariant increases
+- H21: Referral extraction — fork test: 0 rewards
+- H22: curveSwapCallback drain — fork test: 0 tokens
+- H23: st1INCH early withdrawal underflow — fork test: math exact
+- H24: st1INCH depositFor griefing — fork test: only adds value
+- H25: Mooniswap rounding accumulation — fork test: -0.647 ETH per 10 trips
+- H26: Cross-protocol oracle predicate — fork test: 200 ETH → 0 bps on WETH/USDC
+- H27: First depositor Mooniswap — no victim value, factory active but pools tiny
 
 ## Last Experiment
-- command: Deep analysis of V6 order fill chain (18 steps), V5/V4/V3 transferFrom audit, $98M contract bytecode analysis, st1INCH governance analysis
-- evidence: notes/approval-surface.md, notes/unknown-98m-contract.md, notes/hypotheses.md
-- result: ALL 15 hypotheses resolved. No E3-grade vulnerability found across entire 1inch ecosystem.
-- belief change: 1inch ecosystem is comprehensively secure for its threat model
+- command: 9 fork tests in CrossContractExploit.t.sol
+- evidence: exploit_test/test/CrossContractExploit.t.sol (ALL PASS)
+- result: No E3-grade vulnerability. All corridors exhausted with fork evidence.
+- belief change: 1inch ecosystem is comprehensively secure for E3 threat model
 
 ## Next Discriminator
-- No further discriminators needed — all hypotheses resolved across full ecosystem
-- Possible future: monitor for new 1inch contract deployments; analyze resolver/executor contracts; analyze Fusion-specific extension contracts; ItyFuzz campaigns on cross-contract universe
+- All 5 corridors exhausted with fork evidence
+- 24+ fork tests executed, 27+ hypotheses falsified
+- Remaining avenues: ItyFuzz automated campaigns (not available), Tenderly deep traces
+- These are diminishing returns — manual analysis + fork tests covered all primary attack surfaces
 
 ## Open Unknowns
-- Resolver/executor contract internals (off-chain infrastructure)
-- Specific IAmountGetter extension contracts used by Fusion orders (maker-deployed, not part of core protocol)
-- Whether accumulation events ever cause router balance > 1 wei
+- Resolver/executor contract internals (off-chain infrastructure, not part of on-chain attack surface)
+- ItyFuzz automated sequence discovery (tool not available in environment)
+- Tenderly evidence-grade traces (no API key available)

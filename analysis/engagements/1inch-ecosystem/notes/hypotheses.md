@@ -7,12 +7,14 @@
 - **Reality**: callable by anyone, no access control (V6 line 5601-5609)
 - **Impact**: Can drain router balance (0 in practice, 1-wei optimization)
 - **E3 status**: NOT E3 — net profit < $0.01
+- **Fork evidence**: test_CurveCallbackDrain — 0 tokens drained
 
 ### H2: uniswapV3SwapCallback payer==self (CONFIRMED — V6 only, negligible impact)
 - **Broken assumption**: uniswapV3SwapCallback validates pool for all transfers
 - **Reality**: When payer==address(this), no CREATE2 validation (V6 line 5674)
 - **Impact**: Same as H1
 - **E3 status**: NOT E3
+- **Fork evidence**: Same test — V6 balance is 0
 
 ---
 
@@ -40,108 +42,184 @@
 
 ### H7: Cross-Router Approval Exploitation (V3/V4/V5 → V6)
 - **Test**: Do older routers have weaker transferFrom security exploitable via stale approvals?
-- **Analysis**:
-  - V3: Only `srcToken.safeTransferFrom(msg.sender, ...)` — always msg.sender
-  - V4: All transferFrom sites use msg.sender or ECDSA-verified maker; CREATE2 always validates V3 callbacks; no curveSwapCallback; `destroy()` is owner-only
-  - V5: 11 transferFrom sites audited — all use msg.sender, address(this), or ECDSA-verified maker; `simulate()` delegatecall always reverts; no curveSwapCallback; CREATE2 always validates
-- **Evidence**: notes/approval-surface.md (V5 complete inventory)
-- **Status**: FALSIFIED — all routers enforce `from == msg.sender || from == ECDSA_verified_maker`
+- **Analysis**: V3/V4/V5/V6 ALL use msg.sender or ECDSA-verified maker
+- **Evidence**: notes/approval-surface.md
+- **Status**: FALSIFIED
 
 ### H8: Permit2 Cross-Protocol Allowance Confusion
 - **Test**: Can Permit2's shared state surface be exploited across protocols?
-- **Analysis**:
-  - All Permit2 transfers in V6 use `from=msg.sender` or `from=order.maker` (ECDSA-verified)
-  - Permit2 allowance model is per-spender (router address), not shared across protocols
-  - No path to invoke Permit2.transferFrom with unexpected `from` parameter
+- **Result**: Per-spender allowances, always msg.sender or verified maker
 - **Status**: FALSIFIED
 
 ### H9: IERC1271 Contract Signature Confusion
-- **Test**: Can attacker deploy malicious IERC1271 contract that validates any hash, then create "fake" orders to drain funds?
-- **Analysis**:
-  - Yes, can deploy contract returning magic value for any hash
-  - BUT: maker-to-taker transfer uses transferFrom(maker_contract, receiver, amount)
-  - Maker contract must HOLD tokens AND have granted router allowance
-  - Attacker trades their own tokens against themselves — no third-party drain
-  - fillContractOrder only checks ERC-1271 on first fill (optimization, safe because orderHash is deterministic)
-- **Status**: FALSIFIED — security boundary is ERC20 transferFrom, not signature validation
+- **Test**: Can attacker deploy contract validating any hash, create fake orders?
+- **Result**: Maker must HOLD tokens AND approve router — attacker trades own tokens
+- **Status**: FALSIFIED
 
 ### H10: Pre-Interaction State Manipulation → Settlement Exploitation
 - **Test**: Can maker's preInteraction callback manipulate state to change fill amounts?
-- **Analysis of V6 _fill sequence**:
-  1. Amount computation via staticcall getters (step 6)
-  2. Order invalidation — STATE WRITE (step 9)
-  3. preInteraction — EXTERNAL CALL (step 10)
-  4. Maker transfer (step 11)
-  - Amounts are local variables computed BEFORE preInteraction fires
-  - preInteraction cannot retroactively change amounts
-  - CEI pattern correctly applied: invalidation before external calls
-- **Status**: FALSIFIED — amounts fixed before any non-staticcall external call
+- **Result**: Amounts computed BEFORE preInteraction; CEI correct
+- **Status**: FALSIFIED
 
 ### H11: Flash Loan → Limit Order Fill → Value Extraction
-- **Test**: Can attacker flash borrow takerAsset, fill stale limit orders, sell makerAsset for profit?
-- **Analysis**:
-  - This describes NORMAL limit order arbitrage — the designed behavior
-  - takerInteraction callback explicitly supports on-the-fly liquidity sourcing
-  - Makers accept the rate when they sign orders; stale pricing is maker risk
-  - Protection exists: allowedSender (resolver priority), predicates, expiration, epochs
-  - Competitive MEV landscape fills mispriced orders within blocks
-- **Status**: FALSIFIED (not an exploit — it's designed protocol behavior)
+- **Test**: Flash borrow → fill stale orders → profit?
+- **Result**: Normal limit order arbitrage — designed behavior, not an exploit
+- **Status**: FALSIFIED
 
 ### H12: Callback Chain Amplification (Multi-Protocol)
-- **Test**: During multi-hop V6 swap through Curve, can attacker drain intermediate tokens held by router?
-- **Analysis**:
-  - Curve path: router temporarily holds tokens (addressForPreTransfer returns address(this))
-  - BUT: the attacker IS the caller — intermediate tokens are attacker's own tokens in transit
-  - Calling curveSwapCallback during the callback window steals attacker's own tokens
-  - Non-custodial design prevents amplification
-- **Status**: FALSIFIED — attacker can only steal their own tokens
+- **Test**: During multi-hop, drain intermediate tokens via callback?
+- **Result**: Attacker IS the caller — steals only own tokens in transit
+- **Status**: FALSIFIED
 
 ### H14: st1INCH Governance Flash-Stake Attack
-- **Test**: Can attacker flash-borrow 1INCH → stake → gain governance power → change parameters → exploit → unstake?
-- **Five independent kill points**:
-  1. **30-day minimum lock period** — flash loans require same-tx repayment
-  2. **No on-chain governance execution** — votingPowerOf() is view-only, no propose/vote/execute
-  3. **Voting power not connected to any parameter** — router owner, oracle owner, st1INCH owner are independent addresses
-  4. **st1INCH tokens non-transferable** — transfer() and transferFrom() always revert
-  5. **Off-chain governance (Snapshot) + multisig execution** — cannot be atomically exploited
+- **Test**: Flash borrow 1INCH → stake → governance power → exploit → unstake?
+- **Kill points**: 30-day lock, no on-chain governance, non-transferable, off-chain Snapshot, independent owners
 - **Status**: FALSIFIED at 5 independent barriers
 
 ### H15: Taker Interaction Mid-Swap Cross-Contract Exploit
-- **Test**: Can taker's interaction callback manipulate state to affect the fill's taker payment?
-- **Analysis**:
-  - takerInteraction fires AFTER amounts are computed and fixed as local variables
-  - takingAmount pulled via transferFrom(msg.sender, ...) uses the pre-computed amount
-  - Taker has threshold protection in takerTraits
-  - Cross-order manipulation possible but each order has independent threshold
-- **Status**: FALSIFIED — amounts fixed before takerInteraction, threshold protection
+- **Test**: Can taker callback manipulate state to affect fill amounts?
+- **Result**: Amounts fixed before takerInteraction, threshold protection
+- **Status**: FALSIFIED
+
+### H16: Mooniswap Sandwich Attack
+- **Test**: Front-run + back-run a swap via Mooniswap virtual balance mechanism
+- **Fork test**: test_MooniswapSandwich
+- **Result**: -18.88 ETH loss on 50 ETH sandwich attempt
+- **Why**: Virtual balance mechanism (virtualBalancesForAddition/Removal) creates asymmetric pricing that prevents profitable sandwich
+- **Status**: FALSIFIED
+
+### H17: Mooniswap Virtual Balance Decay Exploitation
+- **Test**: Swap, wait for full decay (108s), reverse swap at favorable rate
+- **Fork test**: test_MooniswapVirtualBalanceState
+- **Result**: -33.91 ETH loss on 100 ETH round-trip even after full decay
+- **Why**: AMM slippage + 0.3% fee are permanent; virtual balance only protects the spread
+- **Status**: FALSIFIED
+
+### H18: OffchainOracle Manipulation → Downstream Impact
+- **Test**: Manipulate Mooniswap pool → change oracle rate → exploit predicate-gated orders
+- **Fork test**: test_CrossProtocolOraclePredicate, test_OracleAdapterAnalysis
+- **Result**: 137 bps WBTC/ETH change from 200 ETH (cost-prohibitive); 0 bps on WETH/USDC
+- **Why**: Top 2 WETH adapters via 0xFFFF connector account for 99.9% of oracle weight^2; Mooniswap contributes ~1%
+- **Status**: FALSIFIED (cost far exceeds potential exploitation value)
+
+### H19: Mooniswap Donation Attack
+- **Test**: Donate ETH/tokens to pool to manipulate virtual balance
+- **Fork test**: test_MooniswapDonation
+- **Result**: Pool has no receive() for ETH; ERC20 donation doesn't bypass virtual balance math
+- **Status**: FALSIFIED
+
+### H20: Mooniswap LP Token Inflation Attack
+- **Test**: Manipulate pool state to dilute LP holders via reward minting
+- **Fork test**: test_MooniswapLPManipulation
+- **Result**: k invariant INCREASES after swap cycle (fees captured correctly)
+- **Status**: FALSIFIED
+
+### H21: Mooniswap Referral Extraction
+- **Test**: Earn referral rewards by self-referring swaps
+- **Fork test**: test_MooniswapReferralExtraction
+- **Result**: Zero LP rewards earned from referral
+- **Status**: FALSIFIED
+
+### H22: V6 curveSwapCallback Token Drain
+- **Test**: Call curveSwapCallback to drain router token balances
+- **Fork test**: test_CurveCallbackDrain
+- **Result**: V6 router holds 0 balance on all major tokens (WETH, WBTC, USDC, DAI, 1INCH, USDT)
+- **Status**: FALSIFIED (0 value to drain)
+
+### H23: st1INCH Early Withdrawal Underflow
+- **Test**: Can voting power decay cause `ret > depAmount` in `_earlyWithdrawLoss`?
+- **Fork test**: test_St1inchEarlyWithdrawMath
+- **Result**: `loss + ret == depAmount` EXACTLY at ALL 10 time points tested
+- **Math proof**: `_votingPowerAt(stBalance, t) > depAmount/20` for all `t < unlockTime` (since decay is monotonic and boundary value only reached AT unlockTime)
+- **Status**: FALSIFIED
+
+### H24: st1INCH depositFor Griefing
+- **Test**: Can attacker extend victim's lock or reduce balance via depositFor?
+- **Fork test**: test_St1inchDepositForGriefing
+- **Result**: depositFor with duration=0 cannot extend lock; only adds 1INCH to victim's stake
+- **Status**: FALSIFIED (only adds value to victim)
+
+### H25: Mooniswap Rounding Accumulation
+- **Test**: Can repeated small round-trip swaps accumulate rounding profit?
+- **Fork test**: test_MooniswapRoundingLoop
+- **Result**: -0.647 ETH over 10x 1 ETH round-trips (~1.5% loss per trip)
+- **Why**: 0.3% fee + AMM slippage dominate; rounding is negligible
+- **Status**: FALSIFIED
+
+### H26: Cross-Protocol Oracle→Predicate Chain
+- **Test**: Manipulate Mooniswap → change OffchainOracle rate → affect limit order predicates
+- **Fork test**: test_OraclePredicateChain
+- **Result**: 200 ETH Mooniswap manipulation gives 0 bps change on WETH/USDC oracle rate
+- **Why**: WETH/USDC doesn't route through Mooniswap at all
+- **Status**: FALSIFIED
+
+### H27: Mooniswap First Depositor Attack
+- **Test**: Create new pool with skewed initial deposit to extract from subsequent depositors
+- **Fork test**: test_MooniswapFirstDepositor
+- **Result**: Factory active, no WETH/DAI pool exists, but attacker puts their own value in
+- **Why**: No external protocol routes through Mooniswap; no victim deposits expected
+- **Status**: FALSIFIED (no victim value to extract)
 
 ---
 
-## Backlog (investigated — low priority)
+## Additional Vectors Analyzed (not numbered, all FALSIFIED)
 
-### Approval Drain via Any Path
-- **Analysis**: Exhaustive audit across V3/V4/V5/V6 (40+ transferFrom sites total)
-- **Result**: `from` is always `msg.sender` or ECDSA/ERC-1271 verified maker
-- **Status**: FALSIFIED across entire ecosystem
+### LOP V2 Unwhitelisted Interaction
+- V2 has NO interaction whitelist (V3 added one)
+- Callback fires between maker→taker and taker→maker transfers
+- BUT: interaction target is part of maker's signed order — maker consented
+- **Status**: Not attacker-exploitable (maker-controlled)
 
-### Unknown $98M Contract (0x111cff45...)
-- **Identified as**: Gnosis MultiSigWallet (3-of-3), cold storage treasury
-- **Owners**: 3 EOAs, all operations require 3-of-3 confirmation
-- **Status**: NOT exploitable — standard Gnosis multisig, no external vulnerability surface
-- **Evidence**: notes/unknown-98m-contract.md
+### FeeBank Credit System
+- `gatherFees`: owner collects `accountDeposit - availableCredit`
+- `_chargeFee`: checked math prevents underflow
+- `decreaseAvailableCredit`: checked subtraction
+- `increaseAvailableCredit`: unchecked but supply-bounded
+- **Status**: Sound math, no exploitation path
+
+### st1INCH ERC20Pods Silent Failure
+- Pods called with 500k gas limit, failures are silent
+- ReentrancyGuardExt prevents reentrance during pod callbacks
+- Pod failure only affects pod's internal accounting, not st1INCH
+- **Status**: No protocol-level harm from pod failures
+
+### VotingPowerCalculator Decay Precision
+- 30 immutable lookup table entries for exponential decay via bit manipulation
+- Rounding is systematic (truncation), bias is downward in both directions
+- Cumulative rounding ~30 wei per operation, negligible vs real values
+- **Status**: Mathematically sound, rounding is non-exploitable
+
+### Legacy Router Stuck Value
+- V3 Router: ~$881 stuck (263 USDC + 618 USDT)
+- V2 Exchange: ~$1,308 stuck (USDT)
+- **Status**: Not E3 scale; extraction mechanism unclear for legacy contracts
+
+### Comprehensive Value Scan
+- V6 Router: 0 balance (all tokens)
+- V5 Router: 1 wei ETH only
+- st1INCH: 260M 1INCH (= totalDeposits exactly, surplus = 0)
+- All other contracts: empty or dust
+- **Status**: No extractable stuck value of significance
 
 ---
 
 ## Overall Assessment
 
-The 1inch ecosystem has been comprehensively audited across all major contract interactions:
+**27+ hypotheses tested, ALL falsified or confirmed negligible.**
 
-**Router Security (V3-V6)**: All four router versions enforce the same core invariant — `transferFrom` always uses `msg.sender` or cryptographically verified maker addresses. No cross-router approval drain is possible. V5/V4 are actually MORE secure than V6 for callbacks (always CREATE2 validate, no curveSwapCallback).
+### Key Defenses That Held:
+1. **Non-custodial router design**: V6 holds 0 balance → drain attacks yield nothing
+2. **Mooniswap virtual balance**: Prevents sandwich attacks at the AMM math level
+3. **OffchainOracle weight^2 aggregation**: Mooniswap contributes ~1% of total weight, making manipulation cost-prohibitive
+4. **LOP V3 CEI pattern**: Per-order invalidator BEFORE external calls prevents reentrancy double-fill
+5. **st1INCH defense-in-depth**: Non-transferable + 30-day lock + ReentrancyGuard + no on-chain governance
+6. **Settlement whitelist + extension signing**: Unauthorized resolvers cannot fill Fusion orders
+7. **EIP-712 order hashing**: Extension data is maker-signed and immutable
 
-**Order Fill Chain**: The V6 limit order system follows a correct CEI pattern with 5 external call windows (predicate staticcall, preInteraction, maker transfer, takerInteraction, postInteraction). Amounts are computed before mutable external calls. Each order is independently invalidated before callbacks.
+### Why No E3 Was Found:
+The 1inch ecosystem was designed with security as a core architecture principle. The non-custodial router pattern eliminates the entire class of "drain router balance" attacks. The limit order protocol uses proper CEI with per-order state management. The st1INCH staking contract has layered defenses that are individually sufficient and collectively redundant. The economic model doesn't create the type of custody mismatches that lead to E3-grade exploits.
 
-**Governance**: st1INCH has no on-chain governance execution capability. Voting power is view-only. Flash-staking is impossible (30-day minimum lock). Tokens are non-transferable.
-
-**Cross-Protocol**: Permit2 allowances are per-spender, preventing cross-protocol confusion. External DEX pools enforce their own invariants.
-
-**No E3-grade vulnerability found across the entire 1inch ecosystem.**
+### Fork Evidence:
+- 24+ fork tests across 3 test files (OneInchEcosystemExploit.t.sol, OracleDeepExploit.t.sol, CrossContractExploit.t.sol)
+- All tests PASS (no unexpected reverts)
+- Tests cover: Mooniswap AMM mechanics, oracle manipulation, st1INCH staking math, router callback security, cross-protocol oracle chains, comprehensive value scans

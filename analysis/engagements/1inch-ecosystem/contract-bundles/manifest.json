@@ -1,0 +1,259 @@
+{
+  "chainId": "1",
+  "generatedAt": "2026-02-18T09:29:21Z",
+  "contracts": {
+    "0xfb2809a5314473e1165f6b58018e20ed8f07b840": {
+      "address": "0xfb2809a5314473e1165f6b58018e20ed8f07b840",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.8.23+commit.f704f362",
+      "verification": {
+        "sourcify": {
+          "match": "exact_match",
+          "creationMatch": "exact_match",
+          "runtimeMatch": "exact_match",
+          "verifiedAt": "2024-08-08T16:31:32Z"
+        },
+        "deploymentBlockNumber": "19582747"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x119c71d3bbac22029622cbaec24854d3d32d2828": {
+      "address": "0x119c71d3bbac22029622cbaec24854d3d32d2828",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.8.10+commit.fc410830",
+      "verification": {
+        "sourcify": {
+          "match": "exact_match",
+          "creationMatch": "exact_match",
+          "runtimeMatch": "exact_match",
+          "verifiedAt": "2024-08-08T14:11:13Z"
+        },
+        "deploymentBlockNumber": "13689987"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x227b0c196ea8db17a665ea6824d972a64202e936": {
+      "address": "0x227b0c196ea8db17a665ea6824d972a64202e936",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.8.10+commit.fc410830",
+      "verification": {
+        "sourcify": {
+          "match": "exact_match",
+          "creationMatch": "exact_match",
+          "runtimeMatch": "exact_match",
+          "verifiedAt": "2025-06-21T12:44:44Z"
+        },
+        "deploymentBlockNumber": "16395346"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x07d91f5fb9bf7798734c3f606db065549f6893bb": {
+      "address": "0x07d91f5fb9bf7798734c3f606db065549f6893bb",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.7.6+commit.7338295f",
+      "verification": {
+        "sourcify": {
+          "match": "exact_match",
+          "creationMatch": "exact_match",
+          "runtimeMatch": "exact_match",
+          "verifiedAt": "2024-08-08T10:25:15Z"
+        },
+        "deploymentBlockNumber": "12522266"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0xbaf9a5d4b0052359326a6cdab54babaa3a3a9643": {
+      "address": "0xbaf9a5d4b0052359326a6cdab54babaa3a3a9643",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.6.12+commit.27d51765",
+      "verification": {
+        "sourcify": {
+          "match": "exact_match",
+          "creationMatch": "exact_match",
+          "runtimeMatch": "exact_match",
+          "verifiedAt": "2024-08-08T14:35:27Z"
+        },
+        "deploymentBlockNumber": "11607841"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x111111125434b319222cdbf8c261674adb56f3ae": {
+      "address": "0x111111125434b319222cdbf8c261674adb56f3ae",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.6.12+commit.27d51765",
+      "verification": {
+        "sourcify": {
+          "match": "match",
+          "creationMatch": "match",
+          "runtimeMatch": "match",
+          "verifiedAt": "2024-08-08T14:48:01Z"
+        },
+        "deploymentBlockNumber": "11190787"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x1111111254eeb25477b68fb85ed929f73a960582": {
+      "address": "0x1111111254eeb25477b68fb85ed929f73a960582",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.8.17+commit.8df45f5f",
+      "verification": {
+        "sourcify": {
+          "match": "match",
+          "creationMatch": "match",
+          "runtimeMatch": "match",
+          "verifiedAt": "2024-08-08T11:39:28Z"
+        },
+        "deploymentBlockNumber": "15894742"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x1111111254fb6c44bac0bed2854e76f90643097d": {
+      "address": "0x1111111254fb6c44bac0bed2854e76f90643097d",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.7.6+commit.7338295f",
+      "verification": {
+        "sourcify": {
+          "match": "match",
+          "creationMatch": "match",
+          "runtimeMatch": "match",
+          "verifiedAt": "2024-08-08T11:39:28Z"
+        },
+        "deploymentBlockNumber": "13556016"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x11111112542d85b3ef69ae05771c2dccff4faa26": {
+      "address": "0x11111112542d85b3ef69ae05771c2dccff4faa26",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.6.12+commit.27d51765",
+      "verification": {
+        "sourcify": {
+          "match": "match",
+          "creationMatch": "match",
+          "runtimeMatch": "match",
+          "verifiedAt": "2024-08-08T14:48:03Z"
+        },
+        "deploymentBlockNumber": "12038853"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x9a0c8ff858d273f57072d714bca7411d717501d7": {
+      "address": "0x9a0c8ff858d273f57072d714bca7411d717501d7",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.8.17+commit.8df45f5f",
+      "verification": {
+        "sourcify": {
+          "match": "exact_match",
+          "creationMatch": "exact_match",
+          "runtimeMatch": "exact_match",
+          "verifiedAt": "2025-06-23T10:07:12Z"
+        },
+        "deploymentBlockNumber": "16241691"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    },
+    "0x111111111117dc0aa78b770fa6a738034120c302": {
+      "address": "0x111111111117dc0aa78b770fa6a738034120c302",
+      "chainId": "1",
+      "parent": null,
+      "sources": "sourcify",
+      "abi": "sourcify",
+      "compiler": "0.6.12+commit.27d51765",
+      "verification": {
+        "sourcify": {
+          "match": "match",
+          "creationMatch": "match",
+          "runtimeMatch": "match",
+          "verifiedAt": "2024-08-08T14:07:16Z"
+        },
+        "deploymentBlockNumber": "11511393"
+      },
+      "proxy": {
+        "isProxy": false,
+        "type": null,
+        "implementations": []
+      },
+      "evidence": {}
+    }
+  }
+}
