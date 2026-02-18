@@ -1,0 +1,25 @@
+protocol: 1inch-v6
+chain_id: 1
+fork_block: 24480779
+seed_addresses:
+  - "0x111111125421cA6dc452d289314280a0f8842A65"  # AggregationRouterV6
+
+rpc_url_env: RPC
+etherscan_key_env: ETHERSCAN_API_KEY
+
+bundler_manifest_path: analysis/engagements/1inch-v6/contract-bundles/manifest.json
+traverse_out_dir: analysis/engagements/1inch-v6/traverse
+ityfuzz_workdirs: []
+tenderly_evidence_paths: []
+
+notes_paths:
+  - analysis/engagements/1inch-v6/notes/entrypoints.md
+  - analysis/engagements/1inch-v6/notes/control-plane.md
+  - analysis/engagements/1inch-v6/notes/taint-map.md
+  - analysis/engagements/1inch-v6/notes/tokens.md
+  - analysis/engagements/1inch-v6/notes/numeric-boundaries.md
+  - analysis/engagements/1inch-v6/notes/feasibility.md
+  - analysis/engagements/1inch-v6/notes/evm-semantics.md
+  - analysis/engagements/1inch-v6/notes/value-flows.md
+  - analysis/engagements/1inch-v6/notes/assumptions.md
+  - analysis/engagements/1inch-v6/notes/hypotheses.md
