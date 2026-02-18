@@ -1,0 +1,66 @@
+protocol: 1inch-ecosystem
+chain_id: 1
+fork_block: 24482400  # pinned ~50 blocks behind tip at session start
+seed_addresses:
+  # Core Routers
+  - "0x111111125421cA6dc452d289314280a0f8842A65"  # AggregationRouterV6 (current)
+  - "0x1111111254EEB25477B68fb85Ed929f73A960582"  # AggregationRouterV5 (legacy)
+  - "0x1111111254fb6c44bAC0beD2854e76F90643097d"  # AggregationRouterV4 (legacy)
+  - "0x11111112542D85B3EF69AE05771c2dCCff4fAa26"  # AggregationRouterV3 (legacy proxy)
+  # Token & Staking
+  - "0x111111111117dC0aa78b770fA6A738034120C302"  # 1INCH Token
+  - "0x9A0C8Ff858d273f57072D714bca7411D717501D7"  # st1INCH Staking
+  # Limit Order Protocol
+  - "0x119c71D3BbAC22029622cbaEc24854d3D32D2828"  # LimitOrderProtocol V2
+  - "0x227B0c196eA8db17A665EA6824D972A64202E936"  # LimitOrderProtocol V3
+  # Fusion
+  - "0xfb2809a5314473E1165f6B58018E20ed8F07b840"  # Settlement
+  # Oracle
+  - "0x07D91f5fb9Bf7798734C3f606dB065549F6893bb"  # OffchainOracle
+  # AMM
+  - "0xbAF9A5d4b0052359326A6CDAb54BABAa3a3A9643"  # MooniswapFactory
+  # Legacy
+  - "0x111111125434b319222CdBf8C261674aDB56F3ae"  # OneInchExchange (V2/V1)
+  - "0xC586BeF4a0992C495Cf22e1aeEE4E446CECDee0E"  # OneSplitAudit (V1)
+  - "0xa218543cc21ee9388Fa1E509F950FD127Ca82155"  # FarmingRewards
+  - "0xE295aD71242373C37C5FdA7B57F26f9eA1088AFe"  # MerkleDistributor
+  # HIGH-VALUE UNKNOWN
+  - "0x111cff45948819988857bbf1966a0399e0d1141e"  # UNVERIFIED: ~$98M (27,357 ETH + tokens)
+  # External Dependencies
+  - "0x000000000022D473030F116dDEE9F6B43aC78BA3"  # Permit2
+  - "0x1F98431c8aD98523631AE4a59f267346ea31F984"  # Uniswap V3 Factory
+  - "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"  # WETH
+
+rpc_url_env: RPC
+explorer: etherscan
+etherscan_key_env: ETHERSCAN_API_KEY
+
+bundler_manifest_path: analysis/engagements/1inch-ecosystem/contract-bundles/manifest.json
+traverse_out_dir: analysis/engagements/1inch-ecosystem/traverse
+ityfuzz_workdirs: []
+tenderly_evidence_paths: []
+notes_paths:
+  - analysis/engagements/1inch-ecosystem/notes/entrypoints.md
+  - analysis/engagements/1inch-ecosystem/notes/control-plane.md
+  - analysis/engagements/1inch-ecosystem/notes/taint-map.md
+  - analysis/engagements/1inch-ecosystem/notes/tokens.md
+  - analysis/engagements/1inch-ecosystem/notes/numeric-boundaries.md
+  - analysis/engagements/1inch-ecosystem/notes/feasibility.md
+  - analysis/engagements/1inch-ecosystem/notes/value-flows.md
+  - analysis/engagements/1inch-ecosystem/notes/assumptions.md
+  - analysis/engagements/1inch-ecosystem/notes/hypotheses.md
+  - analysis/engagements/1inch-ecosystem/notes/cross-contract-interactions.md
+  - analysis/engagements/1inch-ecosystem/notes/approval-surface.md
+  - analysis/engagements/1inch-ecosystem/notes/permit2-surface.md
+  - analysis/engagements/1inch-ecosystem/notes/unknown-98m-contract.md
+
+# Source cache (fetched contract sources)
+source_cache:
+  - src_cache/1inch_v5_router.sol
+  - src_cache/1inch_v4_router.sol
+  - src_cache/1inch_v3_router.sol
+  - src_cache/st1inch.sol
+  - src_cache/1inch_token.sol
+
+# Prior engagement reference (single-contract V6 analysis)
+prior_engagement: analysis/engagements/1inch-v6
