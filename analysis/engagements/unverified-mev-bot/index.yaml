@@ -1,0 +1,39 @@
+protocol: unverified-mev-bot
+chain_id: 1
+fork_block: 24497079  # 0x175c7b7
+seed_addresses:
+  - "0xa462d9acaccb141ce7f17213b95198fe248c27a1"  # Proxy (UUPS)
+  - "0xc3c7d1b29067e634d5fcd643865c2c6db24a2ed6"  # Implementation (unverified)
+  - "0xb7dce6951c529c7cbe08e1e45280806df8c83f05"  # Logic contract (delegatecall target, unverified)
+  - "0xe0e0e08a6a4b9dc7bd67bcb7aade5cf48157d444"  # Core DEX (verified, "Core")
+  - "0x6e9ad3691b91211561b78c2e4922759da6161ceb"  # Old logic contract (different operator)
+
+additional_addresses:
+  - "0xe3488b445b4c198c696600ff66d97560ab68cf4c"  # Owner (EOA)
+  - "0xc54b77b28ee4d18cd3d93991f08b79bc85c71097"  # Bot operator (EOA)
+  - "0xecabaf897fe72beb1e393dba01ecf63005b875c5"  # Proxy deployer (EOA)
+  - "0xa26cf3925523eff535ccab0cbe4d021676d321c2"  # Impl deployer (EOA)
+
+rpc_url: https://eth-mainnet.g.alchemy.com/v2/pLXdY7rYRY10SH_UTLBGH
+explorer: etherscan
+etherscan_key_env: ETHERSCAN_API_KEY
+
+# "Upgrade" context — actually a fresh deployment, not an upgrade
+upgrade_tx: "0x10658160ff0f943d015955f9c5b34b100d3ca4c87e5a11e83317481a060eb18a"
+upgrade_block: 24427532  # 0x1744c0c
+upgrade_time: "2026-02-10"
+impl_deploy_time: "2026-02-10"
+hours_impl_to_upgrade: 0
+
+# Analysis result
+alert_resolution: FALSE_POSITIVE
+alert_reason: >
+  CRITICAL_MISMATCH_RUSH explained by fresh MEV bot deployment (not an upgrade).
+  The "upgrade_tx" is a contract creation tx deploying a new UUPS proxy,
+  not an upgrade of an existing proxy. Unverified source and same-block
+  deployment are standard patterns for private MEV bots.
+tvl_at_analysis: "$848K (431 WETH)"
+code_diff: N/A  # Fresh deployment, no old implementation to compare
+
+notes_paths:
+  - analysis/engagements/unverified-mev-bot/notes/findings.md
