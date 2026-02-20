@@ -1,0 +1,49 @@
+protocol: compound-v3-comet-extended
+chain_id: 1
+fork_block: 24497000
+seed_addresses:
+  - "0x3afdc9bca9213a35503b077a6072f3d0d5ab0840"  # Proxy (Compound V3 USDT market)
+  - "0xda54ede5a49cd61932d5507714d0a0e9d1f87eb5"  # New Implementation (CometWithExtendedAssetList)
+  - "0xdf6899894e0a3dbf703d843618ee6075b6c1634d"  # Old Implementation (CometWithExtendedAssetList)
+  - "0x1ec63b5883c3481134fd50d5daebc83ecd2e8779"  # CometProxyAdmin
+  - "0x6d903f6003cca6255d85cca4d3b5e5146dc33925"  # Timelock (Governor)
+  - "0x1fa408992e74a42d1787e28b880c451452e8c958"  # CometFactoryWithExtendedAssetList (impl deployer)
+
+additional_addresses:
+  - "0x68749665ff8d2d112fa859aa293f07a622782f38"  # XAUt (Tether Gold) - NEW collateral asset
+  - "0x4c0d2c74a8d26f1e4f5653021c521f5471f9e566"  # XAUt implementation (TetherToken)
+  - "0x214ed9da11d2fbe465a6fc601a91e62ebec1a0d6"  # XAU/USD Chainlink price feed
+
+rpc_url: https://eth-mainnet.g.alchemy.com/v2/pLXdY7rYRY10SH_UTLBGH
+explorer: etherscan
+etherscan_key_env: ETHERSCAN_API_KEY
+
+# Upgrade context
+upgrade_tx: "0xfdc7a25460b8aa7f7dc8c5a5fe6238f1d2b0b5dae12fe427dcb61fc5a9c1296e"
+upgrade_block: 24427127
+upgrade_time: "2026-02-10 14:59:35 UTC"
+impl_deploy_time: "2026-02-10 14:59:35 UTC"
+hours_impl_to_upgrade: 0
+
+# Artifacts
+bundler_manifest_path: analysis/engagements/compound-v3-comet-extended/contract-bundles/manifest.json
+traverse_out_dir: analysis/engagements/compound-v3-comet-extended/traverse
+ityfuzz_workdirs: []  # Not needed — config-only upgrade, no code changes
+tenderly_evidence_paths: []  # RPC discriminators used directly
+
+# Analysis result
+alert_resolution: FALSE_POSITIVE
+alert_reason: "CRITICAL_MISMATCH_RUSH explained by Compound V3 CometFactory deployment pattern and atomic governance execution"
+upgrade_change: "numAssets 14->15: added XAUt (Tether Gold) as collateral asset #14"
+code_diff: NONE  # identical Solidity source between old and new implementation
+
+notes_paths:
+  - analysis/engagements/compound-v3-comet-extended/notes/entrypoints.md
+  - analysis/engagements/compound-v3-comet-extended/notes/control-plane.md
+  - analysis/engagements/compound-v3-comet-extended/notes/taint-map.md
+  - analysis/engagements/compound-v3-comet-extended/notes/tokens.md
+  - analysis/engagements/compound-v3-comet-extended/notes/numeric-boundaries.md
+  - analysis/engagements/compound-v3-comet-extended/notes/feasibility.md
+  - analysis/engagements/compound-v3-comet-extended/notes/value-flows.md
+  - analysis/engagements/compound-v3-comet-extended/notes/assumptions.md
+  - analysis/engagements/compound-v3-comet-extended/notes/hypotheses.md

@@ -1,0 +1,23 @@
+{
+  "address": "0xdf6899894e0a3dbf703d843618ee6075b6c1634d",
+  "chainId": "1",
+  "parent": null,
+  "sources": "etherscan",
+  "abi": "etherscan",
+  "compiler": "v0.8.15+commit.e14f2714",
+  "verification": {
+    "etherscan": {
+      "contractName": "CometWithExtendedAssetList",
+      "compilerVersion": "v0.8.15+commit.e14f2714",
+      "optimizationUsed": "1",
+      "runs": "1",
+      "licenseType": ""
+    }
+  },
+  "proxy": {
+    "isProxy": false,
+    "type": null,
+    "implementations": []
+  },
+  "evidence": {}
+}

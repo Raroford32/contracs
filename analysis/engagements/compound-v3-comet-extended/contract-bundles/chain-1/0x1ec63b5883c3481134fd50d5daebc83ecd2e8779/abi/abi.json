@@ -1,0 +1,192 @@
+[
+  {
+    "name": "OwnershipTransferred",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "previousOwner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "newOwner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "changeProxyAdmin",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "proxy",
+        "type": "address",
+        "internalType": "contract TransparentUpgradeableProxy"
+      },
+      {
+        "name": "newAdmin",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "deployAndUpgradeTo",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "configuratorProxy",
+        "type": "address",
+        "internalType": "contract Deployable"
+      },
+      {
+        "name": "cometProxy",
+        "type": "address",
+        "internalType": "contract TransparentUpgradeableProxy"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "deployUpgradeToAndCall",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "configuratorProxy",
+        "type": "address",
+        "internalType": "contract Deployable"
+      },
+      {
+        "name": "cometProxy",
+        "type": "address",
+        "internalType": "contract TransparentUpgradeableProxy"
+      },
+      {
+        "name": "data",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "getProxyAdmin",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "proxy",
+        "type": "address",
+        "internalType": "contract TransparentUpgradeableProxy"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getProxyImplementation",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "proxy",
+        "type": "address",
+        "internalType": "contract TransparentUpgradeableProxy"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "owner",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "renounceOwnership",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "transferOwnership",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "newOwner",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "upgrade",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "proxy",
+        "type": "address",
+        "internalType": "contract TransparentUpgradeableProxy"
+      },
+      {
+        "name": "implementation",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "upgradeAndCall",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "proxy",
+        "type": "address",
+        "internalType": "contract TransparentUpgradeableProxy"
+      },
+      {
+        "name": "implementation",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "data",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "payable"
+  }
+]

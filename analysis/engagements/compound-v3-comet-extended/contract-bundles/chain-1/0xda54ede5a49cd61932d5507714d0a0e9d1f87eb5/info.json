@@ -1,0 +1,23 @@
+{
+  "address": "0xda54ede5a49cd61932d5507714d0a0e9d1f87eb5",
+  "chainId": "1",
+  "parent": null,
+  "sources": "sourcify",
+  "abi": "sourcify",
+  "compiler": "0.8.15+commit.e14f2714",
+  "verification": {
+    "sourcify": {
+      "match": "exact_match",
+      "creationMatch": "exact_match",
+      "runtimeMatch": "exact_match",
+      "verifiedAt": "2026-02-10T14:59:57Z"
+    },
+    "deploymentBlockNumber": "24427127"
+  },
+  "proxy": {
+    "isProxy": false,
+    "type": null,
+    "implementations": []
+  },
+  "evidence": {}
+}
