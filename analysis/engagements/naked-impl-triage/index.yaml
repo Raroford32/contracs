@@ -1,0 +1,53 @@
+protocol: naked-impl-triage
+chain_id: 1
+alert_type: "CRITICAL — naked impl, high-value proxy (>100 ETH)"
+alert_resolution: ALL_FALSE_POSITIVE
+resolution_reason: >
+  All 10 implementations call _disableInitializers() in constructor.
+  Monitoring heuristic for impl_initialized is inaccurate — it flags
+  contracts as uninitialized when they are actually permanently locked.
+
+contracts_analyzed:
+  - proxy: "0x036676389e48133b63a802f8635ad39e752d375d"
+    impl: "0xea38dfa108318288f36f13d06e821a64acda8320"
+    protocol: Kelp DAO (LRTDepositPool)
+    result: SAFE
+  - proxy: "0x2a3dd3eb832af982ec71669e178424b10dca2ede"
+    impl: "0x66e0120e3c965552a89acc37b03f762624bac5ad"
+    protocol: Polygon (AgglayerBridge)
+    result: SAFE
+  - proxy: "0xe3cbd06d7dadb3f4e6557bab7edd924cd1489e8f"
+    impl: "0x01a360392c74b5b8bf4973f438ff3983507a06a2"
+    protocol: Mantle (mETH Staking)
+    result: SAFE
+  - proxy: "0xd523794c879d9ec028960a231f866758e405be34"
+    impl: "0x40b45c2a9b30927292db21625de50de38f577c66"
+    protocol: Stader (StakeWise Pool)
+    result: SAFE
+  - proxy: "0x663dc15d3c1ac63ff12e45ab68fea3f0a883c251"
+    impl: "0x3c857ed51c8a2747ee8c6f30edda5ea0d487cc64"
+    protocol: deBridge (Router)
+    result: SAFE
+  - proxy: "0xe6d8d8ac54461b1c5ed15740eee322043f696c08"
+    impl: "0x927a83c679a5e1a6435d6bfaef7f20d4db23e2cc"
+    protocol: StakeWise v3 (EthVault)
+    result: SAFE
+  - proxy: "0x5c7bcd6e7de5423a257d81b442095a1a6ced35c5"
+    impl: "0x5e5b726c81f43b953a62ad87e2835c85c4d9dd3b"
+    protocol: Across Protocol (SpokePool)
+    result: SAFE
+  - proxy: "0x604dd02d620633ae427888d41bfd15e38483736e"
+    impl: "0xf7aea2f093b29afd8a804191356bfdc6358696e1"
+    protocol: Astherus (Vault)
+    result: SAFE
+  - proxy: "0xef4fb24ad0916217251f553c0596f8edc630eb66"
+    impl: "0x322b481088143d9ff74e4169fb7f12f7808690df"
+    protocol: deBridge (DLN DlnSource)
+    result: SAFE
+  - proxy: "0x74a09653a083691711cf8215a6ab074bb4e99ef5"
+    impl: "0xd5b3be349ed0b7c82dbd9271ce3739a381fc7aa0"
+    protocol: Renzo (RestakeManager)
+    result: SAFE
+
+notes_paths:
+  - analysis/engagements/naked-impl-triage/notes/findings.md
