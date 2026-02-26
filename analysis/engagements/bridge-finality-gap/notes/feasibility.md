@@ -1,88 +1,107 @@
-# Feasibility Assessment: Finality Gap Attack
+# Feasibility Analysis: Bridge Finality Gap Attack
 
-## Per-Hypothesis Feasibility Ledger
+## Updated With Live On-Chain Evidence (Block 24,539,741)
 
-### H1: Single Relayer Fast Bridge Phantom Payout
+### Confirmed Facts (On-Chain + Source Code Evidence)
 
-**Attacker Tier:** Sequencer-level (on centralized-sequencer L2s) OR builder-level (for reorg) OR network-level (for RPC eclipse)
+| # | Fact | Evidence |
+|---|------|----------|
+| F1 | requestSlowFill() accepts fabricated deposits | eth_call simulation SUCCESS at block 24,539,741 |
+| F2 | Zero origin-chain validation in requestSlowFill | SpokePool.sol:1076-1105 — only checks deadline, exclusivity, fill status |
+| F3 | HubPool liveness = 1800s (30 min) | on-chain storage read: liveness() = 1800 |
+| F4 | ABT proposer whitelist blocks unauthorized proposals | BondToken.sol:73-82 — transferFrom checks proposers mapping |
+| F5 | Dataworker uses "latest" not "finalized" | GitHub: BaseAbstractClient.ts — provider.getBlockNumber() |
+| F6 | BUNDLE_END_BLOCK_BUFFERS: ETH=5, Arb=240, OP=60 | GitHub: Constants.ts |
+| F7 | Zero disputes in sampled 50K-block window | on-chain event query |
+| F8 | SpokePool ETH balance ~$380K | on-chain balance query |
+| F9 | ABT total supply = 39.96, HubPool holds 0.45 | on-chain queries |
+| F10 | proposeRootBundle is permissionless (code) but ABT whitelist limits it (token) | HubPool.sol:566 + BondToken.sol:73-82 |
 
-**Ordering Requirement:**
-- Must be able to produce or influence a block that will be orphaned
-- On Optimistic Rollups: sequencer produces blocks; state root posted to L1 with delay
-- On ZK Rollups: sequencer produces blocks; ZK proof generated later
-- Key: the "fast path" agent acts BEFORE the proof/challenge period
+### Attack Variant Feasibility Matrix
 
-**Finality Windows by L2 (as of 2026):**
-| L2 | Sequencer Type | Block Time | Safe Finality | Full Finality | Fast Bridge Window |
-|----|---------------|------------|---------------|---------------|-------------------|
-| Optimism | Centralized | 2s | ~2min | 7 days | Hours (pre-proof) |
-| Arbitrum One | Centralized | 250ms | ~10min | 7 days | Hours (pre-proof) |
-| Base | Centralized | 2s | ~2min | 7 days | Hours (pre-proof) |
-| zkSync Era | Centralized | 1s | Minutes | ~1hr (proof) | Minutes |
-| Scroll | Centralized | 3s | Minutes | ~4hrs (proof) | Minutes-Hours |
-| Polygon zkEVM | Centralized | 2s | Minutes | ~30min (proof) | Minutes |
-| Starknet | Centralized | 6s | Minutes | Hours (proof) | Minutes-Hours |
+#### Variant A: RPC Eclipse on Dataworker [MEDIUM-LOW Feasibility]
+**Concept**: Feed phantom L2 blocks to the dataworker's RPC provider
 
-**Reorg Feasibility by L2:**
-- Centralized sequencer L2s: Sequencer CANNOT be reorged by external parties (sequencer is single entity)
-- BUT: Sequencer itself can create conflicting blocks / soft-confirm then not include
-- L2 reorgs primarily happen via: sequencer bugs, forced inclusion from L1, network partitions
+**Requirements**:
+- Must identify which RPC endpoint the Across dataworker uses
+- Must intercept/spoof responses on that endpoint
+- Phantom deposit must be within BUNDLE_END_BLOCK_BUFFERS range
 
-**RPC Eclipse Feasibility:**
-- If agent uses public RPC (e.g., Infura, Alchemy for L2): CDN-level manipulation is extremely hard
-- If agent uses dedicated node: node-level attacks more feasible
-- If agent uses sequencer's own endpoint: sequencer IS the source of truth pre-finality
+**Assessment**:
+- Dataworker infrastructure is private (Risk Labs operated)
+- Multiple validators likely verify independently
+- If dataworker uses multiple providers, eclipse requires multi-target compromise
+- **VERDICT**: Infrastructure attack, NOT a protocol-level vulnerability
 
-**Capital Requirements:**
-- Gas for phantom L2 tx: <$1 on most L2s
-- Gas for L1 claim (if attacker submits): ~$5-50
-- No flash loan needed (attacker doesn't need capital, just a phantom event)
-- Total cost: ~$50 worst case
+#### Variant B: Attacker Self-Proposes Malicious Root [BLOCKED]
+**Why**: ABT BondToken.transferFrom() (line 78-80) blocks non-whitelisted proposers
+- `proposers` mapping controls who can transfer ABT to HubPool
+- Only `onlyOwner` can call `setProposer()`
+- **VERDICT: INFEASIBLE** — cannot obtain proposer role permissionlessly
 
-**Expected Value:**
-- Bridge pool TVL typically $10M-$1B
-- Single withdrawal may be capped (rate limits, per-tx limits)
-- Net profit = min(bridge_balance, withdrawal_cap) - gas_costs
+#### Variant C: L2 Sequencer Manipulation [LOW Feasibility]
+**Why**: Requires compromising centralized L2 sequencer infrastructure
+- **VERDICT**: Infrastructure attack, not protocol vulnerability
 
-**Falsifier Experiment:**
-- [ ] Identify specific fast bridge L1 contract
-- [ ] Query relayer address and check if single signer
-- [ ] Measure time from L2 event to L1 payout
-- [ ] Compare against L2 finality time
-- [ ] If payout_time < finality_time: assumption A1 violated
+#### Variant D: Organic L2 Reorg + Dataworker Race [THEORETICAL]
+**Scenario**: Natural L2 reorg causes deposit to appear then disappear while cached
+- Requires reorg deeper than BUNDLE_END_BLOCK_BUFFERS (5-240 blocks)
+- Never observed on any major L2 post-merge
+- **VERDICT**: Theoretically possible, practically impossible
 
-### H3: Intent/Solver Semantic Hallucination
+### Defense Layer Analysis
 
-**Attacker Tier:** Sequencer-level (to create phantom intent) + solver observation
+| Layer | Defense | Strength | Bypass Feasibility |
+|-------|---------|----------|-------------------|
+| 1 | requestSlowFill validation | **NONE** | N/A — intentionally permissionless |
+| 2 | Dataworker deposit verification | **MODERATE** | Uses "latest" block tag |
+| 3 | BUNDLE_END_BLOCK_BUFFERS | **MODERATE** | 5 blocks (ETH) << 64 slots finality |
+| 4 | ABT proposer whitelist | **STRONG** | Requires owner compromise |
+| 5 | UMA OO dispute (30 min) | **MODERATE** | Relies on active disputors |
+| 6 | Independent validator infrastructure | **STRONG** | Single-entity risk |
 
-**Key Protocols:**
-- Across Protocol: Relayer-based; relayer fills then claims
-- UniswapX: Solver-based; solver fills user orders
-- Connext/Everclear: Router-based; routers provide liquidity
+### Economic Analysis
 
-**Architecture-Specific Feasibility:**
-| Protocol | Who Bears Loss? | Finality Check? | Rate Limits? |
-|----------|----------------|-----------------|-------------|
-| Across | Relayer (then reimbursed from pool) | Unknown - key question | Per-relayer limits |
-| UniswapX | Solver directly | Dutch auction timing | Order expiry |
-| Connext | Router (then pool) | Fast path has liquidity proof | Router capital limits |
+| Parameter | Value |
+|-----------|-------|
+| Attack cost (gas) | ~$50 |
+| Extractable value (ETH SpokePool) | ~$380K |
+| Required attacker tier | RPC eclipse OR sequencer compromise |
+| ABT bond needed? | BLOCKED for self-proposal |
+| Dispute window | 30 minutes |
+| Capital needed | Zero (beyond gas) |
 
-**Falsifier Experiment:**
-- [ ] Read Across SpokePool contract for finality handling
-- [ ] Check if fill() function requires any finality proof
-- [ ] Measure fill latency vs L2 finality
+### H1 Final Status: PARTIALLY FALSIFIED
 
-### On-Chain Discriminator Design
+**On-chain component**: Confirmed vulnerable — requestSlowFill accepts anything.
 
-**Cheapest Test (Tenderly Simulation):**
-1. Take a known fast bridge L1 contract
-2. Craft a valid-looking relayer signature for a phantom withdrawal
-3. Simulate the L1 release transaction
-4. Observe: does the contract check anything beyond signature validity?
-5. If NO additional finality proof check → vulnerable to phantom payout
+**Off-chain component**: Defended by multiple layers:
+1. ABT whitelist blocks self-proposal (strongest defense)
+2. Dataworker validates deposits (moderate defense)
+3. Dispute window provides safety net (moderate defense)
 
-**Timing Test (Behavioral):**
-1. Execute small real L2→L1 withdrawal through target bridge
-2. Measure wall-clock time from L2 tx confirmation to L1 fund release
-3. Compare against L2 finality guarantee
-4. If release_time < finality_time → agent reads unfinalized state
+**Remaining attack surface**: Dataworker uses "latest" not "finalized", with insufficient BUNDLE_END_BLOCK_BUFFERS. This is a **design trade-off for speed**, not a bug.
+
+**E3 qualification**: Cannot reach E3 without demonstrating actual phantom propagation through dataworker pipeline, which requires infrastructure-level compromise (RPC eclipse or similar).
+
+### Novel Architectural Finding
+
+The Across Protocol's security model has a **complete delegation of finality validation to off-chain infrastructure**:
+- No on-chain finality check in any SpokePool function
+- No origin-chain state verification in requestSlowFill
+- No cross-chain proof requirement for slow fill requests
+- ALL security depends on: (1) ABT whitelist, (2) dataworker correctness, (3) dispute monitoring
+
+This is invisible to standard smart contract audits and represents a systemic architectural risk: **if the off-chain trust boundary fails, the on-chain contracts provide zero protection against phantom deposits**.
+
+### Synapse FastBridge: H2 FALSIFIED
+- On-chain state reverts with reorged blocks
+- bridgeStatuses cannot persist phantom entries
+- Risk limited to relayer capital only (self-funded fills)
+- **VERDICT**: Protocol-level pool drain not feasible
+
+### Across Fast Fill: H3 KNOWN RISK
+- Relayer reads "latest" with MIN_DEPOSIT_CONFIRMATIONS
+- Documented trade-off in Across docs
+- Risk borne by relayer, not protocol
+- **VERDICT**: Known and accepted, not novel

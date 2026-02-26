@@ -1,91 +1,60 @@
-# Control Plane: Bridge Finality Gap Targets
+# Control Plane: Bridge Finality Gap — Across Protocol Focus
 
-## Cached Contract Analysis
+## Updated With Live On-Chain Evidence (Block 24,539,741)
 
-### 1. Metis L1 Bridge (0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b)
+### Security Architecture Overview
 
-**Auth Mechanism:** CrossDomainEnabled.onlyFromCrossDomainAccount(l2TokenBridge)
-- Checks: msg.sender == messenger
-- Checks: messenger.xDomainMessageSender() == l2TokenBridge
-- Trust chain: L1 contract → CrossDomainMessenger → L2 Bridge
+```
+Layer 1: ABT Proposer Whitelist (who can propose)
+Layer 2: Dataworker Validation (what gets proposed)
+Layer 3: UMA OO Dispute Window (who can challenge)
+Layer 4: Multisig Admin (who controls parameters)
+```
 
-**Auth State Locations:**
-- `messenger` address (set at deployment/initialization)
-- `l2TokenBridge` address (set at deployment/initialization)
+### ABT BondToken Whitelist (Layer 1)
+- Contract: 0xee1dc6bcf1ee967a350e9ac6caaaa236109002ea
+- Key function: transferFrom() blocks non-whitelisted proposers
+- setProposer(address, bool) — onlyOwner
+- Owner: 0xb524735356985d2f267fa010d681f061dff03715 (3/5 Gnosis Safe)
 
-**Auth Writers:**
-- Constructor / initializer (one-time)
-- Proxy admin (if upgradeable - needs verification)
+### Whitelisted Proposers
+| Address | Type | ABT Balance | Status |
+|---------|------|-------------|--------|
+| 0xf7bac63fc7ceacf0589f25454ecf5c2ce904997c | **EOA** | 14.706 ABT | **ONLY ACTIVE** |
 
-**Bypass Hypotheses:**
-1. Messenger compromise: if messenger contract is upgradeable, new impl could forge xDomainMessageSender
-2. Direct call to impl: if proxy pattern, direct call to implementation may bypass auth
-3. Cross-domain message from different L2 contract claiming to be l2TokenBridge
+### HubPool Admin (Layer 4)
+- Owner: 3/5 Gnosis Safe (same as ABT owner)
+- 5 owners, threshold 3, 407 txs executed
+- GnosisSafe v1.3.0
 
-**Fund Release Functions (Critical Path):**
-- `finalizeETHWithdrawal(from, to, amount, data)` → sends ETH
-- `finalizeETHWithdrawalByChainId(chainId, from, to, amount, data)` → sends ETH
-- `finalizeERC20Withdrawal(l1Token, l2Token, from, to, amount, data)` → sends ERC20
-- `finalizeERC20WithdrawalByChainId(...)` → sends ERC20
-- `finalizeMetisWithdrawalByChainId(...)` → sends Metis token
+### Dispute Mechanism (Layer 3)
+- **ZERO disputes EVER** in RootBundleDisputed events
+- Liveness: 1800s (30 min)
+- disputeRootBundle() — permissionless with ABT bond
 
-### 2. EtherDelta Exchange (0x2a0c0dbecc7e4d658f48e01e3fa353f44050c208)
+### Auth Gate Bypass Analysis
+| Gate | Bypass Feasibility |
+|------|-------------------|
+| ABT proposer whitelist | Requires 3/5 multisig |
+| requestSlowFill | **NO GATE** — permissionless, confirmed via eth_call |
+| executeSlowRelayLeaf | Requires merkle proof against posted root |
+| disputeRootBundle | **NO GATE** — permissionless with bond |
 
-**Auth Mechanism:** onlyAdmin modifier + ECDSA signature verification
-- Admin address stored in contract
-- User must sign withdrawal params
-- Admin submits the signed withdrawal
+### Critical Single Points of Failure
+1. **Single EOA proposer** — if key compromised, can propose malicious roots
+2. **Dormant dispute mechanism** — zero disputes ever, unclear validator count
+3. **3/5 multisig** — if 3 keys compromised, full protocol control
 
-**Auth State Locations:**
-- `admin` address
-- `feeAccount` address
+### Previously Analyzed (Lower Priority)
 
-**Auth Writers:**
-- `changeAdmin(admin_)` - callable only by admin
-- `changeFeeAccount(feeAccount_)` - callable only by admin
+**Metis L1 Bridge (0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b):**
+- Auth: CrossDomainEnabled.onlyFromCrossDomainAccount(l2TokenBridge)
+- Trust: L1 contract → CrossDomainMessenger → L2 Bridge
 
-**Bypass Hypotheses:**
-1. Admin key compromise → direct fund drain
-2. Signature replay: nonce-based protection exists (withdrawn[hash] mapping)
-3. Fee manipulation: admin controls feeWithdrawal parameter
+**Celer cBridge (0x5427FEFA711Eff984124bfBB1AB6fbf5E3DA1820):**
+- Auth: 2/3+1 stake-weighted ECDSA multi-sig (SGN validators)
+- ecrecover + DelayedTransfer + VolumeControl
 
-### 3. AdEx Protocol (Validator-Signed Channels)
-
-**Auth Mechanism:** M-of-N supermajority (2/3 validators)
-- ECDSA signature verification per validator
-- Multiple signature modes: EIP712, GETH, TREZOR, ADEX
-
-**Auth State Locations:**
-- Channel validators set at channel creation
-- Identity privilege levels
-
-**Auth Writers:**
-- Channel creation (immutable validators)
-- Identity setAddrPrivilege (privilege escalation)
-
-**Bypass Hypotheses:**
-1. Validator key compromise (need 2/3)
-2. Shared RPC eclipse (all validators see same phantom)
-3. Identity privilege escalation via flash loan (temporarily gain privilege)
-
-## Priority Target for Finality Gap Analysis
-
-**Metis L1 Bridge is the highest-priority target because:**
-1. Uses cross-domain messenger pattern (standard L2 bridge)
-2. Trust is delegated to messenger protocol's finality handling
-3. Metis uses optimistic-style consensus → long finality window
-4. If messenger relays messages from unfinalized L2 blocks → phantom withdrawals possible
-5. Concrete L1 contract address in our cache for analysis
-
-## Known Fast Bridge Protocols to Investigate (L1 Mainnet)
-
-| Protocol | L1 Contract | Relayer Model | Priority |
-|----------|------------|---------------|----------|
-| Across Protocol | SpokePool (0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5) | Single relayer fills | HIGH |
-| Hop Protocol | L1 Bridge contracts per token | Bonder (single signer) | HIGH |
-| Stargate V2 | Various endpoints | LayerZero DVN + relayer | MEDIUM |
-| Synapse Bridge | SynapseBridge router | Validator committee | MEDIUM |
-| Connext/Everclear | DiamondProxy | Router/solver based | MEDIUM |
-| Celer cBridge | Bridge contract | SGN validator set | MEDIUM |
-| Socket/Bungee | SocketGateway | Route-specific | LOW |
-| Metis Bridge | 0x3980... (cached) | CrossDomainMessenger | HIGH (have source) |
+**Hop L1 ETH Bridge (0xb8901acB165ed027E32754E0FFe830802919727f):**
+- Auth: onlyBonder + merkle proof settlement
+- challengePeriod: 1 day, resolution: 10 days

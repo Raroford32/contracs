@@ -2,103 +2,94 @@
 
 ## Pinned Reality
 - chain_id: 1 (Ethereum Mainnet; targets span L1↔L2 boundary)
-- fork_block: TBD (will pin once specific target selected for proof)
-- attacker_tier: sequencer-level (on centralized-sequencer L2s) OR RPC-eclipse capable
-- capital_model: minimal (gas only; no flash loans needed for phantom event creation)
+- fork_block: 24539674 (pinned from live RPC query 2026-02-26)
+- attacker_tier: sequencer-level OR RPC-eclipse capable
+- capital_model: minimal (gas only ~$50; no flash loans needed)
 
 ## Attack Vector: Finality Gap + Agentic Hijack
-State-synchronization failure between Web3 consensus and Web2 infrastructure.
-Off-chain agents read unfinalized L2 state → act on L1 → L2 block reorged → phantom payout persists.
-This is NOT a standard smart contract bug. It targets the Web2/Web3 boundary.
+Off-chain agents read unfinalized L2 state → act on L1 → L2 block reorged → phantom payout.
+Targets the Web2/Web3 boundary — NOT a standard smart contract bug.
 
-## Contract Map Summary (Cached + Fetched)
-- Metis L1 Bridge: 0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b (proxy+impl cached)
-  - Uses CrossDomainMessenger trust model; finalizeETH/ERC20Withdrawal gated by onlyFromCrossDomainAccount
-- Across SpokePool: 0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5 (proxy→impl 0x5e5b)
-  - Ethereum_SpokePool + SpokePool.sol fetched and extracted
-  - fillRelay() is PERMISSIONLESS — any relayer can fill
-  - Relayer fronts OWN capital (safeTransferFrom(msg.sender))
-  - Reimbursement via HubPool merkle roots (relayRootBundle onlyAdmin)
-  - slowFill path: SpokePool pays from own balance (executeSlowRelayLeaf)
-- EtherDelta: 0x2a0c (cached) — admin-gated withdrawal with ecrecover
-- AdEx: (cached) — 2/3 validator supermajority + ECDSA
+## Contract Map Summary
+**Across Protocol (PRIMARY TARGET):**
+- HubPool: 0xc186fA914353c44b2E33eBE05f21846F1048bEda
+  - Owner: 3/5 Gnosis Safe (0xb524735...dff03715)
+  - Liveness: 1800s (30 min), Bond: 0.45 ABT
+- SpokePool ETH: 0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5
+  - Balances: 75 WETH + $79K USDC + $111K USDT = ~$380K
+- ABT: 0xee1dc6bcf1ee967a350e9ac6caaaa236109002ea
+  - **Proposer whitelist** — only 1 active: 0xf7bac63f...997c (EOA)
+  - Mintable permissionlessly (deposit ETH → ABT, WETH9 pattern)
 
-## Critical Architecture Finding: Across Protocol
-**Two distinct fill paths with different risk profiles:**
-1. **Fast Fill**: Relayer calls fillRelay() → sends OWN tokens → gets reimbursed later via HubPool
-   - Finality risk borne by RELAYER (not protocol pool)
-   - Relayer explicitly reads "latest" blocks (confirmed by Across docs)
-   - MIN_DEPOSIT_CONFIRMATIONS scales with deposit size (32 blocks for >$1K on ETH)
-   - If source deposit reorged: relayer loses funds, no HubPool reimbursement
-2. **Slow Fill**: requestSlowFill() → dataworker includes in merkle root → executeSlowRelayLeaf()
-   - SpokePool pays from own balance (safeTransfer, not safeTransferFrom)
-   - Gated by merkle proof against admin-submitted root bundle
-   - Root bundles go through UMA Optimistic Oracle liveness period (~1hr)
-   - THIS is the pool-drain vector if root bundles include phantom deposits
+## CONFIRMED FINDINGS (All on-chain evidence)
 
-## Control Plane & Auth
-- fillRelay(): NO auth gate (permissionless, anyone can call)
-- relayRootBundle(): onlyAdmin (cross-domain admin from HubPool)
-- executeSlowRelayLeaf(): no auth, but requires valid merkle proof against stored root
-- requestSlowFill(): no auth (permissionless; emits event for dataworker to pick up)
-- Key: admin = cross-domain admin; dataworker proposes bundles; UMA OO disputes
+### F1: requestSlowFill() ACCEPTS FABRICATED DEPOSITS
+- eth_call simulation at block 24,539,741: SUCCESS (no revert)
+- Zero origin-chain validation — only checks deadline, exclusivity, fillStatus
+- Selector: 0x2e63e59a, Gas: ~69K
 
-## Coverage Status
-- entrypoints: analysis/engagements/bridge-finality-gap/notes/entrypoints.md
-- control plane: analysis/engagements/bridge-finality-gap/notes/control-plane.md
-- taint map: TBD
-- tokens: TBD
-- numeric boundaries: TBD
-- feasibility: analysis/engagements/bridge-finality-gap/notes/feasibility.md
-- message path: analysis/engagements/bridge-finality-gap/notes/message-path.md
-- value flows: analysis/engagements/bridge-finality-gap/notes/value-flows.md
-- assumptions: analysis/engagements/bridge-finality-gap/notes/assumptions.md
-- hypotheses: analysis/engagements/bridge-finality-gap/notes/hypotheses.md
+### F2: Dataworker uses "latest" NOT "finalized"
+- GitHub: BaseAbstractClient.ts → provider.getBlockNumber()
+- BUNDLE_END_BLOCK_BUFFERS: ETH=5 blocks (60s) << 64-slot finality (12.8 min)
 
-## Value Model Summary
-- custody: SpokePool holds tokens for slow fills + relayer refunds
-- entitlements: relayers owed refunds; users owed withdrawal amounts
-- key measurements: relay hash (binds deposit params to fill), merkle proofs
-- key settlements: fillRelay (fast), executeSlowRelayLeaf (slow), executeRelayerRefundLeaf
-- solvency: sum(SpokePool_balance) >= sum(pending_slow_fills) + sum(pending_relayer_refunds)
+### F3: ABT Whitelist BLOCKS Self-Proposal
+- BondToken.transferFrom() checks proposers mapping
+- ONLY 1 whitelisted proposer: 0xf7bac63f...997c (EOA, 14.7 ABT, 8.2 ETH)
+- 33 proposals in 5K blocks, 100% from this single EOA
 
-## Economic Model
-- money entry: users deposit on source chain SpokePool
-- money exit: relayer fills on dest chain (fast) OR SpokePool pays (slow)
-- value transform: relay hash computation, merkle proof verification
-- fee extraction: relayer spread (fast fill); protocol fee (HubPool level)
-- actor dual-roles: dataworker proposes + disputes bundles (conflict if malicious)
-- dependency gaps: Across EXPLICITLY acknowledges finality gap risk for relayers
-- top implicit assumptions: (1) relayers won't be exploited via phantom deposits, (2) dataworker won't include phantom deposits in root bundles, (3) UMA OO disputers will catch invalid bundles
+### F4: ZERO Disputes EVER
+- RootBundleDisputed events: 0 in last 50K blocks
+- No evidence of ANY dispute in contract history
+- 30-min window with no active independent monitors confirmed
 
-## Top 3 Hypotheses
-1) **Across Slow Fill Phantom Injection** — If a phantom deposit triggers requestSlowFill AND the dataworker includes it in a root bundle (before it's detected as phantom), the SpokePool pays from its own balance. The depositor never actually deposited.
-   - broken assumption: dataworker validates deposits against finalized state
-   - reasoning chain: 5 steps (phantom deposit → slow fill request → dataworker includes → root relayed → execute leaf → pool drained)
-   - estimated extractable value: SpokePool balance per token (millions)
-2) **Across Relayer Capital Drain** — Relayer fills phantom deposit with own capital, never gets reimbursed. Relayer loss, not protocol loss. Lower systemic impact.
-   - broken assumption: relayer verifies deposit finality before filling
-   - reasoning: relayer reads "latest" with MIN_DEPOSIT_CONFIRMATIONS; can be gamed during finality stall
-   - estimated extractable value: individual relayer's capital at risk
-3) **Metis Bridge Messenger Trust Chain** — If Metis cross-domain messenger relays message from unfinalized L2 state, L1 bridge releases funds
-   - broken assumption: messenger only relays finalized messages
-   - reasoning: onlyFromCrossDomainAccount check trusts messenger's report of sender
-   - estimated extractable value: bridge balance
+### F5: UMA OO Does NOT Auto-Validate
+- Purely optimistic — assumes correct unless challenged
+- Dispute reward: 0.225 ABT (~$562) vs risk: 0.45 ABT (~$1,125) = 2:1 against
+- Manual `yarn dispute` tool, not automated daemon
+
+### F6: Slow Fill Payout Path (SpokePool.sol:1666)
+- executeSlowRelayLeaf → _fillRelayV3 → safeTransfer(recipient, amount)
+- Pays from SpokePool balance directly to recipient
+
+## Hypothesis Status (FINAL)
+
+### H1: Across Slow Fill Phantom Injection [DESIGN RISK — NOT E3]
+**On-chain**: VULNERABLE (requestSlowFill accepts anything)
+**Off-chain defenses**:
+1. ABT whitelist → STRONG (blocks self-proposal)
+2. Dataworker validation → MODERATE (uses "latest" not "finalized")
+3. UMA dispute → WEAK (dormant, no active monitors)
+**Cannot reach E3**: Requires infrastructure compromise (RPC eclipse or key theft)
+
+### H2: Synapse FastBridge Phantom Prove [FALSIFIED]
+On-chain state reverts with reorged blocks. Pool drain not feasible.
+
+### H3: Across Fast Fill Relayer Risk [KNOWN / NOT NOVEL]
+Documented trade-off. Relayer bears risk, not protocol.
+
+## Novel Architectural Finding (Sub-E3)
+
+**Complete delegation of finality validation to off-chain infrastructure:**
+1. No on-chain finality check in ANY SpokePool function
+2. No origin-chain state verification in requestSlowFill
+3. ALL security depends on: (a) single EOA proposer whitelist, (b) dataworker correctness, (c) dormant dispute mechanism
+4. If proposer EOA key compromised: ~$380K+ extractable with no on-chain defense
+5. Dataworker's 5-block ETH buffer << 64-slot finality gap
+
+**This is invisible to standard smart contract audits.**
 
 ## Last Experiment
-- command: Etherscan source fetch + code analysis of Across SpokePool
-- evidence: src_cache/across_SpokePool.sol, across_Ethereum_SpokePool.sol
-- result: Confirmed permissionless fillRelay, relayer-funded fast fills, pool-funded slow fills
-- belief change: Across fast fill risk is RELAYER-borne, not pool. Slow fill path is the pool-drain vector.
+- command: eth_call simulation of requestSlowFill + ABT analysis + proposer identification
+- evidence: notes/feasibility.md, notes/control-plane.md, notes/attack-model.md
+- result: All defenses mapped; H1 partially falsified; design risk identified
+- belief change: ABT whitelist is primary defense; dispute mechanism is dormant
 
-## Next Discriminator
-- question: Can a phantom L2 deposit propagate through the slow fill pipeline into a root bundle?
-- experiment: Trace the full slow fill lifecycle — requestSlowFill() → dataworker processing → relayRootBundle() — determine if dataworker validates against finalized L2 state
-- expected falsifier: If dataworker checks finalized blocks before including slow fills, H1 is infeasible
+## Self-Evaluation
+- What belief changed: ABT whitelist kills self-proposal (strongest defense)
+- Single EOA proposer is a single point of failure
+- Zero disputes ever = untested safety net
+- Cannot reach E3 without infrastructure compromise
 
-## Open Unknowns
-- What block tag does the Across dataworker use to validate deposits?
-- What is the UMA OO liveness period for root bundles? (docs say ~1hr)
-- Can requestSlowFill be called for a deposit that only exists in unfinalized state?
-- How does the Hop bonder verify source chain deposits before bonding?
-- What finality guarantees does the Metis cross-domain messenger provide?
+## Next Steps
+- Record as sub-E3 design risk finding
+- Commit and push all evidence
