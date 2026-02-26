@@ -1,0 +1,95 @@
+protocol: bridge-finality-gap
+chain_id: 1
+fork_block: TBD  # will pin once specific target selected for proof
+seed_addresses:
+  - "0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5"  # Across Ethereum SpokePool (proxy)
+  - "0x5e5b726c81f43b953a62ad87e2835c85c4d9dd3b"  # Across SpokePool impl
+  - "0xc186fA914353c44b2E33eBE05f21846F1048bEda"  # Across HubPool
+  - "0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b"  # Metis L1 Bridge (proxy)
+  - "0xb8901acB165ed027E32754E0FFe830802919727f"  # Hop L1 ETH Bridge
+  - "0x3666f603Cc164936C1b87e207F36BEBa4AC5f18a"  # Hop L1 USDC Bridge
+  - "0x5523D3c98809DdDB82C686E152F5C58B1B0fB59E"  # Synapse FastBridge
+  - "0x5427FEFA711Eff984124bfBB1AB6fbf5E3DA1820"  # Celer cBridge V2
+
+# Evidence/provenance sources
+rpc_url_env: ETH_HTTP_ERIGON_1
+explorer: etherscan
+etherscan_key_env: ETHERSCAN_API_KEY
+
+# Attack vector focus
+attack_vector: "Finality Gap + Agentic Hijack"
+attack_class: "Web3/Web2 boundary state-synchronization failure"
+
+# Source artifacts (fetched)
+source_cache:
+  - src_cache/across_SpokePool.sol  # main Across SpokePool logic (96KB)
+  - src_cache/across_Ethereum_SpokePool.sol  # Ethereum-specific
+  - src_cache/across_V3SpokePoolInterface.sol  # interface
+  - src_cache/across_SpokePoolInterface.sol  # interface
+  - src_cache/0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b_impl.sol  # Metis bridge
+  - src_cache/0x2a0c0dbecc7e4d658f48e01e3fa353f44050c208.sol  # EtherDelta (reference pattern)
+
+# Engagement artifacts
+bundler_manifest_path: null  # will populate if bundler run
+traverse_out_dir: analysis/engagements/bridge-finality-gap/traverse
+ityfuzz_workdirs: []
+tenderly_evidence_paths:
+  - analysis/engagements/bridge-finality-gap/tenderly/rpc
+
+# Coverage notes (all populated)
+notes_paths:
+  - analysis/engagements/bridge-finality-gap/notes/entrypoints.md
+  - analysis/engagements/bridge-finality-gap/notes/control-plane.md
+  - analysis/engagements/bridge-finality-gap/notes/taint-map.md
+  - analysis/engagements/bridge-finality-gap/notes/tokens.md
+  - analysis/engagements/bridge-finality-gap/notes/feasibility.md
+  - analysis/engagements/bridge-finality-gap/notes/message-path.md
+  - analysis/engagements/bridge-finality-gap/notes/value-flows.md
+  - analysis/engagements/bridge-finality-gap/notes/assumptions.md
+  - analysis/engagements/bridge-finality-gap/notes/hypotheses.md
+
+# Target bridge protocols with architecture classification
+target_bridges:
+  - name: "Across Protocol"
+    category: "A (relayer trust) + D (hybrid fast/slow)"
+    l1_contracts: ["0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5", "0xc186fA914353c44b2E33eBE05f21846F1048bEda"]
+    relayer_model: "permissionless relayer marketplace"
+    finality_handling: "relayer reads latest with MIN_DEPOSIT_CONFIRMATIONS; confirmed by docs"
+    risk_bearer: "relayer (fast fill) / pool (slow fill)"
+    priority: HIGH
+  - name: "Hop Protocol"
+    category: "A (bonder trust)"
+    l1_contracts: ["0xb8901acB165ed027E32754E0FFe830802919727f", "0x3666f603Cc164936C1b87e207F36BEBa4AC5f18a"]
+    relayer_model: "designated bonders post collateral"
+    finality_handling: "bonders act pre-finality; bear reorg risk"
+    risk_bearer: "bonder"
+    priority: HIGH
+  - name: "Metis L1 Bridge"
+    category: "C (cross-domain messenger) / D (if fast path exists)"
+    l1_contracts: ["0x3980c9ed79d2c191a89e02fa3529c60ed6e9c04b"]
+    relayer_model: "CrossDomainMessenger relay"
+    finality_handling: "depends on messenger implementation"
+    risk_bearer: "bridge pool"
+    priority: HIGH (source cached)
+  - name: "Synapse FastBridge"
+    category: "A (RFQ relayer)"
+    l1_contracts: ["0x5523D3c98809DdDB82C686E152F5C58B1B0fB59E"]
+    relayer_model: "RFQ competitive relayers"
+    finality_handling: "unknown"
+    risk_bearer: "relayer (fill) / pool (settlement)"
+    priority: MEDIUM
+  - name: "Celer cBridge"
+    category: "B (SGN validator threshold)"
+    l1_contracts: ["0x5427FEFA711Eff984124bfBB1AB6fbf5E3DA1820"]
+    relayer_model: "SGN 2/3+ stake-weighted BFT"
+    finality_handling: "Tendermint consensus adds confirmation layer"
+    risk_bearer: "bridge pool"
+    priority: MEDIUM
+
+# Web research evidence
+web_research:
+  - "Across explicitly reads 'latest' blocks (confirmed by Across docs)"
+  - "Across MIN_DEPOSIT_CONFIRMATIONS: 32 blocks for >$1K on ETH"
+  - "No confirmed large-scale double-spend via reorg against bridges (as of 2026)"
+  - "Ethereum finality stall May 2023 demonstrated theoretical viability"
+  - "Most bridge exploits are private key compromise, not finality-gap"
