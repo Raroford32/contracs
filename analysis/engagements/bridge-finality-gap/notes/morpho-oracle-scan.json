@@ -1,1 +1,2505 @@
-[]
+[
+  {
+    "oracle": "0x9d4eb56E054e4bFE961F861E351F606987784B65",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+    "base_vault_name": "Savings Dai (sDAI)",
+    "base_vault_total_assets": "170588763970334513259762706",
+    "base_vault_underlying": "Dai Stablecoin (DAI) @ 0x6B175474E89094C44Da98b954EedeAC495271d0F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xE0adEFAe3C4115BFe7Dc29A172c5F46b4b5df621",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+    "quote_vault_name": "Wrapped Mountain Protocol USD (wUSDM)",
+    "quote_vault_total_assets": "1173058634387795062534980",
+    "quote_vault_underlying": "Mountain Protocol USD (USDM) @ 0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x5D916980D5Ae1737a8330Bf24dF812b2911Aae25",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "base_vault_name": "Staked USDe (sUSDe)",
+    "base_vault_total_assets": "3516733576334821025099233446",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x025106374196586E8BC91eE8818dD7B0Efd2B78B",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 293999905.45 USDC"
+    ],
+    "base_vault_addr": "0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB",
+    "base_vault_name": "Steakhouse USDC (steakUSDC)",
+    "base_vault_total_assets": "293999905446589",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xe4CCAA1849e9058f77f555C0FCcA4925Efd37d8E",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 25338.79 WETH"
+    ],
+    "base_vault_addr": "0x2371e134e3455e0593363cBF89d3b6cf53740618",
+    "base_vault_name": "Gauntlet WETH Prime (gtWETH)",
+    "base_vault_total_assets": "25338791414116039151935",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x76052A2A28fDCB8124f4686C63C68355b142de3B",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1222.94 WETH"
+    ],
+    "base_vault_addr": "0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0",
+    "base_vault_name": "Re7 WETH (Re7WETH)",
+    "base_vault_total_assets": "1222941018274018756477",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x3B8c4A340336941524DE276FF730b3Be71157B55",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 206490281.10 USDC"
+    ],
+    "base_vault_addr": "0xdd0f28e19C1780eb6396170735D45153D261490d",
+    "base_vault_name": "Gauntlet USDC Prime (gtUSDC)",
+    "base_vault_total_assets": "206490281103696",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x1f083a4c51E6cAa627A8Cbe7452bF3D6eb815F57",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 149195.51 USDT"
+    ],
+    "base_vault_addr": "0x95EeF579155cd2C5510F312c8fA39208c3Be01a8",
+    "base_vault_name": "Re7 USDT (Re7USDT)",
+    "base_vault_total_assets": "149195513883",
+    "base_vault_underlying": "Tether USD (USDT) @ 0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xc20560B8C4E25f62946f8d3C496d097629986007",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 830192.10 EURA"
+    ],
+    "base_vault_addr": "0x004626A008B1aCdC4c74ab51644093b155e59A23",
+    "base_vault_name": "Staked EURA (stEUR)",
+    "base_vault_total_assets": "830192103214421453131301",
+    "base_vault_underlying": "EURA (previously agEUR) (EURA) @ 0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x2649689775a757EB16334718320e337243E95D72",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 14860.31 OETH"
+    ],
+    "base_vault_addr": "0xDcEe70654261AF21C44c093C300eD3Bb97b78192",
+    "base_vault_name": "Wrapped OETH (wOETH)",
+    "base_vault_total_assets": "14860309927380375114555",
+    "base_vault_underlying": "Origin Ether (OETH) @ 0x856c4Efb76C1D1AE02e20CEB03A2A6a08b0b8dC3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x66a165906d1C389FB7cB1eEC8040A774EEc51232",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9C5a92AaA2A4373D6bd20F7b45cdEb7A13f9AA79",
+    "base_vault_name": "Wrapped OETH (WOETH)",
+    "base_vault_total_assets": "0",
+    "base_vault_underlying": "Origin Ether (OETH) @ 0x856c4Efb76C1D1AE02e20CEB03A2A6a08b0b8dC3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xb7948b5bEEe825E609990484A99340D8767B420e",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 14860.31 OETH"
+    ],
+    "base_vault_addr": "0xDcEe70654261AF21C44c093C300eD3Bb97b78192",
+    "base_vault_name": "Wrapped OETH (wOETH)",
+    "base_vault_total_assets": "14860309927380375114555",
+    "base_vault_underlying": "Origin Ether (OETH) @ 0x856c4Efb76C1D1AE02e20CEB03A2A6a08b0b8dC3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xBC15fcCbf5D2AF119f18832069f56423549E1483",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 71582.67 rUSD"
+    ],
+    "base_vault_addr": "0x07D1718fF05a8C53C8F05aDAEd57C0d672945f9a",
+    "base_vault_name": "Aladdin rUSD (arUSD)",
+    "base_vault_total_assets": "71582672669221836300634",
+    "base_vault_underlying": "f(x) rUSD (rUSD) @ 0x65D72AA8DA931F047169112fcf34f52DbaAE7D18",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x19458F400D93817503c5bF7558624cca09f2487e",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x547213367cfB08ab418E7b54d7883b2C2AA27Fd7",
+    "base_vault_name": "Staked USDz (sUSDz)",
+    "base_vault_total_assets": "1431417733638012227639033",
+    "base_vault_underlying": "USDz (USDz) @ 0xA469B7Ee9ee773642b3e93E842e5D9b5BaA10067",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x84Dd864dD53d8A3ad4d255c8AaeE0B3c5926Ad5E",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 634185.09 USDA"
+    ],
+    "base_vault_addr": "0x0022228a2cc5E7eF0274A7Baa600d44da5aB5776",
+    "base_vault_name": "Staked USDA (stUSD)",
+    "base_vault_total_assets": "634185086209863297845758",
+    "base_vault_underlying": "USDA (USDA) @ 0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd884fa9fe289EB06Cc22667252fA6Bea87A91CC3",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 634185.09 USDA"
+    ],
+    "base_vault_addr": "0x0022228a2cc5E7eF0274A7Baa600d44da5aB5776",
+    "base_vault_name": "Staked USDA (stUSD)",
+    "base_vault_total_assets": "634185086209863297845758",
+    "base_vault_underlying": "USDA (USDA) @ 0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x38Ed40ab78D2D00467CedD5B1631C040768cdfCa",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+    "base_vault_name": "Wrapped Mountain Protocol USD (wUSDM)",
+    "base_vault_total_assets": "1173058634387795062534980",
+    "base_vault_underlying": "Mountain Protocol USD (USDM) @ 0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xAb1Ee26435fB5E7b005A1d438336d80D097931e7",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 634185.09 USDA"
+    ],
+    "base_vault_addr": "0x0022228a2cc5E7eF0274A7Baa600d44da5aB5776",
+    "base_vault_name": "Staked USDA (stUSD)",
+    "base_vault_total_assets": "634185086209863297845758",
+    "base_vault_underlying": "USDA (USDA) @ 0x0000206329b97DB379d5E1Bf586BbDB969C63274",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x99ADb404Ec05f43B897Ae2f917BfA7C5FDd24708",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 6.70 WBTC"
+    ],
+    "base_vault_addr": "0x8DB2350D78aBc13f5673A411D4700BCF87864dDE",
+    "base_vault_name": "swBTC (swBTC)",
+    "base_vault_total_assets": "669781404",
+    "base_vault_underlying": "Wrapped BTC (WBTC) @ 0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x24Dc7441b3486094BcE4aA782C91B30B57BD9dD7",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 0.00 WETH"
+    ],
+    "base_vault_addr": "0xB1A757A68D4a04a6B5A0F06d0cB4FD739048F614",
+    "base_vault_name": "Apostro WETH (apWETH)",
+    "base_vault_total_assets": "1340098978809173",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x5fEA8a318866A3474C5F7113490FB5deDB3105cA",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+    "base_vault_name": "Staked FRAX (sFRAX)",
+    "base_vault_total_assets": "65301344863560128669198093",
+    "base_vault_underlying": "Frax (FRAX) @ 0x853d955aCEf822Db058eb8505911ED77F175b99e",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xcBaA87F2A8555907DDE1836e0E47cCaBFe586f64",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+    "base_vault_name": "Staked FRAX (sFRAX)",
+    "base_vault_total_assets": "65301344863560128669198093",
+    "base_vault_underlying": "Frax (FRAX) @ 0x853d955aCEf822Db058eb8505911ED77F175b99e",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd6361d441EA8Fd285F7cd8b7d406b424e50c5429",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x83F20F44975D03b1b09e64809B757c47f942BEeA",
+    "base_vault_name": "Savings Dai (sDAI)",
+    "base_vault_total_assets": "170588766389446781497618513",
+    "base_vault_underlying": "Dai Stablecoin (DAI) @ 0x6B175474E89094C44Da98b954EedeAC495271d0F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x11105336EAA0F9FA2d8ce3242F611A62D463f4cB",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
+    "quote_vault_name": "Wrapped Mountain Protocol USD (wUSDM)",
+    "quote_vault_total_assets": "1173058634387795062534980",
+    "quote_vault_underlying": "Mountain Protocol USD (USDM) @ 0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6f2B373A397464090645c726eE6685123afEE36f",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182897604801681940145071970",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x9F48b0791C701be7a51B66A4e550A5f0B52A8f5e",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182897604801681940145071970",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0C426d174FC88B7A25d59945Ab2F7274Bf7B4C79",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182897604801681940145071970",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6c6C5219e1Ce025207A6f42C43e16571765F297f",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "base_vault_name": "Staked USDe (sUSDe)",
+    "base_vault_total_assets": "3516733576334821025099233446",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x873CD44b860DEDFe139f93e12A4AcCa0926Ffb87",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "base_vault_name": "Staked USDe (sUSDe)",
+    "base_vault_total_assets": "3516733576334821025099233446",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xE8c1DD884Ac941188f37c3B4c25a95775c7c44c2",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 0.35 WETH"
+    ],
+    "base_vault_addr": "0x6dC3ce9C57b20131347FDc9089D740DAf6eB34c5",
+    "base_vault_name": "Balancer/Tokemak balETH (balETH)",
+    "base_vault_total_assets": "345691727223658109",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xA16104e432595B34Bd49c31D5Be2Fecc83a88867",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 8726.28 WETH"
+    ],
+    "base_vault_addr": "0x0A2b94F6871c1D7A32Fe58E1ab5e6deA2f114E56",
+    "base_vault_name": "Tokemak autoETH (autoETH)",
+    "base_vault_total_assets": "8726281817070682396497",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0A1577C7EcA50871EeCAb68E799F2EFa69F1fa96",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 126045.25 USDG"
+    ],
+    "base_vault_addr": "0x7751E2F4b8ae93EF6B79d86419d42FE3295A4559",
+    "base_vault_name": "Wrapped USDL (wUSDL)",
+    "base_vault_total_assets": "126045246505",
+    "base_vault_underlying": "Global Dollar (USDG) @ 0xe343167631d89B6Ffc58B88d6b7fB0228795491D",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xFb4b72b632CEC456321fEe556b7D4c9Af8D455e1",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!",
+      "LOW TVL QUOTE VAULT: totalAssets = 126045.25 USDG"
+    ],
+    "quote_vault_addr": "0x7751E2F4b8ae93EF6B79d86419d42FE3295A4559",
+    "quote_vault_name": "Wrapped USDL (wUSDL)",
+    "quote_vault_total_assets": "126045246505",
+    "quote_vault_underlying": "Global Dollar (USDG) @ 0xe343167631d89B6Ffc58B88d6b7fB0228795491D",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x715c67c9b32ccF70C24539978649E80a4E4950Bd",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!",
+      "LOW TVL QUOTE VAULT: totalAssets = 126045.25 USDG"
+    ],
+    "quote_vault_addr": "0x7751E2F4b8ae93EF6B79d86419d42FE3295A4559",
+    "quote_vault_name": "Wrapped USDL (wUSDL)",
+    "quote_vault_total_assets": "126045246505",
+    "quote_vault_underlying": "Global Dollar (USDG) @ 0xe343167631d89B6Ffc58B88d6b7fB0228795491D",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x504188EfF00DB6137010dE02C26b3f72c25eE1f1",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+    "base_vault_name": "Staked FRAX (sFRAX)",
+    "base_vault_total_assets": "65301344863560128669198093",
+    "base_vault_underlying": "Frax (FRAX) @ 0x853d955aCEf822Db058eb8505911ED77F175b99e",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd8361b98590293d9A45DdeFC831F077BbBD320CC",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+    "base_vault_name": "Staked FRAX (sFRAX)",
+    "base_vault_total_assets": "65301344863560128669198093",
+    "base_vault_underlying": "Frax (FRAX) @ 0x853d955aCEf822Db058eb8505911ED77F175b99e",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x874514c2CA3512258C5C8194A7234A06860B080B",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x1202F5C7b4B9E47a1A484E8B270be34dbbC75055",
+    "base_vault_name": "Wrapped stUSR (wstUSR)",
+    "base_vault_total_assets": "104409833249402744821355490",
+    "base_vault_underlying": "Resolv USD (USR) @ 0x66a1E37c9b0eAddca17d3662D6c05F4DECf3e110",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xBC087De272D169f40dD6324C028d4738867d3BC7",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 32595466.54 USDC"
+    ],
+    "base_vault_addr": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+    "base_vault_name": "Gauntlet USDC Core (gtUSDCcore)",
+    "base_vault_total_assets": "32595466541569",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xBDbbe1eb5A99531796C8d04787F898Ce5dBF2C8b",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 32595466.54 USDC"
+    ],
+    "base_vault_addr": "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+    "base_vault_name": "Gauntlet USDC Core (gtUSDCcore)",
+    "base_vault_total_assets": "32595466541569",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xb3edb92ABdc8Cf574d3447F7B8a9978B79FdAC0f",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 206490291.03 USDC"
+    ],
+    "base_vault_addr": "0xdd0f28e19C1780eb6396170735D45153D261490d",
+    "base_vault_name": "Gauntlet USDC Prime (gtUSDC)",
+    "base_vault_total_assets": "206490291034619",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6e0b1A5D35a191edE6DdD7Cf888E87A147F2741e",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 970.82 WETH"
+    ],
+    "base_vault_addr": "0xda0002859B2d05F66a753d8241fCDE8623f26F4f",
+    "base_vault_name": "Trade WETH v3 (dWETHV3)",
+    "base_vault_total_assets": "970822885057129667481",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xcb6a6fDFdb18eC9A004465aEf74ff9092FD4f89A",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 12646.28 rsETH"
+    ],
+    "base_vault_addr": "0xe1B4d34E8754600962Cd944B535180Bd758E6c2e",
+    "base_vault_name": "Kelp Gain (agETH)",
+    "base_vault_total_assets": "12646277257199874077189",
+    "base_vault_underlying": "rsETH (rsETH) @ 0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xdE228cfa0942846aC20A52d27cccBDA322741179",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x0655977FEb2f289A4aB78af67BAB0d17aAb84367",
+    "base_vault_name": "Savings crvUSD (scrvUSD)",
+    "base_vault_total_assets": "40961577331227725083023073",
+    "base_vault_underlying": "Curve.Fi USD Stablecoin (crvUSD) @ 0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x04448c2f45341B15c1E5C8cDB8BC4E29187809aC",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x0655977FEb2f289A4aB78af67BAB0d17aAb84367",
+    "base_vault_name": "Savings crvUSD (scrvUSD)",
+    "base_vault_total_assets": "40961577331227725083023073",
+    "base_vault_underlying": "Curve.Fi USD Stablecoin (crvUSD) @ 0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x50AA2b3d70e0AD7F0c449Dac4a95d4b153e1A44b",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 12646.28 rsETH"
+    ],
+    "base_vault_addr": "0xe1B4d34E8754600962Cd944B535180Bd758E6c2e",
+    "base_vault_name": "Kelp Gain (agETH)",
+    "base_vault_total_assets": "12646277257199874077189",
+    "base_vault_underlying": "rsETH (rsETH) @ 0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x9d03b8a9a3E911b205Ef5E9d0A25Cc15Fda6432c",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 12646.28 rsETH"
+    ],
+    "base_vault_addr": "0xe1B4d34E8754600962Cd944B535180Bd758E6c2e",
+    "base_vault_name": "Kelp Gain (agETH)",
+    "base_vault_total_assets": "12646277257199874077189",
+    "base_vault_underlying": "rsETH (rsETH) @ 0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x72EeFF006E96C20aA00e72aC552f35EB9eE836bB",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!",
+      "LOW TVL QUOTE VAULT: totalAssets = 126045.25 USDG"
+    ],
+    "quote_vault_addr": "0x7751E2F4b8ae93EF6B79d86419d42FE3295A4559",
+    "quote_vault_name": "Wrapped USDL (wUSDL)",
+    "quote_vault_total_assets": "126045246505",
+    "quote_vault_underlying": "Global Dollar (USDG) @ 0xe343167631d89B6Ffc58B88d6b7fB0228795491D",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x02004960EbE85df04633b12fa936cc039a573749",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x1202F5C7b4B9E47a1A484E8B270be34dbbC75055",
+    "base_vault_name": "Wrapped stUSR (wstUSR)",
+    "base_vault_total_assets": "104409833249402744821355490",
+    "base_vault_underlying": "Resolv USD (USR) @ 0x66a1E37c9b0eAddca17d3662D6c05F4DECf3e110",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xD87201D0B3D84586470a3af2BD0C2a27FdF6e787",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 198985.60 lvlUSD"
+    ],
+    "base_vault_addr": "0x4737D9b4592B40d51e110b94c9C043c6654067Ae",
+    "base_vault_name": "Staked lvlUSD (slvlUSD)",
+    "base_vault_total_assets": "198985597785482433693607",
+    "base_vault_underlying": "Level USD (lvlUSD) @ 0x7C1156E515aA1A2E851674120074968C905aAF37",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xDa850a72080024e17c1590fbf6ea7a826dB90760",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x1202F5C7b4B9E47a1A484E8B270be34dbbC75055",
+    "base_vault_name": "Wrapped stUSR (wstUSR)",
+    "base_vault_total_assets": "104409833249402744821355490",
+    "base_vault_underlying": "Resolv USD (USR) @ 0x66a1E37c9b0eAddca17d3662D6c05F4DECf3e110",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xb3598FEFb14E9396656E8FEe1D432F64D3cd301C",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 198985.60 lvlUSD"
+    ],
+    "base_vault_addr": "0x4737D9b4592B40d51e110b94c9C043c6654067Ae",
+    "base_vault_name": "Staked lvlUSD (slvlUSD)",
+    "base_vault_total_assets": "198985597785482433693607",
+    "base_vault_underlying": "Level USD (lvlUSD) @ 0x7C1156E515aA1A2E851674120074968C905aAF37",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0c0b8490a439c0937579d67fDBC15a4219493B2b",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 419.49 USDS"
+    ],
+    "base_vault_addr": "0x4cE9c93513DfF543Bc392870d57dF8C04e89Ba0a",
+    "base_vault_name": "Sky Rewards USDS Compounder (ysUSDS)",
+    "base_vault_total_assets": "419488245976188027158",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd6154930A8df0A488Fae08547E53221B572EEA37",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 419.49 USDS"
+    ],
+    "base_vault_addr": "0x4cE9c93513DfF543Bc392870d57dF8C04e89Ba0a",
+    "base_vault_name": "Sky Rewards USDS Compounder (ysUSDS)",
+    "base_vault_total_assets": "419488245976188027158",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0D35Db0928127195990D03E6A6788FA6cc592b06",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 419.49 USDS"
+    ],
+    "base_vault_addr": "0x4cE9c93513DfF543Bc392870d57dF8C04e89Ba0a",
+    "base_vault_name": "Sky Rewards USDS Compounder (ysUSDS)",
+    "base_vault_total_assets": "419488245976188027158",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x70b4C99a2002950aceDdEeCEC718C83f3d5eD3e8",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 419.49 USDS"
+    ],
+    "base_vault_addr": "0x4cE9c93513DfF543Bc392870d57dF8C04e89Ba0a",
+    "base_vault_name": "Sky Rewards USDS Compounder (ysUSDS)",
+    "base_vault_total_assets": "419488245976188027158",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x01AC47317b7A6cB6A5aCd7EBFf997Ce71BD4e5a9",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 29969.23 WETH"
+    ],
+    "base_vault_addr": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+    "base_vault_name": "pufETH (pufETH)",
+    "base_vault_total_assets": "29969231073316941231100",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6a4bDF040FE684284afa53E501f65c8E33839652",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 419.49 USDS"
+    ],
+    "base_vault_addr": "0x4cE9c93513DfF543Bc392870d57dF8C04e89Ba0a",
+    "base_vault_name": "Sky Rewards USDS Compounder (ysUSDS)",
+    "base_vault_total_assets": "419488245976188027158",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xe7AC06781c7F26287f0CA6f140fFB420C3262Efa",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 0.00 wstETH"
+    ],
+    "base_vault_addr": "0xE87ed29896B91421ff43f69257ABF78300e40c7a",
+    "base_vault_name": "Re7 wstETH (Re7wstETH)",
+    "base_vault_total_assets": "41105238104",
+    "base_vault_underlying": "Wrapped liquid staked Ether 2.0 (wstETH) @ 0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xDDBCAAc63306428D10ff4C6832caE1991244C056",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 61192096601381712.00 wUSDL"
+    ],
+    "base_vault_addr": "0xbEeFc011e94f43b8B7b455eBaB290C7Ab4E216f1",
+    "base_vault_name": "Coinshift USDL (csUSDL)",
+    "base_vault_total_assets": "61192096601381708161726",
+    "base_vault_underlying": "Wrapped USDL (wUSDL) @ 0x7751E2F4b8ae93EF6B79d86419d42FE3295A4559",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x269Ca0eEeAC4B618E50Af4C5bf40b030Cc3a7C2E",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 96145.74 USDC",
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!",
+      "LOW TVL QUOTE VAULT: totalAssets = 126045.25 USDG"
+    ],
+    "base_vault_addr": "0x7204B7Dbf9412567835633B6F00C3Edc3a8D6330",
+    "base_vault_name": "Coinshift USDC (csUSDC)",
+    "base_vault_total_assets": "96145736889",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True",
+    "quote_vault_addr": "0x7751E2F4b8ae93EF6B79d86419d42FE3295A4559",
+    "quote_vault_name": "Wrapped USDL (wUSDL)",
+    "quote_vault_total_assets": "126045246505",
+    "quote_vault_underlying": "Global Dollar (USDG) @ 0xe343167631d89B6Ffc58B88d6b7fB0228795491D",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x4D2d98D0F094E74f64E2056b0a544F318108C552",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xE11dbbCe9D0bfbe919a8427C3AE5E04E9572cf68",
+    "base_vault_name": "? (?)",
+    "base_vault_total_assets": "0",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xD8891e132D450220125185eEB82e64a008abd3D3",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 43454.36 USR"
+    ],
+    "base_vault_addr": "0x5085Dd6FAd07c12e38fae01bc2a4938d2C08B1Bc",
+    "base_vault_name": "Apostro Resolv USR (aprUSR)",
+    "base_vault_total_assets": "43454363943285280650369",
+    "base_vault_underlying": "Resolv USD (USR) @ 0x66a1E37c9b0eAddca17d3662D6c05F4DECf3e110",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xD634DbbcF06d99eDc0e2D6349Ef1Ea5873d17C02",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x5C5b196aBE0d54485975D1Ec29617D42D9198326",
+    "base_vault_name": "Staked deUSD (sdeUSD)",
+    "base_vault_total_assets": "22639088290507609019648727",
+    "base_vault_underlying": "deUSD (deUSD) @ 0x15700B564Ca08D9439C58cA5053166E8317aa138",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x65F9f6d537C2D628D1c2663896436817440eDB72",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x5C5b196aBE0d54485975D1Ec29617D42D9198326",
+    "base_vault_name": "Staked deUSD (sdeUSD)",
+    "base_vault_total_assets": "22639088290507609019648727",
+    "base_vault_underlying": "deUSD (deUSD) @ 0x15700B564Ca08D9439C58cA5053166E8317aa138",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x3024b653940976443fFDEF276bdee5452540eF80",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x5C5b196aBE0d54485975D1Ec29617D42D9198326",
+    "base_vault_name": "Staked deUSD (sdeUSD)",
+    "base_vault_total_assets": "22639088290507609019648727",
+    "base_vault_underlying": "deUSD (deUSD) @ 0x15700B564Ca08D9439C58cA5053166E8317aa138",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x5444f8406b3cdD4A156a329c52384bC96B66492d",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x5C5b196aBE0d54485975D1Ec29617D42D9198326",
+    "base_vault_name": "Staked deUSD (sdeUSD)",
+    "base_vault_total_assets": "22639088290507609019648727",
+    "base_vault_underlying": "deUSD (deUSD) @ 0x15700B564Ca08D9439C58cA5053166E8317aa138",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xf830098e97380B352bAca31A10962CDEb7Ca761F",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x1202F5C7b4B9E47a1A484E8B270be34dbbC75055",
+    "base_vault_name": "Wrapped stUSR (wstUSR)",
+    "base_vault_total_assets": "104409833249402744821355490",
+    "base_vault_underlying": "Resolv USD (USR) @ 0x66a1E37c9b0eAddca17d3662D6c05F4DECf3e110",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xB1E676190A86DA2Cb99afD0496538ABe1D4C164D",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 4744.42 WETH"
+    ],
+    "base_vault_addr": "0x657d9ABA1DBb59e53f9F3eCAA878447dCfC96dCb",
+    "base_vault_name": "ynETH MAX (ynETHx)",
+    "base_vault_total_assets": "4744422877373984936661",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x71445fF8B23499e08B28DCfcD7Ed6F2c84dfC713",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182878343381697208749837835",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x4F570BcEaC722f277c5BAAA374D4D69AC095Cd46",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1683950303.03 USDC"
+    ],
+    "base_vault_addr": "0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+    "base_vault_name": "Syrup USDC (syrupUSDC)",
+    "base_vault_total_assets": "1683950303028053",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x80032f4cb6E3573b9ed61E888AF658E48Fb790cC",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1683950303.03 USDC"
+    ],
+    "base_vault_addr": "0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+    "base_vault_name": "Syrup USDC (syrupUSDC)",
+    "base_vault_total_assets": "1683950303028053",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xc28F86C86F79282E2d2A1f45442339C55f7eB22D",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 4744.42 WETH"
+    ],
+    "base_vault_addr": "0x657d9ABA1DBb59e53f9F3eCAA878447dCfC96dCb",
+    "base_vault_name": "ynETH MAX (ynETHx)",
+    "base_vault_total_assets": "4744422877373984936661",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0bA399d2fC01429dD625Db463b11EbA13284db95",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 29969.23 WETH"
+    ],
+    "base_vault_addr": "0xD9A442856C234a39a81a089C06451EBAa4306a72",
+    "base_vault_name": "pufETH (pufETH)",
+    "base_vault_total_assets": "29969231073316941231100",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x26Be0B9fDAF2855428DEee155b195eE802144ACD",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
+    "base_vault_name": "Compounding Open Dollar (cUSDO)",
+    "base_vault_total_assets": "46258319705842275504792097",
+    "base_vault_underlying": "OpenEden Open Dollar (USDO) @ 0x8238884Ec9668Ef77B90C6dfF4D1a9F4F4823BFe",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x1F6cB330C81109a2EB8E0c1eE80C373d9D28C97C",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!",
+      "LOW TVL QUOTE VAULT: totalAssets = 0.00 lvlUSD"
+    ],
+    "quote_vault_addr": "0xC5E96d92C156c5328aA7952Fd21D10349b91B434",
+    "quote_vault_name": "test-lvlusd (testlvl)",
+    "quote_vault_total_assets": "217866136281216",
+    "quote_vault_underlying": "Level USD (lvlUSD) @ 0x7C1156E515aA1A2E851674120074968C905aAF37",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x39f46eAd05fb7b67516cD4fA66FE11E5c422C546",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1394.89 wstETH"
+    ],
+    "base_vault_addr": "0x833AdaeF212c5cD3f78906B44bBfb18258F238F0",
+    "base_vault_name": "Smokehouse WSTETH (bbqWSTETH)",
+    "base_vault_total_assets": "1394892226835536632718",
+    "base_vault_underlying": "Wrapped liquid staked Ether 2.0 (wstETH) @ 0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xD3746bD055C5e61F240F92546466EFA5E854AA2a",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x1CE7D9942ff78c328A4181b9F3826fEE6D845A97",
+    "base_vault_name": "YieldFi yToken (yUSD)",
+    "base_vault_total_assets": "12856920783874960614205409",
+    "base_vault_underlying": "YieldFi Stable Token (sUSD) @ 0x4F8E1426A9d10bddc11d26042ad270F16cCb95F2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x8cc76B27BdEaC2A0004f8f91dEC03F6446a206eE",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x7743e50F534a7f9F1791DdE7dCD89F7783Eefc39",
+    "base_vault_name": "f(x) USD Saving (fxSAVE)",
+    "base_vault_total_assets": "31402240068435972813434073",
+    "base_vault_underlying": " f(x) Stability Pool (fxSP) @ 0x65C9A641afCEB9C0E6034e558A319488FA0FA3be",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xC793DeA5e437BF4BC4d8F24C7F3b9f31BC6892A7",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412560690817614687651479",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x50356C32c984BF921a0eFB1F4264Ac328e429c2c",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 198985.60 lvlUSD"
+    ],
+    "base_vault_addr": "0x4737D9b4592B40d51e110b94c9C043c6654067Ae",
+    "base_vault_name": "Staked lvlUSD (slvlUSD)",
+    "base_vault_total_assets": "198985597785482433693607",
+    "base_vault_underlying": "Level USD (lvlUSD) @ 0x7C1156E515aA1A2E851674120074968C905aAF37",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xA7E614970f9d0614e0480Faa1967dcd7f4236C9C",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 15186595.08 USDC"
+    ],
+    "base_vault_addr": "0xb0f05E4De970A1aaf77f8C2F823953a367504BA9",
+    "base_vault_name": "ALPHA USDC Core (aUSDC)",
+    "base_vault_total_assets": "15186595079694",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x653f9EB445343E38758916879f6eDd42644a4866",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 15186595.08 USDC"
+    ],
+    "base_vault_addr": "0xb0f05E4De970A1aaf77f8C2F823953a367504BA9",
+    "base_vault_name": "ALPHA USDC Core (aUSDC)",
+    "base_vault_total_assets": "15186595079694",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6Fc4c1dC27EAF39cCd827C0FaF0B57fDc3a505cB",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 15186595.08 USDC"
+    ],
+    "base_vault_addr": "0xb0f05E4De970A1aaf77f8C2F823953a367504BA9",
+    "base_vault_name": "ALPHA USDC Core (aUSDC)",
+    "base_vault_total_assets": "15186595079694",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xf7d09cCE00A4d21A1fEC584c6bF0C486Ea848651",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 15186595.08 USDC"
+    ],
+    "base_vault_addr": "0xb0f05E4De970A1aaf77f8C2F823953a367504BA9",
+    "base_vault_name": "ALPHA USDC Core (aUSDC)",
+    "base_vault_total_assets": "15186595079694",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x88D08EC5eCdbF0baaDdFd37c656399Ac0b5e08C8",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 15186595.08 USDC"
+    ],
+    "base_vault_addr": "0xb0f05E4De970A1aaf77f8C2F823953a367504BA9",
+    "base_vault_name": "ALPHA USDC Core (aUSDC)",
+    "base_vault_total_assets": "15186595079694",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd582E019E955C0b8B0C4889e3C86300ddAd11A13",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x06B964d96f5dCF7Eae9d7C559B09EDCe244d4B8E",
+    "base_vault_name": "USUALX (USUALX)",
+    "base_vault_total_assets": "821038446545236371306901158",
+    "base_vault_underlying": "USUAL (USUAL) @ 0xC4441c2BE5d8fA8126822B9929CA0b81Ea0DE38E",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0b38f11BaBDcCec3149B4818258fF33569042B1E",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xaD55aebc9b8c03FC43cd9f62260391c13c23e7c0",
+    "base_vault_name": "Compounding Open Dollar (cUSDO)",
+    "base_vault_total_assets": "46258319705842275504792097",
+    "base_vault_underlying": "OpenEden Open Dollar (USDO) @ 0x8238884Ec9668Ef77B90C6dfF4D1a9F4F4823BFe",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xb1C05B323C66CBe087eC79Ae2eeEf8FC7aFa3F40",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412565215807618020984813",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xbBCF7d1247583049722c79bA4249bEb188c37a33",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 61192096601381712.00 wUSDL"
+    ],
+    "base_vault_addr": "0xbEeFc011e94f43b8B7b455eBaB290C7Ab4E216f1",
+    "base_vault_name": "Coinshift USDL (csUSDL)",
+    "base_vault_total_assets": "61192096601381708161726",
+    "base_vault_underlying": "Wrapped USDL (wUSDL) @ 0x7751E2F4b8ae93EF6B79d86419d42FE3295A4559",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6f397fA3eCed7d3e689f262C36E219768Ae42eAF",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412565215807618020984813",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x8570eda6BB803FF714471FaA47793C88255094d9",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!",
+      "LOW TVL QUOTE VAULT: totalAssets = 126045.25 USDG"
+    ],
+    "quote_vault_addr": "0x7751E2F4b8ae93EF6B79d86419d42FE3295A4559",
+    "quote_vault_name": "Wrapped USDL (wUSDL)",
+    "quote_vault_total_assets": "126045246505",
+    "quote_vault_underlying": "Global Dollar (USDG) @ 0xe343167631d89B6Ffc58B88d6b7fB0228795491D",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x74008068faf8A4804000E140169Ac9A2E2aC41D2",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412567478302619687651479",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x08adA026d756CDf2e17D791e74C8b30D554E1D26",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412567478302619687651479",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xbD22C735Eed1b52a93F5748F29c822fb44E3EEDA",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182747579774010393045350185",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x96F4357692aa35aA986bBefD19C68B89f1D14304",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182747579774010393045350185",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x3660c76f620d70B957B4CA190455126E89D6454b",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 10696286.73 USDC"
+    ],
+    "base_vault_addr": "0x19Ebd191f7A24ECE672ba13A302212b5eF7F35cb",
+    "base_vault_name": "YieldFi yUSD (yUSD)",
+    "base_vault_total_assets": "10696286730934",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x2430457d090E0861CB0266F7e70142f42A89a2a2",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 10696286.73 USDC"
+    ],
+    "base_vault_addr": "0x19Ebd191f7A24ECE672ba13A302212b5eF7F35cb",
+    "base_vault_name": "YieldFi yUSD (yUSD)",
+    "base_vault_total_assets": "10696286730934",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x12cDDB96f233c7c4E67dA5F25f612a6f6Fa9Ac95",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa281f2Ded799e63f2dBa12164824DD1Ea8d39B24",
+    "base_vault_name": "BT-IB01-Vault (BTIB01V)",
+    "base_vault_total_assets": "0",
+    "base_vault_underlying": "BoulderTech-IB01 (IB01.bt) @ 0x09896Fed3a813E6c3512E455972CeCD8D703055a",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x87A45c3A7a5f10D5a02531eF26c3bc2BC2011083",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 10696286.73 USDC"
+    ],
+    "base_vault_addr": "0x19Ebd191f7A24ECE672ba13A302212b5eF7F35cb",
+    "base_vault_name": "YieldFi yUSD (yUSD)",
+    "base_vault_total_assets": "10696286730934",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x8091E8F7414ecc1179D2e37068635549398b101C",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412569740797621354318146",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xCeFA43bD9d73F850701a21325Bf0EA8A6cA5a097",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412569740797621354318146",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xA6AC74D4c50F78934D991dF235ac2A13D587D310",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412569740797621354318146",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x46c18118fEC962Fc4A70b3e6665463bf24Bb7039",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 198985.60 lvlUSD"
+    ],
+    "base_vault_addr": "0x4737D9b4592B40d51e110b94c9C043c6654067Ae",
+    "base_vault_name": "Staked lvlUSD (slvlUSD)",
+    "base_vault_total_assets": "198985597785482433693607",
+    "base_vault_underlying": "Level USD (lvlUSD) @ 0x7C1156E515aA1A2E851674120074968C905aAF37",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x1632f3E14754CD8f4b8F8a3b0719a94545042057",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182747657122205860703273865",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x2021defA41B20A399816e0A40cE6cb8907824B39",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182747657122205860703273865",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x7dD3FC7645555f78cC029f64a4C3965C58Aaf4C4",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182747734470402482718659492",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xeEBd57031Ca61906C81Dc78d9513debF647d2E0c",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 18556.64 USDf"
+    ],
+    "base_vault_addr": "0x3c124fB80e6eedD88D108C2F04013AE5CD571Abc",
+    "base_vault_name": "Falcon USDf Core (fUSDf)",
+    "base_vault_total_assets": "18556636309714828528062",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x67BcC03438D7d71c39343d7AD21cb73Dc19aDB89",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "base_vault_name": "Staked USDe (sUSDe)",
+    "base_vault_total_assets": "3516733576334821025099233446",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x49f9F1966b3796a144c468490A6Fa37D9eaEBA85",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x5C5b196aBE0d54485975D1Ec29617D42D9198326",
+    "base_vault_name": "Staked deUSD (sdeUSD)",
+    "base_vault_total_assets": "22639088290507609019648727",
+    "base_vault_underlying": "deUSD (deUSD) @ 0x15700B564Ca08D9439C58cA5053166E8317aa138",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x03dfCa9A320ca88fA6a0A132F34822e4B13d6fa0",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xd3fD63209FA2D55B07A0f6db36C2f43900be3094",
+    "base_vault_name": "Wrapped Savings rUSD (wsrUSD)",
+    "base_vault_total_assets": "122974895928327131721673370",
+    "base_vault_underlying": "Reservoir Stablecoin (rUSD) @ 0x09D4214C03D01F49544C0448DBE3A27f768F2b34",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x610a4143f3Fad1cEb2cf2CbE0787c63719003233",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412572003292623020984813",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x84bf7A62708108fA640292684F04b0f7362C88F9",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412574265787624687651479",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xD352E2cf83DB8c6C4FC37E16027ef9fb340a6b87",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_name": "Staked Falcon USD (sUSDf)",
+    "base_vault_total_assets": "88412574265787624687651479",
+    "base_vault_underlying": "Falcon USD (USDf) @ 0xFa2B947eEc368f42195f24F36d2aF29f7c24CeC2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xe756357Ea1e43b8977232aD2cAD02Eece0D52540",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 296524.37 USDC"
+    ],
+    "base_vault_addr": "0xd41830d88dfD08678b0B886E0122193d54b02Acc",
+    "base_vault_name": "MEV Capital PTs USDC (MC_PTs)",
+    "base_vault_total_assets": "296524374135",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd9a2296338254489762d1Be0a4E4eB38891d6b7E",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 296524.37 USDC"
+    ],
+    "base_vault_addr": "0xd41830d88dfD08678b0B886E0122193d54b02Acc",
+    "base_vault_name": "MEV Capital PTs USDC (MC_PTs)",
+    "base_vault_total_assets": "296524374135",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x9B8935Da5625D43CA72dD93f8111Ada7c9C82592",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 296524.37 USDC"
+    ],
+    "base_vault_addr": "0xd41830d88dfD08678b0B886E0122193d54b02Acc",
+    "base_vault_name": "MEV Capital PTs USDC (MC_PTs)",
+    "base_vault_total_assets": "296524374135",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0Cb7dEE76aA916a3666f50b044f16051C325b3e2",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xcf62F905562626CfcDD2261162a51fd02Fc9c5b6",
+    "base_vault_name": "Staked Frax USD (sfrxUSD)",
+    "base_vault_total_assets": "25943060852678566940689451",
+    "base_vault_underlying": "Frax USD (frxUSD) @ 0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x373F6155264c3424Cd0D1cA2c7C29FF1998F19d0",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x271C616157e69A43B4977412A64183Cf110Edf16",
+    "base_vault_name": "Pareto staked USP (sUSP)",
+    "base_vault_total_assets": "2923141682443324894518433",
+    "base_vault_underlying": "Pareto synthetic dollar USP (USP) @ 0x97cCC1C046d067ab945d3CF3CC6920D3b1E54c88",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xcc90D7AfE71fBF17FD15846EBC0ab24b007a4A51",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+    "base_vault_name": "Staked Dola (sDOLA)",
+    "base_vault_total_assets": "14683030286180692887587353",
+    "base_vault_underlying": "Dola USD Stablecoin (DOLA) @ 0x865377367054516e17014CcdED1e7d814EDC9ce4",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xe6CDf40ffaE37Dc7Cf2949702A1F068e4D0faf5a",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+    "base_vault_name": "Staked Dola (sDOLA)",
+    "base_vault_total_assets": "14683030508155190617429754",
+    "base_vault_underlying": "Dola USD Stablecoin (DOLA) @ 0x865377367054516e17014CcdED1e7d814EDC9ce4",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xFF2347d36369aB88B3BBFbd9C3db6D8C2dEC103e",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+    "base_vault_name": "Staked Dola (sDOLA)",
+    "base_vault_total_assets": "14683030508155190617429754",
+    "base_vault_underlying": "Dola USD Stablecoin (DOLA) @ 0x865377367054516e17014CcdED1e7d814EDC9ce4",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x9c9e1Cae6A9e2836661e6CaA3f3bbcEBd64148cF",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+    "base_vault_name": "Staked Dola (sDOLA)",
+    "base_vault_total_assets": "14683030508155190617429754",
+    "base_vault_underlying": "Dola USD Stablecoin (DOLA) @ 0x865377367054516e17014CcdED1e7d814EDC9ce4",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x9f59936c3e47E1616d40A44A2f0E276aFAea5cC8",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+    "base_vault_name": "Staked Dola (sDOLA)",
+    "base_vault_total_assets": "14683030508155190617429754",
+    "base_vault_underlying": "Dola USD Stablecoin (DOLA) @ 0x865377367054516e17014CcdED1e7d814EDC9ce4",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xe24136524B18950312532C572CDb7C841F61bf1B",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+    "base_vault_name": "Staked Dola (sDOLA)",
+    "base_vault_total_assets": "14683030730129688347272155",
+    "base_vault_underlying": "Dola USD Stablecoin (DOLA) @ 0x865377367054516e17014CcdED1e7d814EDC9ce4",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0FB39598c4c8F5a975F2858db056B6EEf28e295D",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+    "base_vault_name": "Staked Dola (sDOLA)",
+    "base_vault_total_assets": "14683030730129688347272155",
+    "base_vault_underlying": "Dola USD Stablecoin (DOLA) @ 0x865377367054516e17014CcdED1e7d814EDC9ce4",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xC72C295c25538BE6A135aa2822Aa3a3F9d4D42b9",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x50Bd66D59911F5e086Ec87aE43C811e0D059DD11",
+    "base_vault_name": "sBold (sBOLD)",
+    "base_vault_total_assets": "9058955436604702579427044",
+    "base_vault_underlying": "BOLD Stablecoin (BOLD) @ 0x6440f144b7e50D6a8439336510312d2F54beB01D",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd07Aa6be84c986B280e07e710EaBa83Fc9c75f9a",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "base_vault_name": "Staked USDe (sUSDe)",
+    "base_vault_total_assets": "3516733576334821025099233446",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0bB177db332caA6f29fD5Bf9304900F58E866814",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x50Bd66D59911F5e086Ec87aE43C811e0D059DD11",
+    "base_vault_name": "sBold (sBOLD)",
+    "base_vault_total_assets": "9058955436604702579427044",
+    "base_vault_underlying": "BOLD Stablecoin (BOLD) @ 0x6440f144b7e50D6a8439336510312d2F54beB01D",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xaBA8e7D2ebC771F294DE4Ff4dD6B1CCd6762362A",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182747966514999274909760344",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xa5f3399476D94F652B163a71b37781c00C0b6468",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182747966514999274909760344",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x72d3B4eCd553a5c7eFf6191FEb02FA7740F07b57",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182748043863200514355166037",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x1AA3191D412f5960672914558b30aCb9183eFa8f",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 283.67 sUSDf"
+    ],
+    "base_vault_addr": "0xb530a1B5259A71187F1D69aCF0488F102637a3ED",
+    "base_vault_name": "Leveraged sUSDf (iFALC)",
+    "base_vault_total_assets": "283669718477232244162",
+    "base_vault_underlying": "Staked Falcon USD (sUSDf) @ 0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x03287AEBBD5Ccd8Fc4FAFDB432F7A27a52831575",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 283.67 sUSDf"
+    ],
+    "base_vault_addr": "0xb530a1B5259A71187F1D69aCF0488F102637a3ED",
+    "base_vault_name": "Leveraged sUSDf (iFALC)",
+    "base_vault_total_assets": "283669718477232244162",
+    "base_vault_underlying": "Staked Falcon USD (sUSDf) @ 0xc8CF6D7991f15525488b2A83Df53468D682Ba4B0",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x9301C2dD12552aD11Ce36DF5b53eA33818ad1165",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 34907.17 USDU"
+    ],
+    "base_vault_addr": "0xcE22b5Fb17ccbc0C5d87DC2e0dF47DD71E3AdC0a",
+    "base_vault_name": "USDU Core (sUSDu)",
+    "base_vault_total_assets": "34907169763591198320621",
+    "base_vault_underlying": "USDU (USDU) @ 0xdde3eC717f220Fc6A29D6a4Be73F91DA5b718e55",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x32c1d7e4F4e0ACcb5bbD7e6A2F0F4a0454e79e35",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 34907.17 USDU"
+    ],
+    "base_vault_addr": "0xcE22b5Fb17ccbc0C5d87DC2e0dF47DD71E3AdC0a",
+    "base_vault_name": "USDU Core (sUSDu)",
+    "base_vault_total_assets": "34907169763591198320621",
+    "base_vault_underlying": "USDU (USDU) @ 0xdde3eC717f220Fc6A29D6a4Be73F91DA5b718e55",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xEc5333619ce2AE075e5FffF1A4F9540f81f2F041",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!",
+      "LOW TVL QUOTE VAULT: totalAssets = 44208216.90 USDT"
+    ],
+    "quote_vault_addr": "0xA0804346780b4c2e3bE118ac957D1DB82F9d7484",
+    "quote_vault_name": "Smokehouse USDT (bbqUSDT)",
+    "quote_vault_total_assets": "44208216900424",
+    "quote_vault_underlying": "Tether USD (USDT) @ 0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd2cC46b9B2D761502eF933320ecf0268EC0dfa6d",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xDBDC1Ef57537E34680B898E1FEBD3D68c7389bCB",
+    "base_vault_name": "Staked infiniFi USD (siUSD)",
+    "base_vault_total_assets": "119306358551375027550677773",
+    "base_vault_underlying": "infiniFi USD (iUSD) @ 0x48f9e38f3070AD8945DFEae3FA70987722E3D89c",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0ED5EF6a4Ada311Bd9ED05069bbCFfDAFE5A0088",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182748121211402908158119818",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xD4F0765bEb5a5B19eA6151d0D425dB341a59BcFD",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182748121211402908158119818",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x27C549756d0a1c0d012525b1C39E5d9b1Cf30013",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182748121211402908158119818",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x8E80Ed322634f7df749710cf26B98dccC4ebd566",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1.12 ZCHF"
+    ],
+    "base_vault_addr": "0x637F00cAb9665cB07d91bfB9c6f3fa8faBFEF8BC",
+    "base_vault_name": "SavingsVault ZCHF (svZCHF)",
+    "base_vault_total_assets": "1115692701529705829",
+    "base_vault_underlying": "Frankencoin (ZCHF) @ 0xB58E61C3098d85632Df34EecfB899A1Ed80921cB",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xaDccABdf3dB1f269Bb17156471918EB7862f4929",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182748121211402908158119818",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x2Ab7F9E3b7285147D4FE9062d9fC8E63e7bb0d8F",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182748121211402908158119818",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xE2d12bA4bCB63c25aA0C36b63Db5e3522D686c39",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 519816.17 USDS"
+    ],
+    "base_vault_addr": "0x0f90a6962e86b5587b4c11bA2B9697dC3bA84800",
+    "base_vault_name": "Origami sUSDS + Sky Farms (sUSDS+s)",
+    "base_vault_total_assets": "519816168620673066678372",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xcA3d6Fa03266d9CA262f2bbcCD231A8885F4b8f9",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182748198559606456318638920",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x43bF68618e8f0B51B540Af386A9d8e9fc83Eee1f",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xfE0ccc9942E98C963Fe6b4e5194EB6e3Baa4cb64",
+    "base_vault_name": "Staked YUSD (sYUSD)",
+    "base_vault_total_assets": "13271552525314898075664508",
+    "base_vault_underlying": "YUSD (YUSD) @ 0x4274cD7277C7bb0806Bd5FE84b9aDAE466a8DA0a",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6E2188F15e91ea23653cCA3d367C0c1974A6169B",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xE24a3DC889621612422A64E6388927901608B91D",
+    "base_vault_name": "Staked USN (sUSN)",
+    "base_vault_total_assets": "24268692124370288166826634",
+    "base_vault_underlying": "USN (USN) @ 0xdA67B4284609d2d48e5d10cfAc411572727dc1eD",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x22a2b64234a1F80A7DEFeff9BB3A8127B8667956",
+    "risks": [
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "quote_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "quote_vault_name": "Savings USDS (sUSDS)",
+    "quote_vault_total_assets": "5182748198559606456318638920",
+    "quote_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x3B26BEE26e7eA5225b459abB7433eAb4ea52ed01",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xE24a3DC889621612422A64E6388927901608B91D",
+    "base_vault_name": "Staked USN (sUSN)",
+    "base_vault_total_assets": "24268692124370288166826634",
+    "base_vault_underlying": "USN (USN) @ 0xdA67B4284609d2d48e5d10cfAc411572727dc1eD",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xaBF6b27C4B8e49B9C6188B19819d1B0703C13983",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1250960.56 USDC"
+    ],
+    "base_vault_addr": "0xDCD0f5ab30856F28385F641580Bbd85f88349124",
+    "base_vault_name": "Autonomous Liquidity USD (alUSD)",
+    "base_vault_total_assets": "1250960559372",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xD1Da32f5A539f85E38B84E2cf83d0588fbE9991F",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 794.54 WETH"
+    ],
+    "base_vault_addr": "0x8464F6eCAe1EA58EC816C13f964030eAb8Ec123A",
+    "base_vault_name": "YieldFi yETH (yETH)",
+    "base_vault_total_assets": "794536352170591545782",
+    "base_vault_underlying": "Wrapped Ether (WETH) @ 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x85cBdd20E07EED48dC685B08fa1d46196c37dF6A",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1285150.08 USDC"
+    ],
+    "base_vault_addr": "0xD17049eD25d8f99FE3BFD10CEF2263da9995cFD8",
+    "base_vault_name": "Syntropia USDC (synUSD+)",
+    "base_vault_total_assets": "1285150077687",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xa405070BFE6236B6c1aF391E4777eb262eAB4Ce8",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 193633.92 MUSD"
+    ],
+    "base_vault_addr": "0x52317a47585A6ACDfbD7a29B494c3E2baAE96aBc",
+    "base_vault_name": "Alpha MUSD (aMUSD)",
+    "base_vault_total_assets": "193633920741337855179131",
+    "base_vault_underlying": "Mezo USD (MUSD) @ 0xdD468A1DDc392dcdbEf6db6e34E89AA338F9F186",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xe58B6Ea87b5ce04FC0Cb51eAb64eBb7EA8e6Ba56",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1875165.17 USDC"
+    ],
+    "base_vault_addr": "0x1b2CB79a4564206f53Ba80b4d780F251b4Ae6765",
+    "base_vault_name": "Syntropia USDC Core (synUSD)",
+    "base_vault_total_assets": "1875165170283",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x08Fa67F678F4A60B60152494611bf953A134B627",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629363561520515853761368",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xC966F11B61917FD8934d7F41e701A13fCC1D8a08",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629362661461324046212538",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xc859270b3da1709eAB43822B3881A6319Ce432f1",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629362661461324046212538",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6067298606ab4e893551a1e843539E687da37C00",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629362661461324046212538",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xfDB578391A7807891bb03BeA590d2C2409F771A2",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629362661461324046212538",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xE699B9fC23911c6B43b71c1B10fe23B13A8ac668",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 517232.05 OUSD"
+    ],
+    "base_vault_addr": "0xD2af830E8CBdFed6CC11Bab697bB25496ed6FA62",
+    "base_vault_name": "Wrapped OUSD (WOUSD)",
+    "base_vault_total_assets": "517232050321527279880597",
+    "base_vault_underlying": "Origin Dollar (OUSD) @ 0x2A8e1E676Ec238d8A992307B495b45B3fEAa5e86",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xCc00d98162fEf57d6A1057a36C25D5326e3805c8",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC32B0Cf36e06c790A568667A17DE80cba95A5Aad",
+    "base_vault_name": "Curve Vault for crvUSD (cvcrvUSD)",
+    "base_vault_total_assets": "28754575684367758617735146",
+    "base_vault_underlying": "Curve.Fi USD Stablecoin (crvUSD) @ 0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x366e4400F2fE47c1Ef7D545db0EB16608D1Ba1fd",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629362661461324046212538",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x4479FF2357637052a1Ed5010Fdd665D1b8b68453",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x3d7d6fdf07EE548B939A80edbc9B2256d0cdc003",
+    "base_vault_name": "Strata Senior USDe (srUSDe)",
+    "base_vault_total_assets": "121718006942685650940299696",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x5fAfC7A5A4b5d8cE966E0aAc62243A8c5A807f01",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 33377723.31 USDC"
+    ],
+    "base_vault_addr": "0xBe53A109B494E5c9f97b9Cd39Fe969BE68BF6204",
+    "base_vault_name": "USDC-1 yVault (yvUSDC-1)",
+    "base_vault_total_assets": "33377723311859",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x68b4c2B2b2e245AB54a3bD55DfD5A9d84f029C06",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 24292015.52 USDC"
+    ],
+    "base_vault_addr": "0x056B269Eb1f75477a8666ae8C7fE01b64dD55eCc",
+    "base_vault_name": "USD3 (USD3)",
+    "base_vault_total_assets": "24292015519667",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x23b0B6a7F5941d8ed775F2f9C0D1Af99b2329410",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "base_vault_name": "Staked USDe (sUSDe)",
+    "base_vault_total_assets": "3516733576334821025099233446",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x10769f96C53C038630a04FbAe2d3d838917ECAD7",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182747400604193283159496469",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xf8A3ADe50843592d23Ad9b74cE3cE6e8Aa9B6B51",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1683950722.53 USDC"
+    ],
+    "base_vault_addr": "0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+    "base_vault_name": "Syrup USDC (syrupUSDC)",
+    "base_vault_total_assets": "1683950722533201",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x3699ABA2d63532A0890A761CAd609D128A631Dc5",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x99CD4Ec3f88A45940936F469E4bB72A2A701EEB9",
+    "base_vault_name": "Staked USDS (stUSDS)",
+    "base_vault_total_assets": "195000335020916220992276244",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xE6212D05cB5aF3C821Fef1C1A233a678724F9E7E",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "base_vault_name": "Staked USDe (sUSDe)",
+    "base_vault_total_assets": "3516733576334821025099233446",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x59e347aEF154aDcAe639d0cE032Cb3f5dCB4a6E4",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182747477952386076856973026",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xc8043d248551Ed19B33cbc89dCCd69148c827039",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1683950750.50 USDC"
+    ],
+    "base_vault_addr": "0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+    "base_vault_name": "Syrup USDC (syrupUSDC)",
+    "base_vault_total_assets": "1683950750500212",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x235FD3A500Ee30DCf875df8E3290551C39752b09",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "base_vault_name": "Staked USDe (sUSDe)",
+    "base_vault_total_assets": "3516733576334821025099233446",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xF8Ef29C14eA6FeB5F403D121A161e415014e93Dc",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 3926439.18 USDC"
+    ],
+    "base_vault_addr": "0x01Ba69727E2860b37bc1a2bd56999c1aFb4C15D8",
+    "base_vault_name": "YieldNest RWA MAX (ynRWAx)",
+    "base_vault_total_assets": "3926439179422",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xC415Cc3F04F9074A9562aEEe02591e65D39A94aa",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xE24a3DC889621612422A64E6388927901608B91D",
+    "base_vault_name": "Staked USN (sUSN)",
+    "base_vault_total_assets": "24268692124370288166826634",
+    "base_vault_underlying": "USN (USN) @ 0xdA67B4284609d2d48e5d10cfAc411572727dc1eD",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xe2d7D7f19322516199e44BcD2e3e738B81217891",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 267466.07 USDC"
+    ],
+    "base_vault_addr": "0xBEEFFF4716a49418D69c251cab8759bB107e57C8",
+    "base_vault_name": "Steakhouse High Yield Turbo (bbqUSDCturbo)",
+    "base_vault_total_assets": "267466065034",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x8011D35153104a6072e4Ec992FbD12e48ae888EC",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 267466.07 USDC"
+    ],
+    "base_vault_addr": "0xBEEFFF4716a49418D69c251cab8759bB107e57C8",
+    "base_vault_name": "Steakhouse High Yield Turbo (bbqUSDCturbo)",
+    "base_vault_total_assets": "267466065034",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x5F1B755792350dEB408dcD61b2d7FcaFb21EEBB7",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 267466.07 USDC"
+    ],
+    "base_vault_addr": "0xBEEFFF4716a49418D69c251cab8759bB107e57C8",
+    "base_vault_name": "Steakhouse High Yield Turbo (bbqUSDCturbo)",
+    "base_vault_total_assets": "267466065034",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x7A6dF7FA109e7f01FCe17E320E364FaFA7223325",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 267466.07 USDC"
+    ],
+    "base_vault_addr": "0xBEEFFF4716a49418D69c251cab8759bB107e57C8",
+    "base_vault_name": "Steakhouse High Yield Turbo (bbqUSDCturbo)",
+    "base_vault_total_assets": "267466065034",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x34e50151c21c5f3499AcE66c7157aA547892e997",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 652970447.82 USDT"
+    ],
+    "base_vault_addr": "0x356B8d89c1e1239Cbbb9dE4815c39A1474d5BA7D",
+    "base_vault_name": "Syrup USDT (syrupUSDT)",
+    "base_vault_total_assets": "652970447816332",
+    "base_vault_underlying": "Tether USD (USDT) @ 0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0Db81A3a75F0bA0219D03911bb32a247d083b3DD",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629359961283748383499233",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x53C46eB9B4Ed741D0b766887C8ea1756EacCe503",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629359061224556335883587",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xb847B24b5D13C3F67347005c9B57074b01978bAA",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC58D044404d8B14e953C115E67823784dEA53d8F",
+    "base_vault_name": "Strata Junior USDe (jrUSDe)",
+    "base_vault_total_assets": "39629359061224556335883587",
+    "base_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x67c5d1f448E624BEC01C31335fA22829155fB9Ce",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x88887bE419578051FF9F4eb6C858A951921D8888",
+    "base_vault_name": "Staked cap USD (stcUSD)",
+    "base_vault_total_assets": "77532572568979602502115236",
+    "base_vault_underlying": "cap USD (cUSD) @ 0xcCcc62962d17b8914c62D74FfB843d73B2a3cccC",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xa26D8Cd042E85c7F5483a2429B6F4D0211AfC689",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x88887bE419578051FF9F4eb6C858A951921D8888",
+    "base_vault_name": "Staked cap USD (stcUSD)",
+    "base_vault_total_assets": "77532572568979602502115236",
+    "base_vault_underlying": "cap USD (cUSD) @ 0xcCcc62962d17b8914c62D74FfB843d73B2a3cccC",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x8C257cb4Ba8d5a78B3d82e2aAeC211700e94a814",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x88887bE419578051FF9F4eb6C858A951921D8888",
+    "base_vault_name": "Staked cap USD (stcUSD)",
+    "base_vault_total_assets": "77532572568979602502115236",
+    "base_vault_underlying": "cap USD (cUSD) @ 0xcCcc62962d17b8914c62D74FfB843d73B2a3cccC",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xfb064FE02Cc8AE0Dc6Cf0522ec92d1e9F82a0826",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 24292015.52 USDC"
+    ],
+    "base_vault_addr": "0x056B269Eb1f75477a8666ae8C7fE01b64dD55eCc",
+    "base_vault_name": "USD3 (USD3)",
+    "base_vault_total_assets": "24292015519667",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xDe40Ef08eba5e6A624598002A8E6f27AD5A2dCe2",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 267466.08 USDC"
+    ],
+    "base_vault_addr": "0xBEEFFF4716a49418D69c251cab8759bB107e57C8",
+    "base_vault_name": "Steakhouse High Yield Turbo (bbqUSDCturbo)",
+    "base_vault_total_assets": "267466080747",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x73f12D83285dC583567eBAdf0E373D4f1Af71E8D",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182497717774567749495813366",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x9D278a48bDC6591D99C1bc1Cdb27775097105FB5",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x99CD4Ec3f88A45940936F469E4bB72A2A701EEB9",
+    "base_vault_name": "Staked USDS (stUSDS)",
+    "base_vault_total_assets": "195000348788341785488981827",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0e16E4Cda06c47190127fd5050CC884C0c2f65A5",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xC5d6A7B61d18AfA11435a889557b068BB9f29930",
+    "base_vault_name": "Savings Usdd (sUSDD)",
+    "base_vault_total_assets": "357697045039254278667198248",
+    "base_vault_underlying": "Usdd Stablecoin (USDD) @ 0x4f8e5DE400DE08B164E7421B3EE387f461beCD1A",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x943da86D8686f86F0b3b43fF78A92AAE1A6Ed3a7",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 2581.95 avETH"
+    ],
+    "base_vault_addr": "0xDA06eE2dACF9245Aa80072a4407deBDea0D7e341",
+    "base_vault_name": "Staked avETH (savETH)",
+    "base_vault_total_assets": "2581947618422887298250",
+    "base_vault_underlying": "avETH (avETH) @ 0x9469470C9878bf3d6d0604831d9A3A366156f7EE",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xd4e167781Aa2416F81A54c7C7C74b0652d17956c",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 11.04 PYUSD"
+    ],
+    "base_vault_addr": "0xd8A6511979D9C5D387c819E9F8ED9F3a5C6c5379",
+    "base_vault_name": "Steakhouse High Yield Instant (bbqPYUSD)",
+    "base_vault_total_assets": "11039678",
+    "base_vault_underlying": "PayPal USD (PYUSD) @ 0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6C5349775e0369e43C161E8A2f48E82b33d4cae0",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 11.04 PYUSD"
+    ],
+    "base_vault_addr": "0xd8A6511979D9C5D387c819E9F8ED9F3a5C6c5379",
+    "base_vault_name": "Steakhouse High Yield Instant (bbqPYUSD)",
+    "base_vault_total_assets": "11039678",
+    "base_vault_underlying": "PayPal USD (PYUSD) @ 0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x5D3159ba95dCdE02451a31fE68B08fB650b00458",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 31043808.93 USDC",
+      "QUOTE_VAULT is ERC-4626 \u2014 DANGEROUS: loan-side vault manipulation!"
+    ],
+    "base_vault_addr": "0x53E82ABbb12638F09d9e624578ccB666217a765e",
+    "base_vault_name": "Vault Bridge USDC (vbUSDC)",
+    "base_vault_total_assets": "31043808927904",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True",
+    "quote_vault_addr": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+    "quote_vault_name": "Staked USDe (sUSDe)",
+    "quote_vault_total_assets": "3516733576334821025099233446",
+    "quote_vault_underlying": "USDe (USDe) @ 0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+    "quote_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x28E82e7f25DbcD487af27C80DE4F62553260fecA",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x08EFCC2F3e61185D0EA7F8830B3FEc9Bfa2EE313",
+    "base_vault_name": "Staked NUSD (sNUSD)",
+    "base_vault_total_assets": "185300031830328509311568717",
+    "base_vault_underlying": "Neutrl USD (NUSD) @ 0xE556ABa6fe6036275Ec1f87eda296BE72C811BCE",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x5864E1864bE806DbCe94B2DA62c9f501fF5B5526",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182487380914748390115045537",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x97f57Ecbd3A5A752B63CB7c87D7E99A9752baF89",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+    "base_vault_name": "Savings USDS (sUSDS)",
+    "base_vault_total_assets": "5182487380914748390115045537",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x0A976226d113B67Bd42D672Ac9f83f92B44b454C",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x99CD4Ec3f88A45940936F469E4bB72A2A701EEB9",
+    "base_vault_name": "Staked USDS (stUSDS)",
+    "base_vault_total_assets": "195000353377483856323129337",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xEa876EF062E90a6478e726800A83f44D4EAe09Bc",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 1683950890.34 USDC"
+    ],
+    "base_vault_addr": "0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+    "base_vault_name": "Syrup USDC (syrupUSDC)",
+    "base_vault_total_assets": "1683950890335111",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x17efab746fdA38842Ff613B8c1f2593D220df495",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 11644710.27 USDC"
+    ],
+    "base_vault_addr": "0x998D7b14c123c1982404562b68edDB057b0477cB",
+    "base_vault_name": "Upshift Gamma USDC Vault (upGAMMAusdc)",
+    "base_vault_total_assets": "11644710271221",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x02147FD1Dc98c7D30b5E3b8f31B549837d5B1F10",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 6740280.79 USDC"
+    ],
+    "base_vault_addr": "0xcD9f5907F92818bC06c9Ad70217f089E190d2a32",
+    "base_vault_name": "Senior Royco USDC (srRoyUSDC)",
+    "base_vault_total_assets": "6740280790269",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x7cF9d994681834C6Cc64281B9b224a29f6214b4b",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x1202F5C7b4B9E47a1A484E8B270be34dbbC75055",
+    "base_vault_name": "Wrapped stUSR (wstUSR)",
+    "base_vault_total_assets": "104409833249402744821355490",
+    "base_vault_underlying": "Resolv USD (USR) @ 0x66a1E37c9b0eAddca17d3662D6c05F4DECf3e110",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xcEB6017685e28Ee3eB3650890fc5af932E910FA2",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 267466.13 USDC"
+    ],
+    "base_vault_addr": "0xBEEFFF4716a49418D69c251cab8759bB107e57C8",
+    "base_vault_name": "Steakhouse High Yield Turbo (bbqUSDCturbo)",
+    "base_vault_total_assets": "267466127884",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xf6B42ed88ce6dd8de0265C18e21e75F0C91Afd7E",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 191628.19 USDC"
+    ],
+    "base_vault_addr": "0xF3Cc5c9A25508D8d959618fd48F6AbC18cA4Db49",
+    "base_vault_name": "Clearstar Boring USDC (CSBUSDC)",
+    "base_vault_total_assets": "191628188336",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x7c65985C35181d51EF7571fA40211B57659b7D80",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 517232.05 OUSD"
+    ],
+    "base_vault_addr": "0xD2af830E8CBdFed6CC11Bab697bB25496ed6FA62",
+    "base_vault_name": "Wrapped OUSD (WOUSD)",
+    "base_vault_total_assets": "517232050321527279880597",
+    "base_vault_underlying": "Origin Dollar (OUSD) @ 0x2A8e1E676Ec238d8A992307B495b45B3fEAa5e86",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x62011dc01c0B9833C4E53e20456400e4EA4b8363",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 6740280.79 USDC"
+    ],
+    "base_vault_addr": "0xcD9f5907F92818bC06c9Ad70217f089E190d2a32",
+    "base_vault_name": "Senior Royco USDC (srRoyUSDC)",
+    "base_vault_total_assets": "6740280790269",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xE10a7D39E4eD00351DFe17378b5896e5f8aB422f",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x65a44528e8868166401eA08b549E19552af589dB",
+    "base_vault_name": "Strata Senior NUSD (srNUSD)",
+    "base_vault_total_assets": "5040834511326234796212246",
+    "base_vault_underlying": "Neutrl USD (NUSD) @ 0xE556ABa6fe6036275Ec1f87eda296BE72C811BCE",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xC7bB5f34D645f3849a3091Ce4b6724631ee811Af",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0xDBDC1Ef57537E34680B898E1FEBD3D68c7389bCB",
+    "base_vault_name": "Staked infiniFi USD (siUSD)",
+    "base_vault_total_assets": "119306358551375027550677773",
+    "base_vault_underlying": "infiniFi USD (iUSD) @ 0x48f9e38f3070AD8945DFEae3FA70987722E3D89c",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x86A807dc5E689F78e280B18413001Ca0c2426Ab0",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 6740280.79 USDC"
+    ],
+    "base_vault_addr": "0xcD9f5907F92818bC06c9Ad70217f089E190d2a32",
+    "base_vault_name": "Senior Royco USDC (srRoyUSDC)",
+    "base_vault_total_assets": "6740280790269",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xba3D2Dc1670763c6729CC923A922C7513C0f9DD0",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x99CD4Ec3f88A45940936F469E4bB72A2A701EEB9",
+    "base_vault_name": "Staked USDS (stUSDS)",
+    "base_vault_total_assets": "195000362555768321994308081",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x9C56D403d26C0aE00FA2e767e12F6b588c203B3c",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x99CD4Ec3f88A45940936F469E4bB72A2A701EEB9",
+    "base_vault_name": "Staked USDS (stUSDS)",
+    "base_vault_total_assets": "195000362555768321994308081",
+    "base_vault_underlying": "USDS Stablecoin (USDS) @ 0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x3ca09869054C1d5C4e38de06b505045cA3cED279",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()"
+    ],
+    "base_vault_addr": "0x12E04c932D682a2999b4582F7c9B86171B73220D",
+    "base_vault_name": "Staked Portfolio of Risk-adjusted Investment Strategy Mix (xPRISM)",
+    "base_vault_total_assets": "5000007380000000000000000",
+    "base_vault_underlying": "Portfolio of Risk-adjusted Investment Strategy Mix (PRISM) @ 0x06Bb4ab600b7D22eB2c312f9bAbC22Be6a619046",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xed621DD43e0EEbfe9ddc10bd2815B861734bEb0c",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 9119437.27 USDC"
+    ],
+    "base_vault_addr": "0xbeef088055857739C12CD3765F20b7679Def0f51",
+    "base_vault_name": "Steakhouse Prime Instant (steakUSDC)",
+    "base_vault_total_assets": "9119437273516",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x6A8dc45e4c7512740D5371d7BDd7A4b38A8227EC",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 9119437.27 USDC"
+    ],
+    "base_vault_addr": "0xbeef088055857739C12CD3765F20b7679Def0f51",
+    "base_vault_name": "Steakhouse Prime Instant (steakUSDC)",
+    "base_vault_total_assets": "9119437273516",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0x47260D67C77dddE6451D785FB1Ab5C9B4A2C7Aa0",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 9119437.27 USDC"
+    ],
+    "base_vault_addr": "0xbeef088055857739C12CD3765F20b7679Def0f51",
+    "base_vault_name": "Steakhouse Prime Instant (steakUSDC)",
+    "base_vault_total_assets": "9119437273516",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  },
+  {
+    "oracle": "0xDC90FB5C08fb373279672728ad2d8c3988DBeF16",
+    "risks": [
+      "BASE_VAULT is ERC-4626 \u2014 oracle reads live convertToAssets()",
+      "LOW TVL: totalAssets = 9119437.27 USDC"
+    ],
+    "base_vault_addr": "0xbeef088055857739C12CD3765F20b7679Def0f51",
+    "base_vault_name": "Steakhouse Prime Instant (steakUSDC)",
+    "base_vault_total_assets": "9119437273516",
+    "base_vault_underlying": "USD Coin (USDC) @ 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "base_vault_is_4626": "True"
+  }
+]
