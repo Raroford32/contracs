@@ -6,90 +6,82 @@
 - attacker_tier: sequencer-level OR RPC-eclipse capable
 - capital_model: minimal (gas only ~$50; no flash loans needed)
 
-## Attack Vector: Finality Gap + Agentic Hijack
-Off-chain agents read unfinalized L2 state → act on L1 → L2 block reorged → phantom payout.
-Targets the Web2/Web3 boundary — NOT a standard smart contract bug.
-
 ## Contract Map Summary
 **Across Protocol (PRIMARY TARGET):**
-- HubPool: 0xc186fA914353c44b2E33eBE05f21846F1048bEda
-  - Owner: 3/5 Gnosis Safe (0xb524735...dff03715)
-  - Liveness: 1800s (30 min), Bond: 0.45 ABT
-- SpokePool ETH: 0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5
+- HubPool: 0xc186fA914353c44b2E33eBE05f21846F1048bEda (NOT upgradeable)
+  - Owner: 3/5 Gnosis Safe, Liveness: 1800s (30 min), Bond: 0.45 ABT
+- SpokePool ETH: 0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5 (UUPS upgradeable)
   - Balances: 75 WETH + $79K USDC + $111K USDT = ~$380K
-- ABT: 0xee1dc6bcf1ee967a350e9ac6caaaa236109002ea
-  - **Proposer whitelist** — only 1 active: 0xf7bac63f...997c (EOA)
-  - Mintable permissionlessly (deposit ETH → ABT, WETH9 pattern)
+- ABT: 0xee1dc6bcf1ee967a350e9ac6caaaa236109002ea (WETH9 + proposer whitelist)
+  - 1 active proposer EOA: 0xf7bac63f...997c
 
-## CONFIRMED FINDINGS (All on-chain evidence)
+**Celer cBridge V2:** 0x5427FEFA711Eff984124bfBB1AB6fbf5E3DA1820
+- 2/3 stake-weighted signer quorum, separate Governor role
+**Synapse FastBridge:** 0x5523D3c98809DdDB82C686E152F5C58B1B0fB59E
+- RELAYER_ROLE + GUARD_ROLE gated, well-designed state machine
+**Hop L1 ETH Bridge:** 0xb8901acB165ed027E32754E0FFe830802919727f
+- Bonder + merkle proof, 1-day challenge period
 
-### F1: requestSlowFill() ACCEPTS FABRICATED DEPOSITS
-- eth_call simulation at block 24,539,741: SUCCESS (no revert)
-- Zero origin-chain validation — only checks deadline, exclusivity, fillStatus
-- Selector: 0x2e63e59a, Gas: ~69K
+## Deep Code Analysis Results (Phase C Extended)
 
-### F2: Dataworker uses "latest" NOT "finalized"
-- GitHub: BaseAbstractClient.ts → provider.getBlockNumber()
-- BUNDLE_END_BLOCK_BUFFERS: ETH=5 blocks (60s) << 64-slot finality (12.8 min)
+### On-Chain Findings (Individual — all sub-E3 alone):
+- SpokePool: fill status machine SOUND; reentrancy PROTECTED; relay hash COLLISION-FREE
+- M1: speedUp signature replay with unsafeDeposit (acknowledged in NatSpec)
+- M2: fee-on-transfer accounting mismatch (off-chain mitigated)
+- M3: admin executeExternalCall arbitrary calls (admin trust)
+- M4: HubPool _cancelBundle uses transfer() not safeTransfer()
+- M5: ABT transfer() bypasses whitelist (but can't propose via this path)
+- Celer: signature verification SOUND; M6: epoch boundary 2x volume; M7: fee-on-transfer LP mismatch
+- Synapse/Hop: both well-designed for their trust models
 
-### F3: ABT Whitelist BLOCKS Self-Proposal
-- BondToken.transferFrom() checks proposers mapping
-- ONLY 1 whitelisted proposer: 0xf7bac63f...997c (EOA, 14.7 ABT, 8.2 ETH)
-- 33 proposals in 5K blocks, 100% from this single EOA
+### KEY INSIGHT: No critical on-chain vulnerability in isolation.
 
-### F4: ZERO Disputes EVER
-- RootBundleDisputed events: 0 in last 50K blocks
-- No evidence of ANY dispute in contract history
-- 30-min window with no active independent monitors confirmed
+## Composition Hypotheses (Multi-Vector Chains)
 
-### F5: UMA OO Does NOT Auto-Validate
-- Purely optimistic — assumes correct unless challenged
-- Dispute reward: 0.225 ABT (~$562) vs risk: 0.45 ABT (~$1,125) = 2:1 against
-- Manual `yarn dispute` tool, not automated daemon
+### HC-1: Across Layered Defense Collapse [HIGHEST PRIORITY]
+**5 individually-minor vectors compose into kill chain:**
+1. requestSlowFill permissionless + no origin validation → entry point
+2. Dataworker "latest" block tag + 5-block buffer << 64-slot finality → reads phantom
+3. Single automated proposer → no human review of root contents
+4. Zero disputes ever → no safety net
+5. amountToReturn not in balance check → accounting slack
 
-### F6: Slow Fill Payout Path (SpokePool.sol:1666)
-- executeSlowRelayLeaf → _fillRelayV3 → safeTransfer(recipient, amount)
-- Pays from SpokePool balance directly to recipient
+**Chain:** phantom L2 deposit → requestSlowFill → dataworker reads phantom → automated proposal → no dispute → executeSlowRelayLeaf → drain
 
-## Hypothesis Status (FINAL)
+**Status:** Sub-E3 — requires L2 reorg or RPC eclipse (infrastructure-level)
+**Discriminator needed:** Can we demonstrate phantom propagation through full dataworker pipeline on fork?
 
-### H1: Across Slow Fill Phantom Injection [DESIGN RISK — NOT E3]
-**On-chain**: VULNERABLE (requestSlowFill accepts anything)
-**Off-chain defenses**:
-1. ABT whitelist → STRONG (blocks self-proposal)
-2. Dataworker validation → MODERATE (uses "latest" not "finalized")
-3. UMA dispute → WEAK (dormant, no active monitors)
-**Cannot reach E3**: Requires infrastructure compromise (RPC eclipse or key theft)
+### HC-2: Speed-Up Replay + Slow Fill Redirect [MEDIUM]
+unsafeDeposit ID collision + speed-up signature → slow fill redirected to wrong recipient
+**Discriminator needed:** Does dataworker check speed-up signer == deposit depositor?
 
-### H2: Synapse FastBridge Phantom Prove [FALSIFIED]
-On-chain state reverts with reorged blocks. Pool drain not feasible.
+### HC-3: Celer Signer Cascade + Volume Bypass [MEDIUM]
+2/3 signer compromise → updateSigners → 100% control → governor takeover → disable limits → drain
+**Discriminator needed:** Are Celer governor and signer set the same entity?
 
-### H3: Across Fast Fill Relayer Risk [KNOWN / NOT NOVEL]
-Documented trade-off. Relayer bears risk, not protocol.
+## Coverage Status
+- entrypoints: notes/entrypoints.md
+- control plane: notes/control-plane.md
+- taint map: notes/taint-map.md
+- tokens: notes/tokens.md
+- feasibility: notes/feasibility.md
+- message path: notes/message-path.md
+- value flows: notes/value-flows.md
+- assumptions: notes/assumptions.md
+- hypotheses: notes/hypotheses.md + notes/composition-hypotheses.md
+- on-chain analysis: notes/onchain-contract-analysis.md
 
-## Novel Architectural Finding (Sub-E3)
-
-**Complete delegation of finality validation to off-chain infrastructure:**
-1. No on-chain finality check in ANY SpokePool function
-2. No origin-chain state verification in requestSlowFill
-3. ALL security depends on: (a) single EOA proposer whitelist, (b) dataworker correctness, (c) dormant dispute mechanism
-4. If proposer EOA key compromised: ~$380K+ extractable with no on-chain defense
-5. Dataworker's 5-block ETH buffer << 64-slot finality gap
-
-**This is invisible to standard smart contract audits.**
+## Solvency Equation
+Across: sum(SpokePool_balances) + HubPool_liquidReserves >= sum(pending_fills) + sum(pending_refunds)
+Violated when: phantom slow fills extract real tokens for non-existent deposits
 
 ## Last Experiment
-- command: eth_call simulation of requestSlowFill + ABT analysis + proposer identification
-- evidence: notes/feasibility.md, notes/control-plane.md, notes/attack-model.md
-- result: All defenses mapped; H1 partially falsified; design risk identified
-- belief change: ABT whitelist is primary defense; dispute mechanism is dormant
+- command: Deep source code analysis of SpokePool, HubPool, BondToken, Celer cBridge, Synapse, Hop
+- evidence: notes/onchain-contract-analysis.md, notes/composition-hypotheses.md
+- result: No critical on-chain vulnerability in isolation; 5 composition chains identified
+- belief change: The vulnerability is NOT in any single contract — it's in the COMPOSITION of 5 defense layers each being "good enough" individually but failing together
 
-## Self-Evaluation
-- What belief changed: ABT whitelist kills self-proposal (strongest defense)
-- Single EOA proposer is a single point of failure
-- Zero disputes ever = untested safety net
-- Cannot reach E3 without infrastructure compromise
-
-## Next Steps
-- Record as sub-E3 design risk finding
-- Commit and push all evidence
+## Next Discriminator
+- Question: Can the full Across kill chain (HC-1) be demonstrated on a fork with actual dataworker code?
+- Alternative: Check if Celer governor == signer set overlap (HC-3 cheapest test)
+- Expected falsifier: If dataworker uses "finalized" for origin lookups, HC-1 is blocked
