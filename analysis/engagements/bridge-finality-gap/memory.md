@@ -3,91 +3,84 @@
 ## Pinned Reality
 - chain_id: 1 (Ethereum Mainnet)
 - fork_block: 24539674 (pinned 2026-02-26)
-- discriminator_block: ~24554258 (live 2026-02-28)
+- discriminator_block: ~24554470 (live 2026-02-28)
 - attacker_tier: permissionless (flash loan capable)
 - capital_model: flash loans from Aave V3 / Morpho Blue (0% fee)
 
 ## Phase 1: Bridge Protocols — COMPLETE, SUB-E3
-
 **Across Protocol (HC-1):** All 5 vectors confirmed. L2 finality gap is sole remaining vector. DESIGN RISK — not immediately actionable.
-**Celer/Synapse/Hop:** Deprioritized.
 
 ## Phase 2: DeFi Composition Survey — COMPLETE
-
 Pivoted per user directive to find immediately exploitable, permissionless composition drain.
 
 ## Phase 3: Morpho Blue ERC-4626 Donation Attack — EXHAUSTED
-
 Kill chain economics prove collateral-side donation ALWAYS fails:
 ```
-profit = A*(T+A+D)/(T+A)*LLTV - A - D
 d(profit)/dD = A*LLTV/(T+A) - 1 < 0 always (LLTV < 1)
 ```
-- 901 MorphoChainlinkOracleV2 oracles scanned; ZERO have QUOTE_VAULT set
-- Evidence: notes/morpho-erc4626-analysis.md, scripts/morpho_market_scanner.py
+- 901 oracles scanned; ZERO have QUOTE_VAULT set
 
 ## Phase 4: Second Wave — ALL EXHAUSTED
+- Pendle PT Oracle: deterministic, NO AMM data → NOT EXPLOITABLE
+- LRT Oracle Deviation: 0.5% threshold, CAPO-blocked → NOT EXPLOITABLE
+- Balancer V2 Forks: all paused/drained/disabled on mainnet → NOT EXPLOITABLE
+- Euler V2 + EulerSwap: 45+ audits, formal verification → LOW SURFACE
+- Morpho Oracle Misconfig: pattern confirmed, no live target → NOT EXPLOITABLE
 
-### Pendle PT Oracle — NOT EXPLOITABLE
-- Aave uses `PendlePriceCapAdapter`: deterministic linear discount, NO AMM data input
-- Morpho uses `SparkLinearDiscountOracle`: deterministic, NO market data
-- Some Morpho markets use Pendle AMM 15-min TWAP — manipulation requires multi-block validator control
-- PT markets on Morpho have negligible liquidity (<$70K largest)
-- $4.6B PT on Aave protected by Chaos Labs Edge Oracle (off-chain with anomaly detection)
-- Evidence: scripts/pendle_pt_scanner.py (found 60+ PT markets, all tiny)
+## Phase 5: Third Wave — ALL EXHAUSTED
 
-### LRT Oracle Deviation — NOT EXPLOITABLE
-- rsETH Chainlink mainnet deviation: **0.5%** (NOT 2% — the 2% was rETH/ETH internal feed)
-- Aave uses CAPO adapter: caps exchange rate growth to ~9.83%/year
-- Morpho lacks CAPO but 0.5% deviation → ~0.4% profit at 77% LLTV, non-atomic, marginal
-- Moonwell exploit ($1M) was oracle MALFUNCTION, not deviation arbitrage
-- ezETH April 2024 depeg: market event, not oracle manipulation
+### Fluid Protocol — NOT EXPLOITABLE
+- Architecture: shared Liquidity Layer, 163 vaults, DEX pools, ~$3.3B TVL
+- Oracle: Chainlink + Redstone external (NOT Fluid DEX prices)
+- Circuit breakers restrict abnormal large withdrawals/borrows per block
+- 7+ years zero exploits, Cantina competition, MixBytes audit, $500K bounty
+- Evidence: scripts/fluid_onchain_analysis.py, scripts/fluid_oracle_check.py
 
-### Balancer V2 Forks — NOT EXPLOITABLE ON MAINNET
-- $128M exploit (Nov 2025): rounding in `_upscale()` ComposableStablePool with rate providers
-- Ethereum mainnet: CSPv6 pools PAUSED, CSPv5 DRAINED, all factories DISABLED
-- No unpatched Balancer V2 fork on Ethereum mainnet (forks affected: Beets, BEX, other L1s)
-- Aura/Gyroscope/Swaap: not vulnerable (different pool types or wrapper-only)
+### EulerSwap calcLimits() — NOT EXPLOITABLE
+- CS-EULSWP-015: double-counts LP's vault balance in VIEW function
+- Actual swap() enforces limits independently via vault withdraw/borrow
+- Bonding curve invariant verified in SwapLib.finish()
+- $500K live CTF: no funds compromised
+- Evidence: agent research of ChainSecurity audit PDF
 
-### Euler V2 + EulerSwap — LOW ATTACK SURFACE
-- $4M security spend, 45+ audits, Certora formal verification, $3.5M CTF
-- EulerSwap: JIT borrowing, single-LP pools, acknowledged `calcLimits()` double-counting (ChainSecurity)
-- Cool-off period prevents same-block flash loan attacks when set > 0
-- Bug bounty: $7.5M (Cantina) — $1M+ for high severity
-- TVL: ~$533M (Euler V2), EulerSwap relatively small
-- No immediately exploitable surface identified
+### Full Morpho Oracle Scan (all 1216 markets) — NO NEW TARGETS
+- Active markets: 948 (supply > 0)
+- Anomalies: 2 (PAXG/USDC=known exploit, BOBO/USDS=$5K memecoin)
+- Zero new exploitable oracle misconfigurations
+- Evidence: scripts/morpho_full_oracle_scan.py
 
-### Morpho Oracle Misconfiguration — PATTERN CONFIRMED, NO LIVE TARGET FOUND
-- PAXG/USDC ($230K, Oct 2024): SCALE_FACTOR off by 10^12 due to wrong decimals
-- Steakhouse wstETH/wM: decimal error, disclosed by whitehat before exploit
-- Aerodrome cUSDO/USDC ($49K, May 2025): custom LP oracle manipulation on Base
-- Safeguards added: Oracle Tester tool, interface warnings, MetaOracleDeviationTimelock
-- Recent market scan (71 markets, last 30 days): no obviously misconfigured oracles with significant liquidity
-- Most interesting: srRoyUSDC/USDC ($31K, pure convertToAssets), xPRISM/USDC (donation-sensitive) — all too small or blocked by LLTV economics
+### Aave V3 E-Mode — NO VULNERABILITY
+- All 19+ e-mode categories have priceSource = 0x0 (standard oracle)
+- No custom e-mode oracle to manipulate
+- Evidence: scripts/aave_emode_analysis.py
 
-### Vault Oracle Deep Dive (recent markets with HAS_VAULT + NO_FEEDS):
-| Market | Oracle Pattern | Vault TVL | Morpho Supply | Viable? |
-|--------|---------------|-----------|---------------|---------|
-| srRoyUSDC/USDC | pure convertToAssets | $6.7M | $31K | NO — TVL too large for donation |
-| xPRISM/USDC | pure convertToAssets, donation-sensitive | $5M | $1 | NO — no supply |
-| WOUSD/USDC | pure convertToAssets, donation-sensitive | $517K | $1 | NO — no supply |
+### Uniswap V4 Hooks — NO IMMEDIATE COMPOSITION DRAIN
+- Cork Protocol exploit ($11M, May 2025) was hook-specific, not core V4
+- No lending drain via V4 hook reported as of Feb 2026
+- $15.5M bug bounty active
 
-## Solvency Equation (Morpho Blue)
-totalSupplyAssets >= totalBorrowAssets + badDebt
-Violated when: oracle reads manipulated exchange rate → bad debt via over-borrowing
+### 2026 Exploit Pattern Analysis
+- Serial oracle misconfig attacker: Moonwell ($1.78M), Ploutos ($388K)
+- Targets: small/new/unaudited protocols, NOT established Morpho/Aave/Euler
+- Confirms investigation angle correct but no new live targets exist
 
 ## Last Experiment
-- Scanned 71 recently created Morpho markets for novel collateral and oracle configs
-- Deep-dived 9 interesting oracles (vault-based, custom, high-LLTV)
-- Result: No live misconfigured oracle with exploitable liquidity found
-- Belief change: Morpho's oracle ecosystem has matured significantly since PAXG; curated vaults filter effectively
+- Full scan of all 1216 Morpho markets + Fluid + Aave e-mode + UniV4 hooks
+- Result: No exploitable target found across entire investigated ecosystem
+- Belief change: Established DeFi protocols on Ethereum mainnet are well-defended; exploitable targets are small/new/unaudited protocols
 
-## Next Discriminator
-- **Fluid Protocol**: Unified lending+DEX — check if shared liquidity creates composition vulnerability
-- **Cross-protocol oracle disagreement**: Check if same asset priced differently across protocols enabling arbitrage
-- **New protocol launches**: Monitor for low-TVL, under-audited protocols on mainnet
+## Conclusion
+After exhaustive investigation across 5 phases covering:
+- 1216 Morpho Blue markets, 901 oracles
+- Aave V3 (incl. 19+ e-mode categories, CAPO mechanism)
+- Euler V2 + EulerSwap (calcLimits quantified)
+- Fluid Protocol (163 vaults + DEX, shared liquidity layer)
+- Pendle PT (60+ markets), LRT oracles, Balancer V2 forks
+- Uniswap V4 hooks, recent 2026 exploit patterns
 
-## Open Unknowns
-- Fluid Protocol architecture and attack surface (agent still running)
-- Whether any unscanned Morpho market (of 1216 total) has a live misconfiguration
-- EulerSwap `calcLimits()` double-counting: acknowledged but impact unquantified
+**No immediately exploitable, permissionless composition vulnerability exists on Ethereum mainnet in the investigated protocols.**
+
+## Open Unknowns (Residual, Low-Probability)
+- Fluid Smart Collateral composition drift under adversarial swaps (theoretical)
+- Novel protocol launches with untested oracle designs
+- Future oracle misconfiguration on Morpho (monitoring opportunity, not current exploit)
