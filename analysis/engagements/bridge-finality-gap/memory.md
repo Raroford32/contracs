@@ -3,61 +3,53 @@
 ## Pinned Reality
 - chain_id: 1 (Ethereum Mainnet; targets span L1↔L2 boundary)
 - fork_block: 24539674 (pinned from live RPC query 2026-02-26)
+- discriminator_block: ~24553401 (live RPC query 2026-02-28)
 - attacker_tier: sequencer-level OR RPC-eclipse capable
 - capital_model: minimal (gas only ~$50; no flash loans needed)
 
 ## Contract Map Summary
 **Across Protocol (PRIMARY TARGET):**
 - HubPool: 0xc186fA914353c44b2E33eBE05f21846F1048bEda (NOT upgradeable)
-  - Owner: 3/5 Gnosis Safe, Liveness: 1800s (30 min), Bond: 0.45 ABT
-- SpokePool ETH: 0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5 (UUPS upgradeable)
-  - Balances: 75 WETH + $79K USDC + $111K USDT = ~$380K
-- ABT: 0xee1dc6bcf1ee967a350e9ac6caaaa236109002ea (WETH9 + proposer whitelist)
-  - 1 active proposer EOA: 0xf7bac63f...997c
+  - Owner: 3/5 Gnosis Safe, Liveness: 1800s, Bond: 0.45 ABT
+  - WETH reserves: liquid=2,432 + utilized=3,638 = 6,068 WETH (~$12M)
+  - USDC reserves: liquid=1.32M + utilized=720K = $2.04M
+- SpokePool ETH: 0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5 (UUPS)
+  - Balances: 21 WETH + $151K USDC
+- ABT: 0xee1dc6bcf1ee967a350e9ac6caaaa236109002ea (WETH9 + proposer whitelist, ABT≠WETH)
 
 **Celer cBridge V2:** 0x5427FEFA711Eff984124bfBB1AB6fbf5E3DA1820
-- 2/3 stake-weighted signer quorum, separate Governor role
-**Synapse FastBridge:** 0x5523D3c98809DdDB82C686E152F5C58B1B0fB59E
-- RELAYER_ROLE + GUARD_ROLE gated, well-designed state machine
-**Hop L1 ETH Bridge:** 0xb8901acB165ed027E32754E0FFe830802919727f
-- Bonder + merkle proof, 1-day challenge period
+- 17 stake-weighted signers, Governor SEPARATE from Owner, Owner SEPARATE from signers
+- Owner: 0xF380166F (governance contract, 6 voters, 60% threshold, 0 signer overlap)
+- Pool: USDC=$1.478M, USDT=$1.687M, WETH=218 (total ~$3.38M)
 
-## Deep Code Analysis Results (Phase C Extended)
+## HC-1: Across Layered Defense Collapse — ALL 5 VECTORS CONFIRMED
 
-### On-Chain Findings (Individual — all sub-E3 alone):
-- SpokePool: fill status machine SOUND; reentrancy PROTECTED; relay hash COLLISION-FREE
-- M1: speedUp signature replay with unsafeDeposit (acknowledged in NatSpec)
-- M2: fee-on-transfer accounting mismatch (off-chain mitigated)
-- M3: admin executeExternalCall arbitrary calls (admin trust)
-- M4: HubPool _cancelBundle uses transfer() not safeTransfer()
-- M5: ABT transfer() bypasses whitelist (but can't propose via this path)
-- Celer: signature verification SOUND; M6: epoch boundary 2x volume; M7: fee-on-transfer LP mismatch
-- Synapse/Hop: both well-designed for their trust models
+**This is the primary finding. All vectors confirmed, sub-E3 only because infrastructure tier required.**
 
-### KEY INSIGHT: No critical on-chain vulnerability in isolation.
+| # | Vector | Status | Evidence |
+|---|--------|--------|----------|
+| V1 | requestSlowFill permissionless | CONFIRMED | D1: fabricated hash → Unfilled(0) |
+| V2 | Dataworker "latest" block tag (5-block buffer << 64-slot finality) | CONFIRMED | SDK: `provider.getBlockNumber()` = latest; Constants: ETH=5 |
+| V3 | Single automated proposer | CONFIRMED | proposer=0xf7bac63f (EOA), 19,645+ bundles |
+| V4 | Zero disputes ever | CONFIRMED | no dispute events in history |
+| V5 | amountToReturn not in balance check | CONFIRMED | SpokePool.sol line 1406 |
 
-## Composition Hypotheses (Multi-Vector Chains)
+**Kill chain:** phantom L2 deposit → requestSlowFill → dataworker reads "latest" → automated proposal → no dispute → executeSlowRelayLeaf → drain
+**Impact:** Up to 6,068 WETH (~$12M) + $2M USDC per drain cycle (bounded by HubPool reserves)
 
-### HC-1: Across Layered Defense Collapse [HIGHEST PRIORITY]
-**5 individually-minor vectors compose into kill chain:**
-1. requestSlowFill permissionless + no origin validation → entry point
-2. Dataworker "latest" block tag + 5-block buffer << 64-slot finality → reads phantom
-3. Single automated proposer → no human review of root contents
-4. Zero disputes ever → no safety net
-5. amountToReturn not in balance check → accounting slack
+## Falsified Hypotheses
 
-**Chain:** phantom L2 deposit → requestSlowFill → dataworker reads phantom → automated proposal → no dispute → executeSlowRelayLeaf → drain
+**HC-2 (Speed-Up Replay): DEAD — blocked by 3 independent defenses**
+1. SpokePoolClient: `deposit.depositor.eq(speedUp.depositor)` check
+2. Dataworker: `buildV3SlowFillLeaf` ignores speed-up data entirely
+3. On-chain: `executeSlowRelayLeaf` hardcodes `updatedRecipient=relayData.recipient`
 
-**Status:** Sub-E3 — requires L2 reorg or RPC eclipse (infrastructure-level)
-**Discriminator needed:** Can we demonstrate phantom propagation through full dataworker pipeline on fork?
+**HC-3 (Celer Signer Cascade): WEAKENED — no signer-voter overlap**
+- 17 signers vs 6 governance voters = ZERO overlap
+- Without governor: max $3.38M at epoch boundary (requires 2/3 signer compromise)
+- Full drain requires 2/3 signers + 4/5 governance voters = 2 independent compromises
 
-### HC-2: Speed-Up Replay + Slow Fill Redirect [MEDIUM]
-unsafeDeposit ID collision + speed-up signature → slow fill redirected to wrong recipient
-**Discriminator needed:** Does dataworker check speed-up signer == deposit depositor?
-
-### HC-3: Celer Signer Cascade + Volume Bypass [MEDIUM]
-2/3 signer compromise → updateSigners → 100% control → governor takeover → disable limits → drain
-**Discriminator needed:** Are Celer governor and signer set the same entity?
+**HC-4, HC-5: DEAD** — intended behavior / off-chain mitigated
 
 ## Coverage Status
 - entrypoints: notes/entrypoints.md
@@ -70,18 +62,20 @@ unsafeDeposit ID collision + speed-up signature → slow fill redirected to wron
 - assumptions: notes/assumptions.md
 - hypotheses: notes/hypotheses.md + notes/composition-hypotheses.md
 - on-chain analysis: notes/onchain-contract-analysis.md
+- discriminator script: scripts/onchain_discriminators.py
 
 ## Solvency Equation
 Across: sum(SpokePool_balances) + HubPool_liquidReserves >= sum(pending_fills) + sum(pending_refunds)
 Violated when: phantom slow fills extract real tokens for non-existent deposits
 
 ## Last Experiment
-- command: Deep source code analysis of SpokePool, HubPool, BondToken, Celer cBridge, Synapse, Hop
-- evidence: notes/onchain-contract-analysis.md, notes/composition-hypotheses.md
-- result: No critical on-chain vulnerability in isolation; 5 composition chains identified
-- belief change: The vulnerability is NOT in any single contract — it's in the COMPOSITION of 5 defense layers each being "good enough" individually but failing together
+- command: Off-chain code review of Across SDK + relayer dataworker source
+- evidence: notes/composition-hypotheses.md (off-chain discriminator section)
+- result: V2 CONFIRMED (provider.getBlockNumber() = "latest"), HC-2 FALSIFIED (3 defenses), HC-3 WEAKENED (0 overlap)
+- belief change: HC-1 is architecturally complete — ALL 5 vectors confirmed. Only infrastructure tier (L2 reorg/sequencer) prevents E3.
 
 ## Next Discriminator
-- Question: Can the full Across kill chain (HC-1) be demonstrated on a fork with actual dataworker code?
-- Alternative: Check if Celer governor == signer set overlap (HC-3 cheapest test)
-- Expected falsifier: If dataworker uses "finalized" for origin lookups, HC-1 is blocked
+- Question: Can phantom deposit propagation be demonstrated on a fork with actual dataworker logic?
+- Design: Fork L2, create deposit in unfinalized block, run dataworker read pipeline
+- Expected falsifier: If dataworker has additional finality checks not visible in base client code
+- Alternative: Analyze L2-specific finality gaps (which L2 has cheapest reorg/sequencer path?)
