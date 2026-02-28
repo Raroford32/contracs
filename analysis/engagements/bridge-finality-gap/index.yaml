@@ -47,6 +47,7 @@ notes_paths:
   - analysis/engagements/bridge-finality-gap/notes/value-flows.md
   - analysis/engagements/bridge-finality-gap/notes/assumptions.md
   - analysis/engagements/bridge-finality-gap/notes/hypotheses.md
+  - analysis/engagements/bridge-finality-gap/notes/l2-finality-analysis.md
 
 # Target bridge protocols with architecture classification
 target_bridges:

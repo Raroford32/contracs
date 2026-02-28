@@ -348,10 +348,133 @@ Attack vectors for phantom deposit:
 3. **RPC eclipse** — dataworker's RPC endpoint serves stale/fabricated L2 state
 4. **L2-specific finality gap** — L2 blocks are "latest" before L1 posting; window varies by L2
 
-### Next discriminator (cheapest path to E3):
-**Demonstrate phantom propagation on a fork with real dataworker code.**
-- Fork L2 at specific block
-- Create deposit in unfinalized block
-- Run dataworker logic to observe if it reads the deposit
-- If yes: full HC-1 kill chain is proven architecturally
-- Remaining gap: only the L2 reorg/sequencer manipulation feasibility (infrastructure tier)
+---
+
+## DEEP INVESTIGATION RESULTS (2026-02-28): Resolving All Remaining Paths
+
+### Investigation 1: Dataworker Deposit Cross-Check — CONFIRMED REQUIRED
+
+**Source:** Across SDK `BundleDataClient.loadData()` + `queryHistoricalDepositForFill()`
+
+The dataworker performs a **13-field validation** against the origin chain:
+1. Queries origin chain SpokePoolClient for matching `V3FundsDeposited` event
+2. If not in memory, performs `findDeposit()` — on-chain historical event query
+3. `validateFillForDeposit()` compares ALL 13 fields: depositId, originChainId, destinationChainId, depositor, recipient, exclusiveRelayer, inputToken, outputToken, inputAmount, outputAmount, fillDeadline, exclusivityDeadline, messageHash
+4. Additional checks: `_canCreateSlowFillLeaf()` (token equivalence) + `_depositIsExpired()` + not already filled
+
+**VERDICT: Pure fabrication (no real deposit) → BLOCKED by dataworker deposit matching.**
+The attack REQUIRES a real deposit that exists when the dataworker queries it.
+
+### Investigation 2: Race Condition Paths — ALL BLOCKED
+
+**Path A: Fast fill + slow fill double-pay**
+BLOCKED at SpokePool.sol line 1594: `if (fillStatuses[relayHash] == Filled) revert RelayFilled()`
+Even if slow fill leaf is in the proposed root, on-chain execution reverts if fast fill already happened.
+
+**Path B: fillDeadline expiry during liveness**
+BLOCKED at SpokePool.sol line 1570: `if (relayData.fillDeadline < getCurrentTime()) revert ExpiredFillDeadline()`
+On-chain check at execution time prevents expired slow fills.
+
+**Path C: Deposit refund + slow fill double-spend**
+BLOCKED by architecture: There is NO on-chain `refundDeposit()` function. Deposit refunds happen
+through the SAME dataworker root bundle mechanism (via `RelayerRefundLeaf.refundAddresses`).
+The dataworker builds slow fill root + refund root SIMULTANEOUSLY from consistent state.
+A deposit that gets a slow fill leaf does NOT get a refund. Mutually exclusive by design.
+
+Even across different bundles: if slow fill executes in Bundle N, the `FilledRelay` event with
+`FillType.SlowFill` tells the dataworker in Bundle N+1 that the deposit was filled → no refund.
+
+### Investigation 3: L2 Finality Gap Analysis — STRUCTURAL VULNERABILITY FOUND
+
+**CHEAPEST PATH: Low-throughput OP Stack chains (Mode, Zora, Lisk, Ink, Soneium)**
+
+Full analysis: `notes/l2-finality-analysis.md`
+
+| Chain | Across Buffer | True Finality | GAP | Exploit Difficulty |
+|-------|--------------|---------------|-----|-------------------|
+| Mode/Zora/Lisk/Ink | 120s | Hours (batch posting) | **HOURS** | LOW (organic batcher delay) |
+| Base/Optimism | 120s | 5-10 min | 3-8 min | MEDIUM |
+| Arbitrum | 60s | 10-20 min | 9-19 min | MEDIUM |
+| Linea | 120s | 8-32 hours | 8-32 hours | LOW but low value |
+| zkSync | 120s | ~3 hours | ~3 hours | MEDIUM |
+| Polygon PoS | 256s | 5 seconds | NEGATIVE | SAFE (Heimdall v2) |
+
+**CRITICAL STRUCTURAL FLAW:**
+Across applies **uniform 60-block buffer (120s)** to ALL OP Stack chains regardless of batch posting frequency. A deposit on Mode (batch every few hours) gets the same buffer as Base (batch every few minutes). On low-volume chains, deposits can exist for HOURS in purely sequencer-confirmed state with zero L1 backing, yet pass the Across dataworker's buffer check after just 120 seconds.
+
+**September 2025 OP Stack DA DoS Attack (Conduit disclosure):**
+- Demonstrated that OP Stack chains can be forced to reorg via DA spam
+- Patched in op-batcher v1.15.0 (September 2025)
+- Chains NOT running patched batcher are still vulnerable
+- Low-volume chains may have longer windows for organic batcher failures
+
+### Investigation 4: Dispute Mechanism — ROBUST BUT NOT PERFECT
+
+- Dispute cost: 0.45 ETH (low, accessible to any honest observer)
+- ABT whitelist does NOT block disputers (only blocks unauthorized proposers)
+- Liveness: 30 minutes
+- Can't replace proposal during liveness (`noActiveRequests` modifier)
+
+**The dispute mechanism assumes honest watchers are running the dataworker independently.**
+If the attacker targets a low-volume L2 chain that most independent dataworkers don't monitor,
+the dispute window becomes a "no one is watching" problem.
+
+---
+
+## FINAL ASSESSMENT: HC-1 Kill Chain Viability
+
+### Refined Kill Chain (Low-Volume OP Stack Target)
+
+```
+T+0s:    Attacker deposits on Mode (chain 34443) — cost: <$0.10
+T+2s:    Mode sequencer confirms (unsafe block, NO L1 backing)
+T+120s:  Across 60-block buffer passes
+T+120s+: Dataworker queries Mode "latest", finds real deposit, validates 13 fields ✓
+T+120s+: requestSlowFill on destination chain (fabricated relay data matching deposit)
+T+~32m:  Dataworker includes slow fill in root bundle proposal
+T+~62m:  30-min liveness passes, no dispute (if no one monitors Mode independently)
+T+~62m+: executeRootBundle → HubPool sends tokens via netSendAmounts
+T+~62m+: executeSlowRelayLeaf → real tokens sent to attacker's recipient
+T+???:   Mode batcher posts batch hours later (deposit is real)
+         OR batcher fails → deposit block reorged → deposit never existed
+```
+
+### Three Scenarios After Execution:
+
+**Scenario A: Batcher posts normally (deposit is real)**
+- Slow fill executed for a real deposit → LEGITIMATE fill
+- No drain — this is normal protocol operation
+- Attacker got their deposit filled, nothing stolen
+
+**Scenario B: Batcher fails / DA DoS attack (deposit reorgs)**
+- Slow fill executed for a phantom deposit → DRAIN
+- HubPool sent real tokens for a deposit that no longer exists
+- Attacker extracted real value for phantom deposit
+- Solvency equation violated
+
+**Scenario C: Attacker also gets refund (double-spend)**
+- BLOCKED: deposit refund mechanism is in the SAME dataworker pipeline
+- If deposit reorgs, dataworker can't find it for refund either
+- If deposit survives, slow fill was legitimate (no issue)
+
+### STATUS: DESIGN RISK — Sub-E3 at permissionless attacker tier
+
+**What makes this NOT E3:**
+1. Scenario A (batcher posts normally) is the likely outcome — no drain
+2. Scenario B requires batcher failure — either organic (unpredictable) or DA DoS (patched, $100K+ cost)
+3. The attacker can't RELIABLY cause Scenario B without infrastructure access
+4. Independent dispute bots may catch the invalid bundle during 30-min liveness
+
+**What makes this a REAL design risk:**
+1. ALL 5 defense layers have confirmed weaknesses
+2. The structural buffer asymmetry is a real misconfiguration (120s buffer on hours-between-batches chains)
+3. Organic batcher failures DO happen (~60% of L2 incidents are sequencer-related per L2BEAT data)
+4. Low-volume chain monitoring may be insufficient for dispute-based security
+5. If the September 2025 DA DoS attack is not patched on all chains, it becomes cheaper
+6. The economic incentive is massive: $12M+ extractable from HubPool reserves
+
+### RECOMMENDED FIX (if reporting to Across team):
+1. Use "safe" or "finalized" block tag instead of "latest" for deposit queries
+2. Per-chain buffer calibration based on ACTUAL batch posting frequency, not uniform default
+3. Independent dispute bot for ALL supported L2 chains, not just high-volume ones
+4. Consider requiring N L1 confirmations for origin chain deposits before slow fill eligibility

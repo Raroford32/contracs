@@ -2,80 +2,72 @@
 
 ## Pinned Reality
 - chain_id: 1 (Ethereum Mainnet; targets span L1↔L2 boundary)
-- fork_block: 24539674 (pinned from live RPC query 2026-02-26)
-- discriminator_block: ~24553401 (live RPC query 2026-02-28)
-- attacker_tier: sequencer-level OR RPC-eclipse capable
-- capital_model: minimal (gas only ~$50; no flash loans needed)
+- fork_block: 24539674 (pinned 2026-02-26)
+- discriminator_block: ~24553401 (live 2026-02-28)
+- attacker_tier: sequencer-level OR DA-DoS capable
+- capital_model: <$0.10 L2 gas for deposit + $100K+ for DA DoS (if needed)
 
 ## Contract Map Summary
 **Across Protocol (PRIMARY TARGET):**
-- HubPool: 0xc186fA914353c44b2E33eBE05f21846F1048bEda (NOT upgradeable)
-  - Owner: 3/5 Gnosis Safe, Liveness: 1800s, Bond: 0.45 ABT
-  - WETH reserves: liquid=2,432 + utilized=3,638 = 6,068 WETH (~$12M)
-  - USDC reserves: liquid=1.32M + utilized=720K = $2.04M
-- SpokePool ETH: 0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5 (UUPS)
-  - Balances: 21 WETH + $151K USDC
-- ABT: 0xee1dc6bcf1ee967a350e9ac6caaaa236109002ea (WETH9 + proposer whitelist, ABT≠WETH)
+- HubPool: 0xc186fA914353c44b2E33eBE05f21846F1048bEda — $12M WETH + $2M USDC
+- SpokePool ETH: 0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5 — 21 WETH + $151K USDC
+- ABT: 0xee1dc6bcf1ee967a350e9ac6caaaa236109002ea (ABT≠WETH)
 
-**Celer cBridge V2:** 0x5427FEFA711Eff984124bfBB1AB6fbf5E3DA1820
-- 17 stake-weighted signers, Governor SEPARATE from Owner, Owner SEPARATE from signers
-- Owner: 0xF380166F (governance contract, 6 voters, 60% threshold, 0 signer overlap)
-- Pool: USDC=$1.478M, USDT=$1.687M, WETH=218 (total ~$3.38M)
+**Celer cBridge V2:** $3.38M total. HC-3 capped at epoch boundary, no signer-voter overlap.
+**Synapse/Hop:** deprioritized (well-designed)
 
-## HC-1: Across Layered Defense Collapse — ALL 5 VECTORS CONFIRMED
+## HC-1: Across Layered Defense Collapse — COMPLETE ANALYSIS
 
-**This is the primary finding. All vectors confirmed, sub-E3 only because infrastructure tier required.**
+**ALL 5 ON-CHAIN/OFF-CHAIN VECTORS CONFIRMED. EVERY ALTERNATIVE PATH INVESTIGATED.**
 
-| # | Vector | Status | Evidence |
-|---|--------|--------|----------|
-| V1 | requestSlowFill permissionless | CONFIRMED | D1: fabricated hash → Unfilled(0) |
-| V2 | Dataworker "latest" block tag (5-block buffer << 64-slot finality) | CONFIRMED | SDK: `provider.getBlockNumber()` = latest; Constants: ETH=5 |
-| V3 | Single automated proposer | CONFIRMED | proposer=0xf7bac63f (EOA), 19,645+ bundles |
-| V4 | Zero disputes ever | CONFIRMED | no dispute events in history |
-| V5 | amountToReturn not in balance check | CONFIRMED | SpokePool.sol line 1406 |
+### Confirmed vectors:
+| V# | Vector | Evidence |
+|----|--------|----------|
+| V1 | requestSlowFill permissionless | Fabricated hash → Unfilled(0), no auth gate |
+| V2 | Dataworker "latest" block tag | `provider.getBlockNumber()` = latest; buffer ETH=5, OP=60 |
+| V3 | Single automated proposer | 0xf7bac63f EOA, 19,645+ bundles |
+| V4 | Zero disputes | No dispute events ever |
+| V5 | amountToReturn gap | SpokePool.sol line 1406 |
 
-**Kill chain:** phantom L2 deposit → requestSlowFill → dataworker reads "latest" → automated proposal → no dispute → executeSlowRelayLeaf → drain
-**Impact:** Up to 6,068 WETH (~$12M) + $2M USDC per drain cycle (bounded by HubPool reserves)
+### Investigated + closed paths:
+- Pure fabrication (no real deposit): BLOCKED by 13-field dataworker cross-check
+- Fast fill + slow fill double-pay: BLOCKED at line 1594 (fillStatuses)
+- fillDeadline expiry during liveness: BLOCKED at line 1570
+- Deposit refund double-spend: BLOCKED by same-pipeline mutual exclusion
+- HC-2 speed-up replay: BLOCKED by 3 independent defenses
+- HC-3 Celer cascade: WEAKENED by 0 signer-voter overlap
 
-## Falsified Hypotheses
+### Remaining viable path: L2 finality gap exploitation
+- Low-volume OP Stack chains: 120s buffer vs hours between batch posts
+- Deposit exists at "latest" but has no L1 backing for hours
+- If batcher fails/reorgs → phantom deposit → drain
+- See notes/l2-finality-analysis.md for per-chain analysis
 
-**HC-2 (Speed-Up Replay): DEAD — blocked by 3 independent defenses**
-1. SpokePoolClient: `deposit.depositor.eq(speedUp.depositor)` check
-2. Dataworker: `buildV3SlowFillLeaf` ignores speed-up data entirely
-3. On-chain: `executeSlowRelayLeaf` hardcodes `updatedRecipient=relayData.recipient`
-
-**HC-3 (Celer Signer Cascade): WEAKENED — no signer-voter overlap**
-- 17 signers vs 6 governance voters = ZERO overlap
-- Without governor: max $3.38M at epoch boundary (requires 2/3 signer compromise)
-- Full drain requires 2/3 signers + 4/5 governance voters = 2 independent compromises
-
-**HC-4, HC-5: DEAD** — intended behavior / off-chain mitigated
+### Status: DESIGN RISK — sub-E3 at permissionless tier
+- Can't reliably CAUSE batcher failure without infrastructure access
+- Organic batcher failures DO happen but are unpredictable
+- DA DoS attack (Sep 2025 disclosure) costs $100K+ post-patch
+- If batcher failure coincides with deposit → $12M+ drain
 
 ## Coverage Status
-- entrypoints: notes/entrypoints.md
-- control plane: notes/control-plane.md
-- taint map: notes/taint-map.md
-- tokens: notes/tokens.md
-- feasibility: notes/feasibility.md
-- message path: notes/message-path.md
-- value flows: notes/value-flows.md
-- assumptions: notes/assumptions.md
-- hypotheses: notes/hypotheses.md + notes/composition-hypotheses.md
-- on-chain analysis: notes/onchain-contract-analysis.md
-- discriminator script: scripts/onchain_discriminators.py
+- notes/entrypoints.md, control-plane.md, taint-map.md, tokens.md
+- notes/feasibility.md, message-path.md, value-flows.md, assumptions.md
+- notes/hypotheses.md + composition-hypotheses.md
+- notes/onchain-contract-analysis.md
+- notes/l2-finality-analysis.md
+- scripts/onchain_discriminators.py
 
 ## Solvency Equation
-Across: sum(SpokePool_balances) + HubPool_liquidReserves >= sum(pending_fills) + sum(pending_refunds)
+sum(SpokePool_balances) + HubPool_liquidReserves >= sum(pending_fills) + sum(pending_refunds)
 Violated when: phantom slow fills extract real tokens for non-existent deposits
 
 ## Last Experiment
-- command: Off-chain code review of Across SDK + relayer dataworker source
-- evidence: notes/composition-hypotheses.md (off-chain discriminator section)
-- result: V2 CONFIRMED (provider.getBlockNumber() = "latest"), HC-2 FALSIFIED (3 defenses), HC-3 WEAKENED (0 overlap)
-- belief change: HC-1 is architecturally complete — ALL 5 vectors confirmed. Only infrastructure tier (L2 reorg/sequencer) prevents E3.
+- Deep investigation of ALL remaining paths to E3
+- evidence: composition-hypotheses.md (deep investigation section), l2-finality-analysis.md
+- result: All pure on-chain paths BLOCKED. L2 finality gap is the ONLY remaining vector.
+- belief change: HC-1 is a confirmed design risk but NOT immediately actionable without infrastructure compromise or organic batcher failure
 
 ## Next Discriminator
-- Question: Can phantom deposit propagation be demonstrated on a fork with actual dataworker logic?
-- Design: Fork L2, create deposit in unfinalized block, run dataworker read pipeline
-- Expected falsifier: If dataworker has additional finality checks not visible in base client code
-- Alternative: Analyze L2-specific finality gaps (which L2 has cheapest reorg/sequencer path?)
+- Measure actual batch posting frequency on Mode/Zora/Lisk via L1 BatchInbox
+- If batches are hours apart → confirms multi-hour exploitation window exists organically
+- Fork Mode, create deposit, wait past buffer, verify dataworker reads it
