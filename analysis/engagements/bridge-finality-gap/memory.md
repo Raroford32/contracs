@@ -64,73 +64,101 @@ d(profit)/dD = A*LLTV/(T+A) - 1 < 0 always (LLTV < 1)
 - Targets: small/new/unaudited protocols, NOT established Morpho/Aave/Euler
 - Confirms investigation angle correct but no new live targets exist
 
-## Phase 6: MetaOracle Broad Scan — E2 FINDING (REVISED: 4 NUSD instances confirmed)
+## Phase 6: MetaOracle Broad Scan — E2 FINDING (REVISED: 3 NUSD instances confirmed degenerate)
 
 ### Finding: MetaOracleDeviationTimelock Backup=Primary via OracleRouter
 - Scanned all 767 unique oracles across 956 active Morpho markets
 - Found 32 MetaOracle EIP-1167 proxies → 6 initially flagged (0% divergence at scan time)
-- **REVISED 2026-03-06**: Deep source code + immutable audit showed sUSDD markets are NOT degenerate
+- **REVISED 2026-03-06**: Deep source code + immutable audit corrections applied
 
-### CONFIRMED DEGENERATE (4 NUSD markets, ~$6.7M supply / ~$5.8M borrow):
-- **PT-sNUSD-5MAR2026/USDC**: $4.7M / $4.0M — backup OracleRouter → primary
+### CONFIRMED DEGENERATE (3 NUSD markets, ~$6.2M supply / ~$5.3M borrow):
+- **PT-sNUSD-5MAR2026/USDC**: $4.7M / $4.0M — backup OracleRouter → primary (MATURED 2026-03-05)
 - **PT-srNUSD-28MAY2026/USDC**: $1.3M / $1.2M — backup OracleRouter → primary
-- **PT-sNUSD-4JUN2026/USDC**: $475K / $435K — backup OracleRouter → primary
 - **srNUSD/USDC**: $158K / $138K — backup OracleRouter → primary
 
-### DOWNGRADED (2 sUSDD markets, ~$51.8M — Informational):
+### DOWNGRADED (3 markets — Informational):
+- **PT-sNUSD-4JUN2026/USDC**: $475K / $435K — backup has independent RedStone NUSD_FUNDAMENTAL feed (not OracleRouter)
 - **sUSDD/USDT**: $51.7M / $40.9M — backup HAS independent Ojo USDD/USDT feed
-- **sUSDD/USDC**: $97.8K / $85K — same architecture
-- 0% divergence is EXPECTED when USDD at par; backup WOULD diverge during depeg
-- Concern: Ojo USDD/USDT feed reported exactly 1.0 for 50+ rounds, reliability untested
+- **sUSDD/USDC**: $97.8K / $85K — same architecture as sUSDD/USDT
 
-### Key correction: sUSDD oracles
-- Primary = MorphoChainlinkOracleV2: price = 1e6 × Ojo_sUSDD_USDD_rate (hardcodes USDD=$1)
-- Backup = MorphoChainlinkOracleV2: price = Ojo_sUSDD_USDD_rate × Ojo_USDD_USDT_rate / dummy
-- Backup INCLUDES independent USDD/USDT market price feed (Ojo, 0x014f606c...)
-- During depeg: backup would report lower price → challenge() would fire → MetaOracle WORKS
+### Key corrections:
+- sUSDD: Backup includes independent USDD/USDT Ojo feed → MetaOracle WORKS during depeg
+- PT-sNUSD-4JUN2026: Bytecode comparison revealed backup has BASE_FEED_2=RedStone NUSD_FUNDAMENTAL (independent)
+- PT-sNUSD-5MAR2026: MATURED 2026-03-05; PendleChainlinkOracle latestAnswer() REVERTS post-maturity but latestRoundData() still returns 1.0 → oracle still functional
 
-### E2 status rationale (NUSD markets)
+### E2 status rationale (3 degenerate NUSD markets)
 - OracleRouter routing provably confirmed: backup.oracle() = primary address
 - challenge() always reverts with 0% divergence (backup = primary via routing)
 - If NUSD depegs, oracle never switches → unlimited bad debt accumulation
 - BUT depeg is external event, not attacker-triggerable → cannot reach E3
-- 12+ attack vectors tested and falsified across both NUSD and sUSDD
+- 12+ attack vectors tested and falsified
 
 ### Evidence
 - `scripts/metaoracle_step4_lean.py` (scan script)
 - `analysis/engagements/bridge-finality-gap/notes/finding-metaoracle-backup-primary.md` (REVISED finding)
 - Oracle immutable analysis: `/tmp/oracle_immutables.py`, `/tmp/feed_analysis.py`, `/tmp/backup_feeds.py`
-- MetaOracle source: Sourcify (no admin functions, no upgradeability)
-- MorphoChainlinkOracleV2 source: Sourcify (immutable config, no staleness checks)
-- SavingsUsdd source: Sourcify (MakerDAO DSR fork, no admin functions)
+- PT-sNUSD-4JUN2026 bytecode comparison: `/tmp/check_4jun_immutables.py`, `/tmp/verify_4jun_feeds.py`
+- Post-maturity oracle check: `/tmp/deep_oracle_check.py`
+- Full NUSD verification: `/tmp/verify_all_nusd.py`
+
+## Phase 7: Deep Source Code Composition Analysis — NO E3 VECTOR
+
+### Full source code review of all engagement contracts:
+- Across SpokePool (96KB), HubPool, Ethereum_SpokePool
+- Synapse FastBridge, Celer cBridge V2, Hop L1 ETH Bridge
+- Metis L1StandardBridge
+- All MetaOracle/MorphoChainlinkOracleV2/OracleRouter contracts
+
+### 25+ composition chains evaluated (A-Y), all falsified:
+- **Bridge→MetaOracle**: No bridge can trigger NUSD depeg → no composition path
+- **Across unsafeDeposit + emergencyDelete**: Both require admin/owner
+- **Across _noRevertTransfer → pending refunds**: Deferred refunds are credits, not exploitable
+- **Synapse destTxHash arbitrary**: No on-chain verification, but RELAYER_ROLE required
+- **Celer signer self-update**: Requires 2/3 quorum of existing signers
+- **Hop challengeTransferBond**: Permissionless but requires real stake + 10-day resolution
+- **Cross-bridge token composition**: Off-chain mitigated (dataworker route restrictions)
+- **Post-maturity PT oracle + MetaOracle**: Oracle still returns 1.0 via latestRoundData()
+- **MetaMorpho reflexive loops**: Vault donation attack economically infeasible (LLTV < 1)
+- All remaining chains require either admin keys, external market events, or are architecturally blocked
+
+### Post-maturity oracle discovery:
+- PT-sNUSD-5MAR2026 matured 2026-03-05 (timestamp 1772668800)
+- PendleChainlinkOracle.latestAnswer() REVERTS post-maturity
+- PendleChainlinkOracle.latestRoundData() still returns answer=1.0 (18 dec)
+- MorphoChainlinkOracleV2 uses latestRoundData() → oracle still functional
+- No immediate exploit from maturity transition
 
 ## Last Experiment
-- Deep source code audit of MetaOracle, MorphoChainlinkOracleV2, SavingsUsdd
-- Decoded all immutable constructor params for primary and backup sUSDD oracles
-- Found backup oracle HAS independent USDD/USDT Ojo feed (was previously assumed identical)
-- Verified NUSD backup oracles route via OracleRouter directly to primary (genuinely degenerate)
-- Result: sUSDD downgraded to Informational; NUSD confirmed E2 ($6.7M)
-- Belief change: MAJOR — sUSDD finding was based on false assumption about oracle architecture
+- Full source code composition analysis across all engagement contracts
+- PT-sNUSD-4JUN2026 bytecode comparison: backup has independent RedStone NUSD_FUNDAMENTAL feed
+- Post-maturity oracle behavior verified on-chain
+- 25+ composition chains systematically evaluated and falsified
+- Result: No E3 vector; degenerate market count revised from 4 to 3 (~$6.2M)
+- Belief change: PT-sNUSD-4JUN2026 NOT degenerate (RedStone independent backup)
 
 ## Next Discriminator
-- None remaining. All vectors exhausted. Finding is E2-complete for NUSD markets.
+- None remaining. All vectors exhausted across 7 phases. Finding is E2-complete for 3 NUSD markets.
 
 ## Conclusion
-After exhaustive investigation across 6 phases covering:
+After exhaustive investigation across 7 phases covering:
 - 1216 Morpho Blue markets, 901 oracles, 767 unique oracle contracts
 - 32 MetaOracle instances fully decoded, immutable params read, source code audited
 - Full source code review: MetaOracle, MorphoChainlinkOracleV2, SavingsUsdd, Pot, Vat, UsddJoin
+- Full source code review: Across SpokePool/HubPool, Synapse FastBridge, Celer cBridge, Hop Bridge
+- 25+ cross-protocol composition chains systematically evaluated
 - Aave V3 (incl. 19+ e-mode categories, CAPO mechanism)
 - Euler V2 + EulerSwap (calcLimits quantified)
 - Fluid Protocol (163 vaults + DEX, shared liquidity layer)
-- Pendle PT (60+ markets), LRT oracles, Balancer V2 forks
+- Pendle PT (60+ markets, post-maturity oracle behavior), LRT oracles, Balancer V2 forks
 - Uniswap V4 hooks, recent 2026 exploit patterns
 
-**One E2 finding: 4 NUSD MetaOracle instances with backup=primary via OracleRouter, ~$6.7M at conditional risk.**
-**sUSDD markets downgraded**: backup has independent Ojo USDD/USDT feed (Informational — reliability concern only).
+**One E2 finding: 3 NUSD MetaOracle instances with backup=primary via OracleRouter, ~$6.2M at conditional risk.**
+**3 markets downgraded**: PT-sNUSD-4JUN2026 (RedStone backup), sUSDD/USDT & sUSDD/USDC (Ojo backup).
 **No E3 permissionless profitable exploit achievable** — the NUSD finding requires an external depeg event.
 
 ## Open Unknowns (Residual, Low-Probability)
-- NUSD depeg event could trigger ~$5.8M bad debt across 4 NUSD markets (no safety mechanism)
+- NUSD depeg event could trigger ~$5.3M bad debt across 3 degenerate NUSD markets (no safety mechanism)
+- PT-sNUSD-5MAR2026 matured — oracle still functional but market should wind down
 - Ojo USDD/USDT feed reliability untested under stress (single provider, always 1.0 for 50+ rounds)
+- RedStone NUSD_FUNDAMENTAL feed reliability under depeg conditions untested
 - Novel protocol launches with untested oracle designs

@@ -9,8 +9,11 @@
 **Correction after deep source code + immutable parameter audit**: The sUSDD markets are **NOT truly degenerate**. The backup oracle includes an independent USDD/USDT market price feed (Ojo). The 0% divergence at scan time is *expected behavior* when USDD trades at par. The NUSD markets **ARE genuinely degenerate** — backup routes via OracleRouter directly back to primary.
 
 ### Revised scope:
-- **4 NUSD markets (~$6.7M supply, ~$5.8M borrow): CONFIRMED degenerate** — backup=primary via OracleRouter
-- **2 sUSDD markets (~$51.8M supply, ~$41.0M borrow): DOWNGRADED** — backup has independent Ojo USDD/USDT feed, but with reliability concerns (50+ rounds at exactly 1.0, daily update frequency, single oracle provider)
+- **3 NUSD markets (~$6.2M supply, ~$5.3M borrow): CONFIRMED degenerate** — backup=primary via OracleRouter
+- **3 markets DOWNGRADED (Informational)**:
+  - PT-sNUSD-4JUN2026/USDC ($475K/$435K): backup has independent RedStone NUSD_FUNDAMENTAL feed
+  - sUSDD/USDT ($51.7M/$40.9M): backup has independent Ojo USDD/USDT feed
+  - sUSDD/USDC ($97.8K/$85K): same architecture as sUSDD/USDT
 
 ## Why the Original Scan Was Misleading
 
@@ -87,32 +90,53 @@ CONCLUSION: sUSDD MetaOracle WOULD function correctly during a depeg,
 - **oracle()**: `0xe10a7d39e4ed00351dfe17378b5896e5f8ab422f` — **SAME AS PRIMARY!**
 - **This IS genuinely degenerate**: backup = primary via routing
 
-## Confirmed Affected Markets (4 NUSD markets)
+## Confirmed Affected Markets (3 NUSD markets — degenerate backup=primary)
 
-| Market | Oracle | Supply | Borrow | LLTV | ChalTL | HealTL |
-|---|---|---|---|---|---|---|
-| PT-sNUSD-5MAR2026/USDC | `0xe846...82a9` | $4.7M | $4.0M | 77% | 14400s | 43200s |
-| PT-srNUSD-28MAY2026/USDC | `0x0d07...21de3` | $1.3M | $1.2M | 92% | 14400s | 43200s |
-| PT-sNUSD-4JUN2026/USDC | `0x7250...1fbc` | $475K | $435K | 86% | 14400s | 43200s |
-| srNUSD/USDC | `0x9e10...f4be` | $158K | $138K | 92% | 14400s | 43200s |
+| Market | Oracle | Supply | Borrow | LLTV | ChalTL | HealTL | Notes |
+|---|---|---|---|---|---|---|---|
+| PT-sNUSD-5MAR2026/USDC | `0xe846...82a9` | $4.7M | $4.0M | 77% | 14400s | 43200s | MATURED 2026-03-05 |
+| PT-srNUSD-28MAY2026/USDC | `0x0d07...21de3` | $1.3M | $1.2M | 92% | 14400s | 43200s | |
+| srNUSD/USDC | `0x9e10...f4be` | $158K | $138K | 92% | 14400s | 43200s | |
 
-**Total confirmed at risk: ~$6.7M supply / ~$5.8M borrow**
+**Total confirmed at risk: ~$6.2M supply / ~$5.3M borrow**
+
+### Post-maturity note (PT-sNUSD-5MAR2026):
+- Matured at timestamp 1772668800 (2026-03-05 00:00 UTC)
+- PendleChainlinkOracle adapter: `latestAnswer()` REVERTS post-maturity, but `latestRoundData()` still returns answer=1.0 (18 dec)
+- MorphoChainlinkOracleV2 uses `latestRoundData()` → oracle still functional post-maturity
+- Market should wind down as PT converges to underlying value
 
 **Underlying: NUSD (Neutrl)** — Synthetic dollar, launched Nov 2025
 - Market cap: ~$227M, age ~4 months
 - Historical depeg: $0.975 (2.5% depeg, November 2025)
 - No Chainlink feed; redemption is KYC-gated only
 - DEX liquidity: ~$10M in Curve pools
-- All four backup oracles use OracleRouter that routes back to the same primary contract
+- Three of four backup oracles use OracleRouter that routes back to the same primary contract
+- PT-sNUSD-4JUN2026 backup uses independent RedStone NUSD_FUNDAMENTAL feed (not degenerate)
 
-## Downgraded Markets (2 sUSDD markets — Informational)
+## Downgraded Markets (3 markets — Informational)
 
 | Market | Oracle | Supply | Borrow | LLTV | Status |
 |---|---|---|---|---|---|
+| PT-sNUSD-4JUN2026/USDC | `0x7250...1fbc` | $475K | $435K | 86% | Backup has independent RedStone NUSD_FUNDAMENTAL feed |
 | sUSDD/USDT | `0x8c0a...8154` | $51.7M | $40.9M | 92% | Backup has independent Ojo USDD/USDT feed |
-| sUSDD/USDC | `0x7be4...9f1f` | $97.8K | $85.0K | 92% | Same architecture (needs verification) |
+| sUSDD/USDC | `0x7be4...9f1f` | $97.8K | $85.0K | 92% | Same architecture as sUSDD/USDT |
 
-**Risk**: Low-Medium. The backup oracle IS functionally different from primary and would diverge during a depeg. However, the Ojo USDD/USDT feed's reliability is untested under stress, and a single oracle provider failure could result in the same outcome as a true degenerate MetaOracle.
+### PT-sNUSD-4JUN2026 downgrade rationale:
+- Bytecode comparison of primary vs backup oracle revealed 6 diff regions
+- Backup oracle has BASE_FEED_2 = RedStone NUSD_FUNDAMENTAL feed (8 decimals)
+- Backup oracle has QUOTE_FEED_1 = Dummy 12-decimal feed (normalization)
+- This is NOT an OracleRouter — it's a MorphoChainlinkOracleV2 with independent price derivation
+- RedStone NUSD_FUNDAMENTAL returns 1.0 (at par), last updated 2026-03-06
+- During NUSD depeg: backup would report lower price → challenge() would fire → MetaOracle WORKS
+- Evidence: `/tmp/check_4jun_immutables.py`, `/tmp/verify_4jun_feeds.py`
+
+### sUSDD downgrade rationale:
+- Backup includes independent USDD/USDT Ojo feed (0x014f606c...)
+- During depeg: backup would report lower price → challenge() fires → MetaOracle WORKS
+- Concern: Ojo USDD/USDT feed reliability untested (50+ rounds at exactly 1.0, single provider)
+
+**Risk**: Low-Medium. All three backup oracles ARE functionally different from their primaries and would diverge during a depeg. However, feed reliability under stress is untested for both RedStone NUSD_FUNDAMENTAL and Ojo USDD/USDT.
 
 ## How MetaOracleDeviationTimelock Works
 
@@ -215,7 +239,7 @@ STATUS: NOT DEGENERATE — backup has independent market price feed
 |---|---|
 | Trigger | External depeg event (not attacker-controllable) |
 | Probability of NUSD depeg | Medium — depegged to $0.975 in Nov 2025 (4 months ago) |
-| Impact if triggered | **High** — up to $6.7M at risk across 4 markets |
+| Impact if triggered | **High** — up to $6.2M at risk across 3 markets |
 | Permissionless exploitation | Yes — anyone can deposit depegged collateral and borrow USDC |
 | Time to exploit | Immediate once depeg occurs (no timelock protection) |
 | Fix complexity | Low — redeploy MetaOracle proxies with independent backup |
@@ -241,8 +265,9 @@ STATUS: NOT DEGENERATE — backup has independent market price feed
 
 ```
 E3 STATUS: NOT MET — requires external precondition (NUSD depeg)
-CLASSIFICATION (NUSD): E2 safety mechanism failure with conditional high impact ($6.7M)
-CLASSIFICATION (sUSDD): Informational — backup has independent feed, reliability concerns only
+CLASSIFICATION (NUSD, 3 markets): E2 safety mechanism failure with conditional high impact ($6.2M)
+CLASSIFICATION (PT-sNUSD-4JUN2026): Informational — backup has independent RedStone NUSD_FUNDAMENTAL feed
+CLASSIFICATION (sUSDD): Informational — backup has independent Ojo USDD/USDT feed, reliability concerns only
 ```
 
 ## Why This Is E2 (Not E3)
@@ -250,9 +275,10 @@ CLASSIFICATION (sUSDD): Informational — backup has independent feed, reliabili
 E3 requires a **permissionless profitable exploit reproducible on a pinned fork**. This finding requires an **external precondition** (NUSD depeg) that is not attacker-controllable:
 
 - We cannot trigger a NUSD depeg on a fork (market-driven, cross-chain)
-- The misconfiguration is provably present for 4 NUSD markets (OracleRouter→primary)
+- The misconfiguration is provably present for 3 NUSD markets (OracleRouter→primary)
+- PT-sNUSD-4JUN2026 was reclassified: backup uses independent RedStone NUSD_FUNDAMENTAL feed
 - The economic impact is calculable but conditional on the depeg event
-- The MetaOracle's design intent (switch oracle on depeg) is provably defeated for NUSD markets
+- The MetaOracle's design intent (switch oracle on depeg) is provably defeated for 3 NUSD markets
 
 ## Evidence Artifacts
 
@@ -270,7 +296,7 @@ E3 requires a **permissionless profitable exploit reproducible on a pinned fork*
 
 ## Recommendations
 
-1. **Immediate (High)**: Redeploy MetaOracle proxies for the 4 NUSD markets with independent backup oracles
+1. **Immediate (High)**: Redeploy MetaOracle proxies for the 3 degenerate NUSD markets with independent backup oracles
    - Backup must query NUSD/USD market price from an independent source (not routing back to primary)
 2. **Medium (sUSDD)**: Evaluate Ojo USDD/USDT feed reliability — consider adding a second independent data source
 3. **Deployment validation**: Add factory-level check at deployment that backup oracle's price derivation is independent of primary (not just address comparison)
