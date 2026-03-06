@@ -1,52 +1,93 @@
 # Finding: MetaOracleDeviationTimelock Backup=Primary Misconfiguration
 
-## Status: E2 (Confirmed misconfiguration with real risk, not yet E3 permissionless drain)
+## Status: E2 (Confirmed for NUSD markets; REVISED for sUSDD markets)
 
-## Summary
+## Summary — REVISED 2026-03-06
 
-Six Morpho Blue markets on Ethereum mainnet use `MetaOracleDeviationTimelock` (Steakhouse Financial) oracle wrappers where **the backup oracle returns the exact same price as the primary oracle**. This defeats the MetaOracle's deviation detection mechanism entirely — the system compares an oracle against itself (or its functional clone), finding 0% deviation always.
+**Original claim (6 markets, ~$58.5M)**: All 6 MetaOracle instances where `primary.price() == backup.price()` were flagged as degenerate.
 
-The MetaOracle is designed to detect stablecoin depegs by comparing a "hardcoded at-par" primary oracle against an independent market-price backup oracle. When backup=primary, the depeg detection circuit is dead — the oracle will continue reporting "at par" even during a total collapse of the underlying.
+**Correction after deep source code + immutable parameter audit**: The sUSDD markets are **NOT truly degenerate**. The backup oracle includes an independent USDD/USDT market price feed (Ojo). The 0% divergence at scan time is *expected behavior* when USDD trades at par. The NUSD markets **ARE genuinely degenerate** — backup routes via OracleRouter directly back to primary.
 
-**Total exposed supply: ~$58.5M across 6 markets**
-**Total exposed borrow: ~$46.8M across 6 markets**
+### Revised scope:
+- **4 NUSD markets (~$6.7M supply, ~$5.8M borrow): CONFIRMED degenerate** — backup=primary via OracleRouter
+- **2 sUSDD markets (~$51.8M supply, ~$41.0M borrow): DOWNGRADED** — backup has independent Ojo USDD/USDT feed, but with reliability concerns (50+ rounds at exactly 1.0, daily update frequency, single oracle provider)
 
-The largest single market (sUSDD/USDT) has **$51.7M supply / $40.9M borrow** backed by USDD — a Justin Sun / TRON ecosystem stablecoin that previously depegged to $0.93 in June 2022.
+## Why the Original Scan Was Misleading
 
-## Scan Methodology
+The scan compared `primary.price()` vs `backup.price()` at a single point in time. Both returned identical values for all 6 instances. This was interpreted as "backup=primary always."
 
-Scanned all 767 unique oracles across 956 active Morpho Blue markets. Detected 32 EIP-1167 minimal proxy clones pointing to MetaOracle implementation `0xcc319ef091bc520cf6835565826212024b2d25ec`. Decoded immutable storage for all 32, compared primary vs backup price output. Found 6 where `primary.price() == backup.price()` (0.000000% divergence).
+**The flaw**: for the sUSDD oracles, the backup includes a USDD/USDT market price feed that returns 1.0 when USDD is at par. The prices are equal NOW but would diverge during a depeg. This is correct MetaOracle behavior, not a misconfiguration.
 
-Script: `scripts/metaoracle_step4_lean.py`
-Results: `analysis/engagements/morpho-metaoracle/scan_results.txt`
-JSON: `analysis/engagements/bridge-finality-gap/notes/metaoracle_scan_results.json`
+For the NUSD oracles, the backup literally routes through an `OracleRouter` contract whose `oracle()` function returns the primary oracle's address. This IS permanent backup=primary.
 
-## Affected Markets (6 total)
+## Detailed Oracle Architecture (Source-Code Verified)
 
-### Group 1: sUSDD Markets (~$51.8M supply, ~$41.0M borrow) — HIGHEST RISK
+### sUSDD Primary Oracle (`0xb11b...b457`)
+- **Contract**: `MorphoChainlinkOracleV2` (Morpho Labs, Solidity 0.8.21)
+- **BASE_VAULT**: address(0) → returns 1
+- **BASE_FEED_1**: `0xb96ef4e8...` — **"Ojo Yield Risk Engine sUSDD / USDD Exchange Rate"** (18 dec)
+- **BASE_FEED_2**: address(0) → returns 1
+- **QUOTE_FEED_1**: address(0) → returns 1
+- **QUOTE_FEED_2**: address(0) → returns 1
+- **SCALE_FACTOR**: 1,000,000
 
-| Market | Oracle | Supply | Borrow | LLTV | ChalTL | HealTL |
-|---|---|---|---|---|---|---|
-| sUSDD/USDT | `0x8c0a...8154` | $51.7M | $40.9M | 92% | 1800s | 3600s |
-| sUSDD/USDC | `0x7be4...9f1f` | $97.8K | $85.0K | 92% | 1800s | 3600s |
+**Price formula**: `price = 1e6 × sUSDD_USDD_rate`
+→ Hardcodes USDD/USDT = $1.00 (via SCALE_FACTOR normalization)
 
-**Collateral: sUSDD** (Savings USDD, ERC4626 vault at `0xC5d6A7B61d18AfA11435a889557b068BB9f29930`)
-- sUSDD exchange rate: 1.042847 USDD per sUSDD (yield-accruing)
-- Underlying: USDD (Decentralized USD) — TRON/Justin Sun ecosystem stablecoin
-- USDD Ethereum supply: ~6.7M tokens
-- USDD total supply (all chains): ~$124M
-- **Historical depeg**: $0.93 in June 2022 (7% depeg)
-- **No Chainlink feed for USDD** on Ethereum
+### sUSDD Backup Oracle (`0x5908...03c1`)
+- **Contract**: `MorphoChainlinkOracleV2` (same code, different immutables)
+- **BASE_VAULT**: address(0) → returns 1
+- **BASE_FEED_1**: `0xb96ef4e8...` — **SAME Ojo sUSDD/USDD feed** (18 dec)
+- **BASE_FEED_2**: `0x014f606c...` — **"USDD / USDT Exchange Rate"** (18 dec, Ojo) ← INDEPENDENT
+- **QUOTE_FEED_1**: `0xc3866d72...` — **"Dummy feed with 12 decimals"** (returns 1e12 always)
+- **QUOTE_FEED_2**: address(0) → returns 1
+- **SCALE_FACTOR**: 1
 
-**Oracle mechanics**: Primary (`0xb11b...b457`) and backup (`0x5908...03c1`) are **different contracts with different bytecode** but both return identical prices (1042801074648223165000000). Both derive from sUSDD's on-chain exchange rate; neither queries an independent USDD/USD market price.
+**Price formula**: `price = sUSDD_USDD_rate × USDD_USDT_rate / 1e12`
+→ Includes actual USDD/USDT market price via Ojo feed
 
+### Depeg scenario (sUSDD — REVISED):
 ```
-Primary price(): 1042801074648223165000000 (1.0428 in 24 decimals)
-Backup price():  1042801074648223165000000 (1.0428 in 24 decimals)
-Divergence:      0.000000%
+If USDD depegs to $0.80:
+  Primary: 1e6 × 1.0428 = 1.0428e24 (still assumes USDD=$1)
+  Backup:  1.0428 × 0.80 / 1e-12 = 0.8342e24 (reflects depeg)
+  Deviation: ~20% > 1% threshold → challenge() FIRES after 30 min
+  Oracle switches to backup → positions repriced → liquidations trigger
+
+CONCLUSION: sUSDD MetaOracle WOULD function correctly during a depeg,
+            IF the Ojo USDD/USDT feed updates to the depegged price.
 ```
 
-### Group 2: NUSD Markets (~$6.7M supply, ~$5.8M borrow)
+### Ojo USDD/USDT Feed Reliability Concerns:
+- Feed has reported exactly 1.000000000000000000 for 50+ consecutive rounds
+- Updates approximately once per day
+- Last 50 rounds (back to Jan 15, 2026): always 1.0
+- Single oracle provider (no Chainlink decentralized network)
+- **UNTESTED under depeg conditions** — has never needed to report a non-par price
+- If this feed fails to update during a depeg, the backup oracle would remain at par
+
+### NUSD Primary Oracle (PT-sNUSD-5MAR2026) (`0xd25a...`)
+- **Contract**: `MorphoChainlinkOracleV2`
+- **BASE_FEED_1**: `0xe488ee19...` — Pendle-related oracle feed
+- All other feeds/vaults: address(0)
+- **SCALE_FACTOR**: 1,000,000
+
+### NUSD Backup Oracle (`0x385a...`)
+- **Contract**: `OracleRouter`
+- **oracle()**: `0xd25a93399d82e1a08d9da61d21fdff7f3e65eb27` — **SAME AS PRIMARY!**
+- Routes `price()` directly to primary oracle
+- **This IS genuinely degenerate**: backup = primary via routing
+
+### srNUSD Primary Oracle (`0xe10a...`)
+- Uses custom oracle (not standard MorphoChainlinkOracleV2 pattern — embedded address `0x5822...`)
+- **SCALE_FACTOR**: 1,000,000
+
+### srNUSD Backup Oracle (`0x39e1...`)
+- **Contract**: `OracleRouter`
+- **oracle()**: `0xe10a7d39e4ed00351dfe17378b5896e5f8ab422f` — **SAME AS PRIMARY!**
+- **This IS genuinely degenerate**: backup = primary via routing
+
+## Confirmed Affected Markets (4 NUSD markets)
 
 | Market | Oracle | Supply | Borrow | LLTV | ChalTL | HealTL |
 |---|---|---|---|---|---|---|
@@ -55,181 +96,191 @@ Divergence:      0.000000%
 | PT-sNUSD-4JUN2026/USDC | `0x7250...1fbc` | $475K | $435K | 86% | 14400s | 43200s |
 | srNUSD/USDC | `0x9e10...f4be` | $158K | $138K | 92% | 14400s | 43200s |
 
+**Total confirmed at risk: ~$6.7M supply / ~$5.8M borrow**
+
 **Underlying: NUSD (Neutrl)** — Synthetic dollar, launched Nov 2025
 - Market cap: ~$227M, age ~4 months
 - Historical depeg: $0.975 (2.5% depeg, November 2025)
 - No Chainlink feed; redemption is KYC-gated only
 - DEX liquidity: ~$10M in Curve pools
-- Three of four backup oracles use OracleRouter that routes back to the same primary contract
+- All four backup oracles use OracleRouter that routes back to the same primary contract
 
-## How MetaOracleDeviationTimelock Should Work
+## Downgraded Markets (2 sUSDD markets — Informational)
+
+| Market | Oracle | Supply | Borrow | LLTV | Status |
+|---|---|---|---|---|---|
+| sUSDD/USDT | `0x8c0a...8154` | $51.7M | $40.9M | 92% | Backup has independent Ojo USDD/USDT feed |
+| sUSDD/USDC | `0x7be4...9f1f` | $97.8K | $85.0K | 92% | Same architecture (needs verification) |
+
+**Risk**: Low-Medium. The backup oracle IS functionally different from primary and would diverge during a depeg. However, the Ojo USDD/USDT feed's reliability is untested under stress, and a single oracle provider failure could result in the same outcome as a true degenerate MetaOracle.
+
+## How MetaOracleDeviationTimelock Works
+
+Source: `MetaOracleDeviationTimelock.sol` (Steakhouse Financial, Solidity 0.8.20)
 
 ```
-Normal state:  Use primary oracle (assumes underlying at par, derives price from exchange rate only)
-Depeg event:   primary ≠ backup by > maxDiscount threshold for > challengeTimelock
-               → anyone calls challenge() → switch to backup (market-price oracle)
-               → positions repriced to true market value → liquidations trigger
-Recovery:      primary ≈ backup for > healingTimelock → heal() → switch back to primary
+Normal state:  currentOracle = primaryOracle
+Depeg event:   primary.price() ≠ backup.price() by > deviationThreshold
+               → anyone calls challenge() → challengeExpiresAt set
+               → after challengeTimelockDuration, if still deviant:
+               → anyone calls acceptChallenge() → currentOracle = backupOracle
+Recovery:      primary ≈ backup (deviation < threshold)
+               → anyone calls heal() → healingExpiresAt set
+               → after healingTimelockDuration, if still converged:
+               → anyone calls acceptHealing() → currentOracle = primaryOracle
 ```
 
-## What's Broken
+Key properties (verified from source):
+- **No admin functions.** All 6 state transitions are permissionless.
+- **No upgradeability.** Configuration set once in `initialize()` (OpenZeppelin `initializer` modifier).
+- **`initialize()` checks**: `require(primaryOracle != backupOracle)` — checks ADDRESS only, not behavior.
+- **Silent fallback in `price()`**: if currentOracle reverts, silently returns the other oracle's price.
 
-When backup returns the same price as primary:
+## What's Broken (NUSD Markets Only)
+
+When backup routes to primary via OracleRouter:
 
 ```
 deviation = |primary.price() - backup.price()| / average
+         = |X - OracleRouter.price()| / average
+         = |X - primary.price()| / average    (OracleRouter calls primary)
          = |X - X| / X
          = 0%
-         (always, regardless of what happens in the real world)
+         (ALWAYS, regardless of what happens in the real world)
 ```
 
-The `challenge()` function will **always revert** with "Deviation threshold not met". The MetaOracle's safety mechanism is permanently non-functional.
+The `challenge()` function will **always revert** with "Deviation threshold not met". The MetaOracle's safety mechanism is permanently non-functional for these 4 NUSD markets.
 
 ## On-Chain Evidence
 
-### sUSDD/USDT MetaOracle (`0x8c0a...8154`) — Immutable Storage:
+### PT-sNUSD-5MAR2026/USDC MetaOracle (`0xe846...82a9`):
 ```
-slot[0] = 0xb11b835214e1ffa6016298ade857723f33d7b457 (primary oracle)
-slot[1] = 0x59080ad0f7693c41a5bf99d4044c079c23f803c1 (backup oracle)
-slot[2] = 10000000000000000 (maxDiscount = 1.0%)
-slot[3] = 1800 (challengeTimelock = 30 min)
-slot[4] = 3600 (healingTimelock = 1 hour)
-slot[5] = primary (currently active = primary)
+Primary (0xd25a...): MorphoChainlinkOracleV2 — BASE_FEED_1 = Pendle oracle
+Backup (0x385a...):  OracleRouter → oracle() = 0xd25a... (SAME as primary!)
 
-Primary price(): 1042801074648223165000000
-Backup price():  1042801074648223165000000
-Divergence:      0.000000%
-
+Primary price(): 1000000000000000000000000 (1.0 in 24 dec)
+Backup price():  1000000000000000000000000 (1.0 in 24 dec)
+Divergence: 0.000000%
 challenge() → REVERTS "Deviation threshold not met" (always)
 ```
 
-### PT-sNUSD-5MAR2026/USDC MetaOracle (`0xe846...82a9`):
+### srNUSD/USDC MetaOracle (`0x9e10...f4be`):
 ```
-Primary (0xd25a...): PendleChainlinkOracle for sNUSD
-Backup (0x385a...):  OracleRouter → target = 0xd25a... (SAME as primary!)
+Primary (0xe10a...): Custom oracle (embedded address 0x5822...)
+Backup (0x39e1...):  OracleRouter → oracle() = 0xe10a... (SAME as primary!)
+
+Primary price(): 1005274330606077473000000 (1.0053 in 24 dec)
+Backup price():  1005274330606077473000000 (1.0053 in 24 dec)
 Divergence: 0.000000%
+challenge() → REVERTS "Deviation threshold not met" (always)
 ```
 
-## Risk Assessment
+### sUSDD/USDT MetaOracle (`0x8c0a...8154`) — REVISED:
+```
+Primary (0xb11b...): MorphoChainlinkOracleV2
+  BASE_FEED_1 = Ojo sUSDD/USDD rate
+  Formula: price = 1e6 × sUSDD_rate (assumes USDD=$1)
 
-### What happens if USDD depegs (e.g., drops to $0.80):
+Backup (0x5908...): MorphoChainlinkOracleV2
+  BASE_FEED_1 = Ojo sUSDD/USDD rate (SAME)
+  BASE_FEED_2 = Ojo USDD/USDT market rate (INDEPENDENT!)
+  QUOTE_FEED_1 = Dummy 12-dec feed (normalization)
+  Formula: price = sUSDD_rate × USDD_USDT_rate / 1e12
+
+Current state: primary=backup=1.0428e24 (USDD at par → expected)
+Depeg state: backup would report lower price → challenge() would fire
+STATUS: NOT DEGENERATE — backup has independent market price feed
+```
+
+## Risk Assessment (NUSD Markets)
+
+### What happens if NUSD depegs:
 
 **Without the bug (healthy MetaOracle):**
-1. Primary oracle continues reporting sUSDD/USDT ≈ 1.04 (at par)
-2. Backup oracle reports sUSDD/USDT ≈ 0.83 (true market price)
-3. Deviation = 20% > 1% threshold → challenge fires after 30 min
-4. Oracle switches to backup → positions repriced → underwater borrowers liquidated
-5. Loss limited to the 30-min exposure window
+1. Primary continues reporting PT/sNUSD/srNUSD at par
+2. Backup reports market-adjusted price reflecting NUSD depeg
+3. Deviation exceeds threshold → challenge fires after 4 hours
+4. Oracle switches → positions repriced → liquidations trigger
 
-**With the bug (degenerate MetaOracle):**
-1. Primary oracle reports sUSDD/USDT ≈ 1.04 (at par, WRONG)
-2. Backup oracle ALSO reports sUSDD/USDT ≈ 1.04 (at par, WRONG)
+**With the bug (degenerate MetaOracle, as deployed):**
+1. Primary reports at par (WRONG if NUSD has depegged)
+2. Backup also reports at par (routes back to primary, also WRONG)
 3. Deviation = 0% → challenge NEVER fires
 4. Oracle NEVER switches → collateral stays overvalued indefinitely
-5. Existing borrowers: their sUSDD collateral (worth $0.83 each) backs $1.04 of debt
-6. New attackers: deposit depegged sUSDD (bought at $0.80), borrow USDT at inflated $1.04 rate
+5. Bad debt accumulates without bound
 
-### Depeg exploitation scenario (sUSDD/USDT, the $51.7M market):
-
-```
-Precondition: USDD depegs to $0.80 on markets
-
-1. Attacker buys sUSDD on open market at ~$0.80 per USDD equivalent
-2. Deposits sUSDD into Morpho sUSDD/USDT market
-3. Oracle reports 1 sUSDD = $1.0428 (wrong, actually ~$0.834)
-4. Borrows 91.5% × deposit × $1.0428 = extraction at 25% premium
-5. With flash loans: repeatable until market's $51.7M supply drained
-
-Maximum at-risk value: ~$51.7M (sUSDD/USDT supply)
-Net profit margin per cycle: ~25% of deposit amount (at 20% depeg)
-```
-
-### Impact matrix by depeg severity:
-
-| Depeg % | USDD Price | Oracle Reports | True Collateral Value | Bad Debt Potential |
-|---|---|---|---|---|
-| 5% | $0.95 | $1.0428 | $0.99 | ~$2.7M |
-| 10% | $0.90 | $1.0428 | $0.94 | ~$5.1M |
-| 20% | $0.80 | $1.0428 | $0.83 | ~$10.6M |
-| 50% | $0.50 | $1.0428 | $0.52 | ~$25.5M |
-
-### Severity:
+### Severity (NUSD Markets):
 
 | Factor | Assessment |
 |---|---|
 | Trigger | External depeg event (not attacker-controllable) |
-| Probability of USDD depeg | Medium — depegged to $0.93 in June 2022 |
 | Probability of NUSD depeg | Medium — depegged to $0.975 in Nov 2025 (4 months ago) |
-| Impact if triggered | **Critical** — up to $58.5M at risk across all 6 markets |
-| Permissionless exploitation | Yes — anyone can deposit depegged collateral and borrow |
+| Impact if triggered | **High** — up to $6.7M at risk across 4 markets |
+| Permissionless exploitation | Yes — anyone can deposit depegged collateral and borrow USDC |
 | Time to exploit | Immediate once depeg occurs (no timelock protection) |
-| Fix complexity | Low — redeploy MetaOracle proxies with correct backup addresses |
+| Fix complexity | Low — redeploy MetaOracle proxies with independent backup |
 
-## Comparison: All 32 MetaOracle Instances
+## E3 Escalation Attempts (All Falsified)
 
-- **6 DEGENERATE** (backup=primary, 0% divergence): listed above
-- **26 HEALTHY** (backup ≠ primary, non-zero divergence): functioning as designed
-  - Typical divergence range: 0.0005% to 0.51%
-  - All use distinct primary/backup oracle contracts with independent price sources
+### NUSD-specific (12 Vectors, All Falsified)
 
-All 32 share the same implementation: `0xcc319ef091bc520cf6835565826212024b2d25ec`
+1. **OVERBORROW** (Push PT TWAP UP): Mathematically impossible — PT bounded by maturity value
+2. **LIQUIDATION** (Push TWAP DOWN): Economically infeasible — cost >> revenue
+3. **MetaOracle state machine**: challenge() always reverts (0% divergence)
+4-12. Post-maturity, SY exchange rate, observation cardinality, OracleRouter functions, cross-market composition, maturity boundary, max discount, Pendle LP — all tested and found non-exploitable.
+
+### sUSDD-specific (7 Vectors, All Falsified — plus finding is downgraded)
+
+1. **Exchange rate manipulation**: IMPOSSIBLE — Pot.chi from governance-only dsr
+2. **Donation attack**: IMPOSSIBLE — totalAssets = pie × chi (internal accounting, no ERC20 balance)
+3. **USDD bridge mint**: No permissionless path — MakerDAO Vat/Join architecture
+4. **USDD DEX manipulation**: Zero liquidity for USDD_NEW on Ethereum
+5. **MetaOracle reinit**: `initialize()` uses OpenZeppelin `initializer` — one-time only
+6. **Drip timing**: ~0.0001% per interval — negligible
+7. **Cross-protocol composition**: sUSDD/USDD not listed in Aave, Euler, or other lending markets
+
+```
+E3 STATUS: NOT MET — requires external precondition (NUSD depeg)
+CLASSIFICATION (NUSD): E2 safety mechanism failure with conditional high impact ($6.7M)
+CLASSIFICATION (sUSDD): Informational — backup has independent feed, reliability concerns only
+```
 
 ## Why This Is E2 (Not E3)
 
-E3 requires a **permissionless profitable exploit reproducible on a pinned fork**. This finding requires an **external precondition** (USDD or NUSD depeg) that is not attacker-controllable:
+E3 requires a **permissionless profitable exploit reproducible on a pinned fork**. This finding requires an **external precondition** (NUSD depeg) that is not attacker-controllable:
 
-- We cannot trigger a USDD/NUSD depeg on a fork (it's cross-chain, market-driven)
-- The misconfiguration is provably present (0% divergence on-chain, challenge always reverts)
+- We cannot trigger a NUSD depeg on a fork (market-driven, cross-chain)
+- The misconfiguration is provably present for 4 NUSD markets (OracleRouter→primary)
 - The economic impact is calculable but conditional on the depeg event
-- The MetaOracle's design intent (switch oracle on depeg) is provably defeated
-
-```
-E3 STATUS: NOT MET — requires external precondition
-CLASSIFICATION: E2 safety mechanism failure with conditional critical impact
-```
-
-## E3 Escalation Attempts (12 Vectors, All Falsified for NUSD Markets)
-
-### Vector 1: OVERBORROW (Push TWAP UP) — MATHEMATICALLY IMPOSSIBLE
-PT price is bounded by maturity redemption value. Max overvaluation from rate=0 is ~2.3%. At 91.5% LLTV, break-even requires >9.3% overvaluation. 2.3% << 9.3%.
-
-### Vector 2: LIQUIDATION (Push TWAP DOWN) — ECONOMICALLY INFEASIBLE
-AMM manipulation cost ($500K+) >> liquidation revenue ($29K). Even at 10x market size, still unprofitable.
-
-### Vector 3: MetaOracle state machine — DEAD END
-`challenge()` always reverts. `acceptChallenge`/`heal` unreachable.
-
-### Vectors 4-12: All Falsified
-Post-maturity, SY exchange rate, observation cardinality, OracleRouter functions, cross-market composition, maturity boundary, max discount, Pendle LP — all tested and found non-exploitable. See detailed analysis in earlier sections.
-
-### sUSDD-specific E3 attempts:
-- Both primary and backup derive from sUSDD's ERC4626 `convertToAssets()` rate
-- Cannot flash-loan manipulate the exchange rate (rate = totalAssets/totalSupply, both are USDD balances)
-- No external call in the oracle contracts that could be used for re-entrancy
-- No admin functions accessible without Gnosis Safe multisig
+- The MetaOracle's design intent (switch oracle on depeg) is provably defeated for NUSD markets
 
 ## Evidence Artifacts
 
 - Full scan script: `scripts/metaoracle_step4_lean.py`
 - Scan results: `analysis/engagements/morpho-metaoracle/scan_results.txt`
 - JSON results: `analysis/engagements/bridge-finality-gap/notes/metaoracle_scan_results.json`
-- Previous NUSD deep-dive: `scripts/bypass_gates_step*.py`, `scripts/e3_*.py`
+- Deep oracle immutable analysis: `/tmp/oracle_immutables.py`, `/tmp/feed_analysis.py`, `/tmp/backup_feeds.py`
+- sUSDD vault source: Sourcify (SavingsUsdd.sol — MakerDAO DSR fork, no admin functions)
+- MetaOracle source: Sourcify (MetaOracleDeviationTimelock.sol — no admin functions, no upgradeability)
+- Primary/backup oracle source: Sourcify (MorphoChainlinkOracleV2.sol — immutable config, no staleness checks)
+- NUSD deep-dive: `scripts/bypass_gates_step*.py`, `scripts/e3_*.py`
 - Oracle probes: `scripts/pendle_oracle_deep_probe.py`, `scripts/pendle_proxy_oracle_decode.py`
 - NUSD analysis: `scripts/nusd_identity_probe.py`, `scripts/trace_nusd_underlying.py`
+- Pot/Vat/Join analysis: `/tmp/pot_check.py`, `/tmp/usdd_deep_chain.py`, `/tmp/real_join.py`
 
 ## Recommendations
 
-1. **Immediate (Critical)**: Redeploy MetaOracle proxies for all 6 affected markets with correct independent backup oracles
-   - sUSDD markets: backup must query USDD/USD market price (Curve TWAP, Redstone, or any independent source)
-   - NUSD markets: backup must be independent of the primary's price derivation
-2. **Deployment validation**: Add factory-level check that `primary.price() != backup.price()` at deployment time (or at minimum verify addresses are not routed to the same endpoint)
-3. **Monitoring**: Real-time alert for any MetaOracle where divergence stays at exactly 0% for >1 day
-4. **Audit scope expansion**: Future audits should include deployment parameter verification, not just code review
+1. **Immediate (High)**: Redeploy MetaOracle proxies for the 4 NUSD markets with independent backup oracles
+   - Backup must query NUSD/USD market price from an independent source (not routing back to primary)
+2. **Medium (sUSDD)**: Evaluate Ojo USDD/USDT feed reliability — consider adding a second independent data source
+3. **Deployment validation**: Add factory-level check at deployment that backup oracle's price derivation is independent of primary (not just address comparison)
+4. **Monitoring**: Real-time alert for any MetaOracle where divergence stays at exactly 0% for >1 day
+5. **Audit scope expansion**: Future audits should include deployment parameter verification and oracle feed independence testing
 
 ## Why This Survived Prior Audits
 
-1. The MetaOracle contract code is **correctly implemented** — the bug is in **deployment configuration**
+1. The MetaOracle contract code is **correctly implemented** — the bug is in **deployment configuration** (OracleRouter pointing to primary)
 2. Auditors review contract logic, not deployment parameters and oracle routing
 3. The OracleRouter indirection (backup → router → primary) obscures the circular reference
-4. The sUSDD case is particularly subtle: two different contracts with different bytecode but functionally identical outputs (both read the same on-chain exchange rate with no independent market price input)
-5. Detection required checking **every deployed instance's actual price outputs** across all 767 unique oracles — a scale that demands automated scanning, not manual review
+4. The `initialize()` function checks `require(primaryOracle != backupOracle)` but this only compares addresses, not behavior — the OracleRouter has a different address but delegates to the same price source
+5. Detection required checking **every deployed instance's actual price derivation chain** across all 767 unique oracles — not just comparing prices at a single point in time (which gives false positives when the underlying is at par)
