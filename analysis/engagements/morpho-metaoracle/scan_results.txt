@@ -1,0 +1,526 @@
+Connected to https://ethereum-rpc.publicnode.com... Block: 24595401
+
+=== STEP 1: Fetch Morpho markets ===
+  Total: 1227, Active: 956
+
+=== STEP 2: Find EIP-1167 MetaOracle proxies ===
+  Unique oracles: 767
+  Scanned 100/767...
+  Scanned 200/767...
+  Scanned 300/767...
+  Scanned 400/767...
+  Scanned 500/767...
+  Scanned 600/767...
+  Scanned 700/767...
+  MetaOracle proxies found: 32
+
+=== STEP 3: Decode MetaOracle storage ===
+  [1/32] 0xfafb71f2fe9a4330c34a192812f36d8d6f07f095
+    Primary: 0x8d6262e99d11e982b361a117ac16fd7c97939c5e
+    Backup:  0xec3679d32199b370c4f5bdf34152342b05cbc35c (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999654459347249222656052, Div: 0.034554%
+    Markets: 1, Supply(raw): 10044313, Borrow(raw): 9053206
+
+  [2/32] 0xe582a48f2e51d96d222dd3fcffed3665b5dc92bb
+    Primary: 0x235fd3a500ee30dcf875df8e3290551c39752b09
+    Backup:  0x9841ec65d3a71869d3c88b0d008c947e4938ea2b (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 1.0%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1222676380000000000000000
+    Primary price: 1222676380000000000000000, Backup price: 1220875600000000000000000, Div: 0.147282%
+    Markets: 1, Supply(raw): 1113002, Borrow(raw): 1006241
+
+  [3/32] 0x5139aa359f7f7fde869305e8c7ad001b28e1c99a
+    Primary: 0x42929bc4410dc3c29ec7036670b5c7a744af659b
+    Backup:  0x2d84f576fadefea35a5f5bfae2fe7d20c3e3d33c (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999478990000000000000000, Div: 0.052101%
+    Markets: 2, Supply(raw): 5296898, Borrow(raw): 4070827
+
+  [4/32] 0xaa22fa49aaaff58e815e762db287304a93f85a01
+    Primary: 0x527c71f87ed3b65e14476f45db57bfbce56343b6
+    Backup:  0xc167f518b7e748dcd098d355fa1581e619ade8fd (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 996797019349349270000000
+    Primary price: 996797019349349270000000, Backup price: 996224977832970701386733, Div: 0.057388%
+    Markets: 1, Supply(raw): 149098460312, Borrow(raw): 134937861896
+
+  [5/32] 0x8c0a80c09ae8a8cdd66f4f51598d7b494ecf8154
+    Primary: 0xb11b835214e1ffa6016298ade857723f33d7b457
+    Backup:  0x59080ad0f7693c41a5bf99d4044c079c23f803c1 (target: None)
+    Status: DEGENERATE (backup=primary) (same price)
+    MaxDiscount: 1.0%  ChallengeTL: 1800s  HealingTL: 3600s
+    Oracle price: 1042801074648223165000000
+    Primary price: 1042801074648223165000000, Backup price: 1042801074648223165000000, Div: 0.000000%
+    Markets: 1, Supply(raw): 51709749831412, Borrow(raw): 40873220594471
+
+  [6/32] 0x74ec54c1fe39a7a2299c77dd0f2d3cb458bb44c2
+    Primary: 0xed621dd43e0eebfe9ddc10bd2815b861734beb0c
+    Backup:  0xdc90fb5c08fb373279672728ad2d8c3988dbef16 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.5%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 872198088461422498266349081918774685
+    Primary price: 872198088461422498266349081918774685, Backup price: 872202135460552959266741037778514788, Div: 0.000464%
+    Markets: 1, Supply(raw): 2653316721980320658093284, Borrow(raw): 230004870183661545575778
+
+  [7/32] 0x29ce518f4449f1dee2eaa6d32621987dcc18e29d
+    Primary: 0xf1ce4339d7521258badc90c728ee883e07387c07
+    Backup:  0x332c4cb17b1a11a29bc903d2e49752b2e6a60474 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999897040000000000000000, Div: 0.010296%
+    Markets: 1, Supply(raw): 2475291, Borrow(raw): 2474291
+
+  [8/32] 0x954f55c1278e3ff5cc0a20ca4ce10c1863e5f230
+    Primary: 0x5864e1864be806dbce94b2da62c9f501ff5b5526
+    Backup:  0x97f57ecbd3a5a752b63cb7c87d7e99a9752baf89 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.5%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1088833250000000000000000
+    Primary price: 1088833250000000000000000, Backup price: 1088390094867250000000000, Div: 0.040700%
+    Markets: 1, Supply(raw): 17945275198010, Borrow(raw): 16240474675392
+
+  [9/32] 0x4c6ee25fd75d9a4b03e6354306ccc98e3dcc610c
+    Primary: 0xa6d6950c9f177f1de7f7757fb33539e3ec60182a
+    Backup:  0x0acdc416c592a592edf2e64b178aa8d4d47e05a8 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 2.0%  ChallengeTL: 7200s  HealingTL: 28800s
+    Oracle price: 712845800000000000000000000000000000000
+    Primary price: 712845800000000000000000000000000000000, Backup price: 715992057036100000000000000000000000000, Div: 0.441366%
+    Markets: 1, Supply(raw): 1113155, Borrow(raw): 1006253
+
+  [10/32] 0x7be435da1e3287ad0acb62c2a16e0b2d4643719f
+    Primary: 0xb11b835214e1ffa6016298ade857723f33d7b457
+    Backup:  0x743398bd2ff99ade545d96ccc015de52dc68628f (target: None)
+    Status: DEGENERATE (backup=primary) (same price)
+    MaxDiscount: 1.0%  ChallengeTL: 1800s  HealingTL: 3600s
+    Oracle price: 1042801074648223165000000
+    Primary price: 1042801074648223165000000, Backup price: 1042801074648223165000000, Div: 0.000000%
+    Markets: 1, Supply(raw): 97763783197, Borrow(raw): 85011551860
+
+  [11/32] 0x8b417d1e0c08d8005b7ca1d5ebbc72ea877db391
+    Primary: 0x527c71f87ed3b65e14476f45db57bfbce56343b6
+    Backup:  0xfbba40881e75fa48c32e0dad97edc0858c16aaa0 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 996797101902060613000000
+    Primary price: 996797101902060613000000, Backup price: 996452667980809291855020, Div: 0.034554%
+    Markets: 1, Supply(raw): 13814406885757, Borrow(raw): 12070462333584
+
+  [12/32] 0x725007419b5807631ff113028cdcccdfa254a2bc
+    Primary: 0xd7b00f04ef64fa2f379277af1bca705c4055e8f6
+    Backup:  0x29bb4acd7cf73012afc38858033f3fce1fdee749 (target: None)
+    Status: DEGENERATE (backup=primary) (same price)
+    MaxDiscount: 1.0%  ChallengeTL: 14400s  HealingTL: 43200s
+    Oracle price: 983421900292252602000000
+    Primary price: 983421900292252602000000, Backup price: 983421900292252602000000, Div: 0.000000%
+    Markets: 1, Supply(raw): 474713576385, Borrow(raw): 434713621123
+
+  [13/32] 0xb8e05308cab856da6aad922860cf9ce87be2413a
+    Primary: 0x557d34aeade40fb3ba9893f2cc38d00023e60077
+    Backup:  0x54e156be04dd01c3466cd1b1f2fcd87300a9fe1f (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.5%  ChallengeTL: 1800s  HealingTL: 3600s
+    Oracle price: 100000000000000000000000000
+    Primary price: 100000000000000000000000000, Backup price: 99915762000000000000000000, Div: 0.084238%
+    Markets: 1, Supply(raw): 5604130286, Borrow(raw): 4991397206
+
+  [14/32] 0x8cfb9c525639d7ff649dca96795accad60ae8b35
+    Primary: 0x527c71f87ed3b65e14476f45db57bfbce56343b6
+    Backup:  0xf84b99ccd83e335c197dc4ac1cc4ba8233ed01cf (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 996797151433690700000000
+    Primary price: 996797151433690700000000, Backup price: 996277810149822232808393, Div: 0.052101%
+    Markets: 1, Supply(raw): 73663948383, Borrow(raw): 45092635021
+
+  [15/32] 0x74de78a994ea17535c60d0bd3c72465daad75039
+    Primary: 0xf1ce4339d7521258badc90c728ee883e07387c07
+    Backup:  0xe9000e1441a1f377c746a781bfa921936a63e420 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999844148244557862889053, Div: 0.015585%
+    Markets: 1, Supply(raw): 2473985, Borrow(raw): 2472985
+
+  [16/32] 0xe2d51a4d556c5fb74d96618d7f10f3252b8aca4f
+    Primary: 0xf313a005556922fe8dde37e4d87d89faf2184f42
+    Backup:  0xf86aa25940787eb65ecb8d66d9fc9020f7c84e7f (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999478990000000000000000, Div: 0.052101%
+    Markets: 1, Supply(raw): 1079692, Borrow(raw): 1079366
+
+  [17/32] 0x0bec5a0f7bea1d14efc2663054d6d1e2b764b630
+    Primary: 0xe820b79e0fbe344e98fb6d984f25d23a79e19eba
+    Backup:  0x3bab0a88b6f2e47b73967a64c4c6e2f32a33ed3e (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999478990000000000000000, Div: 0.052101%
+    Markets: 2, Supply(raw): 2385891, Borrow(raw): 2038589
+
+  [18/32] 0x0d07087b26b28995a66050f5bb7197d439221de3
+    Primary: 0x2b28bf17c7bb004dbbf002b2482da267dbe06c60
+    Backup:  0xd4cecc2d5d8c24ac9f7dfe28d6e6f4571b1434d7 (target: 0x2b28bf17c7bb004dbbf002b2482da267dbe06c60)
+    Status: DEGENERATE (backup=primary) (router->primary, same price)
+    MaxDiscount: 1.0%  ChallengeTL: 14400s  HealingTL: 43200s
+    Oracle price: 983551008421603991000000
+    Primary price: 983551008421603991000000, Backup price: 983551008421603991000000, Div: 0.000000%
+    Markets: 1, Supply(raw): 1326278738375, Borrow(raw): 1196278797653
+
+  [19/32] 0x938d2edb20425cf80f008e7ec314eb456940da15
+    Primary: 0x03dfca9a320ca88fa6a0a132f34822e4b13d6fa0
+    Backup:  0xa38dc080a6617cf0fd985aff3189397861d8a47d (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 1.0%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1070339070000000000000000
+    Primary price: 1070339070000000000000000, Backup price: 1070235258980008516000000, Div: 0.009699%
+    Markets: 3, Supply(raw): 99730282817264, Borrow(raw): 89601173694998
+
+  [20/32] 0x58b796f085d43ba18aabd39524e2fb56de1aa021
+    Primary: 0x040a101b02785cd4462030e18f31996a31d52d8d
+    Backup:  0x2034274f7f6edf2cbd19e21dba10e9f63508838f (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999654459347249222656052, Div: 0.034554%
+    Markets: 1, Supply(raw): 1007476, Borrow(raw): 896654
+
+  [21/32] 0xdda9b3080d7c755919fe89bc74971b923f16ce00
+    Primary: 0x4b48aa26cb1d37fea6891869a816bc012c703f46
+    Backup:  0x41e17f26a610aec8a1eb82284eb609af63a23e5f (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000000000000000
+    Primary price: 1000000000000000000000000000000000000, Backup price: 999615457502258208290595832143004162, Div: 0.038454%
+    Markets: 1, Supply(raw): 1003416906677678765, Borrow(raw): 893416906677677764
+
+  [22/32] 0x639c6f403822e1bda434beb2034beb54f725ba0c
+    Primary: 0x7476efa6212ee676c8441e2564e1bd64db065568
+    Backup:  0x95e85fef34b79f0030f41fb619733bf7e024bd87 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999478990000000000000000, Div: 0.052101%
+    Markets: 2, Supply(raw): 1731713607, Borrow(raw): 1566587623
+
+  [23/32] 0xece51fe8f29a514441fb5d414fad449482eaa3c1
+    Primary: 0x6234e432c23ba23e115be0067805290984b0c186
+    Backup:  0xc513894cef11173a6aed21722806cfb19cfdc435 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 5.0%  ChallengeTL: 10800s  HealingTL: 28800s
+    Oracle price: 72150441002353200000000000000
+    Primary price: 72150441002353200000000000000, Backup price: 72481611016838912743753911124, Div: 0.458999%
+    Markets: 1, Supply(raw): 591834615578, Borrow(raw): 531834627715
+
+  [24/32] 0xddff4acd31d0e1d3943dd2c3f07cc3a2aa899e74
+    Primary: 0xda850a72080024e17c1590fbf6ea7a826db90760
+    Backup:  0x7cf9d994681834c6cc64281b9b224a29f6214b4b (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1131601027500000000000000
+    Primary price: 1131601027500000000000000, Backup price: 1131305679631822500000000, Div: 0.026100%
+    Markets: 2, Supply(raw): 2616426, Borrow(raw): 2614426
+
+  [25/32] 0xbde1222e141563b8797718460e2c2f0902e5cdd0
+    Primary: 0x4c8d8bdb4c6640b9e7344d51e0b4d72b9022b133
+    Backup:  0x09a5a2923dd6b8f7a08fc031d3019ca34f685ed6 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000000000000000
+    Primary price: 1000000000000000000000000000000000000, Backup price: 999615457502258208290595832143004162, Div: 0.038454%
+    Markets: 1, Supply(raw): 1003380145081740068, Borrow(raw): 893380145081739067
+
+  [26/32] 0x15b68dd823bb37150c3baaff841c6dfff4bbb6ae
+    Primary: 0x0ed5ef6a4ada311bd9ed05069bbcffdafe5a0088
+    Backup:  0xd4f0765beb5a5b19ea6151d0d425db341a59bcfd (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 1088833486417837670000000000000000000
+    Primary price: 1088833486417837670000000000000000000, Backup price: 1088390331188865610068310000000000000, Div: 0.040700%
+    Markets: 1, Supply(raw): 1007571880020124235, Borrow(raw): 897736743846055717
+
+  [27/32] 0xe6abd3b78abbb1cc1ee76c5c3689aa9646481fbb
+    Primary: 0xa5d21a73312221c1c7d94702316c02b2485036b9
+    Backup:  0x0de0ecde53ea9d38351b2ce0635430506c0aa330 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999478990000000000000000, Div: 0.052101%
+    Markets: 2, Supply(raw): 507806627, Borrow(raw): 302370466
+
+  [28/32] 0x5f51a2c3e0178a360ce2bde42b08db369f30268e
+    Primary: 0x9edf5c6b4cf55b9a566231b7778fa64d20b9bc3d
+    Backup:  0x78f7b7ccacaf43735f8bfe656191ae895baaa237 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 57600s  HealingTL: 86400s
+    Oracle price: 969616967909690513000000
+    Primary price: 969616967909690513000000, Backup price: 969363897881066083776107, Div: 0.026100%
+    Markets: 3, Supply(raw): 3709351, Borrow(raw): 3706351
+
+  [29/32] 0xe8465b52e106d98157d82b46ca566cb9d09482a9
+    Primary: 0xd25a93399d82e1a08d9da61d21fdff7f3e65eb27
+    Backup:  0x385ad6da207565bb232c0cc93602a3b785a16960 (target: 0xd25a93399d82e1a08d9da61d21fdff7f3e65eb27)
+    Status: DEGENERATE (backup=primary) (router->primary, same price)
+    MaxDiscount: 1.0%  ChallengeTL: 14400s  HealingTL: 43200s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 1000000000000000000000000, Div: 0.000000%
+    Markets: 1, Supply(raw): 4733349890571, Borrow(raw): 4043349939477
+
+  [30/32] 0x9e1031d287416b45c89d62780768d35df24df4be
+    Primary: 0xe10a7d39e4ed00351dfe17378b5896e5f8ab422f
+    Backup:  0x39e160111c2d8ee3817fa63e60a87839f07de138 (target: 0xe10a7d39e4ed00351dfe17378b5896e5f8ab422f)
+    Status: DEGENERATE (backup=primary) (router->primary, same price)
+    MaxDiscount: 1.0%  ChallengeTL: 14400s  HealingTL: 43200s
+    Oracle price: 1005274330606077473000000
+    Primary price: 1005274330606077473000000, Backup price: 1005274330606077473000000, Div: 0.000000%
+    Markets: 1, Supply(raw): 158354196986, Borrow(raw): 138354198131
+
+  [31/32] 0x2045ebfb4aaf5aae679fc387374515647dc41553
+    Primary: 0xc98751d712732b80e688228a8eefc905f116d1b1
+    Backup:  0x0c417e9304e9900c776899f150401a7fcde30d72 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.75%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 1000000000000000000000000
+    Primary price: 1000000000000000000000000, Backup price: 999902849567143249992352, Div: 0.009715%
+    Markets: 1, Supply(raw): 1010015, Borrow(raw): 1010009
+
+  [32/32] 0x5aec41bfd14ae95d7644087eb1aa4475fbba222d
+    Primary: 0x6a8dc45e4c7512740d5371d7bdd7a4b38a8227ec
+    Backup:  0x47260d67c77ddde6451d785fb1ab5c9b4a2c7aa0 (target: None)
+    Status: OK (different prices)
+    MaxDiscount: 0.5%  ChallengeTL: 28800s  HealingTL: 86400s
+    Oracle price: 872198277978541493481041
+    Primary price: 872198277978541493481041, Backup price: 872202324978551313913571, Div: 0.000464%
+    Markets: 1, Supply(raw): 946202, Borrow(raw): 762633
+
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+
+Total MetaOracle instances: 32
+DEGENERATE (backup=primary): 6
+HEALTHY (backup != primary): 26
+
+--- DEGENERATE INSTANCES ---
+  Oracle: 0x8c0a80c09ae8a8cdd66f4f51598d7b494ecf8154
+    Impl: 0xcc319ef091bc520cf6835565826212024b2d25ec
+    Primary: 0xb11b835214e1ffa6016298ade857723f33d7b457
+    Backup:  0x59080ad0f7693c41a5bf99d4044c079c23f803c1 -> target: None
+    MaxDiscount: 1.0%
+    Market: sUSDD/USDT LLTV=92% Supply=51709749831412 Borrow=40873220594471
+
+  Oracle: 0xe8465b52e106d98157d82b46ca566cb9d09482a9
+    Impl: 0xcc319ef091bc520cf6835565826212024b2d25ec
+    Primary: 0xd25a93399d82e1a08d9da61d21fdff7f3e65eb27
+    Backup:  0x385ad6da207565bb232c0cc93602a3b785a16960 -> target: 0xd25a93399d82e1a08d9da61d21fdff7f3e65eb27
+    MaxDiscount: 1.0%
+    Market: PT-sNUSD-5MAR2026/USDC LLTV=77% Supply=4733349890571 Borrow=4043349939477
+
+  Oracle: 0x0d07087b26b28995a66050f5bb7197d439221de3
+    Impl: 0xcc319ef091bc520cf6835565826212024b2d25ec
+    Primary: 0x2b28bf17c7bb004dbbf002b2482da267dbe06c60
+    Backup:  0xd4cecc2d5d8c24ac9f7dfe28d6e6f4571b1434d7 -> target: 0x2b28bf17c7bb004dbbf002b2482da267dbe06c60
+    MaxDiscount: 1.0%
+    Market: PT-srNUSD-28MAY2026/USDC LLTV=92% Supply=1326278738375 Borrow=1196278797653
+
+  Oracle: 0x725007419b5807631ff113028cdcccdfa254a2bc
+    Impl: 0xcc319ef091bc520cf6835565826212024b2d25ec
+    Primary: 0xd7b00f04ef64fa2f379277af1bca705c4055e8f6
+    Backup:  0x29bb4acd7cf73012afc38858033f3fce1fdee749 -> target: None
+    MaxDiscount: 1.0%
+    Market: PT-sNUSD-4JUN2026/USDC LLTV=86% Supply=474713576385 Borrow=434713621123
+
+  Oracle: 0x9e1031d287416b45c89d62780768d35df24df4be
+    Impl: 0xcc319ef091bc520cf6835565826212024b2d25ec
+    Primary: 0xe10a7d39e4ed00351dfe17378b5896e5f8ab422f
+    Backup:  0x39e160111c2d8ee3817fa63e60a87839f07de138 -> target: 0xe10a7d39e4ed00351dfe17378b5896e5f8ab422f
+    MaxDiscount: 1.0%
+    Market: srNUSD/USDC LLTV=92% Supply=158354196986 Borrow=138354198131
+
+  Oracle: 0x7be435da1e3287ad0acb62c2a16e0b2d4643719f
+    Impl: 0xcc319ef091bc520cf6835565826212024b2d25ec
+    Primary: 0xb11b835214e1ffa6016298ade857723f33d7b457
+    Backup:  0x743398bd2ff99ade545d96ccc015de52dc68628f -> target: None
+    MaxDiscount: 1.0%
+    Market: sUSDD/USDC LLTV=92% Supply=97763783197 Borrow=85011551860
+
+
+--- HEALTHY INSTANCES ---
+  Oracle: 0x74ec54c1fe39a7a2299c77dd0f2d3cb458bb44c2
+    Primary: 0xed621dd43e0eebfe9ddc10bd2815b861734beb0c
+    Backup:  0xdc90fb5c08fb373279672728ad2d8c3988dbef16 -> target: None
+    Price divergence: 0.000464%
+    Market: steakUSDC/EURCV LLTV=92% Borrow=230004870183661545575778
+
+  Oracle: 0x15b68dd823bb37150c3baaff841c6dfff4bbb6ae
+    Primary: 0x0ed5ef6a4ada311bd9ed05069bbcffdafe5a0088
+    Backup:  0xd4f0765beb5a5b19ea6151d0d425db341a59bcfd -> target: None
+    Price divergence: 0.040700%
+    Market: sUSDS/USDtb LLTV=92% Borrow=897736743846055717
+
+  Oracle: 0xdda9b3080d7c755919fe89bc74971b923f16ce00
+    Primary: 0x4b48aa26cb1d37fea6891869a816bc012c703f46
+    Backup:  0x41e17f26a610aec8a1eb82284eb609af63a23e5f -> target: None
+    Price divergence: 0.038454%
+    Market: PT-sUSDE-5FEB2026/USDtb LLTV=92% Borrow=893416906677677764
+
+  Oracle: 0xbde1222e141563b8797718460e2c2f0902e5cdd0
+    Primary: 0x4c8d8bdb4c6640b9e7344d51e0b4d72b9022b133
+    Backup:  0x09a5a2923dd6b8f7a08fc031d3019ca34f685ed6 -> target: None
+    Price divergence: 0.038454%
+    Market: PT-USDe-5FEB2026/USDtb LLTV=92% Borrow=893380145081739067
+
+  Oracle: 0x938d2edb20425cf80f008e7ec314eb456940da15
+    Primary: 0x03dfca9a320ca88fa6a0a132f34822e4b13d6fa0
+    Backup:  0xa38dc080a6617cf0fd985aff3189397861d8a47d -> target: None
+    Price divergence: 0.009699%
+    Market: wsrUSD/USDC LLTV=92% Borrow=10484884977035
+    Market: wsrUSD/USDC LLTV=94% Borrow=79116121237578
+    Market: wsrUSD/AUSD LLTV=92% Borrow=167480385
+
+  Oracle: 0x954f55c1278e3ff5cc0a20ca4ce10c1863e5f230
+    Primary: 0x5864e1864be806dbce94b2da62c9f501ff5b5526
+    Backup:  0x97f57ecbd3a5a752b63cb7c87d7e99a9752baf89 -> target: None
+    Price divergence: 0.040700%
+    Market: sUSDS/AUSD LLTV=94% Borrow=16240474675392
+
+  Oracle: 0x8b417d1e0c08d8005b7ca1d5ebbc72ea877db391
+    Primary: 0x527c71f87ed3b65e14476f45db57bfbce56343b6
+    Backup:  0xfbba40881e75fa48c32e0dad97edc0858c16aaa0 -> target: None
+    Price divergence: 0.034554%
+    Market: PT-srUSDe-2APR2026/USDC LLTV=92% Borrow=12070462333584
+
+  Oracle: 0xece51fe8f29a514441fb5d414fad449482eaa3c1
+    Primary: 0x6234e432c23ba23e115be0067805290984b0c186
+    Backup:  0xc513894cef11173a6aed21722806cfb19cfdc435 -> target: None
+    Price divergence: 0.458999%
+    Market: mHyperBTC/USDC LLTV=77% Borrow=531834627715
+
+  Oracle: 0xaa22fa49aaaff58e815e762db287304a93f85a01
+    Primary: 0x527c71f87ed3b65e14476f45db57bfbce56343b6
+    Backup:  0xc167f518b7e748dcd098d355fa1581e619ade8fd -> target: None
+    Price divergence: 0.057388%
+    Market: PT-srUSDe-2APR2026/USDT LLTV=92% Borrow=134937861896
+
+  Oracle: 0x8cfb9c525639d7ff649dca96795accad60ae8b35
+    Primary: 0x527c71f87ed3b65e14476f45db57bfbce56343b6
+    Backup:  0xf84b99ccd83e335c197dc4ac1cc4ba8233ed01cf -> target: None
+    Price divergence: 0.052101%
+    Market: PT-srUSDe-2APR2026/AUSD LLTV=92% Borrow=45092635021
+
+  Oracle: 0xb8e05308cab856da6aad922860cf9ce87be2413a
+    Primary: 0x557d34aeade40fb3ba9893f2cc38d00023e60077
+    Backup:  0x54e156be04dd01c3466cd1b1f2fcd87300a9fe1f -> target: None
+    Price divergence: 0.084238%
+    Market: SolvBTC/WBTC LLTV=94% Borrow=4991397206
+
+  Oracle: 0x639c6f403822e1bda434beb2034beb54f725ba0c
+    Primary: 0x7476efa6212ee676c8441e2564e1bd64db065568
+    Backup:  0x95e85fef34b79f0030f41fb619733bf7e024bd87 -> target: None
+    Price divergence: 0.052101%
+    Market: PT-sUSDE-27NOV2025/USDT LLTV=92% Borrow=1015864
+    Market: PT-sUSDE-27NOV2025/USDC LLTV=92% Borrow=1565571759
+
+  Oracle: 0xe6abd3b78abbb1cc1ee76c5c3689aa9646481fbb
+    Primary: 0xa5d21a73312221c1c7d94702316c02b2485036b9
+    Backup:  0x0de0ecde53ea9d38351b2ce0635430506c0aa330 -> target: None
+    Price divergence: 0.052101%
+    Market: PT-USDe-25SEP2025/USDT LLTV=92% Borrow=284320887
+    Market: PT-USDe-25SEP2025/USDC LLTV=92% Borrow=18049579
+
+  Oracle: 0xfafb71f2fe9a4330c34a192812f36d8d6f07f095
+    Primary: 0x8d6262e99d11e982b361a117ac16fd7c97939c5e
+    Backup:  0xec3679d32199b370c4f5bdf34152342b05cbc35c -> target: None
+    Price divergence: 0.034554%
+    Market: PT-sUSDE-5FEB2026/USDC LLTV=92% Borrow=9053206
+
+  Oracle: 0x5139aa359f7f7fde869305e8c7ad001b28e1c99a
+    Primary: 0x42929bc4410dc3c29ec7036670b5c7a744af659b
+    Backup:  0x2d84f576fadefea35a5f5bfae2fe7d20c3e3d33c -> target: None
+    Price divergence: 0.052101%
+    Market: PT-sUSDE-25SEP2025/USDT LLTV=92% Borrow=1019806
+    Market: PT-sUSDE-25SEP2025/USDC LLTV=92% Borrow=3051021
+
+  Oracle: 0x5f51a2c3e0178a360ce2bde42b08db369f30268e
+    Primary: 0x9edf5c6b4cf55b9a566231b7778fa64d20b9bc3d
+    Backup:  0x78f7b7ccacaf43735f8bfe656191ae895baaa237 -> target: None
+    Price divergence: 0.026100%
+    Market: PT-SY wstUSR-25JUN2026/USDC LLTV=92% Borrow=1235464
+    Market: PT-SY wstUSR-25JUN2026/USDT LLTV=92% Borrow=1235453
+    Market: PT-SY wstUSR-25JUN2026/AUSD LLTV=92% Borrow=1235434
+
+  Oracle: 0xddff4acd31d0e1d3943dd2c3f07cc3a2aa899e74
+    Primary: 0xda850a72080024e17c1590fbf6ea7a826db90760
+    Backup:  0x7cf9d994681834c6cc64281b9b224a29f6214b4b -> target: None
+    Price divergence: 0.026100%
+    Market: wstUSR/USDT LLTV=92% Borrow=1307052
+    Market: wstUSR/AUSD LLTV=92% Borrow=1307374
+
+  Oracle: 0x29ce518f4449f1dee2eaa6d32621987dcc18e29d
+    Primary: 0xf1ce4339d7521258badc90c728ee883e07387c07
+    Backup:  0x332c4cb17b1a11a29bc903d2e49752b2e6a60474 -> target: None
+    Price divergence: 0.010296%
+    Market: PT-cUSD-29JAN2026/AUSD LLTV=92% Borrow=2474291
+
+  Oracle: 0x74de78a994ea17535c60d0bd3c72465daad75039
+    Primary: 0xf1ce4339d7521258badc90c728ee883e07387c07
+    Backup:  0xe9000e1441a1f377c746a781bfa921936a63e420 -> target: None
+    Price divergence: 0.015585%
+    Market: PT-cUSD-29JAN2026/USDT LLTV=92% Borrow=2472985
+
+  Oracle: 0x0bec5a0f7bea1d14efc2663054d6d1e2b764b630
+    Primary: 0xe820b79e0fbe344e98fb6d984f25d23a79e19eba
+    Backup:  0x3bab0a88b6f2e47b73967a64c4c6e2f32a33ed3e -> target: None
+    Price divergence: 0.052101%
+    Market: PT-USDe-27NOV2025/USDT LLTV=92% Borrow=1013511
+    Market: PT-USDe-27NOV2025/USDC LLTV=92% Borrow=1025078
+
+  Oracle: 0xe2d51a4d556c5fb74d96618d7f10f3252b8aca4f
+    Primary: 0xf313a005556922fe8dde37e4d87d89faf2184f42
+    Backup:  0xf86aa25940787eb65ecb8d66d9fc9020f7c84e7f -> target: None
+    Price divergence: 0.052101%
+    Market: PT-srUSDe-15JAN2026/AUSD LLTV=92% Borrow=1079366
+
+  Oracle: 0x2045ebfb4aaf5aae679fc387374515647dc41553
+    Primary: 0xc98751d712732b80e688228a8eefc905f116d1b1
+    Backup:  0x0c417e9304e9900c776899f150401a7fcde30d72 -> target: None
+    Price divergence: 0.009715%
+    Market: PT-wsrUSD-26FEB2026/AUSD LLTV=92% Borrow=1010009
+
+  Oracle: 0x4c6ee25fd75d9a4b03e6354306ccc98e3dcc610c
+    Primary: 0xa6d6950c9f177f1de7f7757fb33539e3ec60182a
+    Backup:  0x0acdc416c592a592edf2e64b178aa8d4d47e05a8 -> target: None
+    Price divergence: 0.441366%
+    Market: cbBTC/AUSD LLTV=86% Borrow=1006253
+
+  Oracle: 0xe582a48f2e51d96d222dd3fcffed3665b5dc92bb
+    Primary: 0x235fd3a500ee30dcf875df8e3290551c39752b09
+    Backup:  0x9841ec65d3a71869d3c88b0d008c947e4938ea2b -> target: None
+    Price divergence: 0.147282%
+    Market: sUSDe/AUSD LLTV=92% Borrow=1006241
+
+  Oracle: 0x58b796f085d43ba18aabd39524e2fb56de1aa021
+    Primary: 0x040a101b02785cd4462030e18f31996a31d52d8d
+    Backup:  0x2034274f7f6edf2cbd19e21dba10e9f63508838f -> target: None
+    Price divergence: 0.034554%
+    Market: PT-USDe-5FEB2026/USDC LLTV=92% Borrow=896654
+
+  Oracle: 0x5aec41bfd14ae95d7644087eb1aa4475fbba222d
+    Primary: 0x6a8dc45e4c7512740d5371d7bdd7a4b38a8227ec
+    Backup:  0x47260d67c77ddde6451d785fb1ab5c9b4a2c7aa0 -> target: None
+    Price divergence: 0.000464%
+    Market: steakUSDC/EURC LLTV=92% Borrow=762633
+
+
+Results saved to analysis/engagements/bridge-finality-gap/notes/metaoracle_scan_results.json

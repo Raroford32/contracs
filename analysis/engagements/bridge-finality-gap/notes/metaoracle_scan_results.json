@@ -1,0 +1,1034 @@
+[
+  {
+    "oracle": "0xfafb71f2fe9a4330c34a192812f36d8d6f07f095",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x8d6262e99d11e982b361a117ac16fd7c97939c5e",
+    "backup": "0xec3679d32199b370c4f5bdf34152342b05cbc35c",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999654459347249222656052,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 10044313,
+    "total_borrow_raw": 9053206,
+    "market_details": [
+      {
+        "id": "0xd174bb7b8dd6ef",
+        "collateral": "PT-sUSDE-5FEB2026",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 10044313,
+        "borrow": 9053206
+      }
+    ]
+  },
+  {
+    "oracle": "0xe582a48f2e51d96d222dd3fcffed3665b5dc92bb",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x235fd3a500ee30dcf875df8e3290551c39752b09",
+    "backup": "0x9841ec65d3a71869d3c88b0d008c947e4938ea2b",
+    "backup_target": null,
+    "max_discount_bps": 10000000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1222676380000000000000000,
+    "primary_price": 1222676380000000000000000,
+    "backup_price": 1220875600000000000000000,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 1113002,
+    "total_borrow_raw": 1006241,
+    "market_details": [
+      {
+        "id": "0xf8680eb9c4fcd2",
+        "collateral": "sUSDe",
+        "loan": "AUSD",
+        "lltv": 91.5,
+        "supply": 1113002,
+        "borrow": 1006241
+      }
+    ]
+  },
+  {
+    "oracle": "0x5139aa359f7f7fde869305e8c7ad001b28e1c99a",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x42929bc4410dc3c29ec7036670b5c7a744af659b",
+    "backup": "0x2d84f576fadefea35a5f5bfae2fe7d20c3e3d33c",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999478990000000000000000,
+    "is_degenerate": false,
+    "markets": 2,
+    "total_supply_raw": 5296898,
+    "total_borrow_raw": 4070827,
+    "market_details": [
+      {
+        "id": "0x92fa6ed4186351",
+        "collateral": "PT-sUSDE-25SEP2025",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 1267472,
+        "borrow": 1019806
+      },
+      {
+        "id": "0x3e37bd6e02277f",
+        "collateral": "PT-sUSDE-25SEP2025",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 4029426,
+        "borrow": 3051021
+      }
+    ]
+  },
+  {
+    "oracle": "0xaa22fa49aaaff58e815e762db287304a93f85a01",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x527c71f87ed3b65e14476f45db57bfbce56343b6",
+    "backup": "0xc167f518b7e748dcd098d355fa1581e619ade8fd",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 996797019349349270000000,
+    "primary_price": 996797019349349270000000,
+    "backup_price": 996224977832970701386733,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 149098460312,
+    "total_borrow_raw": 134937861896,
+    "market_details": [
+      {
+        "id": "0xb2f87218f0e247",
+        "collateral": "PT-srUSDe-2APR2026",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 149098460312,
+        "borrow": 134937861896
+      }
+    ]
+  },
+  {
+    "oracle": "0x8c0a80c09ae8a8cdd66f4f51598d7b494ecf8154",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0xb11b835214e1ffa6016298ade857723f33d7b457",
+    "backup": "0x59080ad0f7693c41a5bf99d4044c079c23f803c1",
+    "backup_target": null,
+    "max_discount_bps": 10000000000000000,
+    "challenge_tl": 1800,
+    "healing_tl": 3600,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": true,
+    "oracle_price": 1042801074648223165000000,
+    "primary_price": 1042801074648223165000000,
+    "backup_price": 1042801074648223165000000,
+    "is_degenerate": true,
+    "markets": 1,
+    "total_supply_raw": 51709749831412,
+    "total_borrow_raw": 40873220594471,
+    "market_details": [
+      {
+        "id": "0x29ae8cad946d86",
+        "collateral": "sUSDD",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 51709749831412,
+        "borrow": 40873220594471
+      }
+    ]
+  },
+  {
+    "oracle": "0x74ec54c1fe39a7a2299c77dd0f2d3cb458bb44c2",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xed621dd43e0eebfe9ddc10bd2815b861734beb0c",
+    "backup": "0xdc90fb5c08fb373279672728ad2d8c3988dbef16",
+    "backup_target": null,
+    "max_discount_bps": 5000000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 872198088461422498266349081918774685,
+    "primary_price": 872198088461422498266349081918774685,
+    "backup_price": 872202135460552959266741037778514788,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 2653316721980320658093284,
+    "total_borrow_raw": 230004870183661545575778,
+    "market_details": [
+      {
+        "id": "0xf135feb27b5f2b",
+        "collateral": "steakUSDC",
+        "loan": "EURCV",
+        "lltv": 91.5,
+        "supply": 2653316721980320658093284,
+        "borrow": 230004870183661545575778
+      }
+    ]
+  },
+  {
+    "oracle": "0x29ce518f4449f1dee2eaa6d32621987dcc18e29d",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xf1ce4339d7521258badc90c728ee883e07387c07",
+    "backup": "0x332c4cb17b1a11a29bc903d2e49752b2e6a60474",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999897040000000000000000,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 2475291,
+    "total_borrow_raw": 2474291,
+    "market_details": [
+      {
+        "id": "0xc3a8c2088e2474",
+        "collateral": "PT-cUSD-29JAN2026",
+        "loan": "AUSD",
+        "lltv": 91.5,
+        "supply": 2475291,
+        "borrow": 2474291
+      }
+    ]
+  },
+  {
+    "oracle": "0x954f55c1278e3ff5cc0a20ca4ce10c1863e5f230",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x5864e1864be806dbce94b2da62c9f501ff5b5526",
+    "backup": "0x97f57ecbd3a5a752b63cb7c87d7e99a9752baf89",
+    "backup_target": null,
+    "max_discount_bps": 5000000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1088833250000000000000000,
+    "primary_price": 1088833250000000000000000,
+    "backup_price": 1088390094867250000000000,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 17945275198010,
+    "total_borrow_raw": 16240474675392,
+    "market_details": [
+      {
+        "id": "0x09cf702bb8b6fe",
+        "collateral": "sUSDS",
+        "loan": "AUSD",
+        "lltv": 94.5,
+        "supply": 17945275198010,
+        "borrow": 16240474675392
+      }
+    ]
+  },
+  {
+    "oracle": "0x4c6ee25fd75d9a4b03e6354306ccc98e3dcc610c",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xa6d6950c9f177f1de7f7757fb33539e3ec60182a",
+    "backup": "0x0acdc416c592a592edf2e64b178aa8d4d47e05a8",
+    "backup_target": null,
+    "max_discount_bps": 20000000000000000,
+    "challenge_tl": 7200,
+    "healing_tl": 28800,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 712845800000000000000000000000000000000,
+    "primary_price": 712845800000000000000000000000000000000,
+    "backup_price": 715992057036100000000000000000000000000,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 1113155,
+    "total_borrow_raw": 1006253,
+    "market_details": [
+      {
+        "id": "0x5de846e07c99a4",
+        "collateral": "cbBTC",
+        "loan": "AUSD",
+        "lltv": 86.0,
+        "supply": 1113155,
+        "borrow": 1006253
+      }
+    ]
+  },
+  {
+    "oracle": "0x7be435da1e3287ad0acb62c2a16e0b2d4643719f",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0xb11b835214e1ffa6016298ade857723f33d7b457",
+    "backup": "0x743398bd2ff99ade545d96ccc015de52dc68628f",
+    "backup_target": null,
+    "max_discount_bps": 10000000000000000,
+    "challenge_tl": 1800,
+    "healing_tl": 3600,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": true,
+    "oracle_price": 1042801074648223165000000,
+    "primary_price": 1042801074648223165000000,
+    "backup_price": 1042801074648223165000000,
+    "is_degenerate": true,
+    "markets": 1,
+    "total_supply_raw": 97763783197,
+    "total_borrow_raw": 85011551860,
+    "market_details": [
+      {
+        "id": "0xad73d5e139a939",
+        "collateral": "sUSDD",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 97763783197,
+        "borrow": 85011551860
+      }
+    ]
+  },
+  {
+    "oracle": "0x8b417d1e0c08d8005b7ca1d5ebbc72ea877db391",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x527c71f87ed3b65e14476f45db57bfbce56343b6",
+    "backup": "0xfbba40881e75fa48c32e0dad97edc0858c16aaa0",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 996797101902060613000000,
+    "primary_price": 996797101902060613000000,
+    "backup_price": 996452667980809291855020,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 13814406885757,
+    "total_borrow_raw": 12070462333584,
+    "market_details": [
+      {
+        "id": "0x27b9a0a5bfee98",
+        "collateral": "PT-srUSDe-2APR2026",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 13814406885757,
+        "borrow": 12070462333584
+      }
+    ]
+  },
+  {
+    "oracle": "0x725007419b5807631ff113028cdcccdfa254a2bc",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0xd7b00f04ef64fa2f379277af1bca705c4055e8f6",
+    "backup": "0x29bb4acd7cf73012afc38858033f3fce1fdee749",
+    "backup_target": null,
+    "max_discount_bps": 10000000000000000,
+    "challenge_tl": 14400,
+    "healing_tl": 43200,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": true,
+    "oracle_price": 983421900292252602000000,
+    "primary_price": 983421900292252602000000,
+    "backup_price": 983421900292252602000000,
+    "is_degenerate": true,
+    "markets": 1,
+    "total_supply_raw": 474713576385,
+    "total_borrow_raw": 434713621123,
+    "market_details": [
+      {
+        "id": "0xb62aac664f81d1",
+        "collateral": "PT-sNUSD-4JUN2026",
+        "loan": "USDC",
+        "lltv": 86.0,
+        "supply": 474713576385,
+        "borrow": 434713621123
+      }
+    ]
+  },
+  {
+    "oracle": "0xb8e05308cab856da6aad922860cf9ce87be2413a",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0x557d34aeade40fb3ba9893f2cc38d00023e60077",
+    "backup": "0x54e156be04dd01c3466cd1b1f2fcd87300a9fe1f",
+    "backup_target": null,
+    "max_discount_bps": 5000000000000000,
+    "challenge_tl": 1800,
+    "healing_tl": 3600,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 100000000000000000000000000,
+    "primary_price": 100000000000000000000000000,
+    "backup_price": 99915762000000000000000000,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 5604130286,
+    "total_borrow_raw": 4991397206,
+    "market_details": [
+      {
+        "id": "0xce68c7aa336675",
+        "collateral": "SolvBTC",
+        "loan": "WBTC",
+        "lltv": 94.5,
+        "supply": 5604130286,
+        "borrow": 4991397206
+      }
+    ]
+  },
+  {
+    "oracle": "0x8cfb9c525639d7ff649dca96795accad60ae8b35",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x527c71f87ed3b65e14476f45db57bfbce56343b6",
+    "backup": "0xf84b99ccd83e335c197dc4ac1cc4ba8233ed01cf",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 996797151433690700000000,
+    "primary_price": 996797151433690700000000,
+    "backup_price": 996277810149822232808393,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 73663948383,
+    "total_borrow_raw": 45092635021,
+    "market_details": [
+      {
+        "id": "0xba8c21d3e47814",
+        "collateral": "PT-srUSDe-2APR2026",
+        "loan": "AUSD",
+        "lltv": 91.5,
+        "supply": 73663948383,
+        "borrow": 45092635021
+      }
+    ]
+  },
+  {
+    "oracle": "0x74de78a994ea17535c60d0bd3c72465daad75039",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xf1ce4339d7521258badc90c728ee883e07387c07",
+    "backup": "0xe9000e1441a1f377c746a781bfa921936a63e420",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999844148244557862889053,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 2473985,
+    "total_borrow_raw": 2472985,
+    "market_details": [
+      {
+        "id": "0x944f5ebb33029e",
+        "collateral": "PT-cUSD-29JAN2026",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 2473985,
+        "borrow": 2472985
+      }
+    ]
+  },
+  {
+    "oracle": "0xe2d51a4d556c5fb74d96618d7f10f3252b8aca4f",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xf313a005556922fe8dde37e4d87d89faf2184f42",
+    "backup": "0xf86aa25940787eb65ecb8d66d9fc9020f7c84e7f",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999478990000000000000000,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 1079692,
+    "total_borrow_raw": 1079366,
+    "market_details": [
+      {
+        "id": "0x2639d2b1cff02c",
+        "collateral": "PT-srUSDe-15JAN2026",
+        "loan": "AUSD",
+        "lltv": 91.5,
+        "supply": 1079692,
+        "borrow": 1079366
+      }
+    ]
+  },
+  {
+    "oracle": "0x0bec5a0f7bea1d14efc2663054d6d1e2b764b630",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xe820b79e0fbe344e98fb6d984f25d23a79e19eba",
+    "backup": "0x3bab0a88b6f2e47b73967a64c4c6e2f32a33ed3e",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999478990000000000000000,
+    "is_degenerate": false,
+    "markets": 2,
+    "total_supply_raw": 2385891,
+    "total_borrow_raw": 2038589,
+    "market_details": [
+      {
+        "id": "0x89c30faadb4d3e",
+        "collateral": "PT-USDe-27NOV2025",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 1261881,
+        "borrow": 1013511
+      },
+      {
+        "id": "0x534e7046c3aeba",
+        "collateral": "PT-USDe-27NOV2025",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 1124010,
+        "borrow": 1025078
+      }
+    ]
+  },
+  {
+    "oracle": "0x0d07087b26b28995a66050f5bb7197d439221de3",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0x2b28bf17c7bb004dbbf002b2482da267dbe06c60",
+    "backup": "0xd4cecc2d5d8c24ac9f7dfe28d6e6f4571b1434d7",
+    "backup_target": "0x2b28bf17c7bb004dbbf002b2482da267dbe06c60",
+    "max_discount_bps": 10000000000000000,
+    "challenge_tl": 14400,
+    "healing_tl": 43200,
+    "direct_match": false,
+    "router_match": true,
+    "all_same_price": true,
+    "oracle_price": 983551008421603991000000,
+    "primary_price": 983551008421603991000000,
+    "backup_price": 983551008421603991000000,
+    "is_degenerate": true,
+    "markets": 1,
+    "total_supply_raw": 1326278738375,
+    "total_borrow_raw": 1196278797653,
+    "market_details": [
+      {
+        "id": "0xc2bc5e1e304fb1",
+        "collateral": "PT-srNUSD-28MAY2026",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 1326278738375,
+        "borrow": 1196278797653
+      }
+    ]
+  },
+  {
+    "oracle": "0x938d2edb20425cf80f008e7ec314eb456940da15",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x03dfca9a320ca88fa6a0a132f34822e4b13d6fa0",
+    "backup": "0xa38dc080a6617cf0fd985aff3189397861d8a47d",
+    "backup_target": null,
+    "max_discount_bps": 10000000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1070339070000000000000000,
+    "primary_price": 1070339070000000000000000,
+    "backup_price": 1070235258980008516000000,
+    "is_degenerate": false,
+    "markets": 3,
+    "total_supply_raw": 99730282817264,
+    "total_borrow_raw": 89601173694998,
+    "market_details": [
+      {
+        "id": "0x32e253d33f1594",
+        "collateral": "wsrUSD",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 11821132180617,
+        "borrow": 10484884977035
+      },
+      {
+        "id": "0x1590cb22d797e2",
+        "collateral": "wsrUSD",
+        "loan": "USDC",
+        "lltv": 94.5,
+        "supply": 87908882655791,
+        "borrow": 79116121237578
+      },
+      {
+        "id": "0x08bd0186c5d6ee",
+        "collateral": "wsrUSD",
+        "loan": "AUSD",
+        "lltv": 91.5,
+        "supply": 267980856,
+        "borrow": 167480385
+      }
+    ]
+  },
+  {
+    "oracle": "0x58b796f085d43ba18aabd39524e2fb56de1aa021",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x040a101b02785cd4462030e18f31996a31d52d8d",
+    "backup": "0x2034274f7f6edf2cbd19e21dba10e9f63508838f",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999654459347249222656052,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 1007476,
+    "total_borrow_raw": 896654,
+    "market_details": [
+      {
+        "id": "0x32a8b98a4c4b9f",
+        "collateral": "PT-USDe-5FEB2026",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 1007476,
+        "borrow": 896654
+      }
+    ]
+  },
+  {
+    "oracle": "0xdda9b3080d7c755919fe89bc74971b923f16ce00",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x4b48aa26cb1d37fea6891869a816bc012c703f46",
+    "backup": "0x41e17f26a610aec8a1eb82284eb609af63a23e5f",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000000000000000,
+    "primary_price": 1000000000000000000000000000000000000,
+    "backup_price": 999615457502258208290595832143004162,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 1003416906677678765,
+    "total_borrow_raw": 893416906677677764,
+    "market_details": [
+      {
+        "id": "0x4a650d485206a6",
+        "collateral": "PT-sUSDE-5FEB2026",
+        "loan": "USDtb",
+        "lltv": 91.5,
+        "supply": 1003416906677678765,
+        "borrow": 893416906677677764
+      }
+    ]
+  },
+  {
+    "oracle": "0x639c6f403822e1bda434beb2034beb54f725ba0c",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x7476efa6212ee676c8441e2564e1bd64db065568",
+    "backup": "0x95e85fef34b79f0030f41fb619733bf7e024bd87",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999478990000000000000000,
+    "is_degenerate": false,
+    "markets": 2,
+    "total_supply_raw": 1731713607,
+    "total_borrow_raw": 1566587623,
+    "market_details": [
+      {
+        "id": "0x0f84816cd17292",
+        "collateral": "PT-sUSDE-27NOV2025",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 1826525,
+        "borrow": 1015864
+      },
+      {
+        "id": "0x05702edf1c4709",
+        "collateral": "PT-sUSDE-27NOV2025",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 1729887082,
+        "borrow": 1565571759
+      }
+    ]
+  },
+  {
+    "oracle": "0xece51fe8f29a514441fb5d414fad449482eaa3c1",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0x6234e432c23ba23e115be0067805290984b0c186",
+    "backup": "0xc513894cef11173a6aed21722806cfb19cfdc435",
+    "backup_target": null,
+    "max_discount_bps": 50000000000000000,
+    "challenge_tl": 10800,
+    "healing_tl": 28800,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 72150441002353200000000000000,
+    "primary_price": 72150441002353200000000000000,
+    "backup_price": 72481611016838912743753911124,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 591834615578,
+    "total_borrow_raw": 531834627715,
+    "market_details": [
+      {
+        "id": "0x51c6fa2e3ab990",
+        "collateral": "mHyperBTC",
+        "loan": "USDC",
+        "lltv": 77.0,
+        "supply": 591834615578,
+        "borrow": 531834627715
+      }
+    ]
+  },
+  {
+    "oracle": "0xddff4acd31d0e1d3943dd2c3f07cc3a2aa899e74",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xda850a72080024e17c1590fbf6ea7a826db90760",
+    "backup": "0x7cf9d994681834c6cc64281b9b224a29f6214b4b",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1131601027500000000000000,
+    "primary_price": 1131601027500000000000000,
+    "backup_price": 1131305679631822500000000,
+    "is_degenerate": false,
+    "markets": 2,
+    "total_supply_raw": 2616426,
+    "total_borrow_raw": 2614426,
+    "market_details": [
+      {
+        "id": "0xac5e7868966e4b",
+        "collateral": "wstUSR",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 1308052,
+        "borrow": 1307052
+      },
+      {
+        "id": "0x010e577cd5d402",
+        "collateral": "wstUSR",
+        "loan": "AUSD",
+        "lltv": 91.5,
+        "supply": 1308374,
+        "borrow": 1307374
+      }
+    ]
+  },
+  {
+    "oracle": "0xbde1222e141563b8797718460e2c2f0902e5cdd0",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x4c8d8bdb4c6640b9e7344d51e0b4d72b9022b133",
+    "backup": "0x09a5a2923dd6b8f7a08fc031d3019ca34f685ed6",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000000000000000,
+    "primary_price": 1000000000000000000000000000000000000,
+    "backup_price": 999615457502258208290595832143004162,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 1003380145081740068,
+    "total_borrow_raw": 893380145081739067,
+    "market_details": [
+      {
+        "id": "0xb4fdb43faaaa3b",
+        "collateral": "PT-USDe-5FEB2026",
+        "loan": "USDtb",
+        "lltv": 91.5,
+        "supply": 1003380145081740068,
+        "borrow": 893380145081739067
+      }
+    ]
+  },
+  {
+    "oracle": "0x15b68dd823bb37150c3baaff841c6dfff4bbb6ae",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0x0ed5ef6a4ada311bd9ed05069bbcffdafe5a0088",
+    "backup": "0xd4f0765beb5a5b19ea6151d0d425db341a59bcfd",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1088833486417837670000000000000000000,
+    "primary_price": 1088833486417837670000000000000000000,
+    "backup_price": 1088390331188865610068310000000000000,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 1007571880020124235,
+    "total_borrow_raw": 897736743846055717,
+    "market_details": [
+      {
+        "id": "0xc032473959060d",
+        "collateral": "sUSDS",
+        "loan": "USDtb",
+        "lltv": 91.5,
+        "supply": 1007571880020124235,
+        "borrow": 897736743846055717
+      }
+    ]
+  },
+  {
+    "oracle": "0xe6abd3b78abbb1cc1ee76c5c3689aa9646481fbb",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xa5d21a73312221c1c7d94702316c02b2485036b9",
+    "backup": "0x0de0ecde53ea9d38351b2ce0635430506c0aa330",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999478990000000000000000,
+    "is_degenerate": false,
+    "markets": 2,
+    "total_supply_raw": 507806627,
+    "total_borrow_raw": 302370466,
+    "market_details": [
+      {
+        "id": "0xb0a9ac81a8c6a5",
+        "collateral": "PT-USDe-25SEP2025",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 384320876,
+        "borrow": 284320887
+      },
+      {
+        "id": "0x7a5d67805cb78f",
+        "collateral": "PT-USDe-25SEP2025",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 123485751,
+        "borrow": 18049579
+      }
+    ]
+  },
+  {
+    "oracle": "0x5f51a2c3e0178a360ce2bde42b08db369f30268e",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x9edf5c6b4cf55b9a566231b7778fa64d20b9bc3d",
+    "backup": "0x78f7b7ccacaf43735f8bfe656191ae895baaa237",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 57600,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 969616967909690513000000,
+    "primary_price": 969616967909690513000000,
+    "backup_price": 969363897881066083776107,
+    "is_degenerate": false,
+    "markets": 3,
+    "total_supply_raw": 3709351,
+    "total_borrow_raw": 3706351,
+    "market_details": [
+      {
+        "id": "0xccb4aaf943ea1f",
+        "collateral": "PT-SY wstUSR-25JUN2026",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 1236464,
+        "borrow": 1235464
+      },
+      {
+        "id": "0xbd13ede62af3dd",
+        "collateral": "PT-SY wstUSR-25JUN2026",
+        "loan": "USDT",
+        "lltv": 91.5,
+        "supply": 1236453,
+        "borrow": 1235453
+      },
+      {
+        "id": "0x6995c4a9473489",
+        "collateral": "PT-SY wstUSR-25JUN2026",
+        "loan": "AUSD",
+        "lltv": 91.5,
+        "supply": 1236434,
+        "borrow": 1235434
+      }
+    ]
+  },
+  {
+    "oracle": "0xe8465b52e106d98157d82b46ca566cb9d09482a9",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0xd25a93399d82e1a08d9da61d21fdff7f3e65eb27",
+    "backup": "0x385ad6da207565bb232c0cc93602a3b785a16960",
+    "backup_target": "0xd25a93399d82e1a08d9da61d21fdff7f3e65eb27",
+    "max_discount_bps": 10000000000000000,
+    "challenge_tl": 14400,
+    "healing_tl": 43200,
+    "direct_match": false,
+    "router_match": true,
+    "all_same_price": true,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 1000000000000000000000000,
+    "is_degenerate": true,
+    "markets": 1,
+    "total_supply_raw": 4733349890571,
+    "total_borrow_raw": 4043349939477,
+    "market_details": [
+      {
+        "id": "0x2a9a5c436719ba",
+        "collateral": "PT-sNUSD-5MAR2026",
+        "loan": "USDC",
+        "lltv": 77.0,
+        "supply": 4733349890571,
+        "borrow": 4043349939477
+      }
+    ]
+  },
+  {
+    "oracle": "0x9e1031d287416b45c89d62780768d35df24df4be",
+    "impl": "0xcc319ef091bc520cf6835565826212024b2d25ec",
+    "primary": "0xe10a7d39e4ed00351dfe17378b5896e5f8ab422f",
+    "backup": "0x39e160111c2d8ee3817fa63e60a87839f07de138",
+    "backup_target": "0xe10a7d39e4ed00351dfe17378b5896e5f8ab422f",
+    "max_discount_bps": 10000000000000000,
+    "challenge_tl": 14400,
+    "healing_tl": 43200,
+    "direct_match": false,
+    "router_match": true,
+    "all_same_price": true,
+    "oracle_price": 1005274330606077473000000,
+    "primary_price": 1005274330606077473000000,
+    "backup_price": 1005274330606077473000000,
+    "is_degenerate": true,
+    "markets": 1,
+    "total_supply_raw": 158354196986,
+    "total_borrow_raw": 138354198131,
+    "market_details": [
+      {
+        "id": "0x0ff9c1f2b9cb03",
+        "collateral": "srNUSD",
+        "loan": "USDC",
+        "lltv": 91.5,
+        "supply": 158354196986,
+        "borrow": 138354198131
+      }
+    ]
+  },
+  {
+    "oracle": "0x2045ebfb4aaf5aae679fc387374515647dc41553",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0xc98751d712732b80e688228a8eefc905f116d1b1",
+    "backup": "0x0c417e9304e9900c776899f150401a7fcde30d72",
+    "backup_target": null,
+    "max_discount_bps": 7500000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 1000000000000000000000000,
+    "primary_price": 1000000000000000000000000,
+    "backup_price": 999902849567143249992352,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 1010015,
+    "total_borrow_raw": 1010009,
+    "market_details": [
+      {
+        "id": "0x5413b86d5c0a29",
+        "collateral": "PT-wsrUSD-26FEB2026",
+        "loan": "AUSD",
+        "lltv": 91.5,
+        "supply": 1010015,
+        "borrow": 1010009
+      }
+    ]
+  },
+  {
+    "oracle": "0x5aec41bfd14ae95d7644087eb1aa4475fbba222d",
+    "impl": "0x9b4655239e91dc9e1f7599bb88fba41b4542de5b",
+    "primary": "0x6a8dc45e4c7512740d5371d7bdd7a4b38a8227ec",
+    "backup": "0x47260d67c77ddde6451d785fb1ab5c9b4a2c7aa0",
+    "backup_target": null,
+    "max_discount_bps": 5000000000000000,
+    "challenge_tl": 28800,
+    "healing_tl": 86400,
+    "direct_match": false,
+    "router_match": null,
+    "all_same_price": false,
+    "oracle_price": 872198277978541493481041,
+    "primary_price": 872198277978541493481041,
+    "backup_price": 872202324978551313913571,
+    "is_degenerate": false,
+    "markets": 1,
+    "total_supply_raw": 946202,
+    "total_borrow_raw": 762633,
+    "market_details": [
+      {
+        "id": "0xc60780d85041ac",
+        "collateral": "steakUSDC",
+        "loan": "EURC",
+        "lltv": 91.5,
+        "supply": 946202,
+        "borrow": 762633
+      }
+    ]
+  }
+]

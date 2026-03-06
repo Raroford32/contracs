@@ -64,23 +64,61 @@ d(profit)/dD = A*LLTV/(T+A) - 1 < 0 always (LLTV < 1)
 - Targets: small/new/unaudited protocols, NOT established Morpho/Aave/Euler
 - Confirms investigation angle correct but no new live targets exist
 
+## Phase 6: MetaOracle Broad Scan — E2 FINDING (6 degenerate instances)
+
+### Finding: MetaOracleDeviationTimelock Backup=Primary Misconfiguration
+- Scanned all 767 unique oracles across 956 active Morpho markets
+- Found 32 MetaOracle EIP-1167 proxies → 6 DEGENERATE (backup=primary price)
+- **sUSDD/USDT**: $51.7M supply / $40.9M borrow (LARGEST — USDD/Justin Sun ecosystem)
+- **sUSDD/USDC**: $97.8K supply / $85K borrow
+- **PT-sNUSD-5MAR2026/USDC**: $4.7M supply / $4.0M borrow (NUSD/Neutrl)
+- **PT-srNUSD-28MAY2026/USDC**: $1.3M supply / $1.2M borrow
+- **PT-sNUSD-4JUN2026/USDC**: $475K supply / $435K borrow
+- **srNUSD/USDC**: $158K supply / $138K borrow
+- **Total at risk: ~$58.5M supply / ~$46.8M borrow**
+
+### Key insight: sUSDD case
+- Primary and backup are DIFFERENT contracts (different bytecode) but IDENTICAL output
+- Both derive sUSDD price from on-chain exchange rate; NEITHER queries USDD/USD market price
+- USDD has NO Chainlink feed on Ethereum
+- USDD depegged to $0.93 in June 2022
+
+### E2 status rationale
+- Misconfiguration provably confirmed: challenge() always reverts with 0% divergence
+- If underlying depegs, oracle never switches → unlimited bad debt accumulation
+- BUT depeg is external event, not attacker-triggerable → cannot reach E3
+- 12 attack vectors tested and falsified for NUSD markets
+- sUSDD oracle exchange rate not flash-loan manipulable
+
+### Evidence
+- `scripts/metaoracle_step4_lean.py` (scan script)
+- `analysis/engagements/morpho-metaoracle/scan_results.txt` (full results)
+- `analysis/engagements/bridge-finality-gap/notes/finding-metaoracle-backup-primary.md` (detailed finding)
+- `analysis/engagements/bridge-finality-gap/notes/metaoracle_scan_results.json`
+
 ## Last Experiment
-- Full scan of all 1216 Morpho markets + Fluid + Aave e-mode + UniV4 hooks
-- Result: No exploitable target found across entire investigated ecosystem
-- Belief change: Established DeFi protocols on Ethereum mainnet are well-defended; exploitable targets are small/new/unaudited protocols
+- Full MetaOracle scan: 767 oracles → 32 MetaOracle → 6 degenerate
+- sUSDD investigation: confirmed both oracle contracts return identical prices from same rate source
+- Result: E2 finding (conditional critical impact), E3 not achievable (external trigger required)
+- Belief change: Scale of exposure much larger than initially found ($58.5M vs $7.7M); sUSDD/USDT is dominant risk
+
+## Next Discriminator
+- None remaining. All vectors exhausted. Finding is E2-complete.
 
 ## Conclusion
-After exhaustive investigation across 5 phases covering:
-- 1216 Morpho Blue markets, 901 oracles
+After exhaustive investigation across 6 phases covering:
+- 1216 Morpho Blue markets, 901 oracles, 767 unique oracle contracts
+- 32 MetaOracle instances fully decoded and compared
 - Aave V3 (incl. 19+ e-mode categories, CAPO mechanism)
 - Euler V2 + EulerSwap (calcLimits quantified)
 - Fluid Protocol (163 vaults + DEX, shared liquidity layer)
 - Pendle PT (60+ markets), LRT oracles, Balancer V2 forks
 - Uniswap V4 hooks, recent 2026 exploit patterns
 
-**No immediately exploitable, permissionless composition vulnerability exists on Ethereum mainnet in the investigated protocols.**
+**One E2 finding: 6 MetaOracle instances with disabled safety mechanism, ~$58.5M at conditional risk.**
+**No E3 permissionless profitable exploit achievable** — the finding requires an external depeg event.
 
 ## Open Unknowns (Residual, Low-Probability)
-- Fluid Smart Collateral composition drift under adversarial swaps (theoretical)
+- USDD depeg event could trigger immediate ~$51.7M bad debt in sUSDD/USDT market
+- NUSD depeg event could trigger ~$5.8M bad debt across 4 NUSD markets
 - Novel protocol launches with untested oracle designs
-- Future oracle misconfiguration on Morpho (monitoring opportunity, not current exploit)
