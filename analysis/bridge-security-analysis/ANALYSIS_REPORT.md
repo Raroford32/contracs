@@ -106,6 +106,68 @@ A class of LlamaLend price oracles (Type A, 1197 bytes bytecode) directly reads 
 ### Responsible Disclosure Note
 The vulnerability class was publicly disclosed by Curve Finance on March 2, 2026. The Curve team is developing mitigations for LlamaLend V2.
 
+## E3 Proof: sDOLA LlamaLend Exploit Replay (Fork-Grounded)
+
+### Proof Location
+`exploit_test/test/SDolaExploit.t.sol`
+
+### E3 Gate Results
+
+**Fork block**: 24566936 (one block before exploit at 24566937)
+**Exploit TX**: `0xb93506af8f1a39f6a31e2d34f5f6a262c2799fef6e338640f42ab8737ed3d8a4`
+
+#### Pre-exploit state (block 24566936):
+- sDOLA exchange rate: 1.189042
+- Market 30 active loans: 30
+- Market 30 total debt: 11,276,657 crvUSD
+- totalAssets: 13,996,116 DOLA
+- totalSupply: 11,770,912 sDOLA
+
+#### Post-exploit state (replayed on fork):
+- sDOLA exchange rate: 1.353066 (+13.79%)
+- Market 30 active loans: 4 (26 liquidated)
+- Market 30 total debt: 11,273,909 crvUSD
+- totalAssets: 13,768,791 DOLA (-227,325)
+- totalSupply: 10,175,991 sDOLA (-1,594,920)
+
+#### Value Extracted:
+- **Gross profit: 227,325 DOLA** (~$227K)
+- **Costs**: Gas (~0.024 ETH at 2 gwei), flash loan fees (negligible for Curve pools)
+- **Net profit: ~227,300 DOLA** after costs
+- **Repeatability**: One-time per market state (borrowers flee after exploit)
+
+#### Attack Mechanism (Corrected from Initial Analysis):
+The attack is NOT a simple donation. The attacker used Curve pool swaps involving:
+1. **savedola pool** (scrvUSD/sDOLA) at `0x76a962ba6770068bcf454d34dde17175611e6637`
+2. **alUSDsDOLA pool** (sDOLA/alUSD) at `0x460638e6f7605b866736e38045c0de8294d7d87f`
+3. **sDOLA deposit/withdraw** to manipulate the totalSupply/totalAssets ratio
+
+The key insight: by swapping through pools that hold sDOLA, the attacker causes sDOLA shares to be burned (totalSupply decreases) faster than underlying assets decrease (totalAssets). This inflates `convertToAssets()`, which the oracle reads directly.
+
+When the oracle reports the inflated sDOLA price to the LLAMMA AMM:
+- The AMM shifts active bands (sDOLA appears more valuable)
+- Borrowers in soft-liquidation bands have their sDOLA converted back to crvUSD
+- The conversion happens at the manipulated (inflated) rate
+- When the rate normalizes, borrowers have lost value
+- 26 of 30 positions were liquidated in a single transaction
+
+#### Oracle Root Cause:
+- Oracle contract `0x88822eE517Bfe9A1b97bf200b0b6D3F356488fF2` contains selector `0x07a2d13a` (`convertToAssets(uint256)`) in its bytecode
+- Oracle's `price()` function calls `sDOLA.convertToAssets(1e18)` and multiplies by a DOLA/crvUSD peg factor
+- This makes the oracle's output directly controllable by anyone who can manipulate the sDOLA exchange rate
+
+#### Robustness:
+- Gas +20%: Still profitable (gas cost is ~$60 vs $227K profit)
+- Liquidity -20%: Still profitable (the attack uses dedicated Curve pools, not open market)
+- Timing +1 block: Attacker was tx index 0 in the block (builder submission), but the attack works regardless of position since the oracle reads spot rate, not TWAP
+
+### Reproduction Command
+```bash
+forge test --match-test test_replay_sdola_exploit -vvv \
+  --fork-url https://mainnet.infura.io/v3/<KEY> \
+  --fork-block-number 24566936
+```
+
 ## Scripts Developed
 - `scripts/scan_llamalend_markets.py` — Scans all LlamaLend markets for vault-token collateral
 - `scripts/analyze_sreusd_market.py` — Deep analysis of sreUSD market oracle
@@ -116,3 +178,9 @@ The vulnerability class was publicly disclosed by Curve Finance on March 2, 2026
 - `scripts/check_balancer_v2_assets.py` — Balancer V2 token balance analysis
 - `scripts/scan_vault_oracles_v2.py` — Morpho Blue vault oracle scan
 - `scripts/check_low_tvl_markets.py` — Low-TVL Morpho market analysis
+- `scripts/sdola_exploit_lookup.py` — sDOLA exploit transaction lookup and state analysis
+- `scripts/sdola_exploit_deep.py` — Deep Market 30 analysis with attacker token flows
+- `scripts/sdola_exploit_trace.py` — Full exploit TX log/transfer analysis
+- `scripts/scan_llamalend_arbitrum.py` — LlamaLend Arbitrum market scan
+- `scripts/scan_euler_v2_vaults.py` — Euler V2 vault-backed collateral scan
+- `exploit_test/test/SDolaExploit.t.sol` — Foundry fork test proving the sDOLA exploit (E3)
