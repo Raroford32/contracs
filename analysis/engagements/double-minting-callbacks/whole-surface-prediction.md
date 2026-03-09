@@ -84,6 +84,13 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | CRITICAL | MasterChef | masterchef.sol | `setMigrator()`, `add()`, `set()` | Token swap → reentrancy; alloc manipulation → reward theft |
 | CRITICAL | Marketing Mining | marketing_mining_*.sol | `_setImplementation()` | Storage collision or drain via malicious impl |
 | CRITICAL | Opyn PerpVault | opyn_*.sol | `setActions()`, `rollOver()` | Malicious action module → vault drain |
+| CRITICAL | dYdX Solo | 0x1e04...sol | `ownerSetPriceOracle()` — only checks non-zero price | Wrong oracle instantly reprices ALL positions; cascading liquidations or free borrows. No timelock, no position re-validation. |
+| CRITICAL | BentoBox strategy | degenbox.sol | `setStrategy()` — 2-week delay but strategy gets custody | Malicious strategy receives tokens during `harvest()`; drains all balances for that token |
+| HIGH | Tornado Cash | 0x910c...sol | `updateVerifier()` — zero validation | Malicious verifier returns true for any proof → drain all deposits. If operator not zeroed: single point of failure |
+| HIGH | LiquidityPoolV2 | liquiditypool_v2.sol | `migrate()` — transfers ALL tokens + minter roles to arbitrary address | Operator calls = total fund drain; no user opt-out, no timelock |
+| HIGH | Opyn PerpVault fees | opyn_*.sol | `setWithdrawalFeePercentage()` — **no upper bound** | Owner sets 100% fee → confiscates all withdrawals |
+| HIGH | dYdX Solo params | 0x1e04...sol | `ownerSetGlobalOperator()` — no bounds | Grants any address control over ALL user positions. No timelock. |
+| HIGH | DAOVault | daovault.sol | `setTON()`, `setWTON()` — swaps underlying token addresses | Complete accounting corruption; existing balances inaccessible |
 | HIGH | DODO PMM | dodo_pmm.sol | `setOracle()`, `setK()`, `setFees()` | K=0 → no slippage → pool drain; wrong oracle → mispricing |
 | HIGH | cDAI/Compound | cdai*.sol | `_setImplementation()`, `_setComptroller()` | Upgrade corruption; market malfunction |
 | HIGH | stkAAVE | 0xd784...sol | Cooldown, slash %, emissions | Locked funds; 100% slash; reward insolvency |
@@ -162,7 +169,7 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 
 | Contract | Shape 1: Envelope | Shape 2: Authority | Shape 3: Config | Shape 4: Generic Exec | Shape 5: Accounting | Count | Max Severity |
 |----------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **BentoBox/DegenBox** | CRIT | CRIT | — | CRIT | CRIT | **4** | CRITICAL |
+| **BentoBox/DegenBox** | CRIT | CRIT | CRIT | CRIT | CRIT | **5** | CRITICAL |
 | **MasterChef** | CRIT | CRIT | CRIT | CRIT | CRIT | **5** | CRITICAL |
 | **Compound V1 MoneyMarket** | CRIT | CRIT | CRIT | CRIT | CRIT | **5** | CRITICAL |
 | **CelerWallet** | CRIT | CRIT | HIGH | CRIT | — | **4** | CRITICAL |
@@ -194,9 +201,11 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | **WETH Strategy** | — | — | MED | HIGH | — | **2** | HIGH |
 | **TimelockController** | — | — | — | HIGH | — | **1** | HIGH |
 | **Liquidity Pool V2** | — | — | MED | HIGH | — | **2** | HIGH |
+| **dYdX Solo** | — | — | CRIT | — | — | **1** | CRITICAL |
 | **L1ChugSplashProxy** | — | CRIT | — | — | — | **1** | CRITICAL |
+| **Tornado Cash** | — | — | HIGH | — | — | **1** | HIGH |
 | **Kyber Fee** | — | — | MED | MED | — | **2** | MEDIUM |
-| **DAOVault** | — | — | — | MED | — | **1** | MEDIUM |
+| **DAOVault** | — | — | HIGH | MED | — | **2** | HIGH |
 
 ---
 
