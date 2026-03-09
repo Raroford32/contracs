@@ -106,12 +106,18 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | CRITICAL | MasterChef | masterchef.sol | `migrate()` gives full `safeApprove` to arbitrary contract | Users think staking is static; migrator swaps underlying |
 | CRITICAL | CelerWallet | celerwallet.sol | `withdraw()` to any receiver; `transferToOperator()` | Operator has full fund routing power |
 | CRITICAL | Compound V1 | compound_v1_moneymarket.sol | Admin oracle/model changes + `_withdrawEquity()` | Single key controls entire economic model |
+| CRITICAL | DODO PMM `setAllowance()` | dodo_pmm.sol | `onlyOperator` grants `MAX_UINT` approval to arbitrary `_spender` for any token list | Operator key compromise = total fund loss; users approve Spender contract, PMM redirects |
+| CRITICAL | AdEx Identity `execute()` | adx_flash_loans.sol | Arbitrary `executeCall(to, value, data)` + standing approvals from `channelOpen()` | Privileged signer can drain all approved token balances via arbitrary call forwarding |
 | HIGH | EtherDelta | etherdelta.sol | Any contract address accepted as "token" | Malicious token returns true without transferring |
 | HIGH | R1Exchange | r1exchange.sol | `adminWithdraw()` of any user's funds | Admin bypass of user withdrawal intent |
 | HIGH | ADX Flash Loans | adx_flash_loans.sol | `onFlashLoan` callback, no reentrancy guard | Callback can interact with ADXLoyaltyPool (also no guard) |
 | HIGH | Smoothy V1 | smoothy_v1.sol | Admin-set `_rewardCollector` gets minted LP | Hidden dilution mechanism |
 | HIGH | Opyn PerpVault | opyn_*.sol | Actions receive vault WETH + execute arbitrarily | Owner-set modules = Safe modules |
 | HIGH | BentoBox batch | degenbox.sol | `delegatecall` to self with any calldata | Complex multi-step attack orchestration |
+| HIGH | Marketing Mining | marketing_mining_delegator.sol | `delegateToImplementation(bytes)` is **public** — no ACL | Anyone can forward arbitrary calldata to implementation via delegatecall |
+| HIGH | Parity Multisig | 0x43ab...sol | `execute(to, value, data)` with `m_required==1` degenerates to single-signer arbitrary call | Historically exploited; `kill()` = `suicide(_to)` |
+| HIGH | WETH Strategy | weth_strategy.sol | `setSwapper()` grants MAX approval to mutable address; `swapper.call(data)` forwards arbitrary calldata | Owner key → drain all strategy tokens |
+| HIGH | TimelockController | 0xfe89...sol | `execute()` forwards arbitrary `target+value+data`; open role = anyone can execute queued ops | Timelock holds admin approvals; proposer controls drain payload |
 | MEDIUM | DODO PMM | dodo_pmm.sol | `withdrawAllBase()` / `withdrawAllQuote()` | Owner access to all liquidity |
 | MEDIUM | yDAI | 0x16de...sol | Admin-set lending protocols get vault funds | Malicious provider drains vault |
 | MEDIUM | Harvest Reward | harvest_reward_pool.sol | `notifyRewardAmount()` without balance check | Promises rewards that don't exist |
@@ -158,10 +164,10 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | **ConvexStakingWrapper** | — | — | — | — | CRIT | **1** | CRITICAL |
 | **AdEx Identity + Flash** | CRIT | CRIT | — | CRIT | — | **3** | CRITICAL |
 | **ADX Loyalty Pool** | — | MED | MED | — | CRIT | **3** | CRITICAL |
-| **Marketing Mining** | — | CRIT | CRIT | — | — | **2** | CRITICAL |
+| **Marketing Mining** | — | CRIT | CRIT | HIGH | — | **3** | CRITICAL |
 | **Smoothy V1** | — | — | MED | HIGH | CRIT | **3** | CRITICAL |
 | **Compound cDAI** | MED | HIGH | HIGH | — | HIGH | **4** | HIGH |
-| **DODO PMM** | MED | MED | HIGH | MED | HIGH | **5** | HIGH |
+| **DODO PMM** | MED | MED | HIGH | CRIT | HIGH | **5** | CRITICAL |
 | **Curve Pools** | MED | MED | HIGH | MED | HIGH | **5** | HIGH |
 | **yDAI** | — | — | HIGH | MED | HIGH | **3** | HIGH |
 | **Harvest Reward Pool** | MED | MED | HIGH | MED | HIGH | **5** | HIGH |
@@ -177,7 +183,10 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | **FEG Token/Stake** | — | HIGH | MED | — | — | **2** | HIGH |
 | **Floor Token** | — | HIGH | — | — | — | **1** | HIGH |
 | **Lien Protocol** | — | HIGH | MED | — | — | **2** | HIGH |
-| **Liquidity Pool V2** | — | — | MED | — | — | **1** | MEDIUM |
+| **Parity Multisig** | — | — | — | HIGH | — | **1** | HIGH |
+| **WETH Strategy** | — | — | MED | HIGH | — | **2** | HIGH |
+| **TimelockController** | — | — | — | HIGH | — | **1** | HIGH |
+| **Liquidity Pool V2** | — | — | MED | HIGH | — | **2** | HIGH |
 | **Kyber Fee** | — | — | MED | MED | — | **2** | MEDIUM |
 | **DAOVault** | — | — | — | MED | — | **1** | MEDIUM |
 | **WETH Strategy** | — | — | MED | — | — | **1** | MEDIUM |
