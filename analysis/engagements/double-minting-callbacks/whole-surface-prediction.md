@@ -21,7 +21,11 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | Severity | Contract | File | Envelope | Unbound Payload |
 |----------|----------|------|----------|-----------------|
 | CRITICAL | BentoBox/DegenBox deposit | degenbox.sol | `allowed(from)` | Any token accepted (ERC777 callback) |
+| CRITICAL | BentoBox/DegenBox `batch()` | degenbox.sol | None (public) | `delegatecall` to self with user-supplied calldata; **msg.value reused across all batch items** (known exploited vuln) |
 | CRITICAL | BentoBox/DegenBox flashLoan | degenbox.sol | Balance repayment check | Arbitrary `borrower.onFlashLoan()` callback, no reentrancy guard |
+| CRITICAL | AdEx Identity `execute()` | adx_flash_loans.sol | Privilege-level signature check | Arbitrary `to`, `value`, `data` in signed txns — auth validates "who" not "what" |
+| CRITICAL | AdEx Identity `executeRoutines()` | adx_flash_loans.sol | RoutineAuthorization hash | `op.data` NOT part of auth hash — anyone can substitute operations after auth passes |
+| CRITICAL | ADXFlashLoans `flash()` | adx_flash_loans.sol | Balance repayment | Flash-loaned funds + Identity's `execute()` = arbitrary-call with loaned capital |
 | CRITICAL | CelerWallet | celerwallet.sol | Operator+Owner auth | Any receiver, any token, any amount in `withdraw()` |
 | CRITICAL | Compound V1 MoneyMarket | compound_v1_moneymarket.sol | Oracle-based collateral check | Admin-settable oracle (exact Moonwell shape) |
 | CRITICAL | MasterChef migrate | masterchef.sol | Owner-set migrator + balance check | Migrator returns any token, has full approval, side effects unbound |
@@ -152,6 +156,7 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | **Opyn PerpVault** | HIGH | CRIT | CRIT | HIGH | — | **4** | CRITICAL |
 | **xSushi (SushiBar)** | — | — | — | — | CRIT | **1** | CRITICAL |
 | **ConvexStakingWrapper** | — | — | — | — | CRIT | **1** | CRITICAL |
+| **AdEx Identity + Flash** | CRIT | CRIT | — | CRIT | — | **3** | CRITICAL |
 | **ADX Loyalty Pool** | — | MED | MED | — | CRIT | **3** | CRITICAL |
 | **Marketing Mining** | — | CRIT | CRIT | — | — | **2** | CRITICAL |
 | **Smoothy V1** | — | — | MED | HIGH | CRIT | **3** | CRITICAL |
@@ -201,6 +206,8 @@ Owner-controlled module system (Safe modules analog) where action contracts rece
 ## Cross-Cutting Insights
 
 ### Anti-patterns that survived audits (why these exist)
+
+0. **msg.value reuse in batch/multicall delegatecall loops.** BentoBox's `batch()` does `delegatecall` in a loop — every subcall sees the same `msg.value`. This was exploited in production (SushiSwap BentoBox exploit). The "envelope" authenticates nothing; the payload is arbitrary delegatecall data.
 
 1. **No timelock on critical setters.** Nearly every CRITICAL finding shares this. Curve's `MIN_RAMP_TIME` and EtherDelta's "fee can only decrease" are rare correct examples.
 
