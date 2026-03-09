@@ -45,8 +45,8 @@ contract ADXDoubleMintTest is Test {
 
         // Drain pool to simulate empty state
         deal(ADX, ADX_LOYALTY, 0);
-        // Zero totalSupply — ADXLoyaltyPoolToken stores totalSupply at slot 0
-        vm.store(ADX_LOYALTY, bytes32(uint256(0)), bytes32(uint256(0)));
+        // Zero totalSupply — slot 1 (slot 0 = symbol string)
+        vm.store(ADX_LOYALTY, bytes32(uint256(1)), bytes32(uint256(0)));
 
         assertEq(adx.balanceOf(ADX_LOYALTY), 0, "Pool should have 0 ADX");
         assertEq(pool.totalSupply(), 0, "Pool should have 0 shares");
