@@ -57,7 +57,11 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | CRITICAL | MasterChef | masterchef.sol | Single Owner | Migrator (token swap), pool params, alloc points |
 | CRITICAL | Marketing Mining | marketing_mining_*.sol | Admin Proxy | Implementation swap → full storage takeover |
 | CRITICAL | Opyn PerpVault | opyn_*.sol | Owner + Modules | Action modules = Safe modules analog |
+| CRITICAL | L1ChugSplashProxy | 0x3980...sol | Owner (or `address(0)`) | `setStorage(key, value)` — arbitrary `sstore` to ANY slot. Owner can overwrite impl, admin, any state. Most powerful primitive. |
 | HIGH | cDAI/Compound | cdai*.sol | Admin Proxy | Implementation + arbitrary init data via `_becomeImplementation` |
+| HIGH | ConvexStakingWrapper init | ConvexStakingWrapperAbra.sol | No ACL on `initialize()` | Anyone can call if `!isInit`; attacker controls `_curveToken`, `_convexPool`, `_vault` params |
+| HIGH | LiquidityPoolV2 init | liquiditypool_v2.sol | No ACL on `initialize()` | `require(_implementation() == address(0))` only guard; front-runnable with malicious impl + arbitrary init data via delegatecall |
+| HIGH | DODO PMM ERC-1271 | dodo_pmm.sol | ERC-1271 signature validation | Trade auth delegated to arbitrary contract's `isValidSignature()` — programmable, context-dependent, mutable if upgradeable |
 | HIGH | stkAAVE | 0xd784...sol | Governance Proxy | Slash, cooldown, emissions, upgrade |
 | HIGH | Hydro DEX | hydro.sol | Signature + Relayer | Relayer delegation + execution ordering |
 | HIGH | R1Exchange | r1exchange.sol | Single Admin | Admin withdraw + accounts contract swap |
@@ -190,6 +194,7 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | **WETH Strategy** | — | — | MED | HIGH | — | **2** | HIGH |
 | **TimelockController** | — | — | — | HIGH | — | **1** | HIGH |
 | **Liquidity Pool V2** | — | — | MED | HIGH | — | **2** | HIGH |
+| **L1ChugSplashProxy** | — | CRIT | — | — | — | **1** | CRITICAL |
 | **Kyber Fee** | — | — | MED | MED | — | **2** | MEDIUM |
 | **DAOVault** | — | — | — | MED | — | **1** | MEDIUM |
 
