@@ -146,6 +146,9 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | HIGH | Perpetual V1 | perpetualv1.sol | Funding rate accumulation + mark/index price divergence | Long-held positions silently undercollateralized; MEV at margin threshold |
 | HIGH | SafeBox | safebox.sol | Double exchange rate (SafeBox wraps cToken wraps underlying) | cToken rate manipulation; double precision loss |
 | HIGH | Conditional Tokens | conditional_tokens.sol | Split/merge rounding with many outcomes | Dust from 256-outcome positions; fractional payout precision loss |
+| HIGH | FEGStake | fegstake.sol | Fee-on-transfer accounting mismatch | FEG **IS** fee-on-transfer (1% burn); `totalStakes` tracks pre-fee amounts but `balanceOf` reflects post-fee — drift is real on mainnet |
+| MEDIUM | Clipper Pool | clipper_*.sol | Stale `lastBalance` pricing between syncs | Donations change `balanceOf` but `lastBalance` stays old → arbitrage window |
+| MEDIUM | Marketing Mining | marketing_mining*.sol | Division-before-subtraction precision loss in rewards | `mul(accShardPerWeight).div(1e12).sub(rewardDebt)` — truncation accumulates |
 
 ---
 
@@ -180,7 +183,7 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | **Clipper Exchange** | HIGH | — | MED | — | — | **2** | HIGH |
 | **ADX Flash Loans** | HIGH | — | — | HIGH | — | **2** | HIGH |
 | **Conditional Tokens** | HIGH | — | MED | — | HIGH | **3** | HIGH |
-| **FEG Token/Stake** | — | HIGH | MED | — | — | **2** | HIGH |
+| **FEG Token/Stake** | — | HIGH | MED | — | HIGH | **3** | HIGH |
 | **Floor Token** | — | HIGH | — | — | — | **1** | HIGH |
 | **Lien Protocol** | — | HIGH | MED | — | — | **2** | HIGH |
 | **Parity Multisig** | — | — | — | HIGH | — | **1** | HIGH |
@@ -189,7 +192,6 @@ Five geometries dominate the 2025–2026 incident landscape. Every contract in o
 | **Liquidity Pool V2** | — | — | MED | HIGH | — | **2** | HIGH |
 | **Kyber Fee** | — | — | MED | MED | — | **2** | MEDIUM |
 | **DAOVault** | — | — | — | MED | — | **1** | MEDIUM |
-| **WETH Strategy** | — | — | MED | — | — | **1** | MEDIUM |
 
 ---
 
