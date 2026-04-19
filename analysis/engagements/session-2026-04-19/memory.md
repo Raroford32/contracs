@@ -86,3 +86,31 @@ Most remaining high-ETH contracts fall into:
 - The pair market price (~0.009478 ETH/XVIX) sits below the Floor refund rate (~0.009573 ETH/XVIX), but 0.5% + 0.3% + slippage always exceeds that ~1% gross margin
 
 Conclusion: no profitable arbitrage at this fork block.
+
+---
+
+## H2: Hydro/DDEX HBTC Oracle Depeg — STILL LIVE at current block (E3 confirmed)
+
+**Test:** `foundry/test/HydroHBTCCurrent.t.sol`
+**Fork block:** 24,910,815 (2026-04-19)
+
+State on the live fork:
+- HBTC oracle (0x02F5658d…26b) reports 1 HBTC = `$75,573.13` USD (still proxies WBTC/USD Chainlink feed)
+- Hydro USDT lending pool cash: **803,777 USDT** (~$803K extractable, vs $953K in Session 11)
+- Curve HBTC/WBTC pool: 1.797 HBTC reserve
+
+Per-HBTC borrow ceiling (probed):
+- 60,400 USDT works
+- 60,458 USDT fails (collateral/debt ratio < withdrawRate)
+- **Per-HBTC max ≈ 60,457 USDT**, vs $51,600 in Session 11 (Hydro oracle now reports a higher BTC price)
+
+Multi-HBTC fork run:
+- 1.5 HBTC deposited → **90,100 USDT extracted** in a single batch tx
+
+Pool capacity at this block: 803,777 USDT / 60,457 = **~13.3 HBTC's worth**, capped by:
+1. Curve pool HBTC supply (1.797 HBTC ≈ $108K USDT)
+2. Off-chain HBTC supply (HTX redemption / OTC)
+
+The vulnerability remains the same cross-protocol oracle composition flaw the
+prior session documented (Hydro oracle proxy → WBTC Chainlink feed → assumes
+HBTC ≡ WBTC peg). It is still permissionlessly exploitable today.
