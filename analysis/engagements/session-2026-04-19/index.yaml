@@ -1,0 +1,21 @@
+protocol: session-2026-04-19
+chain_id: 1
+fork_block: 24910815
+seed_addresses:
+  - 0x23ea10cc1e6ebdb499d24e45369a35f43627062f  # Acid (DGD refund)
+  - 0x0feccb11c5b61b3922c511d0f002c0b72d770dce  # MarketingMiningDelegator
+  - 0x3d32e8b97ed5881324241cf03b2da5e2ebce5521  # Liquity CollSurplusPool
+  - 0x9fa8fa61a10ff892e4ebceb7f4e0fc684c2ce0a9  # HONG
+  - 0xb3775fb83f7d12a36e0475abdd1fca35c091efbe  # Hourglass (P3D)
+  - 0xd569d3cce55b71a8a3f3c418c329a66e5f714431  # Juicebox TerminalV1
+  - 0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb  # CryptoPunksMarket
+  - 0x40ed3699c2ffe43939ecf2f3d11f633b522820ad  # XVIX Floor
+  - 0x899f9a0440face1397a1ee1e3f6bf3580a6633d1  # DEL RedemptionContract
+  - 0x728781e75735dc0962df3a51d7ef47e798a7107e  # WolkExchange
+  - 0xaba513097f04d637727fdcda0246636e0d5d6833  # DavyJones
+  - 0x35ffd6e268610e764ff6944d07760d0efe5e40e5  # Kollateral LiquidityPoolV2
+
+rpc_url: https://mainnet.infura.io/v3/bfc7283659224dd6b5124ebbc2b14e2c
+
+notes_paths:
+  - analysis/engagements/session-2026-04-19/memory.md
