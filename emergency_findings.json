@@ -1,0 +1,9154 @@
+[
+  {
+    "address": "0x2ccfa2acf6ff744575ccf306b44a59b11c32e44b",
+    "name": "",
+    "balance": 514.574994528,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xc32050abac7dbfef4fc8dc7b96d9617394cb4e1b",
+    "name": "Wallet",
+    "balance": 340.22863364999995,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x7100c7ce94607ef68983f133cfd59cc1833a115d",
+    "name": "Wallet",
+    "balance": 327.53595008,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa08c1134cdd73ad41889f7f914ecc4d3b30c1333",
+    "name": "Wallet",
+    "balance": 325.2,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x2f9f02f2ba99ff5c750f95cf27d25352f71cd6a9",
+    "name": "Wallet",
+    "balance": 320.001,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa1a111bc074c9cfa781f0c38e63bd51c91b8af00",
+    "name": "",
+    "balance": 314.14847196777777,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21476
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21476
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21476
+      },
+      {
+        "function": "drain()",
+        "gas": 21476
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21476
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21476
+      },
+      {
+        "function": "exit()",
+        "gas": 21476
+      },
+      {
+        "function": "pause()",
+        "gas": 21476
+      },
+      {
+        "function": "unpause()",
+        "gas": 21476
+      },
+      {
+        "function": "kill()",
+        "gas": 21476
+      },
+      {
+        "function": "destroy()",
+        "gas": 21476
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21476
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xbd6ed4969d9e52032ee3573e643f6a1bdc0a7e1e",
+    "name": "",
+    "balance": 300.99,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xdbfb513d25df56b4c3f5258d477a395d4b735824",
+    "name": "",
+    "balance": 293.0367345033824,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21579
+      },
+      {
+        "function": "drain()",
+        "gas": 21579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21719
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21719
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21579
+      },
+      {
+        "function": "exit()",
+        "gas": 21579
+      },
+      {
+        "function": "pause()",
+        "gas": 21579
+      },
+      {
+        "function": "unpause()",
+        "gas": 21579
+      },
+      {
+        "function": "kill()",
+        "gas": 21579
+      },
+      {
+        "function": "destroy()",
+        "gas": 21579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21719
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21719
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21719
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21719
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xb958a8f59ac6145851729f73c7a6968311d8b633",
+    "name": "",
+    "balance": 293.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21393
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21393
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21425
+      },
+      {
+        "function": "drain()",
+        "gas": 21425
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21425
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21425
+      },
+      {
+        "function": "exit()",
+        "gas": 21425
+      },
+      {
+        "function": "pause()",
+        "gas": 21393
+      },
+      {
+        "function": "unpause()",
+        "gas": 21393
+      },
+      {
+        "function": "kill()",
+        "gas": 21393
+      },
+      {
+        "function": "destroy()",
+        "gas": 21393
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21425
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x0f30c808069315b3b7dfbfe149c87448b50c6d8b",
+    "name": "Wallet",
+    "balance": 285.74295615266135,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x7e5b6dd9ba1abf42bfb41e5ae8f46fe5e01aae14",
+    "name": "Wallet",
+    "balance": 285.0162718555295,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x3a5fb0f79c258942c1acf8142cbc601c1aff1ac4",
+    "name": "",
+    "balance": 262.7057437647257,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x7ea2df0f49d1cf7cb3a328f0038822b08aeb0ac1",
+    "name": "",
+    "balance": 261.0250249542945,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 67764
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 67764
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 67764
+      },
+      {
+        "function": "drain()",
+        "gas": 67764
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 67905
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 68046
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 68046
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 67764
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 67905
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 67764
+      },
+      {
+        "function": "exit()",
+        "gas": 67764
+      },
+      {
+        "function": "pause()",
+        "gas": 67764
+      },
+      {
+        "function": "unpause()",
+        "gas": 67764
+      },
+      {
+        "function": "kill()",
+        "gas": 67764
+      },
+      {
+        "function": "destroy()",
+        "gas": 67764
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 67764
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 67905
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 67905
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 67905
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 67905
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x3885b0c18e3c4ab0ca2b8dc99771944404687628",
+    "name": "",
+    "balance": 250.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x33a634874644593bd42765475ba4d36ed129fe97",
+    "name": "",
+    "balance": 237.39232038999998,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x4615cc10092b514258577dafca98c142577f1578",
+    "name": "",
+    "balance": 232.6,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x6198db1e212846b9ecbaee75182a456077c1ccb2",
+    "name": "",
+    "balance": 212.883,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x05276c19f670ffe7ba6b3bdc94e70c36b4b9dad5",
+    "name": "Wallet",
+    "balance": 202.122540786,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21722
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21722
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21722
+      },
+      {
+        "function": "drain()",
+        "gas": 21722
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21862
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21722
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21862
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21722
+      },
+      {
+        "function": "exit()",
+        "gas": 21722
+      },
+      {
+        "function": "pause()",
+        "gas": 21722
+      },
+      {
+        "function": "unpause()",
+        "gas": 21722
+      },
+      {
+        "function": "kill()",
+        "gas": 21722
+      },
+      {
+        "function": "destroy()",
+        "gas": 21722
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21722
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21862
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21862
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21862
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21862
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x8c74dfa27be1b4fa867490a2698419a98c0bd221",
+    "name": "",
+    "balance": 193.32,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21777
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21777
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21777
+      },
+      {
+        "function": "drain()",
+        "gas": 21777
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21917
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22057
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22057
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21777
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21917
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21777
+      },
+      {
+        "function": "exit()",
+        "gas": 21777
+      },
+      {
+        "function": "pause()",
+        "gas": 21777
+      },
+      {
+        "function": "unpause()",
+        "gas": 21777
+      },
+      {
+        "function": "kill()",
+        "gas": 21777
+      },
+      {
+        "function": "destroy()",
+        "gas": 21777
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21777
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21917
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21917
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21917
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21917
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x0c01089aedc45ab0f43467cceca6b4d3e4170bea",
+    "name": "",
+    "balance": 191.91433978504534,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x2468160c241a9fed936ee1e3ceb8b2f7e2e01987",
+    "name": "Wallet",
+    "balance": 176.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xce0fd5c046dddc05311567156f2e9974a5875bea",
+    "name": "",
+    "balance": 170.43480909120635,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x8a909adc6c299cc4a206e730b15d2b97b0fbf0bd",
+    "name": "",
+    "balance": 164.04175655844153,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xddf90e79af4e0ece889c330fca6e1f8d6c6cf0d8",
+    "name": "",
+    "balance": 159.85102609,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x2829435522c1f3711ae14ed20b2345dc2fe891f4",
+    "name": "",
+    "balance": 150.48106109,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24412
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24412
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24412
+      },
+      {
+        "function": "drain()",
+        "gas": 24412
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24559
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24705
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24705
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24412
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24559
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24412
+      },
+      {
+        "function": "exit()",
+        "gas": 24412
+      },
+      {
+        "function": "pause()",
+        "gas": 24412
+      },
+      {
+        "function": "unpause()",
+        "gas": 24412
+      },
+      {
+        "function": "kill()",
+        "gas": 24412
+      },
+      {
+        "function": "destroy()",
+        "gas": 24412
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24412
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24559
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24559
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24559
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24559
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xd95a6aa3e20397211e487b231211e16790a21ac9",
+    "name": "Wallet",
+    "balance": 150.479444745,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xc249c0fc4f7283d4a58c57d8fb0cf5f126ae4ead",
+    "name": "",
+    "balance": 150.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 23325
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 23325
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 23325
+      },
+      {
+        "function": "drain()",
+        "gas": 23325
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 23466
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 23606
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 23606
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 23325
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 23466
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 23325
+      },
+      {
+        "function": "exit()",
+        "gas": 23325
+      },
+      {
+        "function": "pause()",
+        "gas": 23325
+      },
+      {
+        "function": "unpause()",
+        "gas": 23325
+      },
+      {
+        "function": "kill()",
+        "gas": 23325
+      },
+      {
+        "function": "destroy()",
+        "gas": 23325
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 23325
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 23466
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 23466
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 23466
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 23466
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x7b6bce3cf38ee602030662fa24ac2ed5a32d0a02",
+    "name": "Wallet",
+    "balance": 146.44869481758957,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x20018893c7d8e38b14a10a00c70023c45d528fba",
+    "name": "Wallet",
+    "balance": 136.98991560763383,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x62ca869bafea0c77234e48018d9c67f7c0cd197a",
+    "name": "Wallet",
+    "balance": 135.32390607307815,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x6e5e0ef477db8e26cd64f87522a1997f6dda64fb",
+    "name": "Wallet",
+    "balance": 132.00936447974001,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x379add715d9fb53a79e6879653b60f12cc75bcaf",
+    "name": "",
+    "balance": 131.76093746,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xb25634bb526d615f8b6e73e04ece46eed9f8ca24",
+    "name": "",
+    "balance": 130.77987791574162,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa150de0e6998e05d6e19fca736ab758e698da21a",
+    "name": "Wallet",
+    "balance": 130.32,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa327075af2a223a1c83a36ada1126afe7430f955",
+    "name": "",
+    "balance": 130.00001,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 25839
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 25839
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 25839
+      },
+      {
+        "function": "drain()",
+        "gas": 25839
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 25981
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 26122
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 26122
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 25839
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 25981
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 25839
+      },
+      {
+        "function": "exit()",
+        "gas": 25839
+      },
+      {
+        "function": "pause()",
+        "gas": 25839
+      },
+      {
+        "function": "unpause()",
+        "gas": 25839
+      },
+      {
+        "function": "kill()",
+        "gas": 25839
+      },
+      {
+        "function": "destroy()",
+        "gas": 25839
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 25839
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 25981
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 25981
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 25981
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 25981
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x1a54be38f6ee09a73230cedbcbb9eb8bc5c4e8d0",
+    "name": "",
+    "balance": 128.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xf346ba182872fd01e9c4bb8c3ba7846c20336003",
+    "name": "",
+    "balance": 124.44834508500001,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xfcbcd2da9efa379c7d3352ffd3d5877cc088cbba",
+    "name": "",
+    "balance": 123.03415765999999,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xc4c51de1abf5d60dbd329ec0f999fd8f021ae9fc",
+    "name": "",
+    "balance": 122.05631988652337,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21806
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21806
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21806
+      },
+      {
+        "function": "drain()",
+        "gas": 21806
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21946
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22086
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22086
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21806
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21946
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21806
+      },
+      {
+        "function": "exit()",
+        "gas": 21806
+      },
+      {
+        "function": "pause()",
+        "gas": 21806
+      },
+      {
+        "function": "unpause()",
+        "gas": 21806
+      },
+      {
+        "function": "kill()",
+        "gas": 21806
+      },
+      {
+        "function": "destroy()",
+        "gas": 21806
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21806
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21946
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21946
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21946
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21946
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xb39036a09865236d67875f6fd391e597b4c8425d",
+    "name": "",
+    "balance": 121.64977800104758,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x58174e9b3178074f83888b6147c1a7d2ced85c6f",
+    "name": "",
+    "balance": 119.93,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xb0bce295e0c1f7aa02510d368e514a9ae87504db",
+    "name": "",
+    "balance": 119.6086883028588,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x766040000d000d735f67a8bfc7c84e9c24b1943b",
+    "name": "",
+    "balance": 111.3,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21752
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21752
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21752
+      },
+      {
+        "function": "drain()",
+        "gas": 21752
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21892
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22032
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22032
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21752
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21892
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21752
+      },
+      {
+        "function": "exit()",
+        "gas": 21752
+      },
+      {
+        "function": "pause()",
+        "gas": 21752
+      },
+      {
+        "function": "unpause()",
+        "gas": 21752
+      },
+      {
+        "function": "kill()",
+        "gas": 21752
+      },
+      {
+        "function": "destroy()",
+        "gas": 21752
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21752
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21892
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21892
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21892
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21892
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x7ea1950d7fa5167d5dc92c26e537d7875553b88e",
+    "name": "Wallet",
+    "balance": 109.96209363999999,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa365c183dd416f3eedf91fbda6bef30bd8d596c5",
+    "name": "Wallet",
+    "balance": 109.84749,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x0514afd47f635e9304028bd0dcdaed2168773ec1",
+    "name": "Wallet",
+    "balance": 109.54498520000001,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x4ebf5f5675a0e3293496f1d500cc1eb834ed717b",
+    "name": "",
+    "balance": 109.34902111,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xc1bd4f07421571364617adce98a8d657f52498b7",
+    "name": "Wallet",
+    "balance": 108.46683933800001,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xe2a59c80bbc825b3b83897c09583d843a20004d7",
+    "name": "",
+    "balance": 106.43974200000001,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
+    "name": "SingularDTVToken",
+    "balance": 104.39131953162247,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21564
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21564
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21564
+      },
+      {
+        "function": "drain()",
+        "gas": 21564
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21704
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21564
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21704
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21564
+      },
+      {
+        "function": "exit()",
+        "gas": 21564
+      },
+      {
+        "function": "pause()",
+        "gas": 21564
+      },
+      {
+        "function": "unpause()",
+        "gas": 21564
+      },
+      {
+        "function": "kill()",
+        "gas": 21564
+      },
+      {
+        "function": "destroy()",
+        "gas": 21564
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21564
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21704
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21704
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21704
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21704
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xf90bbf5d9bcf95ce5aa5c28ce175541a288b599c",
+    "name": "",
+    "balance": 104.321,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21513
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21513
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21513
+      },
+      {
+        "function": "drain()",
+        "gas": 21513
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21513
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21513
+      },
+      {
+        "function": "exit()",
+        "gas": 21513
+      },
+      {
+        "function": "pause()",
+        "gas": 21513
+      },
+      {
+        "function": "unpause()",
+        "gas": 21513
+      },
+      {
+        "function": "kill()",
+        "gas": 21513
+      },
+      {
+        "function": "destroy()",
+        "gas": 21513
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21513
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x4e05316fe8961e7818d9cd4c18101578350be639",
+    "name": "",
+    "balance": 103.666043,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x04ab1ae22add9b0d991aca80a0eb74de14fd2a8d",
+    "name": "Wallet",
+    "balance": 103.20111446853896,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xe1d6b08f3d3b5c80c1fde685e98c04a6bcbc77e9",
+    "name": "",
+    "balance": 101.16,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x98669654f4ab5ccede76766ad19bdfe230f96c65",
+    "name": "",
+    "balance": 101.13797437,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24613
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24613
+      },
+      {
+        "function": "drain()",
+        "gas": 24613
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24759
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24905
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24613
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24759
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24613
+      },
+      {
+        "function": "exit()",
+        "gas": 24613
+      },
+      {
+        "function": "pause()",
+        "gas": 24613
+      },
+      {
+        "function": "unpause()",
+        "gas": 24613
+      },
+      {
+        "function": "kill()",
+        "gas": 24613
+      },
+      {
+        "function": "destroy()",
+        "gas": 24613
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24613
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24759
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24759
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24759
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x0d6630648e6740d2d96c562543d4e0c7bbb46577",
+    "name": "Wallet",
+    "balance": 100.96873999777777,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x228b015ab09c32906e4b98cfc2761b96842d8724",
+    "name": "Wallet",
+    "balance": 100.8596129706854,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xae04992b4e7468f6c88084a2310d2942f12626ff",
+    "name": "",
+    "balance": 100.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x52a5dbcc9755de4dcc52afb25b3923287a18ea26",
+    "name": "",
+    "balance": 100.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa0589b980cb3c2e153b7ac7dc7c01c2223d7c5d7",
+    "name": "",
+    "balance": 100.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21348
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21348
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21348
+      },
+      {
+        "function": "drain()",
+        "gas": 21348
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21348
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21348
+      },
+      {
+        "function": "exit()",
+        "gas": 21348
+      },
+      {
+        "function": "pause()",
+        "gas": 21348
+      },
+      {
+        "function": "unpause()",
+        "gas": 21348
+      },
+      {
+        "function": "kill()",
+        "gas": 21348
+      },
+      {
+        "function": "destroy()",
+        "gas": 21348
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21348
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa6450bcb9f58854f3fd5a997f5d93db40f3fa4e3",
+    "name": "",
+    "balance": 100.0,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x4be6a36edaef7efcdb0859b54b0e045496f91b38",
+    "name": "",
+    "balance": 99.000011,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x074403c5a4bccf6454544a5842fe98ddb694a147",
+    "name": "",
+    "balance": 98.09654731518145,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21393
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21393
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21403
+      },
+      {
+        "function": "drain()",
+        "gas": 21393
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21403
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21403
+      },
+      {
+        "function": "exit()",
+        "gas": 21403
+      },
+      {
+        "function": "pause()",
+        "gas": 21393
+      },
+      {
+        "function": "unpause()",
+        "gas": 21393
+      },
+      {
+        "function": "kill()",
+        "gas": 21393
+      },
+      {
+        "function": "destroy()",
+        "gas": 21393
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21393
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xfd24f3c1bea92b95550746419f5bda642d6ffe5b",
+    "name": "Wallet",
+    "balance": 87.9566990705545,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21730
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21730
+      },
+      {
+        "function": "drain()",
+        "gas": 21730
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21870
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21730
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21870
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21730
+      },
+      {
+        "function": "exit()",
+        "gas": 21730
+      },
+      {
+        "function": "pause()",
+        "gas": 21730
+      },
+      {
+        "function": "unpause()",
+        "gas": 21730
+      },
+      {
+        "function": "kill()",
+        "gas": 21730
+      },
+      {
+        "function": "destroy()",
+        "gas": 21730
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21730
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21870
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21870
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21870
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x1f557eebbf082e73acca1367608a1c50990c15db",
+    "name": "",
+    "balance": 85.4607075203297,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xc5a0a17eabbb0e64dcd567b5670c8c5d5c34128c",
+    "name": "",
+    "balance": 85.32187471498584,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x394d8b3c5de759b8258376fde9b394c8f237d8c4",
+    "name": "Wallet",
+    "balance": 80.58423587474363,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24579
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24579
+      },
+      {
+        "function": "drain()",
+        "gas": 24579
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24722
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24868
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24579
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24722
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24579
+      },
+      {
+        "function": "exit()",
+        "gas": 24579
+      },
+      {
+        "function": "pause()",
+        "gas": 24579
+      },
+      {
+        "function": "unpause()",
+        "gas": 24579
+      },
+      {
+        "function": "kill()",
+        "gas": 24579
+      },
+      {
+        "function": "destroy()",
+        "gas": 24579
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24579
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24722
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24722
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24722
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x142fdef3d4b26d7152ef808c3b147754216ccb36",
+    "name": "",
+    "balance": 79.24214530479509,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x3acad81bf4d1b80982cc656ca86231d49f8ba9dd",
+    "name": "",
+    "balance": 60.85438508143108,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 24412
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 24412
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24412
+      },
+      {
+        "function": "drain()",
+        "gas": 24412
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24559
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24705
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24705
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24412
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24559
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24412
+      },
+      {
+        "function": "exit()",
+        "gas": 24412
+      },
+      {
+        "function": "pause()",
+        "gas": 24412
+      },
+      {
+        "function": "unpause()",
+        "gas": 24412
+      },
+      {
+        "function": "kill()",
+        "gas": 24412
+      },
+      {
+        "function": "destroy()",
+        "gas": 24412
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24412
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24559
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24559
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24559
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24559
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x00f003831861ddb87fa2f60cce497836067c2f03",
+    "name": "",
+    "balance": 57.988258416,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x592a94353879a5bc2a50f0cd5037b7a91e3f5aef",
+    "name": "",
+    "balance": 46.58242082356496,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa264607aa3169061f671ec4f2bdbdca8a6b71bb1",
+    "name": "",
+    "balance": 40.90213987498654,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x231916cb0ad5d50596e3f824e9df4a212c17dd01",
+    "name": "",
+    "balance": 40.776375,
+    "score": 48,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21576
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21576
+      },
+      {
+        "function": "drain()",
+        "gas": 21576
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21716
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21576
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21716
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21576
+      },
+      {
+        "function": "exit()",
+        "gas": 21576
+      },
+      {
+        "function": "pause()",
+        "gas": 21576
+      },
+      {
+        "function": "unpause()",
+        "gas": 21576
+      },
+      {
+        "function": "kill()",
+        "gas": 21576
+      },
+      {
+        "function": "destroy()",
+        "gas": 21576
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21576
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21716
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21716
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21716
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xa7d9e842efb252389d613da88eda3731512e40bd",
+    "name": "BondedECDSAKeepFactory",
+    "balance": 258.55693381135933,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 25867
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 25866
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 25865
+      },
+      {
+        "function": "drain()",
+        "gas": 25866
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 25977
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 26149
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 26149
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 25865
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 26007
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 25865
+      },
+      {
+        "function": "exit()",
+        "gas": 25865
+      },
+      {
+        "function": "pause()",
+        "gas": 25866
+      },
+      {
+        "function": "unpause()",
+        "gas": 25867
+      },
+      {
+        "function": "kill()",
+        "gas": 25867
+      },
+      {
+        "function": "destroy()",
+        "gas": 25866
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 25866
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 25977
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 26008
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 26008
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 25987
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x97ec9bfb0f6672c358620615a1e4de0348aea05c",
+    "name": "InsightsNetworkContributions",
+    "balance": 208.645,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21326
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21326
+      },
+      {
+        "function": "drain()",
+        "gas": 21326
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21326
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21326
+      },
+      {
+        "function": "exit()",
+        "gas": 21326
+      },
+      {
+        "function": "pause()",
+        "gas": 21326
+      },
+      {
+        "function": "unpause()",
+        "gas": 21326
+      },
+      {
+        "function": "kill()",
+        "gas": 21326
+      },
+      {
+        "function": "destroy()",
+        "gas": 21326
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21326
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x9149c59f087e891b659481ed665768a57247c79e",
+    "name": "KyberReserve",
+    "balance": 196.95138025213527,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 23628
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 23628
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 23628
+      },
+      {
+        "function": "drain()",
+        "gas": 23628
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 23768
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 23908
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 23908
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 23628
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 23768
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 23628
+      },
+      {
+        "function": "exit()",
+        "gas": 23628
+      },
+      {
+        "function": "pause()",
+        "gas": 23628
+      },
+      {
+        "function": "unpause()",
+        "gas": 23628
+      },
+      {
+        "function": "kill()",
+        "gas": 23628
+      },
+      {
+        "function": "destroy()",
+        "gas": 23628
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 23628
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 23768
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 23768
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 23768
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 23768
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x112918a54e3ada863cf694970da0756f1eecc68d",
+    "name": "JavvyMultiSig",
+    "balance": 190.898431291875,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21826
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21826
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21826
+      },
+      {
+        "function": "drain()",
+        "gas": 21826
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21966
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22106
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22106
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21826
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21966
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21826
+      },
+      {
+        "function": "exit()",
+        "gas": 21826
+      },
+      {
+        "function": "pause()",
+        "gas": 21826
+      },
+      {
+        "function": "unpause()",
+        "gas": 21826
+      },
+      {
+        "function": "kill()",
+        "gas": 21826
+      },
+      {
+        "function": "destroy()",
+        "gas": 21826
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21826
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21966
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21966
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21966
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21966
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x7cd5e2d0056a7a7f09cbb86e540ef4f6dccc97dd",
+    "name": "xSNXAdminProxy",
+    "balance": 175.50723329251352,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 26730
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 26772
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 26771
+      },
+      {
+        "function": "drain()",
+        "gas": 26772
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 26876
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 27065
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 27065
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 26771
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 26917
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 26771
+      },
+      {
+        "function": "exit()",
+        "gas": 26771
+      },
+      {
+        "function": "pause()",
+        "gas": 26772
+      },
+      {
+        "function": "unpause()",
+        "gas": 26730
+      },
+      {
+        "function": "kill()",
+        "gas": 26730
+      },
+      {
+        "function": "destroy()",
+        "gas": 26772
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 26772
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 26876
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 26918
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 26918
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 26918
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x2956356cd2a2bf3202f771f50d3d14a367b48070",
+    "name": "EtherToken",
+    "balance": 175.29545906212482,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 28616
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 28616
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 28616
+      },
+      {
+        "function": "drain()",
+        "gas": 28616
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 28758
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 28900
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 28900
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 28616
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 28758
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 28616
+      },
+      {
+        "function": "exit()",
+        "gas": 28616
+      },
+      {
+        "function": "pause()",
+        "gas": 28616
+      },
+      {
+        "function": "unpause()",
+        "gas": 28616
+      },
+      {
+        "function": "kill()",
+        "gas": 28616
+      },
+      {
+        "function": "destroy()",
+        "gas": 28616
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 28616
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 28758
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 28758
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 28758
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 28758
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x24f0bb6c9b2c3db66603fa0ec07ab0cf55cdd387",
+    "name": "Holder",
+    "balance": 174.67540025157058,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 22922
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 22922
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 22922
+      },
+      {
+        "function": "drain()",
+        "gas": 22922
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 23062
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 23202
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 23202
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 22922
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 23062
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 22922
+      },
+      {
+        "function": "exit()",
+        "gas": 22922
+      },
+      {
+        "function": "pause()",
+        "gas": 22922
+      },
+      {
+        "function": "unpause()",
+        "gas": 22922
+      },
+      {
+        "function": "kill()",
+        "gas": 22922
+      },
+      {
+        "function": "destroy()",
+        "gas": 22922
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 22922
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 23062
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 23062
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 23062
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 23062
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x63658cc84a5b2b969b8df9bea129a1c933e1439f",
+    "name": "kleee002",
+    "balance": 159.4217151867783,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 23736
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 23757
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 23756
+      },
+      {
+        "function": "drain()",
+        "gas": 23736
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 23866
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24038
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24038
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 23756
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 23896
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 23756
+      },
+      {
+        "function": "exit()",
+        "gas": 23756
+      },
+      {
+        "function": "pause()",
+        "gas": 23757
+      },
+      {
+        "function": "unpause()",
+        "gas": 23736
+      },
+      {
+        "function": "kill()",
+        "gas": 23736
+      },
+      {
+        "function": "destroy()",
+        "gas": 23757
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 23736
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 23898
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 23897
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 23876
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 23897
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x00000000a8f806c754549943b6550a2594c9a126",
+    "name": "",
+    "balance": 138.24,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21550
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21550
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21550
+      },
+      {
+        "function": "drain()",
+        "gas": 21550
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21550
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21690
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21550
+      },
+      {
+        "function": "exit()",
+        "gas": 21550
+      },
+      {
+        "function": "pause()",
+        "gas": 21550
+      },
+      {
+        "function": "unpause()",
+        "gas": 21550
+      },
+      {
+        "function": "kill()",
+        "gas": 21550
+      },
+      {
+        "function": "destroy()",
+        "gas": 21550
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21550
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21690
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21690
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21690
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21690
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "name": "SavingAccount",
+    "balance": 129.1901,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21450
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21450
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21470
+      },
+      {
+        "function": "drain()",
+        "gas": 21471
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21470
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21448
+      },
+      {
+        "function": "exit()",
+        "gas": 21470
+      },
+      {
+        "function": "pause()",
+        "gas": 21450
+      },
+      {
+        "function": "unpause()",
+        "gas": 21450
+      },
+      {
+        "function": "kill()",
+        "gas": 21450
+      },
+      {
+        "function": "destroy()",
+        "gas": 21450
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21471
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0xe40e1531a4b56fb65571ad2ca43dc0048a316a2d",
+    "name": "EthPrime",
+    "balance": 106.88587473225041,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21449
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21449
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21469
+      },
+      {
+        "function": "drain()",
+        "gas": 21448
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21676
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21469
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21676
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21469
+      },
+      {
+        "function": "exit()",
+        "gas": 21469
+      },
+      {
+        "function": "pause()",
+        "gas": 21449
+      },
+      {
+        "function": "unpause()",
+        "gas": 21449
+      },
+      {
+        "function": "kill()",
+        "gas": 21449
+      },
+      {
+        "function": "destroy()",
+        "gas": 21449
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21448
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21676
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21676
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21676
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x73f09b50960f87af26ff4817a93c0f5efd0aa9e2",
+    "name": "DualSig",
+    "balance": 100.25,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 21620
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 21620
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 21620
+      },
+      {
+        "function": "drain()",
+        "gas": 21620
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 21760
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 22026
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 21620
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 21760
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 21620
+      },
+      {
+        "function": "exit()",
+        "gas": 21620
+      },
+      {
+        "function": "pause()",
+        "gas": 21620
+      },
+      {
+        "function": "unpause()",
+        "gas": 21620
+      },
+      {
+        "function": "kill()",
+        "gas": 21620
+      },
+      {
+        "function": "destroy()",
+        "gas": 21620
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 21620
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 21760
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 21760
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 21760
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 21760
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0xd76b5c2a23ef78368d8e34288b5b65d616b746ae",
+    "name": "EtherToken",
+    "balance": 94.8982975827056,
+    "score": 45,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 29810
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 29810
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 29810
+      },
+      {
+        "function": "drain()",
+        "gas": 29810
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 29950
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 30091
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 30091
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 29810
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 29950
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 29810
+      },
+      {
+        "function": "exit()",
+        "gas": 29810
+      },
+      {
+        "function": "pause()",
+        "gas": 29810
+      },
+      {
+        "function": "unpause()",
+        "gas": 29810
+      },
+      {
+        "function": "kill()",
+        "gas": 29810
+      },
+      {
+        "function": "destroy()",
+        "gas": 29810
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 29810
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 29950
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 29950
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 29950
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 29950
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0xc83355ef25a104938275b46cffd94bf9917d0691",
+    "name": "FUTR",
+    "balance": 84.95790169864813,
+    "score": 43,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 48104
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 48104
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 48104
+      },
+      {
+        "function": "drain()",
+        "gas": 48104
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 48245
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 48385
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 48385
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 48104
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 48245
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 48104
+      },
+      {
+        "function": "exit()",
+        "gas": 48104
+      },
+      {
+        "function": "pause()",
+        "gas": 48104
+      },
+      {
+        "function": "unpause()",
+        "gas": 48104
+      },
+      {
+        "function": "kill()",
+        "gas": 48104
+      },
+      {
+        "function": "destroy()",
+        "gas": 48104
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 48104
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 48245
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 48245
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 48245
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0xec0d3f28d37a3393cf09ee3ad446c485b6afdaa3",
+    "name": "TransparentUpgradeableProxy",
+    "balance": 80.38035738870778,
+    "score": 43,
+    "dangerous_functions": [
+      "withdraw()",
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 222819
+      },
+      {
+        "function": "withdrawAll()",
+        "gas": 222818
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 222818
+      },
+      {
+        "function": "drain()",
+        "gas": 222819
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 222954
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 223109
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 223109
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 222818
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 222963
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 222818
+      },
+      {
+        "function": "exit()",
+        "gas": 222818
+      },
+      {
+        "function": "pause()",
+        "gas": 222818
+      },
+      {
+        "function": "unpause()",
+        "gas": 222819
+      },
+      {
+        "function": "kill()",
+        "gas": 222819
+      },
+      {
+        "function": "destroy()",
+        "gas": 222818
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 222819
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 222954
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 222964
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 222964
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0x575cb87ab3c2329a0248c7d70e0ead8e57f3e3f7",
+    "name": "AhooleeTokenSale",
+    "balance": 191.50951842732306,
+    "score": 42,
+    "dangerous_functions": [
+      "withdrawAll()",
+      "drain()",
+      "sweep(address)",
+      "rescueFunds(address,uint256)",
+      "claimTokens(address)",
+      "withdrawETH()",
+      "exit()",
+      "kill()",
+      "destroy()",
+      "selfdestruct()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdrawAll()",
+        "gas": 24454
+      },
+      {
+        "function": "emergencyWithdraw()",
+        "gas": 24454
+      },
+      {
+        "function": "drain()",
+        "gas": 24454
+      },
+      {
+        "function": "sweep(address)",
+        "gas": 24594
+      },
+      {
+        "function": "rescueFunds(address,uint256)",
+        "gas": 24734
+      },
+      {
+        "function": "recoverERC20(address,uint256)",
+        "gas": 24734
+      },
+      {
+        "function": "recoverETH()",
+        "gas": 24454
+      },
+      {
+        "function": "claimTokens(address)",
+        "gas": 24594
+      },
+      {
+        "function": "withdrawETH()",
+        "gas": 24454
+      },
+      {
+        "function": "exit()",
+        "gas": 24454
+      },
+      {
+        "function": "pause()",
+        "gas": 24454
+      },
+      {
+        "function": "unpause()",
+        "gas": 24454
+      },
+      {
+        "function": "kill()",
+        "gas": 24454
+      },
+      {
+        "function": "destroy()",
+        "gas": 24454
+      },
+      {
+        "function": "selfdestruct()",
+        "gas": 24454
+      },
+      {
+        "function": "setOwner(address)",
+        "gas": 24594
+      },
+      {
+        "function": "changeOwner(address)",
+        "gas": 24594
+      },
+      {
+        "function": "addMinter(address)",
+        "gas": 24594
+      },
+      {
+        "function": "setAdmin(address)",
+        "gas": 24594
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0xdd637dda8a1c9b6b1687877615a75da0fe8af5cc",
+    "name": "",
+    "balance": 138.26146350286388,
+    "score": 6,
+    "dangerous_functions": [
+      "withdrawAll()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdrawAll()",
+        "gas": 44021
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x48c128eafc3b937fb1f97889ad174ac02b4952cb",
+    "name": "",
+    "balance": 98.4788271595895,
+    "score": 6,
+    "dangerous_functions": [
+      "withdrawAll()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdrawAll()",
+        "gas": 44065
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0xdc260a232ced6e544909830d7128678466420aff",
+    "name": "",
+    "balance": 93.8,
+    "score": 6,
+    "dangerous_functions": [
+      "withdrawAll()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdrawAll()",
+        "gas": 51025
+      }
+    ],
+    "has_access_control": false
+  },
+  {
+    "address": "0x0ad3227eb47597b566ec138b3afd78cfea752de5",
+    "name": "FoMo3Dshort",
+    "balance": 136.76585920704989,
+    "score": 3,
+    "dangerous_functions": [
+      "withdraw()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 55858
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0xe14ab3ee81abe340b45bb26b1b166a7d2df22585",
+    "name": "TweetMarket",
+    "balance": 105.50549964000001,
+    "score": 3,
+    "dangerous_functions": [
+      "withdraw()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdraw()",
+        "gas": 31372
+      }
+    ],
+    "has_access_control": true
+  },
+  {
+    "address": "0xb8ff313d33b0e841b6b83243f6e2935166de87c1",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 101.0295,
+    "score": 3,
+    "dangerous_functions": [
+      "withdrawAll()"
+    ],
+    "all_functions": [
+      {
+        "function": "withdrawAll()",
+        "gas": 97805
+      }
+    ],
+    "has_access_control": true
+  }
+]

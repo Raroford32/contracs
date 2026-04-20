@@ -1,0 +1,33 @@
+[
+  {
+    "address": "0xb54ca24ac19098db42454c8ee8df67d260a22b1e",
+    "balance": 300.01,
+    "mint_callable": [],
+    "burn_callable": [
+      {
+        "function": "burnFrom(address,uint256)",
+        "gas": 24762
+      }
+    ],
+    "permit_available": false
+  },
+  {
+    "address": "0xa68d85df56e733a06443306a095646317b5fa633",
+    "balance": 27.787937913741725,
+    "mint_callable": [],
+    "burn_callable": [],
+    "permit_available": true
+  },
+  {
+    "address": "0x27a94869341838d5783368a8503fda5fbcd7987c",
+    "balance": 84.25132700942187,
+    "mint_callable": [
+      {
+        "function": "mint()",
+        "gas": 184649
+      }
+    ],
+    "burn_callable": [],
+    "permit_available": false
+  }
+]

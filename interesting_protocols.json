@@ -1,0 +1,157 @@
+[
+  {
+    "address": "0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd",
+    "name": "CEther",
+    "balance": 313.7111288170323,
+    "type": "vault",
+    "indicators": [
+      "ORACLE_DEPENDENT"
+    ]
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "name": "SuperBunnies",
+    "balance": 284.258,
+    "type": "amm",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0xe9778e69a961e64d3cdbb34cf6778281d34667c2",
+    "name": "WorkLock",
+    "balance": 291.18849756756055,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0x24f0bb6c9b2c3db66603fa0ec07ab0cf55cdd387",
+    "name": "Holder",
+    "balance": 174.67540025157058,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0xa7d9e842efb252389d613da88eda3731512e40bd",
+    "name": "BondedECDSAKeepFactory",
+    "balance": 258.55693381135933,
+    "type": "vault",
+    "indicators": [
+      "ORACLE_DEPENDENT"
+    ]
+  },
+  {
+    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
+    "name": "KeepBonding",
+    "balance": 234.41869567489303,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0x8754f54074400ce745a7ceddc928fb1b7e985ed6",
+    "name": "EulerBeats",
+    "balance": 215.17824,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0x4aea7cf559f67cedcad07e12ae6bc00f07e8cf65",
+    "name": "EtherDelta",
+    "balance": 221.10981188060785,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0x7488451db91df618759b8af15e36f70c0fdd529e",
+    "name": "XifraICO2",
+    "balance": 193.59078321018708,
+    "type": "vault",
+    "indicators": [
+      "ORACLE_DEPENDENT"
+    ]
+  },
+  {
+    "address": "0x0ad3227eb47597b566ec138b3afd78cfea752de5",
+    "name": "FoMo3Dshort",
+    "balance": 136.76585920704989,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "name": "SavingAccount",
+    "balance": 129.1901,
+    "type": "vault",
+    "indicators": [
+      "ORACLE_DEPENDENT",
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0x373c55c277b866a69dc047cad488154ab9759466",
+    "name": "EtherDelta",
+    "balance": 123.35974613091852,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0xe40e1531a4b56fb65571ad2ca43dc0048a316a2d",
+    "name": "EthPrime",
+    "balance": 106.88587473225041,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0xd2bfceeab8ffa24cdf94faa2683df63df4bcbdc8",
+    "name": "DailyDivs",
+    "balance": 109.78051965458351,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+    "name": "KyberFeeHandler",
+    "balance": 88.9310933897544,
+    "type": "amm",
+    "indicators": [
+      "ORACLE_DEPENDENT"
+    ]
+  },
+  {
+    "address": "0xab37e1358b639fd877f015027bb62d3ddaa7557e",
+    "name": "LienToken",
+    "balance": 88.85487669516216,
+    "type": "vault",
+    "indicators": [
+      "POTENTIAL_REENTRANCY"
+    ]
+  },
+  {
+    "address": "0x0337184a497565a9bd8e300dad50270cd367f206",
+    "name": "DynamicLiquidTokenConverter",
+    "balance": 83.58542487151293,
+    "type": "vault",
+    "indicators": [
+      "ORACLE_DEPENDENT",
+      "POTENTIAL_REENTRANCY"
+    ]
+  }
+]

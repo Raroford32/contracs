@@ -1,0 +1,442 @@
+[
+  {
+    "address": "0xbd3af18e0b7ebb30d49b253ab00788b92604552c",
+    "name": "HashesDAO",
+    "balance": 205.84510170503032,
+    "score": 13,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION",
+      "READ_ONLY_REENTRANCY_SURFACE",
+      "UNCHECKED_CALL_RETURN"
+    ]
+  },
+  {
+    "address": "0x8754f54074400ce745a7ceddc928fb1b7e985ed6",
+    "name": "EulerBeats",
+    "balance": 215.17824,
+    "score": 11,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION",
+      "READ_ONLY_REENTRANCY_SURFACE"
+    ]
+  },
+  {
+    "address": "0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd",
+    "name": "CEther",
+    "balance": 313.7111288170323,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x5eee354e36ac51e9d3f7283005cab0c55f423b23",
+    "name": "ArbitrageETHStaking",
+    "balance": 216.28939827805053,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xb9fbe1315824a466d05df4882ffac592ce9c009a",
+    "name": "InstantListingV2",
+    "balance": 200.0,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x7488451db91df618759b8af15e36f70c0fdd529e",
+    "name": "XifraICO2",
+    "balance": 193.59078321018708,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "name": "SavingAccount",
+    "balance": 129.1901,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x9b4ea303ca6302dfa46b73bc660598c65de96b3d",
+    "name": "auto_pool",
+    "balance": 128.73176539385918,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xe14ab3ee81abe340b45bb26b1b166a7d2df22585",
+    "name": "TweetMarket",
+    "balance": 105.50549964000001,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xe65f525ec48c7e95654b9824ecc358454ea9185e",
+    "name": "AceDapp",
+    "balance": 95.81533106464828,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x68c4b7d05fae45bcb6192bb93e246c77e98360e1",
+    "name": "Proceeds",
+    "balance": 91.95827933592861,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xa6b658ce4b1cdb4e7d8f97dffb549b8688cafb84",
+    "name": "CapitalConverter",
+    "balance": 91.182,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x0337184a497565a9bd8e300dad50270cd367f206",
+    "name": "DynamicLiquidTokenConverter",
+    "balance": 83.58542487151293,
+    "score": 9,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "name": "SuperBunnies",
+    "balance": 284.258,
+    "score": 8,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "READ_ONLY_REENTRANCY_SURFACE",
+      "UNCHECKED_CALL_RETURN"
+    ]
+  },
+  {
+    "address": "0xa7d9e842efb252389d613da88eda3731512e40bd",
+    "name": "BondedECDSAKeepFactory",
+    "balance": 258.55693381135933,
+    "score": 7,
+    "vulnerabilities": [
+      "CEI_VIOLATION",
+      "UNCHECKED_CALL_RETURN"
+    ]
+  },
+  {
+    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
+    "name": "KeepBonding",
+    "balance": 234.41869567489303,
+    "score": 7,
+    "vulnerabilities": [
+      "CEI_VIOLATION",
+      "UNCHECKED_CALL_RETURN"
+    ]
+  },
+  {
+    "address": "0x88ae96845e157558ef59e9ff90e766e22e480390",
+    "name": "Klein",
+    "balance": 128.501,
+    "score": 7,
+    "vulnerabilities": [
+      "CEI_VIOLATION",
+      "NO_ZERO_CHECK_DIVISION"
+    ]
+  },
+  {
+    "address": "0x6822aaf4ab22e6cca8352a927b9ae0a8fdb58d9d",
+    "name": "ProfitSharing",
+    "balance": 111.02666423598197,
+    "score": 7,
+    "vulnerabilities": [
+      "CEI_VIOLATION",
+      "NO_ZERO_CHECK_DIVISION"
+    ]
+  },
+  {
+    "address": "0x728781e75735dc0962df3a51d7ef47e798a7107e",
+    "name": "WolkExchange",
+    "balance": 107.27511923040001,
+    "score": 7,
+    "vulnerabilities": [
+      "CEI_VIOLATION",
+      "NO_ZERO_CHECK_DIVISION"
+    ]
+  },
+  {
+    "address": "0xc83355ef25a104938275b46cffd94bf9917d0691",
+    "name": "FUTR",
+    "balance": 84.95790169864813,
+    "score": 7,
+    "vulnerabilities": [
+      "CEI_VIOLATION",
+      "NO_ZERO_CHECK_DIVISION"
+    ]
+  },
+  {
+    "address": "0xab37e1358b639fd877f015027bb62d3ddaa7557e",
+    "name": "LienToken",
+    "balance": 88.85487669516216,
+    "score": 6,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "NO_ZERO_CHECK_DIVISION"
+    ]
+  },
+  {
+    "address": "0xec0d3f28d37a3393cf09ee3ad446c485b6afdaa3",
+    "name": "TransparentUpgradeableProxy",
+    "balance": 80.38035738870778,
+    "score": 6,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE",
+      "READ_ONLY_REENTRANCY_SURFACE"
+    ]
+  },
+  {
+    "address": "0xd48b633045af65ff636f3c6edd744748351e020d",
+    "name": "Zethr",
+    "balance": 280.84989362438404,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x60cd862c9c687a9de49aecdc3a99b74a4fc54ab6",
+    "name": "MoonCatRescue",
+    "balance": 246.69066958528103,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x97ec9bfb0f6672c358620615a1e4de0348aea05c",
+    "name": "InsightsNetworkContributions",
+    "balance": 208.645,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x575cb87ab3c2329a0248c7d70e0ead8e57f3e3f7",
+    "name": "AhooleeTokenSale",
+    "balance": 191.50951842732306,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xc7c9b856d33651cc2bcd9e0099efa85f59f78302",
+    "name": "R1Exchange",
+    "balance": 150.36269586522045,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x0ad3227eb47597b566ec138b3afd78cfea752de5",
+    "name": "FoMo3Dshort",
+    "balance": 136.76585920704989,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xb9ab8eed48852de901c13543042204c6c569b811",
+    "name": "Zethr",
+    "balance": 116.07838376102912,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xa33c4a314faa9684eeffa6ba334688001ea99bbc",
+    "name": "Phoenix",
+    "balance": 108.78027035646521,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xe40e1531a4b56fb65571ad2ca43dc0048a316a2d",
+    "name": "EthPrime",
+    "balance": 106.88587473225041,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xe01e2a3ceafa8233021fc759e5a69863558326b6",
+    "name": "EKS",
+    "balance": 105.49299604301721,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xa45b966996374e9e65ab991c6fe4bfce3a56dde8",
+    "name": "MaticWETH",
+    "balance": 104.73727613822558,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xab5cffaaec03efc94ab5c0c4c0bc85ae2b2b65ac",
+    "name": "EtherkingJackpot",
+    "balance": 101.0,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x9aca6abfe63a5ae0dc6258cefb65207ec990aa4d",
+    "name": "DigiPulse",
+    "balance": 100.58346934562455,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x73f09b50960f87af26ff4817a93c0f5efd0aa9e2",
+    "name": "DualSig",
+    "balance": 100.25,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x9122e2cfab13d30237ebeef0c0521d64bf0b06dc",
+    "name": "cEthereumlotteryNet",
+    "balance": 100.01,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x25a06d4e1f804ce62cf11b091180a5c84980d93a",
+    "name": "Treasure",
+    "balance": 98.2801648203633,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x5e8353930b557a524ff92eace9b87d82f9793124",
+    "name": "ProjectINK",
+    "balance": 95.55,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x18a672e11d637fffadccc99b152f4895da069601",
+    "name": "Rouleth",
+    "balance": 91.00207140267086,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0x93519cc1a51ac56cf2daa8aaafcd4073f49a19d8",
+    "name": "VLBRefundVault",
+    "balance": 81.14424602591906,
+    "score": 5,
+    "vulnerabilities": [
+      "CEI_VIOLATION"
+    ]
+  },
+  {
+    "address": "0xd619c8da0a58b63be7fa69b4cc648916fe95fa1b",
+    "name": "CycloneV2dot2",
+    "balance": 200.0,
+    "score": 4,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE"
+    ]
+  },
+  {
+    "address": "0xd2bfceeab8ffa24cdf94faa2683df63df4bcbdc8",
+    "name": "DailyDivs",
+    "balance": 109.78051965458351,
+    "score": 4,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE"
+    ]
+  },
+  {
+    "address": "0xf9fb1c508ff49f78b60d3a96dea99fa5d7f3a8a6",
+    "name": "EthManager",
+    "balance": 94.79249034550523,
+    "score": 4,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE"
+    ]
+  },
+  {
+    "address": "0xc618d56b6d606e59c6b87af724ab5a91eb40d1cb",
+    "name": "LIQUID",
+    "balance": 90.94433388671649,
+    "score": 4,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE"
+    ]
+  },
+  {
+    "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+    "name": "KyberFeeHandler",
+    "balance": 88.9310933897544,
+    "score": 4,
+    "vulnerabilities": [
+      "DONATION_ATTACK_SURFACE"
+    ]
+  }
+]

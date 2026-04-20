@@ -1,0 +1,594 @@
+[
+  {
+    "address": "0x7488451db91df618759b8af15e36f70c0fdd529e",
+    "name": "XifraICO2",
+    "balance": 193.59078321018708,
+    "findings": [
+      {
+        "function": "withdrawICOFunds",
+        "external_call_line": 199,
+        "state_update_line": 201,
+        "external_call": "require(IERC20(usdtToken).transfer(xifraWallet, usdtBalance)",
+        "state_update": "uint256 usdcBalance = IERC20(usdcToken).balanceOf(address(th",
+        "has_guard": false
+      },
+      {
+        "function": "withdrawICOFunds",
+        "external_call_line": 202,
+        "state_update_line": 204,
+        "external_call": "require(IERC20(usdcToken).transfer(xifraWallet, usdcBalance)",
+        "state_update": "uint256 ethbalance = address(this).balance;",
+        "has_guard": false
+      }
+    ]
+  },
+  {
+    "address": "0x88ae96845e157558ef59e9ff90e766e22e480390",
+    "name": "Klein",
+    "balance": 128.501,
+    "findings": [
+      {
+        "function": "buy",
+        "external_call_line": 172,
+        "state_update_line": 177,
+        "external_call": "msg.sender.transfer(returnable);",
+        "state_update": "balances[msg.sender] = safeAdd(balances[msg.sender], amount)",
+        "has_guard": false
+      },
+      {
+        "function": "buy",
+        "external_call_line": 172,
+        "state_update_line": 178,
+        "external_call": "msg.sender.transfer(returnable);",
+        "state_update": "balances[this] = safeSubtract(balances[this], amount);      ",
+        "has_guard": false
+      },
+      {
+        "function": "buy",
+        "external_call_line": 172,
+        "state_update_line": 181,
+        "external_call": "msg.sender.transfer(returnable);",
+        "state_update": "for(uint k = 0; k < amount; k++){                           ",
+        "has_guard": false
+      },
+      {
+        "function": "buy",
+        "external_call_line": 172,
+        "state_update_line": 182,
+        "external_call": "msg.sender.transfer(returnable);",
+        "state_update": "records[totalSold] = record(msg.sender, series[currentSeries",
+        "has_guard": false
+      }
+    ]
+  },
+  {
+    "address": "0xe01e2a3ceafa8233021fc759e5a69863558326b6",
+    "name": "EKS",
+    "balance": 105.49299604301721,
+    "findings": [
+      {
+        "function": "withdraw",
+        "external_call_line": 197,
+        "state_update_line": 198,
+        "external_call": "_customerAddress.transfer(_dividends);",
+        "state_update": "withdrawals[_customerAddress] += _dividends;",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 209,
+        "state_update_line": 211,
+        "external_call": "maintenanceAddress.transfer(_maintenance);",
+        "state_update": "uint256 _tewkenaire = SafeMath.div(SafeMath.mul(_undividedDi",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 209,
+        "state_update_line": 212,
+        "external_call": "maintenanceAddress.transfer(_maintenance);",
+        "state_update": "totalFundCollected += _tewkenaire;",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 213,
+        "state_update_line": 215,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "uint256 _dividends = SafeMath.sub(_undividedDividends, SafeM",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 213,
+        "state_update_line": 216,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "uint256 _taxedETH = SafeMath.sub(_amountOfTokens, _undivided",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 213,
+        "state_update_line": 218,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "tokenSupply_ = SafeMath.sub(tokenSupply_, _amountOfTokens);",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 213,
+        "state_update_line": 219,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "tokenBalanceLedger_[_customerAddress] = SafeMath.sub(tokenBa",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 213,
+        "state_update_line": 221,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "int256 _updatedPayouts = (int256) (profitPerShare_ * _amount",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 213,
+        "state_update_line": 222,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "payoutsTo_[_customerAddress] -= _updatedPayouts;",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 213,
+        "state_update_line": 225,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "totalLaunchFundCollected = SafeMath.add(totalLaunchFundColle",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 213,
+        "state_update_line": 227,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "profitPerShare_ = SafeMath.add(profitPerShare_, (_dividends ",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 359,
+        "state_update_line": 361,
+        "external_call": "maintenanceAddress.transfer(_maintenance);",
+        "state_update": "uint256 _tewkenaire = SafeMath.div(SafeMath.mul(_undividedDi",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 359,
+        "state_update_line": 362,
+        "external_call": "maintenanceAddress.transfer(_maintenance);",
+        "state_update": "totalFundCollected += _tewkenaire;",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 365,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "uint256 _dividends = SafeMath.sub(_undividedDividends, SafeM",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 366,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "uint256 _amountOfTokens = SafeMath.sub(_incomingETH, _undivi",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 367,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "uint256 _fee = _dividends * magnitude;",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 372,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "tokenSupply_ = SafeMath.add(tokenSupply_, _amountOfTokens);",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 373,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "totalLaunchFundCollected = SafeMath.add(totalLaunchFundColle",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 374,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "_fee = 0;",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 376,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "tokenSupply_ = SafeMath.add(tokenSupply_, _amountOfTokens);",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 377,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "profitPerShare_ += (_dividends * magnitude / tokenSupply_);",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 378,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "_fee = _fee - (_fee - (_amountOfTokens * (_dividends * magni",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 380,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "tokenSupply_ = _amountOfTokens;",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 383,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "tokenBalanceLedger_[_customerAddress] = SafeMath.add(tokenBa",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 385,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "int256 _updatedPayouts = (int256) (profitPerShare_ * _amount",
+        "has_guard": false
+      },
+      {
+        "function": "purchaseTokens",
+        "external_call_line": 363,
+        "state_update_line": 386,
+        "external_call": "distributionAddress.transfer(_tewkenaire);",
+        "state_update": "payoutsTo_[_customerAddress] += _updatedPayouts;",
+        "has_guard": false
+      }
+    ]
+  },
+  {
+    "address": "0xe40e1531a4b56fb65571ad2ca43dc0048a316a2d",
+    "name": "EthPrime",
+    "balance": 106.88587473225041,
+    "findings": [
+      {
+        "function": "cashout",
+        "external_call_line": 234,
+        "state_update_line": 236,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "ethGained += abi.decode(returnData, (uint256));",
+        "has_guard": false
+      },
+      {
+        "function": "cashout",
+        "external_call_line": 234,
+        "state_update_line": 241,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "reinvestStreaks[msg.sender] = Streak(0, weeksSinceEpoch());",
+        "has_guard": false
+      },
+      {
+        "function": "claimDivsInternal",
+        "external_call_line": 258,
+        "state_update_line": 260,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "ethGained += abi.decode(returnData, (uint256));",
+        "has_guard": false
+      },
+      {
+        "function": "claimDivsInternal",
+        "external_call_line": 258,
+        "state_update_line": 265,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "uint256 fee = ethGained * loansFee / 1000;",
+        "has_guard": false
+      },
+      {
+        "function": "claimDivsInternal",
+        "external_call_line": 258,
+        "state_update_line": 266,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "ethGained -= fee;",
+        "has_guard": false
+      },
+      {
+        "function": "claimDivsInternal",
+        "external_call_line": 258,
+        "state_update_line": 267,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "loanDivs += fee;",
+        "has_guard": false
+      },
+      {
+        "function": "cashoutPayLoan",
+        "external_call_line": 325,
+        "state_update_line": 327,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "ethGained += abi.decode(returnData, (uint256));",
+        "has_guard": false
+      },
+      {
+        "function": "cashoutPayLoan",
+        "external_call_line": 335,
+        "state_update_line": 336,
+        "external_call": "msg.sender.transfer(ethGained - existing);",
+        "state_update": "ethGained = existing;",
+        "has_guard": false
+      },
+      {
+        "function": "cashoutPayLoan",
+        "external_call_line": 335,
+        "state_update_line": 338,
+        "external_call": "msg.sender.transfer(ethGained - existing);",
+        "state_update": "ethLoaned[msg.sender] -= ethGained;",
+        "has_guard": false
+      },
+      {
+        "function": "cashoutPayLoan",
+        "external_call_line": 335,
+        "state_update_line": 339,
+        "external_call": "msg.sender.transfer(ethGained - existing);",
+        "state_update": "reinvestStreaks[msg.sender] = Streak(0, weeksSinceEpoch());",
+        "has_guard": false
+      },
+      {
+        "function": "paybackEthWithDivs",
+        "external_call_line": 350,
+        "state_update_line": 351,
+        "external_call": "msg.sender.transfer(ethGained - existing);",
+        "state_update": "ethGained = existing;",
+        "has_guard": false
+      },
+      {
+        "function": "paybackEthWithDivs",
+        "external_call_line": 350,
+        "state_update_line": 353,
+        "external_call": "msg.sender.transfer(ethGained - existing);",
+        "state_update": "ethLoaned[msg.sender] -= ethGained;",
+        "has_guard": false
+      },
+      {
+        "function": "paybackEth",
+        "external_call_line": 361,
+        "state_update_line": 362,
+        "external_call": "msg.sender.transfer(amount - existing);",
+        "state_update": "amount = existing;",
+        "has_guard": false
+      },
+      {
+        "function": "paybackEth",
+        "external_call_line": 361,
+        "state_update_line": 364,
+        "external_call": "msg.sender.transfer(amount - existing);",
+        "state_update": "ethLoaned[msg.sender] -= amount;",
+        "has_guard": false
+      },
+      {
+        "function": "totalDivsInternal",
+        "external_call_line": 378,
+        "state_update_line": 380,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "ethDivs += abi.decode(returnData, (uint256));",
+        "has_guard": false
+      },
+      {
+        "function": "loanableValueInternal",
+        "external_call_line": 416,
+        "state_update_line": 418,
+        "external_call": "(bool success, bytes memory returnData) = address(dapp).call",
+        "state_update": "ethValue += abi.decode(returnData, (uint256));",
+        "has_guard": false
+      }
+    ]
+  },
+  {
+    "address": "0x73f09b50960f87af26ff4817a93c0f5efd0aa9e2",
+    "name": "DualSig",
+    "balance": 100.25,
+    "findings": [
+      {
+        "function": "accept",
+        "external_call_line": 82,
+        "state_update_line": 85,
+        "external_call": "localDestination.transfer(localAmount);",
+        "state_update": "contractInterface tokenContract = contractInterface(localCon",
+        "has_guard": false
+      },
+      {
+        "function": "transferDirectorA",
+        "external_call_line": 94,
+        "state_update_line": 96,
+        "external_call": "directorA.transfer(transferSafety);// Reimburse safety depos",
+        "state_update": "directorA = newDirectorA;",
+        "has_guard": false
+      },
+      {
+        "function": "transferDirectorB",
+        "external_call_line": 103,
+        "state_update_line": 105,
+        "external_call": "directorB.transfer(transferSafety);// Reimburse safety depos",
+        "state_update": "directorB = newDirectorB;",
+        "has_guard": false
+      }
+    ]
+  },
+  {
+    "address": "0x9122e2cfab13d30237ebeef0c0521d64bf0b06dc",
+    "name": "cEthereumlotteryNet",
+    "balance": 100.01,
+    "findings": [
+      {
+        "function": "UserAddTicket",
+        "external_call_line": 190,
+        "state_update_line": 194,
+        "external_call": "if (msg.sender.send(msg.value - (ticketsCount * ticketPrice)",
+        "state_update": "for (uint a = 0; a < ticketsCount; a++) {",
+        "has_guard": false
+      },
+      {
+        "function": "UserAddTicket",
+        "external_call_line": 190,
+        "state_update_line": 198,
+        "external_call": "if (msg.sender.send(msg.value - (ticketsCount * ticketPrice)",
+        "state_update": "games[CurrentGameId].ticketsCount += 1;",
+        "has_guard": false
+      },
+      {
+        "function": "UserAddTicket",
+        "external_call_line": 190,
+        "state_update_line": 199,
+        "external_call": "if (msg.sender.send(msg.value - (ticketsCount * ticketPrice)",
+        "state_update": "games[CurrentGameId].tickets[games[CurrentGameId].ticketsCou",
+        "has_guard": false
+      },
+      {
+        "function": "UserAddTicket",
+        "external_call_line": 190,
+        "state_update_line": 200,
+        "external_call": "if (msg.sender.send(msg.value - (ticketsCount * ticketPrice)",
+        "state_update": "players[msg.sender][CurrentGameId].tickets.length += 1;",
+        "has_guard": false
+      },
+      {
+        "function": "UserAddTicket",
+        "external_call_line": 190,
+        "state_update_line": 201,
+        "external_call": "if (msg.sender.send(msg.value - (ticketsCount * ticketPrice)",
+        "state_update": "players[msg.sender][CurrentGameId].tickets[players[msg.sende",
+        "has_guard": false
+      },
+      {
+        "function": "AdminCloseContract",
+        "external_call_line": 299,
+        "state_update_line": 302,
+        "external_call": "if (owner.send(contractbalance) == false) {",
+        "state_update": "feeValue = 0;",
+        "has_guard": false
+      },
+      {
+        "function": "AdminCloseContract",
+        "external_call_line": 299,
+        "state_update_line": 307,
+        "external_call": "if (owner.send(contractbalance) == false) {",
+        "state_update": "contractEnabled = false;",
+        "has_guard": false
+      },
+      {
+        "function": "AdminGetFee",
+        "external_call_line": 316,
+        "state_update_line": 319,
+        "external_call": "if (owner.send(feeValue) == false) {",
+        "state_update": "feeValue = 0;",
+        "has_guard": false
+      }
+    ]
+  },
+  {
+    "address": "0xe65f525ec48c7e95654b9824ecc358454ea9185e",
+    "name": "AceDapp",
+    "balance": 95.81533106464828,
+    "findings": [
+      {
+        "function": "buy",
+        "external_call_line": 110,
+        "state_update_line": 111,
+        "external_call": "dev.transfer(DevFeeFinal);",
+        "state_update": "uint256 DailyInt1 = msg.value.div(100).mul(IntFee_);",
+        "has_guard": false
+      },
+      {
+        "function": "buy",
+        "external_call_line": 110,
+        "state_update_line": 112,
+        "external_call": "dev.transfer(DevFeeFinal);",
+        "state_update": "uint256 DailyIntFinal = SafeMath.div(DailyInt1, 10);",
+        "has_guard": false
+      },
+      {
+        "function": "buy",
+        "external_call_line": 110,
+        "state_update_line": 113,
+        "external_call": "dev.transfer(DevFeeFinal);",
+        "state_update": "InterestPool_ += DailyIntFinal;",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 185,
+        "state_update_line": 187,
+        "external_call": "dev.transfer(_devexitindividual_final);",
+        "state_update": "int256 _updatedPayouts = (int256) (profitPerShare_ * _tokens",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 185,
+        "state_update_line": 188,
+        "external_call": "dev.transfer(_devexitindividual_final);",
+        "state_update": "payoutsTo_[_customerAddress] -= _updatedPayouts;",
+        "has_guard": false
+      },
+      {
+        "function": "sell",
+        "external_call_line": 185,
+        "state_update_line": 191,
+        "external_call": "dev.transfer(_devexitindividual_final);",
+        "state_update": "profitPerShare_ = SafeMath.add(profitPerShare_, (_dividends ",
+        "has_guard": false
+      }
+    ]
+  },
+  {
+    "address": "0xc83355ef25a104938275b46cffd94bf9917d0691",
+    "name": "FUTR",
+    "balance": 84.95790169864813,
+    "findings": [
+      {
+        "function": "transfer",
+        "external_call_line": 358,
+        "state_update_line": 361,
+        "external_call": "msg.sender.transfer(amount);",
+        "state_update": "balances[msg.sender] -= _value;",
+        "has_guard": false
+      },
+      {
+        "function": "transfer",
+        "external_call_line": 358,
+        "state_update_line": 362,
+        "external_call": "msg.sender.transfer(amount);",
+        "state_update": "balances[_to] += _value;",
+        "has_guard": false
+      }
+    ]
+  }
+]

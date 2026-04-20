@@ -1,0 +1,12 @@
+[
+  {
+    "address": "0x728781e75735dc0962df3a51d7ef47e798a7107e",
+    "name": "WolkExchange",
+    "balance": 107.27511923040001,
+    "score": 5,
+    "vulnerabilities": [
+      "LENDING_INTEGRATION",
+      "PRICE_DEPENDENT_TRANSFER"
+    ]
+  }
+]

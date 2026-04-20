@@ -1,0 +1,235 @@
+[
+  {
+    "address": "0x8754f54074400ce745a7ceddc928fb1b7e985ed6",
+    "name": "EulerBeats",
+    "balance": 215.17824,
+    "score": 6,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "HIGH_EXTERNAL_CALLS:5",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0xbd3af18e0b7ebb30d49b253ab00788b92604552c",
+    "name": "HashesDAO",
+    "balance": 205.84510170503032,
+    "score": 6,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "HIGH_EXTERNAL_CALLS:8",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0x7b4a7fd41c688a7cb116534e341e44126ef5a0fd",
+    "name": "CEther",
+    "balance": 313.7111288170323,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 1607001897305
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "name": "SuperBunnies",
+    "balance": 284.258,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 4412
+  },
+  {
+    "address": "0xd48b633045af65ff636f3c6edd744748351e020d",
+    "name": "Zethr",
+    "balance": 280.84989362438404,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 208596648666527133561239
+  },
+  {
+    "address": "0xa7d9e842efb252389d613da88eda3731512e40bd",
+    "name": "BondedECDSAKeepFactory",
+    "balance": 258.55693381135933,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "HIGH_EXTERNAL_CALLS:6"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0x27321f84704a599ab740281e285cc4463d89a3d5",
+    "name": "KeepBonding",
+    "balance": 234.41869567489303,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "HIGH_EXTERNAL_CALLS:5"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0x7488451db91df618759b8af15e36f70c0fdd529e",
+    "name": "XifraICO2",
+    "balance": 193.59078321018708,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0x6f35a5e6a7301627a090822895e5e7209ed72f77",
+    "name": "SavingAccount",
+    "balance": 129.1901,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0x9b4ea303ca6302dfa46b73bc660598c65de96b3d",
+    "name": "auto_pool",
+    "balance": 128.73176539385918,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 31983925676002289554173
+  },
+  {
+    "address": "0xb9ab8eed48852de901c13543042204c6c569b811",
+    "name": "Zethr",
+    "balance": 116.07838376102912,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 144269032421727635499572
+  },
+  {
+    "address": "0xd2bfceeab8ffa24cdf94faa2683df63df4bcbdc8",
+    "name": "DailyDivs",
+    "balance": 109.78051965458351,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 255867680611062401003262
+  },
+  {
+    "address": "0xe01e2a3ceafa8233021fc759e5a69863558326b6",
+    "name": "EKS",
+    "balance": 105.49299604301721,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 90085709889611343920
+  },
+  {
+    "address": "0xe65f525ec48c7e95654b9824ecc358454ea9185e",
+    "name": "AceDapp",
+    "balance": 95.81533106464828,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 39023828386904993741468
+  },
+  {
+    "address": "0x5e8353930b557a524ff92eace9b87d82f9793124",
+    "name": "ProjectINK",
+    "balance": 95.55,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 1921
+  },
+  {
+    "address": "0xf9fb1c508ff49f78b60d3a96dea99fa5d7f3a8a6",
+    "name": "EthManager",
+    "balance": 94.79249034550523,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0x68c4b7d05fae45bcb6192bb93e246c77e98360e1",
+    "name": "Proceeds",
+    "balance": 91.95827933592861,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0xa6b658ce4b1cdb4e7d8f97dffb549b8688cafb84",
+    "name": "CapitalConverter",
+    "balance": 91.182,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 91182000000000000000
+  },
+  {
+    "address": "0xc618d56b6d606e59c6b87af724ab5a91eb40d1cb",
+    "name": "LIQUID",
+    "balance": 90.94433388671649,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": 20005858764702642073778
+  },
+  {
+    "address": "0xd3d2b5643e506c6d9b7099e9116d7aaa941114fe",
+    "name": "KyberFeeHandler",
+    "balance": 88.9310933897544,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": null
+  },
+  {
+    "address": "0x0337184a497565a9bd8e300dad50270cd367f206",
+    "name": "DynamicLiquidTokenConverter",
+    "balance": 83.58542487151293,
+    "score": 4,
+    "vulnerabilities": [
+      "MISSING_EMPTY_SUPPLY_CHECK",
+      "MSGVALUE_BALANCE_INTERACTION"
+    ],
+    "total_supply": null
+  }
+]

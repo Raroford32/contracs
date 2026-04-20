@@ -1,0 +1,618 @@
+[
+  {
+    "address": "0xbd3af18e0b7ebb30d49b253ab00788b92604552c",
+    "name": "HashesDAO",
+    "balance": 205.84510170503032,
+    "score": 11,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            2216,
+            "function functionDelegateCall(address target, bytes memory data) internal return"
+          ],
+          [
+            2217,
+            "return functionDelegateCall(target, data, \"Address: low-level delegate call fail"
+          ],
+          [
+            2226,
+            "function functionDelegateCall("
+          ]
+        ]
+      },
+      {
+        "type": "ARBITRARY_CALL",
+        "lines": [
+          [
+            2105,
+            "(bool success, ) = recipient.call{value: amount}(\"\");"
+          ],
+          [
+            2179,
+            "(bool success, bytes memory returndata) = target.call{value: value}(data);"
+          ],
+          [
+            2797,
+            "(bool success, ) = proposal.targets[i].call{ value: proposal.values[i] }(callDat"
+          ]
+        ]
+      },
+      {
+        "type": "CALLBACK_PATTERN",
+        "callbacks": [
+          "onERC721Received"
+        ]
+      },
+      {
+        "type": "RAW_STORAGE_ACCESS"
+      }
+    ]
+  },
+  {
+    "address": "0x3a3fba79302144f06f49ffde69ce4b7f6ad4dd3d",
+    "name": "SuperBunnies",
+    "balance": 284.258,
+    "score": 9,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            1573,
+            "function functionDelegateCall(address target, bytes memory data) internal return"
+          ],
+          [
+            1574,
+            "return functionDelegateCall(target, data, \"Address: low-level delegate call fail"
+          ],
+          [
+            1583,
+            "function functionDelegateCall("
+          ]
+        ]
+      },
+      {
+        "type": "ARBITRARY_CALL",
+        "lines": [
+          [
+            1462,
+            "(bool success, ) = recipient.call{value: amount}(\"\");"
+          ],
+          [
+            1536,
+            "(bool success, bytes memory returndata) = target.call{value: value}(data);"
+          ]
+        ]
+      },
+      {
+        "type": "CALLBACK_PATTERN",
+        "callbacks": [
+          "onERC721Received"
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x8754f54074400ce745a7ceddc928fb1b7e985ed6",
+    "name": "EulerBeats",
+    "balance": 215.17824,
+    "score": 9,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            1602,
+            "function functionDelegateCall(address target, bytes memory data) internal return"
+          ],
+          [
+            1603,
+            "return functionDelegateCall(target, data, \"Address: low-level delegate call fail"
+          ],
+          [
+            1612,
+            "function functionDelegateCall(address target, bytes memory data, string memory e"
+          ]
+        ]
+      },
+      {
+        "type": "ARBITRARY_CALL",
+        "lines": [
+          [
+            1506,
+            "(bool success, ) = recipient.call{ value: amount }(\"\");"
+          ],
+          [
+            1568,
+            "(bool success, bytes memory returndata) = target.call{ value: value }(data);"
+          ]
+        ]
+      },
+      {
+        "type": "CALLBACK_PATTERN",
+        "callbacks": [
+          "onERC1155Received"
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0xf74bf048138a2b8f825eccabed9e02e481a0f6c0",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 291.70891188717667,
+    "score": 6,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            41,
+            "let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)"
+          ],
+          [
+            47,
+            "// delegatecall returns 0 on error."
+          ],
+          [
+            189,
+            "(bool success,) = _logic.delegatecall(_data);"
+          ]
+        ]
+      },
+      {
+        "type": "RAW_STORAGE_ACCESS"
+      }
+    ]
+  },
+  {
+    "address": "0xb8ff313d33b0e841b6b83243f6e2935166de87c1",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 101.0295,
+    "score": 6,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            41,
+            "let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)"
+          ],
+          [
+            47,
+            "// delegatecall returns 0 on error."
+          ],
+          [
+            189,
+            "(bool success,) = _logic.delegatecall(_data);"
+          ]
+        ]
+      },
+      {
+        "type": "RAW_STORAGE_ACCESS"
+      }
+    ]
+  },
+  {
+    "address": "0x0fa10d440522d4235c55811dc1adf4a875c16d00",
+    "name": "TransparentUpgradeableProxy",
+    "balance": 85.89111321832642,
+    "score": 6,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            5,
+            "* instruction `delegatecall`. We refer to the second contract as the _implementa"
+          ],
+          [
+            29,
+            "let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)"
+          ],
+          [
+            35,
+            "// delegatecall returns 0 on error."
+          ]
+        ]
+      },
+      {
+        "type": "RAW_STORAGE_ACCESS"
+      }
+    ]
+  },
+  {
+    "address": "0x27a94869341838d5783368a8503fda5fbcd7987c",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 84.25132700942187,
+    "score": 6,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            41,
+            "let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)"
+          ],
+          [
+            47,
+            "// delegatecall returns 0 on error."
+          ],
+          [
+            189,
+            "(bool success,) = _logic.delegatecall(_data);"
+          ]
+        ]
+      },
+      {
+        "type": "RAW_STORAGE_ACCESS"
+      }
+    ]
+  },
+  {
+    "address": "0x894f3a40ab8051b350f85b3edeb7c7b83fcb6dac",
+    "name": "AdminUpgradeabilityProxy",
+    "balance": 50.59252919169366,
+    "score": 6,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            41,
+            "let result := delegatecall(gas, implementation, 0, calldatasize, 0, 0)"
+          ],
+          [
+            47,
+            "// delegatecall returns 0 on error."
+          ],
+          [
+            189,
+            "(bool success,) = _logic.delegatecall(_data);"
+          ]
+        ]
+      },
+      {
+        "type": "RAW_STORAGE_ACCESS"
+      }
+    ]
+  },
+  {
+    "address": "0xc32050abac7dbfef4fc8dc7b96d9617394cb4e1b",
+    "name": "Wallet",
+    "balance": 340.22863364999995,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x7100c7ce94607ef68983f133cfd59cc1833a115d",
+    "name": "Wallet",
+    "balance": 327.53595008,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0xa08c1134cdd73ad41889f7f914ecc4d3b30c1333",
+    "name": "Wallet",
+    "balance": 325.2,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x2f9f02f2ba99ff5c750f95cf27d25352f71cd6a9",
+    "name": "Wallet",
+    "balance": 320.001,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x0f30c808069315b3b7dfbfe149c87448b50c6d8b",
+    "name": "Wallet",
+    "balance": 285.74295615266135,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x7e5b6dd9ba1abf42bfb41e5ae8f46fe5e01aae14",
+    "name": "Wallet",
+    "balance": 285.0162718555295,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x7cd5e2d0056a7a7f09cbb86e540ef4f6dccc97dd",
+    "name": "xSNXAdminProxy",
+    "balance": 175.50723329251352,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": false,
+        "lines": [
+          [
+            223,
+            "let success := delegatecall("
+          ]
+        ]
+      },
+      {
+        "type": "RAW_STORAGE_ACCESS"
+      }
+    ]
+  },
+  {
+    "address": "0xd95a6aa3e20397211e487b231211e16790a21ac9",
+    "name": "Wallet",
+    "balance": 150.479444745,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x7b6bce3cf38ee602030662fa24ac2ed5a32d0a02",
+    "name": "Wallet",
+    "balance": 146.44869481758957,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x1a26ef6575b7bbb864d984d9255c069f6c361a14",
+    "name": "Proxy__L1LiquidityPoolArguments",
+    "balance": 113.91666956596127,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            83,
+            "* Performs the proxy call via a delegatecall."
+          ],
+          [
+            94,
+            "(bool success, bytes memory returndata) = addressManager[\"proxyTarget\"].delegate"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0xc1bd4f07421571364617adce98a8d657f52498b7",
+    "name": "Wallet",
+    "balance": 108.46683933800001,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0x394d8b3c5de759b8258376fde9b394c8f237d8c4",
+    "name": "Wallet",
+    "balance": 80.58423587474363,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            420,
+            "delegatecall(sub(gas, 10000), target, 0x0, add(argsize, 0x4), 0x0, 0x0)"
+          ],
+          [
+            432,
+            "_walletLibrary.delegatecall(msg.data);"
+          ],
+          [
+            443,
+            "return _walletLibrary.delegatecall(msg.data);"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "address": "0xec0d3f28d37a3393cf09ee3ad446c485b6afdaa3",
+    "name": "TransparentUpgradeableProxy",
+    "balance": 80.38035738870778,
+    "score": 4,
+    "vulnerabilities": [
+      {
+        "type": "DELEGATECALL",
+        "dangerous": true,
+        "lines": [
+          [
+            251,
+            "* instruction `delegatecall`. We refer to the second contract as the _implementa"
+          ],
+          [
+            275,
+            "let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)"
+          ],
+          [
+            281,
+            "// delegatecall returns 0 on error."
+          ]
+        ]
+      }
+    ]
+  }
+]
