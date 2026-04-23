@@ -1,0 +1,117 @@
+{
+  "name": "complex-smart-contract-vulnerabilities",
+  "version": "1.0.0",
+  "description": "Sophisticated real-world smart contract exploits demonstrating 2026-level attack vectors",
+  "keywords": [
+    "solidity",
+    "security",
+    "defi",
+    "vulnerabilities",
+    "exploits",
+    "mev",
+    "reentrancy",
+    "flash-loans",
+    "governance",
+    "oracle-manipulation",
+    "smart-contracts",
+    "ethereum",
+    "audit",
+    "security-research"
+  ],
+  "author": "Security Research Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Raroford32/contracs.git"
+  },
+  "scripts": {
+    "info": "echo 'See README.md and VULNERABILITIES.md for detailed documentation'"
+  },
+  "vulnerabilities": {
+    "vault": [
+      "ERC-4626 Inflation Attack",
+      "Cross-Function Reentrancy",
+      "Read-Only Reentrancy",
+      "Oracle Manipulation",
+      "MEV Liquidation",
+      "Precision Loss",
+      "Flash Loan Attack",
+      "No Access Control"
+    ],
+    "governance": [
+      "Flash Loan Governance Attack",
+      "Delegation Loop DoS",
+      "No Quorum Requirement",
+      "No Timelock",
+      "Vote Buying"
+    ],
+    "amm": [
+      "Sandwich Attack",
+      "JIT Liquidity",
+      "Cross-DEX Arbitrage",
+      "Spot Price Oracle"
+    ],
+    "lending": [
+      "Protocol Insolvency",
+      "Interest Rate Manipulation",
+      "Liquidation Cascades",
+      "Malicious Token Integration",
+      "No Interest Accrual"
+    ]
+  },
+  "complexity": {
+    "level": "very-high",
+    "year": "2026",
+    "sophistication": "advanced",
+    "target_audience": [
+      "security-researchers",
+      "smart-contract-auditors",
+      "protocol-developers",
+      "mev-researchers",
+      "defi-builders"
+    ]
+  },
+  "real_world_impact": {
+    "total_stolen": "$3B+ (2021-2024)",
+    "major_incidents": [
+      {
+        "protocol": "Mango Markets",
+        "amount": "$114M",
+        "type": "Oracle Manipulation"
+      },
+      {
+        "protocol": "Beanstalk",
+        "amount": "$182M",
+        "type": "Flash Loan Governance"
+      },
+      {
+        "protocol": "Cream Finance",
+        "amount": "$130M",
+        "type": "Reentrancy"
+      },
+      {
+        "protocol": "Fei Protocol",
+        "amount": "$80M",
+        "type": "Reentrancy"
+      },
+      {
+        "protocol": "Inverse Finance",
+        "amount": "$15M",
+        "type": "Oracle Manipulation"
+      }
+    ],
+    "mev_extracted_annually": "$1B+"
+  },
+  "educational_resources": [
+    "Damn Vulnerable DeFi - Practice challenges",
+    "Ethernaut - Security game",
+    "Secureum - Security bootcamp",
+    "MEV University - MEV education",
+    "Immunefi - Bug bounty platform",
+    "Trail of Bits - Security research",
+    "Consensys Diligence - Audit reports",
+    "SCSVS - Security verification standard"
+  ],
+  "warning": "⚠️ DO NOT USE IN PRODUCTION - These contracts are deliberately vulnerable and for educational purposes only. Deploying with real funds will result in loss of funds.",
+  "note": "These are sophisticated attacks requiring deep understanding of DeFi mechanics, MEV, protocol composition, and economic incentives. Not simple bugs."
+}
