@@ -1,0 +1,38 @@
+protocol: tokenlon-rfq-2026-05-08
+chain_id: 1
+fork_block: 25050789  # latest at start of session, 2026-05-08
+seed_addresses:
+  # Tokenlon UserProxy + active strategies
+  - 0x03f34bE1BF910116595dB1b11E9d1B2cA5D59659  # Tokenlon UserProxy (TransparentUpgradeableProxy)
+  - 0x0b9f13ffab8448089f50073cf24bbe5c7bd8675a  # UserProxy implementation
+  - 0xfd6c2d2499b1331101726a8ac68ccc9da3fab54f  # RFQ (v1) - ENABLED
+  - 0x91c986709bb4fe0763edf8e2690ee9d5019bea4a  # RFQv2 - DISABLED
+  - 0x8d90113a1e286a5ab3e496fbd1853f265e5913c6  # PMM (0x v2) - ENABLED, $120K fees
+  - 0x4a14347083b80e5216ca31350a2d21702ac3650d  # AMMWrapperWithPath - ENABLED, $190K fees
+  - 0x623a6b3424f3d5e2ec677d5bb92ba12a9dc4f71a  # LimitOrder - ENABLED
+  # Custody / authority infra
+  - 0x3c68dfc45dc92c9c605d92b49858073e10b857a6  # Spender (authorizes RFQ/PMM/AMM/LO)
+  - 0x8a42d311d282bfcaa5133b2de0a8bcdbecea3073  # AllowanceTarget (holds user approvals)
+  - 0x6d9cc14a1d36e6ff13fc6efa9e9326fcd12e7903  # PermanentStorage (proxy)
+  - 0x32c1f83d729e4a2e01398841465920b1fd42c274  # PermanentStorage implementation
+  # Privileged actors
+  - 0x63ef071b8a69c52a88dca4a844286aeff195129f  # operator (Gnosis Safe multisig)
+  - 0x95E6F48254609A6ee006F7D493c8e5fB97094ceF  # 0x v2 ERC20Proxy (PMM allowance target)
+
+attacker_tier: public mempool (any EOA can call UserProxy.toRFQ / toPMM / toAMM / toLimitOrder)
+capital_model: not relevant - no flaw found requiring capital
+
+rpc_url: https://mainnet.infura.io/v3/bfc7283659224dd6b5124ebbc2b14e2c
+explorer: api.etherscan.io v2 (chainid=1)
+etherscan_key_env: ETHERSCAN_KEY
+
+# Artifacts (paths are relative to <workspace>)
+notes_paths:
+  - analysis/engagements/tokenlon-rfq-2026-05-08/memory.md
+  - analysis/engagements/tokenlon-rfq-2026-05-08/notes/entrypoints.md
+  - analysis/engagements/tokenlon-rfq-2026-05-08/notes/control-plane.md
+  - analysis/engagements/tokenlon-rfq-2026-05-08/notes/taint-map.md
+  - analysis/engagements/tokenlon-rfq-2026-05-08/notes/value-flows.md
+  - analysis/engagements/tokenlon-rfq-2026-05-08/notes/assumptions.md
+  - analysis/engagements/tokenlon-rfq-2026-05-08/notes/hypotheses.md
+  - analysis/engagements/tokenlon-rfq-2026-05-08/notes/feasibility.md
