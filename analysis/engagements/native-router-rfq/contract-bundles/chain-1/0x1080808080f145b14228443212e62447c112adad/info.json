@@ -1,0 +1,23 @@
+{
+  "address": "0x1080808080f145b14228443212e62447c112adad",
+  "chainId": "1",
+  "parent": null,
+  "sources": null,
+  "abi": null,
+  "compiler": null,
+  "verification": {
+    "etherscan": {
+      "contractName": "",
+      "compilerVersion": "",
+      "optimizationUsed": "",
+      "runs": "",
+      "licenseType": "Unknown"
+    }
+  },
+  "proxy": {
+    "isProxy": false,
+    "type": null,
+    "implementations": []
+  },
+  "evidence": {}
+}
