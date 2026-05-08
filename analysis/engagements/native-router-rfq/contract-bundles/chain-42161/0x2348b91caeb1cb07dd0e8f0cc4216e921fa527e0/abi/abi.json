@@ -1,0 +1,47 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "ammModule_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "authModule_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "conditionalModule_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "depositModule_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "miscModule_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "otcModule_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tradeModule_",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "fallback",
+    "stateMutability": "payable"
+  }
+]

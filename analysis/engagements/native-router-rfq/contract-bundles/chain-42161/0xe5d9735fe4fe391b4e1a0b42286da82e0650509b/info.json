@@ -1,0 +1,23 @@
+{
+  "address": "0xe5d9735fe4fe391b4e1a0b42286da82e0650509b",
+  "chainId": "42161",
+  "parent": null,
+  "sources": "etherscan",
+  "abi": "etherscan",
+  "compiler": "v0.8.28+commit.7893614a",
+  "verification": {
+    "etherscan": {
+      "contractName": "MarketHubRiskManagement",
+      "compilerVersion": "v0.8.28+commit.7893614a",
+      "optimizationUsed": "1",
+      "runs": "1000000",
+      "licenseType": ""
+    }
+  },
+  "proxy": {
+    "isProxy": false,
+    "type": null,
+    "implementations": []
+  },
+  "evidence": {}
+}

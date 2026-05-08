@@ -1,0 +1,25 @@
+{
+  "address": "0x3080808080ee6a795c1a6ff388195aa5f11ecee0",
+  "chainId": "42161",
+  "parent": null,
+  "sources": "etherscan",
+  "abi": "etherscan",
+  "compiler": "v0.8.28+commit.7893614a",
+  "verification": {
+    "etherscan": {
+      "contractName": "TransparentUpgradeableProxy",
+      "compilerVersion": "v0.8.28+commit.7893614a",
+      "optimizationUsed": "1",
+      "runs": "1000000",
+      "licenseType": ""
+    }
+  },
+  "proxy": {
+    "isProxy": true,
+    "type": null,
+    "implementations": [
+      "0x6bfc1a9c63e1b90071a9f54e3c7babe6faf788b0"
+    ]
+  },
+  "evidence": {}
+}

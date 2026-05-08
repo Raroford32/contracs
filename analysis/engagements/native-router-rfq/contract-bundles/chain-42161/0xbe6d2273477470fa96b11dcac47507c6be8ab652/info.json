@@ -1,0 +1,25 @@
+{
+  "address": "0xbe6d2273477470fa96b11dcac47507c6be8ab652",
+  "chainId": "42161",
+  "parent": null,
+  "sources": "etherscan",
+  "abi": null,
+  "compiler": "v0.7.6+commit.7338295f",
+  "verification": {
+    "etherscan": {
+      "contractName": "SafeProxy",
+      "compilerVersion": "v0.7.6+commit.7338295f",
+      "optimizationUsed": "0",
+      "runs": "200",
+      "licenseType": ""
+    }
+  },
+  "proxy": {
+    "isProxy": true,
+    "type": null,
+    "implementations": [
+      "0x29fcb43b46531bca003ddc8fcb67ffe91900c762"
+    ]
+  },
+  "evidence": {}
+}

@@ -1,0 +1,1751 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_permissionController",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_marketFactory",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_router",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_treasury",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_marketHubRiskManagement",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "InvalidInitialization",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "InvalidLength",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MHInvalidLiquidator",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MHMarketExists",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MHMarketNotByFactory",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MHMarketNotExists",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MHTokenExists",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MHTokenLimitExceeded",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MHTokenNotExists",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MHWithdrawNotReady",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMHealthCritical",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMInsufficientIM",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMInsufficientMinCash",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMInvalidCritHR",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMIsolatedMarketDenied",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMMarketAlreadyEntered",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMMarketExitDenied",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMMarketLimitExceeded",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMMarketMismatch",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMMarketNotEntered",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMSimulationOnly",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMTokenMismatch",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MMTransferDenied",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketMatured",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "NotInitializing",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "SafeERC20FailedOperation",
+    "type": "error",
+    "inputs": [
+      {
+        "name": "token",
+        "type": "address",
+        "internalType": "address"
+      }
+    ]
+  },
+  {
+    "name": "Unauthorized",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "CashInstantWithdraw",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "acc",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "unscaledAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "receiver",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "CashTransfer",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "to",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "amount",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "CollectFee",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "indexed": true,
+        "internalType": "TokenId"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "CritHRUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newCritHR",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "EnterMarket",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": false,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "entranceFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "ExitMarket",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": false,
+        "internalType": "MarketId"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "GlobalCooldownSet",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newCooldown",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "GlobalMaxEnteredMarketsSet",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newMaxEnteredMarkets",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "uint16"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "Initialized",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "version",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "MarketAdded",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "marketAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "MarketEntranceFeesUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "tokenIds",
+        "type": "uint16[]",
+        "indexed": false,
+        "internalType": "TokenId[]"
+      },
+      {
+        "name": "entranceFees",
+        "type": "uint128[]",
+        "indexed": false,
+        "internalType": "uint128[]"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "MinCashCrossAccountsUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "tokenIds",
+        "type": "uint16[]",
+        "indexed": false,
+        "internalType": "TokenId[]"
+      },
+      {
+        "name": "newMinCash",
+        "type": "uint128[]",
+        "indexed": false,
+        "internalType": "uint128[]"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "MinCashIsolatedAccountsUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "tokenIds",
+        "type": "uint16[]",
+        "indexed": false,
+        "internalType": "TokenId[]"
+      },
+      {
+        "name": "newMinCash",
+        "type": "uint128[]",
+        "indexed": false,
+        "internalType": "uint128[]"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "PayTreasury",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "PersonalCooldownSet",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "cooldown",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "PersonalMaxEnteredMarketsSet",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "bytes21",
+        "indexed": false,
+        "internalType": "Account"
+      },
+      {
+        "name": "newMaxEnteredMarkets",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "uint16"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "RiskyThresHRUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newRiskyThresHR",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "StrictHealthCheckUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": false,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "isEnabled",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "TokenAdded",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "indexed": true,
+        "internalType": "TokenId"
+      },
+      {
+        "name": "tokenAddress",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "VaultDeposit",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "acc",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "unscaledAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "VaultWithdrawalCanceled",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "TokenId"
+      },
+      {
+        "name": "totalUnscaledAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "VaultWithdrawalFinalized",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "TokenId"
+      },
+      {
+        "name": "totalUnscaledAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "VaultWithdrawalRequested",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "TokenId"
+      },
+      {
+        "name": "start",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "totalUnscaledAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "fallback",
+    "stateMutability": "payable"
+  },
+  {
+    "name": "MARKET_FACTORY",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "ROUTER",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "TREASURY",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "accCash",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "bulkOrders",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "bulks",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "marketId",
+            "type": "uint24",
+            "internalType": "MarketId"
+          },
+          {
+            "name": "orders",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "tif",
+                "type": "uint8",
+                "internalType": "enum TimeInForce"
+              },
+              {
+                "name": "side",
+                "type": "uint8",
+                "internalType": "enum Side"
+              },
+              {
+                "name": "sizes",
+                "type": "uint256[]",
+                "internalType": "uint256[]"
+              },
+              {
+                "name": "limitTicks",
+                "type": "int16[]",
+                "internalType": "int16[]"
+              }
+            ],
+            "internalType": "struct LongShort"
+          },
+          {
+            "name": "cancelData",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "ids",
+                "type": "uint64[]",
+                "internalType": "OrderId[]"
+              },
+              {
+                "name": "isAll",
+                "type": "bool",
+                "internalType": "bool"
+              },
+              {
+                "name": "isStrict",
+                "type": "bool",
+                "internalType": "bool"
+              }
+            ],
+            "internalType": "struct CancelData"
+          }
+        ],
+        "internalType": "struct BulkOrder[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "results",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "matched",
+            "type": "uint256",
+            "internalType": "Trade"
+          },
+          {
+            "name": "takerFee",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct BulkOrderResult[]"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "cancel",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      },
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "cancelData",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "ids",
+            "type": "uint64[]",
+            "internalType": "OrderId[]"
+          },
+          {
+            "name": "isAll",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "isStrict",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "internalType": "struct CancelData"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "cancelVaultWithdrawal",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "cashInstantWithdraw",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "acc",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "unscaledAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "receiver",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "cashTransfer",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "to",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "amount",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "cashTransferAll",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "to",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "amountOut",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "critHR",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int128",
+        "internalType": "int128"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "disableStrictHealthCheck",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "enableStrictHealthCheck",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "enterMarket",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "exitMarket",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "finalizeVaultWithdrawal",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "getCashFeeData",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "treasuryCash",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "marketEntranceFee",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "minCashCross",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "minCashIsolated",
+            "type": "uint128",
+            "internalType": "uint128"
+          }
+        ],
+        "internalType": "struct IMarketHubAllEventsAndTypes.CashFeeData"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getEnteredMarkets",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint24[]",
+        "internalType": "MarketId[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getPersonalCooldown",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddr",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getPersonalMaxEnteredMarkets",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "bytes21",
+        "internalType": "Account"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getStrictMarkets",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint24[]",
+        "internalType": "MarketId[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getUserWithdrawalStatus",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddr",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "start",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "unscaled",
+            "type": "uint224",
+            "internalType": "uint224"
+          }
+        ],
+        "internalType": "struct IMarketHubAllEventsAndTypes.Withdrawal"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "globalCooldown",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "globalMaxEnteredMarkets",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "hasEnteredMarketBefore",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "initialize",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "globalCooldown_",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "globalMaxEnteredMarkets_",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "liquidate",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      },
+      {
+        "name": "liq",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "vio",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "sizeToLiq",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "Trade"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "marketIdToAddress",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "orderAndOtc",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "internalType": "MarketId"
+      },
+      {
+        "name": "mainUser",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "orders",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "tif",
+            "type": "uint8",
+            "internalType": "enum TimeInForce"
+          },
+          {
+            "name": "side",
+            "type": "uint8",
+            "internalType": "enum Side"
+          },
+          {
+            "name": "sizes",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "limitTicks",
+            "type": "int16[]",
+            "internalType": "int16[]"
+          }
+        ],
+        "internalType": "struct LongShort"
+      },
+      {
+        "name": "cancelData",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "ids",
+            "type": "uint64[]",
+            "internalType": "OrderId[]"
+          },
+          {
+            "name": "isAll",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "isStrict",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "internalType": "struct CancelData"
+      },
+      {
+        "name": "OTCs",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "counter",
+            "type": "bytes26",
+            "internalType": "MarketAcc"
+          },
+          {
+            "name": "trade",
+            "type": "uint256",
+            "internalType": "Trade"
+          },
+          {
+            "name": "cashToCounter",
+            "type": "int256",
+            "internalType": "int256"
+          }
+        ],
+        "internalType": "struct OTCTrade[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "Trade"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "payTreasury",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "registerMarket",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "markets",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "registerToken",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "token",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "newTokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "requestVaultWithdrawal",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      },
+      {
+        "name": "unscaled",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "riskyThresHR",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "setCritHR",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "newCritHR",
+        "type": "int128",
+        "internalType": "int128"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "setGlobalCooldown",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "newCooldown",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "setGlobalMaxEnteredMarkets",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "newMaxEnteredMarkets",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "setMarketEntranceFees",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "tokenIds",
+        "type": "uint16[]",
+        "internalType": "TokenId[]"
+      },
+      {
+        "name": "entranceFees",
+        "type": "uint128[]",
+        "internalType": "uint128[]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "setMinCashForAccounts",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "isCross",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "tokenIds",
+        "type": "uint16[]",
+        "internalType": "TokenId[]"
+      },
+      {
+        "name": "newMinCash",
+        "type": "uint128[]",
+        "internalType": "uint128[]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "setPersonalCooldown",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddr",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "cooldown",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "setPersonalMaxEnteredMarkets",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "bytes21",
+        "internalType": "Account"
+      },
+      {
+        "name": "newMaxEnteredMarkets",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "setRiskyThresHR",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "newRiskyThresHR",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "settleAllAndGet",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "req",
+        "type": "uint8",
+        "internalType": "enum GetRequest"
+      },
+      {
+        "name": "idToGetSize",
+        "type": "uint24",
+        "internalType": "MarketId"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "VMResult"
+      },
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "simulateTransfer",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "amount",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "tokenData",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "token",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "scalingFactor",
+            "type": "uint96",
+            "internalType": "uint96"
+          }
+        ],
+        "internalType": "struct IMarketHubAllEventsAndTypes.TokenData"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "tokenIdToAddress",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "vaultDeposit",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "acc",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "unscaled",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "vaultPayTreasury",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      },
+      {
+        "name": "unscaled",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "withdrawTreasury",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "tokenIds",
+        "type": "uint16[]",
+        "internalType": "TokenId[]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "receive",
+    "stateMutability": "payable"
+  }
+]

@@ -1,0 +1,45 @@
+protocol: pendle-boros-rfq
+chain_id: 42161
+fork_block: null  # not pinned, sandbox RPC blocked
+seed_addresses:
+  - 0x1080808080f145b14228443212e62447c112adad  # MarketHub proxy
+  - 0x63b53e49fca8cb315b0a4a2f598ca6943318635c  # MarketHubEntry impl
+  - 0xe5d9735fe4fe391b4e1a0b42286da82e0650509b  # MarketHubRiskManagement
+  - 0x8080808080dab95efed788a9214e400ba552def6  # Router proxy
+  - 0x2348b91caeb1cb07dd0e8f0cc4216e921fa527e0  # Router impl
+  - 0xc6f465f4173897ba7c6dd2ac0df9ef9b88b46d53  # OTC_MODULE
+  - 0xdb727ff30938790ebff0d7d3e2f28229d9273422  # AUTH_MODULE
+  - 0x21bfd0f5502d8843d099f89d7424aceefaf6ad3f  # TRADE_MODULE
+  - 0x2080808080262c1706598c9dbdd3a0cd3601e5ea  # PermissionController proxy
+  - 0x3080808080ee6a795c1a6ff388195aa5f11ecee0  # MarketFactory proxy
+  - 0xbe6d2273477470fa96b11dcac47507c6be8ab652  # Treasury Safe
+
+deferred_addresses:
+  - 0x8c8436f76618be610a2e9b630b7687f13714e2d3  # AMM_MODULE
+  - 0xcfc280444fcfa34ddbe7d2b58094823285422318  # CONDITIONAL_MODULE
+  - 0xbb64fe9396a1b62d1b7e7b74bfeb2a825f8b16fb  # DEPOSIT_MODULE
+  - 0xbad140a7a9ec22a016109fe8ee6fab343c30900a  # MISC_MODULE
+  - 0xe6c43d22f65bfb4eef66e66a53d18c4fa306458e  # PermissionController impl
+  - 0x6bfc1a9c63e1b90071a9f54e3c7babe6faf788b0  # MarketFactory impl
+
+privileged_addresses:
+  - 0xc381b67f0289d9c1015924a0c50bb32da5265d59  # MarketHub TransparentProxy admin (also Router admin: 0x927ec9918e2ee4929c10b0d9f18f11452d3c25be — different)
+  - 0x927ec9918e2ee4929c10b0d9f18f11452d3c25be  # Router TransparentProxy admin (from bytecode)
+
+rpc_url: null  # sandbox cannot reach configured local RPCs
+explorer: etherscan-v2
+etherscan_key_env: ETHERSCAN_API_KEY
+
+bundler_manifest_path: analysis/engagements/native-router-rfq/contract-bundles/manifest.json
+traverse_out_dir: null
+ityfuzz_workdirs: []
+sqd_evidence_paths: []
+tenderly_node_rpc_url_env: null
+tenderly_evidence_paths: []
+
+notes_paths:
+  - analysis/engagements/native-router-rfq/notes/entrypoints.md
+  - analysis/engagements/native-router-rfq/notes/control-plane.md
+  - analysis/engagements/native-router-rfq/notes/value-flows.md
+  - analysis/engagements/native-router-rfq/notes/assumptions.md
+  - analysis/engagements/native-router-rfq/notes/hypotheses.md

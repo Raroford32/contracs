@@ -1,0 +1,458 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_marketHub",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_implementation",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "permissionController_",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "InvalidInitialization",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "InvalidTokenId",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "NotInitializing",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "Unauthorized",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "Initialized",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "version",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "MarketCreated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "market",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "immData",
+        "type": "tuple",
+        "indexed": false,
+        "components": [
+          {
+            "name": "name",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "k_isIsolatedOnly",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "k_maturity",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "k_tokenId",
+            "type": "uint16",
+            "internalType": "TokenId"
+          },
+          {
+            "name": "k_marketId",
+            "type": "uint24",
+            "internalType": "MarketId"
+          },
+          {
+            "name": "k_tickStep",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "k_iTickThresh",
+            "type": "uint16",
+            "internalType": "uint16"
+          }
+        ],
+        "internalType": "struct IMarketAllTypes.MarketImmutableDataStruct"
+      },
+      {
+        "name": "config",
+        "type": "tuple",
+        "indexed": false,
+        "components": [
+          {
+            "name": "maxOpenOrders",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "markRateOracle",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "fIndexOracle",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "hardOICap",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "takerFee",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "otcFee",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "liqSettings",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "base",
+                "type": "uint64",
+                "internalType": "uint64"
+              },
+              {
+                "name": "slope",
+                "type": "uint64",
+                "internalType": "uint64"
+              },
+              {
+                "name": "feeRate",
+                "type": "uint64",
+                "internalType": "uint64"
+              }
+            ],
+            "internalType": "struct IMarketAllTypes.LiqSettings"
+          },
+          {
+            "name": "kIM",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "kMM",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "tThresh",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxRateDeviationFactorBase1e4",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "closingOrderBoundBase1e4",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "loUpperConstBase1e4",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "loUpperSlopeBase1e4",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "loLowerConstBase1e4",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "loLowerSlopeBase1e4",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "status",
+            "type": "uint8",
+            "internalType": "enum IMarketAllTypes.MarketStatus"
+          },
+          {
+            "name": "useImpliedAsMarkRate",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "internalType": "struct IMarketAllTypes.MarketConfigStruct"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "IMPLEMENTATION",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "MARKET_HUB",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "create",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "name",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "symbol",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "isIsolatedOnly",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "maturity",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      },
+      {
+        "name": "tickStep",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "iTickThresh",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "config",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "maxOpenOrders",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "markRateOracle",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "fIndexOracle",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "hardOICap",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "takerFee",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "otcFee",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "liqSettings",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "base",
+                "type": "uint64",
+                "internalType": "uint64"
+              },
+              {
+                "name": "slope",
+                "type": "uint64",
+                "internalType": "uint64"
+              },
+              {
+                "name": "feeRate",
+                "type": "uint64",
+                "internalType": "uint64"
+              }
+            ],
+            "internalType": "struct IMarketAllTypes.LiqSettings"
+          },
+          {
+            "name": "kIM",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "kMM",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "tThresh",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxRateDeviationFactorBase1e4",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "closingOrderBoundBase1e4",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "loUpperConstBase1e4",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "loUpperSlopeBase1e4",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "loLowerConstBase1e4",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "loLowerSlopeBase1e4",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "status",
+            "type": "uint8",
+            "internalType": "enum IMarketAllTypes.MarketStatus"
+          },
+          {
+            "name": "useImpliedAsMarkRate",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "internalType": "struct IMarketAllTypes.MarketConfigStruct"
+      },
+      {
+        "name": "impliedRateInit",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "seedTradedTick",
+            "type": "int16",
+            "internalType": "int16"
+          },
+          {
+            "name": "window",
+            "type": "uint32",
+            "internalType": "uint32"
+          }
+        ],
+        "internalType": "struct MarketImpliedRateLib.InitStruct"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "newMarket",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "initialize",
+    "type": "function",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "marketNonce",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ],
+    "stateMutability": "view"
+  }
+]
