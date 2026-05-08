@@ -71,18 +71,44 @@ See `notes/hypotheses.md` for full chains. Summary:
 3. **H3 (Free option): relayer execution timing.** Validator/relayer holds free option between maker's signing and on-chain execution within `expiry` window — known RFQ tradeoff.
    - Severity: Inherent.
 
-## Last Experiment
-- Static-only analysis (no RPC). No on-chain discriminators executed.
+## Last Experiment (round 3 — RPC unblocked via public arb1.arbitrum.io/rpc)
+- Pinned: block ~460,760,913 (May 8 2026, Arbitrum One).
+- Pulled 10,000 AgentApproved events from Router via Etherscan v2; filtered
+  to expired (expiry < now) main-account approvals → 141 candidates;
+  queried `agentExpiry(bytes21,address)` (sig 0xc9c437b3) on each.
+- **Result: 141/141 are UNREVOKED** (storage value > 0) AND **231+ days
+  past expiry**. Across 8 distinct accounts:
+  - 0x904636b8…: 82 (largest exposure)
+  - 0x0d198bc0…: 26 (EIP-7702 → MetaMask DeleGator)
+  - 0x75e23ef6…: 19
+  - 0x4626b191…: 5
+  - 0x1eca053a…: 4 (EIP-7702 delegated)
+  - 0x7d83e163…: 3
+  - 0x5ebf929d…: 1
+  - 0xc0faf4cb…: 1
+- Validator: `0x862f53763a4cbb1bc74d605716342b53c6a84cc6` (EOA, no code).
+- See `notes/h1-live-confirmation.md` and the CSV evidence for raw data.
 
-## Next Cheapest Discriminator (when RPC available)
-- Static call: `agentExpiry(account, agent)` for known authorized agents to confirm naturally-expired-but-not-revoked agents exist. (Requires RPC or Tenderly access.)
-- Tenderly sim: craft `executeOTCTrade(req)` with synthetic validator (cannot, without admin) — only useful to confirm replay-key behavior at the trade-hash boundary.
+## Next Cheapest Discriminator
+- The on-chain side of H1 is fully verified — no further static call adds
+  belief. To proceed to E3 needs either:
+  1. A leaked or compromised agent private key (out of scope), or
+  2. Validator key compromise (out of scope), or
+  3. A bug in OZ ECDSA that doesn't exist (low priority to revisit), or
+  4. Discovery that any of the 141 agents has EIP-7702 delegation to a
+     buggy `isValidSignature` contract (5 sampled → bare EOAs; full sweep
+     would take ~141 RPC calls but is viable if user wants).
 
 ## Open Unknowns
-- Working RPC for fork-grounded experiments.
-- AMM/Conditional/Deposit/Misc module sources (not yet bundled — same chain 42161 if needed).
-- PermissionController role assignments (who holds INITIALIZER_ROLE, who can call setOTCTradeValidator).
-- Off-chain validator entity / key custody model (out of scope without operator info).
+- Whether any of the 141 agents has EIP-7702 → permissive ERC-1271 (full
+  sweep not yet done; sample of 5 are clean EOAs).
+- Whether validator's key custody has any operational weakness (out of
+  scope without protocol-internal information).
 
-## Outcome
-**No E3 finding.** Code is well-engineered; the RFQ surface follows a canonical maker+taker+validator EIP-712 flow with replay protection and proper EIP-712 domain separator. The most concrete code-level observation (H1) is documented-as-intentional, and is not a permissionless exploit on its own. Recording for future reference if validator compromise or agent-key leak ever surface.
+## Outcome (updated)
+**Still no E3 finding** under permissionless threat model. **But H1 is
+now LIVE-CONFIRMED with 141 concrete on-chain (account, agent, expiry)
+tuples** — elevating it from "design smell" to "live operational
+exposure". A protocol-side fix is recommended (`> block.timestamp` instead
+of `> 0` in `_verifyAgentSoft`, plus encouraging revocations); a key-leak
+incident would be immediately exploitable for the affected accounts.
