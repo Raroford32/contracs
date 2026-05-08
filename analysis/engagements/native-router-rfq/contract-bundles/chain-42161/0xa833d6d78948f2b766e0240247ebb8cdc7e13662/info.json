@@ -1,0 +1,23 @@
+{
+  "address": "0xa833d6d78948f2b766e0240247ebb8cdc7e13662",
+  "chainId": "42161",
+  "parent": null,
+  "sources": "etherscan",
+  "abi": "etherscan",
+  "compiler": "v0.8.28+commit.7893614a",
+  "verification": {
+    "etherscan": {
+      "contractName": "MarketSetAndView",
+      "compilerVersion": "v0.8.28+commit.7893614a",
+      "optimizationUsed": "1",
+      "runs": "1000000",
+      "licenseType": ""
+    }
+  },
+  "proxy": {
+    "isProxy": false,
+    "type": null,
+    "implementations": []
+  },
+  "evidence": {}
+}

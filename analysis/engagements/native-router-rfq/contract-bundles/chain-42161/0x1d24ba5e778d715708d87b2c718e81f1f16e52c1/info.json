@@ -1,0 +1,23 @@
+{
+  "address": "0x1d24ba5e778d715708d87b2c718e81f1f16e52c1",
+  "chainId": "42161",
+  "parent": null,
+  "sources": "etherscan",
+  "abi": "etherscan",
+  "compiler": "v0.8.28+commit.7893614a",
+  "verification": {
+    "etherscan": {
+      "contractName": "MarketOrderAndOtc",
+      "compilerVersion": "v0.8.28+commit.7893614a",
+      "optimizationUsed": "1",
+      "runs": "0",
+      "licenseType": ""
+    }
+  },
+  "proxy": {
+    "isProxy": false,
+    "type": null,
+    "implementations": []
+  },
+  "evidence": {}
+}

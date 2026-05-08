@@ -187,16 +187,136 @@ on-chain code has correctly scoped the looseness.
 | tryAggregate | — | — | — |  | bundle multiple settles | — |
 | settleAllAndGet | — | — | — | — |  | — |
 
+## Round 2 — deeper market-side dive (after extending scope)
+
+After bundling and reading the deferred surfaces — MarketHubRiskManagement,
+MarketFactory, PendleAccessController, the actual Market impl
+(MarketEntry + MarketOrderAndOtc + MarketSettingAndView +
+MarketRiskManagement subimpls), the orderbook utilities (CoreOrderUtils,
+CoreStateUtils, OrderBookUtils, Tick, TickBitmap), settlement
+(SweepProcessUtils, ProcessMergeUtils, PendingOIPureUtils),
+BookAmmSwapBase, and PaymentLib — six more chains attempted:
+
+### Attempt 9 — Bump MarketFactory's deployment nonce to desync `_marketIdToAddrRaw`
+**Hypothesis**: `CreateCompute.compute(factory, marketId)` derives the
+market address using **CREATE** semantics (RLP nonce-based), expecting
+factory's deploy-time nonce == marketId. If anyone can force a CREATE
+from the factory contract, future `marketId == nonce` invariant breaks
+and `_marketIdToAddrRaw` returns wrong addresses for new markets.
+
+**Why it fails**: `MarketFactory.create()` is `onlyAuthorized`, the only
+function that performs CREATE. Constructor of MarketFactory does not
+perform a CREATE; `initialize()` only sets `marketNonce = 1`. No
+permissionless path to bump nonce. Registration enforces parity:
+`assert(computedAddress == newMarket)` on each create — admin error
+during deploy would be caught immediately by the assert.
+
+### Attempt 10 — Force-settle into liquidation via permissionless `settleAllAndGet`
+**Hypothesis**: `settleAllAndGet(victim, ...)` is permissionless. It
+iterates victim's entered markets and applies pending PayFees, dropping
+victim's cash. If victim's HR drops below `critHR`, attacker calls
+liquidate to capture the spread.
+
+**Why it fails**:
+- `MarketHubEntry.liquidate(...)` is `onlyAuthorized` — admin-curated
+  liquidator set. Attacker is not on the list.
+- `settleAllAndGet` only crystallizes ALREADY-ACCRUED PayFees. The user
+  effectively owed these payments anyway. No new value created.
+
+**Residual MEV concern**: forcing victim's settlement before placing
+orders could give the attacker freshness advantage in matching. Limited
+extractable value; recorded as MEV note.
+
+### Attempt 11 — Stale `MarketCache` exploitation
+**Hypothesis**: `_getMarketCache(marketId)` caches `(market, tokenId,
+maturity, tickStep)` on first read. If any field could change post-cache
+(e.g., maturity extended via admin upgrade, or token swapped), Router
+operates on stale data while MarketHub uses fresh data → divergence.
+
+**Why it fails**: `tokenId`, `maturity`, `tickStep` are immutables in
+the Market contract (`k_tokenId`, `k_maturity`, `k_tickStep`) per
+`MarketImmutableDataStruct` set at market construction. They cannot
+change post-deployment. Cache is consistent forever.
+
+### Attempt 12 — Self-OTC across same-root different-accountId MarketAccs
+**Hypothesis**: User has Account(R, 0) and Account(R, 1). Crafts an OTC
+where maker = MarketAcc(R, 1, T, M) and taker = MarketAcc(R, 0, T, M).
+`_validateOrderAndOtc` checks `OTCs[i].counter != user` (literal bytes26
+inequality), which passes (different accountId). Trade is a self-trade
+that pays fees both sides → drains victim's own funds to treasury.
+
+**Why it fails for attacker**:
+- This requires the USER themselves to authorize the trade — only
+  victim's agent (or validator+agent) can sign.
+- Self-funded fees go to treasury, not attacker. No extractable value.
+
+**Conclusion**: legitimate self-OTC is permitted (different MarketAccs)
+but not value-extractive for an attacker. Wash-trade fees only.
+
+### Attempt 13 — `tryAggregate` as a delegate-call slot collider
+**Hypothesis**: Use `tryAggregate` to call multiple modules; if two
+modules share a hashed storage slot but use different layouts, write+read
+collide.
+
+**Why it fails**: All non-immutable storage uses ERC-7201 namespaced
+slots (`AUTH_MODULE_STORAGE_LOCATION`, `ROUTER_OTC_MODULE_STORAGE_LOCATION`,
+`ROUTER_TRADE_STORAGE_LOCATION`, `ROUTER_CONDITIONAL_MODULE_STORAGE_LOCATION`,
+`ROUTER_EIP712_STORAGE_LOCATION`). Each is `keccak256(...) - 1 & ~0xff`,
+collision-resistant. Verified in `slots.sol`. The only concrete `address
+public immutable MARKET_FACTORY/ROUTER/TREASURY` etc. are inlined and
+don't claim slots.
+
+### Attempt 14 — ConditionalModule's user-supplied `validator` field
+**Observation**: ConditionalModule's `req.validator` is provided by the
+caller (relayer) at execution time — not pinned at order placement. The
+user (agent) signs only the orderHash; the validator-allowlist check at
+execution selects from `_CMS().isValidator[*]`.
+
+**Hypothesis**: Could the user have signed assuming validator V_strong
+will execute, but a compromised V_weak (still allowlisted) executes
+instead at terms unfavorable to user?
+
+**Conclusion**: The user's signature commits to the order body
+(including limit `tick`). Validator chooses execParams (ammId, desired
+match rate) within order's tick limit. So validator can't price beyond
+user's tick. **However, validator chooses WHEN to execute (within order
+expiry) and which AMM** — material discretion. If V_weak is compromised,
+attacker times execution to disadvantage user; user's `tick` bounds
+worst-case loss but still loses. Documented as a multi-validator
+threat-model note, not an exploit.
+
 ## Final conclusion
-Cross-contract composition does not produce a permissionless exploit on
-this codebase. The architecture's auth boundaries are well-isolated:
+After bundling 17 contracts, reading 30+ source files across 5 module
+hubs and 4 sub-impl proxies, and attempting 14 distinct cross-contract
+chains: **no permissionless exploit found.** Pendle Boros's architecture
+provides:
+
 - Per-module ERC-7201 storage namespaces (no slot collisions).
-- Per-module deterministic dispatch (no plugin-clobber).
+- Per-module deterministic dispatch (no plugin-clobber, no init re-entry).
 - Transient-storage auth context that respects EIP-1153 revert semantics.
 - Two-tier sig requirement for OTC (maker/taker agent + validator).
 - Strict vs soft expiry split (soft only inside off-chain-validator-gated
   surfaces).
+- CREATE-based market deployment with parity assert at registration.
+- Self-trade and zero-size-order rejections at the market layer.
+- Immutable market parameters (tokenId/maturity/tickStep) preventing
+  cache desync.
 
-The realistic attack vectors all reduce to off-chain key compromise
-(agent / validator / admin / proxy admin / relayer). Operating-model
-risks; not on-chain code defects.
+The realistic attack vectors all reduce to off-chain key compromise:
+- Agent key (operational; partial compromise → OTC-only blast radius
+  per H1's strict scoping)
+- Validator key (single OTC validator; multi Conditional validators —
+  Conditional surface is broader)
+- Admin role / proxy admin / relayer set (full control)
+
+These are operating-model risks; not on-chain code defects. The static
+analysis budget is exhausted without a permissionless E3 — and per the
+OS, **no E3 finding will be claimed unless and until a fork-grounded
+proof exists**.
+
+To extend further would require:
+1. RPC for fork experiments (sandbox is blocked).
+2. Threat-modeling documents from the protocol on validator/relayer key
+   custody.
+3. An adversary model that includes off-chain compromise.
+

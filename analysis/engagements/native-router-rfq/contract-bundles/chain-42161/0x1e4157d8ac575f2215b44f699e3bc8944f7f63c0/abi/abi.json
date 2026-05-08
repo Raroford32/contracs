@@ -1,0 +1,1045 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "marketHub_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "marketSetAndView_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "marketOrderAndOtc_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "marketRiskManagement_",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "InvalidInitialization",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketCLO",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketInvalidLiquidation",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketLiqNotReduceSize",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketMatured",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketOrderCancelled",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketOrderFilled",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketOrderNotFound",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketOrderRateOutOfBound",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "MarketPaused",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "NotInitializing",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "Unauthorized",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "FIndexUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newIndex",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "FIndex"
+      },
+      {
+        "name": "newFTag",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "FTag"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "FTagUpdatedOnPurge",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newIndex",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "FIndex"
+      },
+      {
+        "name": "newFTag",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "FTag"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "FeeRatesUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newTakerFee",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "newOtcFee",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "ForceDeleverage",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "win",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "lose",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "delevTrade",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "ImpliedRateObservationWindowUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newWindow",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "Initialized",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "version",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "LimitOrderCancelled",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "orderIds",
+        "type": "uint64[]",
+        "indexed": false,
+        "internalType": "OrderId[]"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "LimitOrderConfigUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "loUpperConstBase1e4",
+        "type": "int16",
+        "indexed": false,
+        "internalType": "int16"
+      },
+      {
+        "name": "loUpperSlopeBase1e4",
+        "type": "int16",
+        "indexed": false,
+        "internalType": "int16"
+      },
+      {
+        "name": "loLowerConstBase1e4",
+        "type": "int16",
+        "indexed": false,
+        "internalType": "int16"
+      },
+      {
+        "name": "loLowerSlopeBase1e4",
+        "type": "int16",
+        "indexed": false,
+        "internalType": "int16"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "LimitOrderFilled",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "OrderId"
+      },
+      {
+        "name": "to",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "OrderId"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "LimitOrderForcedCancelled",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "orderIds",
+        "type": "uint64[]",
+        "indexed": false,
+        "internalType": "OrderId[]"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "LimitOrderPartiallyFilled",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "orderId",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "OrderId"
+      },
+      {
+        "name": "filledSize",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "LimitOrderPlaced",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "maker",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "orderIds",
+        "type": "uint64[]",
+        "indexed": false,
+        "internalType": "OrderId[]"
+      },
+      {
+        "name": "sizes",
+        "type": "uint256[]",
+        "indexed": false,
+        "internalType": "uint256[]"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "Liquidate",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "liq",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "vio",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "liqTrade",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      },
+      {
+        "name": "liqFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "LiquidationSettingsUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newLiqSettings",
+        "type": "tuple",
+        "indexed": false,
+        "components": [
+          {
+            "name": "base",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "slope",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "feeRate",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ],
+        "internalType": "struct IMarketAllTypes.LiqSettings"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "MarginConfigUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newKIM",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "newKMM",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "newTThresh",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "MarketOrdersFilled",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "totalTrade",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      },
+      {
+        "name": "totalFees",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "MaxOpenOrdersUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newMaxOpenOrders",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "uint16"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OICapUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newHardOICap",
+        "type": "uint128",
+        "indexed": false,
+        "internalType": "uint128"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OobOrdersPurged",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "OrderId"
+      },
+      {
+        "name": "to",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "OrderId"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OracleAddressesUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newMarkRateOracle",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "newFIndexOracle",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OtcSwap",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "counterParty",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "trade",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      },
+      {
+        "name": "cashToCounter",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "otcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "PaymentFromSettlement",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "lastFTime",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "latestFTime",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "payment",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "fees",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "PersonalDiscRatesUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "newTakerDisc",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "newOtcDisc",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "PersonalExemptCLOCheckUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": false,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "exemptCLOCheck",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "PersonalMarginConfigUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "newKIM",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "newKMM",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "RateBoundConfigUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newMaxRateDeviationFactorBase1e4",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "uint16"
+      },
+      {
+        "name": "newClosingOrderBoundBase1e4",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "uint16"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "StatusUpdated",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "newStatus",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "enum IMarketAllTypes.MarketStatus"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "fallback",
+    "stateMutability": "payable"
+  },
+  {
+    "name": "VERSION",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "cancel",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddr",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "cancelData",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "ids",
+            "type": "uint64[]",
+            "internalType": "OrderId[]"
+          },
+          {
+            "name": "isAll",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "isStrict",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "internalType": "struct CancelData"
+      },
+      {
+        "name": "isForceCancel",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "PayFee"
+      },
+      {
+        "name": "",
+        "type": "uint64[]",
+        "internalType": "OrderId[]"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "descriptor",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "",
+        "type": "uint16",
+        "internalType": "TokenId"
+      },
+      {
+        "name": "",
+        "type": "uint24",
+        "internalType": "MarketId"
+      },
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getBestFeeRates",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "otcCounter",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      {
+        "name": "",
+        "type": "uint64",
+        "internalType": "uint64"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getDelevLiqNonce",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getImpliedRate",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int128",
+        "internalType": "int128"
+      },
+      {
+        "name": "",
+        "type": "int128",
+        "internalType": "int128"
+      },
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getLatestFIndex",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes26",
+        "internalType": "FIndex"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getLatestFTime",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "getMarkRate",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "getNextNTicks",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "side",
+        "type": "uint8",
+        "internalType": "enum Side"
+      },
+      {
+        "name": "startTick",
+        "type": "int16",
+        "internalType": "int16"
+      },
+      {
+        "name": "maxNTicks",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "int16[]",
+        "internalType": "int16[]"
+      },
+      {
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "liquidate",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "liqAddr",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "vioAddr",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "sizeToLiq",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "vioHealthRatio",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "critHR",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "res",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "isStrictIMLiq",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "finalVMLiq",
+            "type": "uint256",
+            "internalType": "VMResult"
+          },
+          {
+            "name": "liqSettle",
+            "type": "uint256",
+            "internalType": "PayFee"
+          },
+          {
+            "name": "liqPayment",
+            "type": "uint256",
+            "internalType": "PayFee"
+          },
+          {
+            "name": "vioSettle",
+            "type": "uint256",
+            "internalType": "PayFee"
+          },
+          {
+            "name": "vioPayment",
+            "type": "uint256",
+            "internalType": "PayFee"
+          },
+          {
+            "name": "liqTrade",
+            "type": "uint256",
+            "internalType": "Trade"
+          }
+        ],
+        "internalType": "struct LiqResult"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "settleAndGet",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "userAddr",
+        "type": "bytes26",
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "getType",
+        "type": "uint8",
+        "internalType": "enum GetRequest"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "VMResult"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "PayFee"
+      },
+      {
+        "name": "",
+        "type": "int256",
+        "internalType": "int256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "receive",
+    "stateMutability": "payable"
+  }
+]
