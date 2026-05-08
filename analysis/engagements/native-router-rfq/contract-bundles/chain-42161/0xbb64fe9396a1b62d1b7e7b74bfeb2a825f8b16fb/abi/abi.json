@@ -1,0 +1,901 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "weth_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "marketHub_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "depositBoxFactory_",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "AuthAgentExpired",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "AuthIntentExecuted",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "AuthIntentExpired",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "AuthInvalidMessage",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "AuthInvalidNonce",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "CashSwapDenied",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "InsufficientDepositAmount",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "InsufficientReceivedAmount",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "InvalidDepositToken",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "Unauthorized",
+    "type": "error",
+    "inputs": []
+  },
+  {
+    "name": "AddLiquidityDualToAmm",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "ammId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "AMMId"
+      },
+      {
+        "name": "exactSizeIn",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "netLpOut",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "netCashIn",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "netOtcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "AddLiquiditySingleCashToAmm",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "ammId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "AMMId"
+      },
+      {
+        "name": "netLpOut",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "netCashIn",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "totalTakerOtcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "swapSizeInterm",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "AgentApproved",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "bytes21",
+        "indexed": true,
+        "internalType": "Account"
+      },
+      {
+        "name": "agent",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "expiry",
+        "type": "uint64",
+        "indexed": true,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "AgentRevoked",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "bytes21",
+        "indexed": true,
+        "internalType": "Account"
+      },
+      {
+        "name": "agent",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "BulkOrdersExecuted",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "tif",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "enum TimeInForce"
+      },
+      {
+        "name": "matched",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      },
+      {
+        "name": "takerFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "CashSwapExecuted",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "to",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "amountSpent",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "amountReceived",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "ConditionalOrderExecuted",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "orderHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": false,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "ammId",
+        "type": "uint24",
+        "indexed": false,
+        "internalType": "AMMId"
+      },
+      {
+        "name": "tif",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "enum TimeInForce"
+      },
+      {
+        "name": "matched",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      },
+      {
+        "name": "takerOtcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "DepositFromBox",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "boxId",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "tokenSpent",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amountSpent",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "accountId",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "TokenId"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": false,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "depositAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "payTreasuryAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "NewAccManagerSet",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "account",
+        "type": "bytes21",
+        "indexed": true,
+        "internalType": "Account"
+      },
+      {
+        "name": "newAccManager",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "OTCTradeExecuted",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "maker",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "taker",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "trade",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      },
+      {
+        "name": "otcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "RemoveLiquidityDualFromAmm",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "ammId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "AMMId"
+      },
+      {
+        "name": "lpToRemove",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "netCashOut",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "netSizeOut",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "netOtcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "RemoveLiquiditySingleCashFromAmm",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "ammId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "AMMId"
+      },
+      {
+        "name": "lpToRemove",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "netCashOut",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      },
+      {
+        "name": "netTakerOtcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "netSizeInterm",
+        "type": "int256",
+        "indexed": false,
+        "internalType": "int256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "SingleOrderExecuted",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "ammId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "AMMId"
+      },
+      {
+        "name": "tif",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "enum TimeInForce"
+      },
+      {
+        "name": "matched",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      },
+      {
+        "name": "takerOtcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "SwapWithAmm",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "bytes26",
+        "indexed": true,
+        "internalType": "MarketAcc"
+      },
+      {
+        "name": "marketId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "MarketId"
+      },
+      {
+        "name": "ammId",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "AMMId"
+      },
+      {
+        "name": "matched",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "Trade"
+      },
+      {
+        "name": "otcFee",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "WithdrawFromBox",
+    "type": "event",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "boxId",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "token",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "name": "CASH_SWAP_BOX_ID",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "DEPOSIT_BOX_FACTORY",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "contract IPDepositBoxFactory"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "DIRECT_DEPOSIT_BOX_ID",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "depositFromBox",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "message",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "root",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "boxId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "tokenSpent",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "maxAmountSpent",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "accountId",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "tokenId",
+            "type": "uint16",
+            "internalType": "TokenId"
+          },
+          {
+            "name": "marketId",
+            "type": "uint24",
+            "internalType": "MarketId"
+          },
+          {
+            "name": "minDepositAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "payTreasuryAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "swapExtRouter",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "swapApprove",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "swapCalldata",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "expiry",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "salt",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct IRouterEventsAndTypes.DepositFromBoxMessage"
+      },
+      {
+        "name": "signature",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "directDepositFromBox",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "root",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenSpent",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "tokenId",
+        "type": "uint16",
+        "internalType": "TokenId"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "executeCashSwap",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "agent",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "ms",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "from",
+            "type": "bytes26",
+            "internalType": "MarketAcc"
+          },
+          {
+            "name": "to",
+            "type": "bytes26",
+            "internalType": "MarketAcc"
+          },
+          {
+            "name": "amountSpent",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "minAmountReceived",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "swapExtRouter",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "swapApprove",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "swapCalldata",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "nonce",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ],
+        "internalType": "struct IRouterEventsAndTypes.CashSwapMessage"
+      },
+      {
+        "name": "sig",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "withdrawFromBox",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "message",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "root",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "boxId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "token",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "expiry",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "salt",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "internalType": "struct IRouterEventsAndTypes.WithdrawFromBoxMessage"
+      },
+      {
+        "name": "signature",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  }
+]
